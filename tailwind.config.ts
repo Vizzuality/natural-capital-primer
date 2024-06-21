@@ -1,0 +1,80 @@
+import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    colors: {
+      orange: {
+        DEFAULT: "#FAAD25",
+        50: "#FFEFEA",
+        100: "#FFE0D4",
+        200: "#FFC0A9",
+        300: "#FFA17F",
+        400: "#FF8154",
+        500: "#FF6229",
+        600: "#CC4E21",
+        700: "#993B19",
+        800: "#662710",
+        900: "#331408",
+        950: "#1A0A04",
+      },
+      green: {
+        50: "#EBF6ED",
+        100: "#D7ECDB",
+        200: "#AFDAB7",
+        300: "#87C794",
+        400: "#5FB570",
+        500: "#37A24C",
+        600: "#2C823D",
+        700: "#21612E",
+        800: "#16411E",
+        900: "#0B200F",
+        950: "#061008",
+      },
+      blue: {
+        50: "#EDF1FF",
+        100: "#DBE3FF",
+        200: "#B7C7FF",
+        300: "#92AAFF",
+        400: "#6E8EFF",
+        500: "#4A72FF",
+        600: "#3B5DD3",
+        700: "#2C47A6",
+        800: "#1E327A",
+        900: "#0F1C4D",
+        950: "#071237",
+      },
+      grey: {
+        50: "#F3F3F4",
+        100: "#E7E8E9",
+        200: "#CFD0D3",
+        300: "#B8B9BD",
+        400: "#A0A1A7",
+        500: "#888A91",
+        600: "#6D6E74",
+        700: "#3F3F46",
+        800: "#36373A",
+        900: "#1B1C1D",
+        950: "#0E0E0F",
+      },
+      pink: "#FF9EEF",
+      turquoise: "#47BDFF",
+      lime: "#CFE44F",
+      purple: "#B152EC",
+      black: "#191C34",
+      white: "#F8F9EE",
+    },
+    extend: {
+      fontFamily: {
+        sans: ['"Circular Std"', ...defaultTheme.fontFamily.sans],
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
