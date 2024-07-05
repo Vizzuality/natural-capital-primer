@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/header";
 import localFont from "next/font/local";
 
 const circular = localFont({
@@ -24,7 +23,10 @@ const circular = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Natural Capital Primer",
+  title: {
+    template: "%s | Natural Capital Primer",
+    default: "Natural Capital Primer",
+  },
   description:
     "A science-based resource that explains the concept of natural capital and how business and society depend on it.",
 };
@@ -36,10 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={circular.className}>
-      <body className="bg-white text-black">
-        <Header />
-        {children}
-      </body>
+      <body className="bg-white text-black">{children}</body>
     </html>
   );
 }
