@@ -1,5 +1,27 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/header";
+import localFont from "next/font/local";
+
+const circular = localFont({
+  src: [
+    {
+      path: "../fonts/CircularStd-Book.woff2",
+      weight: "450",
+      style: "normal",
+    },
+    {
+      path: "../fonts/CircularStd-Medium.woff2",
+      weight: "500 600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/CircularStd-Medium.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   title: "Natural Capital Primer",
@@ -13,8 +35,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-white text-black">{children}</body>
+    <html lang="en" className={circular.className}>
+      <body className="bg-white text-black">
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
