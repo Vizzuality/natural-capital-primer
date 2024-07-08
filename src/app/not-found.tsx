@@ -48,7 +48,7 @@ export default function Home() {
       <div className="relative z-10">
         <Header logo="white" />
       </div>
-      <main className="flex flex-col items-center justify-between p-24">
+      <main className="relative z-10 flex flex-col items-center justify-between p-24">
         <div className="flex flex-col items-center gap-y-6 xl:gap-y-4">
           <div className="text-[160px] leading-[160px] xl:text-[200px] xl:leading-[200px]">404</div>
           <h1 className="text-2xl xl:text-4xl">Page not found</h1>

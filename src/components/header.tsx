@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import LogoMonochrome from "@/icons/logo-monochrome.svg";
+import LogoMonochrome from "@/svgs/logo-monochrome.svg";
+import Logo from "@/svgs/logo.svg";
 import Menu from "@/icons/menu.svg";
 import MenuMobile from "@/icons/menu-mobile.svg";
 import Close from "@/icons/close.svg";
@@ -19,6 +20,7 @@ const logoVariants = cva("", {
     logo: {
       default: "",
       white: "text-white",
+      black: "text-black",
     },
   },
   defaultVariants: {
@@ -66,7 +68,8 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
       >
         <Button variant="link" size="auto" className={cn(logoVariants({ logo }))} asChild>
           <Link href="/" className="-m-1.5 p-1.5">
-            <LogoMonochrome className="h-8" aria-hidden="true" />
+            {(!logo || logo === "default") && <Logo className="h-8" aria-hidden="true" />}
+            {logo && logo !== "default" && <LogoMonochrome className="h-8" aria-hidden="true" />}
             <span className="sr-only">Natural Capital Primer</span>
           </Link>
         </Button>
