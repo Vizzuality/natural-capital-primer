@@ -75,7 +75,7 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
         </Button>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button type="button" className="h-11 px-3 lg:h-auto lg:pl-2.5">
+            <Button type="button" className="h-11 px-3 hover:bg-black lg:h-auto lg:pl-2.5">
               <Menu
                 aria-hidden="true"
                 className="mr-2.5 hidden h-5 w-5 rounded-full border border-white/20 text-white lg:block"
