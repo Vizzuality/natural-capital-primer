@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "A science-based resource that explains the concept of natural capital and how business and society depend on it.",
 };
 
-export default function Home() {
+export default function ErrorPage() {
   return (
     <div className="min-h-screen bg-[url(/assets/500-background.png)] bg-[length:auto_25%] bg-right-top bg-no-repeat md:bg-[length:auto_35%] 2xl:bg-[length:auto_55%]">
       <div className="absolute bottom-0 h-full w-full overflow-hidden">
