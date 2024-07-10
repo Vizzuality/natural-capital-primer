@@ -80,7 +80,40 @@ export default function Home() {
           </div>
         </main>
       </div>
-      <main className="flex flex-col items-center justify-between p-24">Hello world</main>
+      <div className="bg-green-500 pb-28 pt-10 lg:pb-52 lg:pt-24">
+        <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-28 lg:px-20">
+          <h2 className="flex-shrink-0">What is natural capital?</h2>
+          <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
+            <p className="text-2xl lg:col-span-2 lg:text-4xl">
+              Natural capital refers to all living and non-living natural resources (assets) that
+              provide products and services that are of value to humans rand society.
+            </p>
+            <div className="flex flex-col gap-y-3">
+              <h3 className="font-bold">Natural Capital Assets:</h3>
+              <p>
+                These are the physical entities (resources) that can be described in terms of their
+                extant and condition. Assets produce flows of ecosystem services.
+              </p>
+              <Link href="/key-concepts/assets" className="text-xs font-bold uppercase underline">
+                Know more <span className="sr-only">about Natural Capital Assets</span>
+              </Link>
+            </div>
+            <div className="flex flex-col gap-y-3">
+              <h3 className="font-bold">Ecosystem Services:</h3>
+              <p>
+                These are the products or processes arising from nature that are of benefit and
+                value to human society.
+              </p>
+              <Link
+                href="/key-concepts/flows-of-services"
+                className="text-xs font-bold uppercase underline"
+              >
+                Know more <span className="sr-only">about Ecosystem Services</span>
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
       <Footer />
     </>
   );
