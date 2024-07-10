@@ -22,7 +22,7 @@ const Footer: FC = () => {
             <div className="flex items-end gap-x-8">
               <Link href="https://www.latrobe.edu.au/" rel="noopener noreferrer" target="_blank">
                 <Image
-                  src="/assets/la-trobe-university.png"
+                  src="/assets/la-trobe-university-white.png"
                   alt="La Trobe University"
                   width={122}
                   height={31}
@@ -30,7 +30,7 @@ const Footer: FC = () => {
               </Link>
               <Link href="https://macdochfoundation.org/" rel="noopener noreferrer" target="_blank">
                 <Image
-                  src="/assets/macdoch-foundation.png"
+                  src="/assets/macdoch-foundation-white.png"
                   alt="Macdoch Foundation"
                   width={93}
                   height={41}
