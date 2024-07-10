@@ -10,7 +10,7 @@ import Close from "@/icons/close.svg";
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { FC, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import HoverRepeatAnimation from "./hover-repeat-animation";
+import HoverRepeatAnimation from "./animations/hover-repeat";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
