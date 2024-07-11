@@ -81,9 +81,9 @@ export default function Home() {
         </main>
       </div>
       <div className="bg-green-500 pb-28 pt-10 lg:pb-52 lg:pt-24">
-        <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-28 lg:px-20">
-          <h2 className="flex-shrink-0">What is natural capital?</h2>
-          <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
+        <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
+          <h2 className="flex-shrink-0 lg:w-[220px]">What is natural capital?</h2>
+          <div className="grid flex-grow grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
             <p className="text-2xl lg:col-span-2 lg:text-4xl">
               Natural capital refers to all living and non-living natural resources (assets) that
               provide products and services that are of value to humans rand society.
@@ -113,6 +113,57 @@ export default function Home() {
             </div>
           </div>
         </main>
+      </div>
+      <div className="bg-black pb-10 text-white lg:pb-24">
+        <div className="relative -top-20 mx-6 aspect-[3/2] bg-[url(/assets/home-illustration.png)] bg-cover sm:aspect-[2/1] lg:-top-24 lg:mx-20 lg:aspect-auto lg:h-[550px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"></div>
+        <div className="flex flex-col gap-y-6 lg:gap-y-20">
+          <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
+            <h2 className="flex-shrink-0 lg:w-[220px]">Why is natural capital important to me?</h2>
+            <div className="flex flex-grow flex-col gap-y-10 lg:gap-y-20">
+              <div className="flex flex-col gap-y-3 lg:gap-y-6">
+                <p className="text-2xl lg:text-4xl">
+                  Our very own existence depends on natural capital.
+                </p>
+                <p>
+                  Humans rely on natural capital for life-sustaining services like clean air, water,
+                  food and shelter.
+                </p>
+              </div>
+              <div className="flex flex-col gap-y-3 lg:gap-y-6">
+                <p className="text-2xl lg:text-4xl">
+                  55% of global GDP directly depends on natural assets and ecosystem services.
+                  <sup>1</sup>
+                </p>
+                <p>
+                  This includes products such as timber and food, raw materials for manufacturing,
+                  and services such as pollination, flood mitigation, and tourism.
+                </p>
+              </div>
+            </div>
+          </main>
+          <main className="mx-auto flex w-full max-w-7xl flex-col justify-start gap-y-6 border-t border-dashed border-t-white px-6 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
+            <div className="flex-shrink-0 lg:w-[220px]" />
+            <div className="flex flex-grow flex-col gap-y-6 lg:gap-y-10">
+              <div className="flex items-center gap-x-3">
+                <p className="flex-shrink-0">Citations of this section</p>
+                <div className="h-px flex-grow bg-white" />
+              </div>
+              <ol className="list-inside list-decimal">
+                <li>
+                  Evison, W., Low, L.P & O&apos;Brien, D. (2023) Managing nature risks: From
+                  understanding to action. PwC.{" "}
+                  <Link
+                    href="https://www.pwc.com/gx/en/strategy-and-business/content/sbpwc-2023-04-19-Managing-nature-risks-v2.pdf"
+                    className="underline"
+                    rel="noopener noreferrer"
+                  >
+                    https://www.pwc.com/gx/en/strategy-and-business/content/sbpwc-2023-04-19-Managing-nature-risks-v2.pdf
+                  </Link>
+                </li>
+              </ol>
+            </div>
+          </main>
+        </div>
       </div>
       <Footer />
     </>
