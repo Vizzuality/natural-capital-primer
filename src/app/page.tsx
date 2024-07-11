@@ -7,6 +7,8 @@ import Shape1 from "@/svgs/404-shape-1.svg";
 import Shape2 from "@/svgs/home-shape-2.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 
 export default function Home() {
   return (
@@ -164,6 +166,23 @@ export default function Home() {
             </div>
           </main>
         </div>
+      </div>
+      <div className="bg-orange-500 py-10 lg:py-14">
+        <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-6 p-6 text-center lg:gap-y-5">
+          <h2 className="max-w-[820px] text-2xl lg:text-[62px] lg:leading-[68px]">
+            Understanding and valuing natural capital is crucial
+          </h2>
+          <p className="max-w-[820px]">
+            We can make informed choices to use and conserve our planet&apos;s resources by
+            understanding and valuing natural capital, balancing what we take from nature with what
+            we give back.
+          </p>
+          <Button variant="outline" asChild>
+            <Link href="/key-concepts">
+              <HoverRepeatAnimation>Learn More about Natural Capital</HoverRepeatAnimation>
+            </Link>
+          </Button>
+        </main>
       </div>
       <Footer />
     </>
