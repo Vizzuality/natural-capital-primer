@@ -117,7 +117,7 @@ export default function Home() {
         </main>
       </div>
       <div className="bg-black pb-10 text-white lg:pb-24">
-        <div className="relative -top-20 mx-6 aspect-[3/2] bg-[url(/assets/home-illustration.png)] bg-cover sm:aspect-[2/1] lg:-top-24 lg:mx-20 lg:aspect-auto lg:h-[550px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"></div>
+        <div className="relative -top-20 mx-6 aspect-[3/2] bg-[url(/assets/home-illustration.png)] bg-cover bg-center sm:aspect-[2/1] lg:-top-24 lg:mx-20 lg:aspect-auto lg:h-[550px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"></div>
         <div className="flex flex-col gap-y-6 lg:gap-y-20">
           <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
             <h2 className="flex-shrink-0 lg:w-[220px]">Why is natural capital important to me?</h2>
@@ -184,6 +184,7 @@ export default function Home() {
           </Button>
         </main>
       </div>
+      <div className="h-[400px] bg-[url(/assets/home-illustration-2.png)] bg-cover bg-bottom sm:aspect-[5/3] sm:h-auto lg:aspect-auto lg:h-[550px]"></div>
       <Footer />
     </>
   );
