@@ -102,7 +102,7 @@ export default function Home() {
           <Header logo="white" />
         </div>
         <main className="relative z-10 mx-auto flex max-w-7xl flex-col items-start justify-between gap-y-10 p-6 pb-0 lg:gap-y-24 lg:px-20 lg:pt-36">
-          <div className="flex max-w-[540px] flex-col items-start gap-y-6 lg:max-w-[1020px] lg:gap-y-10">
+          <div className="flex max-w-[540px] flex-col items-start gap-y-6 lg:max-w-[1030px] lg:gap-y-10">
             <h1 className="text-[52px] font-medium leading-none lg:text-6xl">
               Welcome to the Natural Capital Primer
             </h1>
