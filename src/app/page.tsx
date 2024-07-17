@@ -2,15 +2,71 @@
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Shape1 from "@/svgs/404-shape-1.svg";
 import Shape2 from "@/svgs/home-shape-2.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
+import { useRef } from "react";
+import Pebble from "@/components/home/pebble";
+import PrimerExtractPopover from "@/components/home/primer-extract-popover";
 
 export default function Home() {
+  const scrollSectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: scrollSectionRef,
+  });
+
+  const resources = {
+    opacity: useTransform(scrollYProgress, [5 / 15, 6 / 15], [1, 0]),
+    display: useTransform(scrollYProgress, (value) => (value < 6 / 15 ? "flex" : "none")),
+  };
+
+  const resourcesIndividualOpacity = {
+    water: useTransform(scrollYProgress, [1 / 15, 2 / 15], [0, 1]),
+    invertebrates: useTransform(scrollYProgress, [3 / 15, 4 / 15], [0, 1]),
+  };
+
+  const firstParagraph = {
+    opacity: useTransform(scrollYProgress, [5 / 15, 6 / 15], [1, 0]),
+    display: useTransform(scrollYProgress, (value) => (value < 6 / 15 ? "block" : "none")),
+  };
+
+  const secondParagraph = {
+    opacity: useTransform(scrollYProgress, [7 / 15, 8 / 15, 11 / 15, 12 / 15], [0, 1, 1, 0]),
+    position: useTransform(scrollYProgress, (value) =>
+      value > 7 / 15 && value < 12 / 15 ? "static" : "absolute",
+    ),
+  };
+
+  const thirdParagraph = {
+    opacity: useTransform(scrollYProgress, [13 / 15, 14 / 15], [0, 1]),
+    position: useTransform(scrollYProgress, (value) =>
+      value > 12 / 15 + 1 / 15 ? "static" : "absolute",
+    ),
+  };
+
+  const services = {
+    opacity: useTransform(scrollYProgress, [9 / 15, 10 / 15, 11 / 15, 12 / 15], [0, 1, 1, 0]),
+    display: useTransform(scrollYProgress, (value) =>
+      value > 9 / 15 && value < 12 / 15 ? "flex" : "none",
+    ),
+  };
+
+  const values = {
+    opacity: useTransform(scrollYProgress, [13 / 15, 14 / 15], [0, 1]),
+    display: useTransform(scrollYProgress, (value) => (value > 13 / 15 ? "flex" : "none")),
+  };
+
+  const explore = {
+    opacity: useTransform(scrollYProgress, [13 / 15, 14 / 15], [0, 1]),
+    display: useTransform(scrollYProgress, (value) =>
+      value > 12 / 15 + 1 / 15 ? "block" : "none",
+    ),
+  };
+
   return (
     <>
       <div className="bg-[url(/assets/home-background-mobile.png)] bg-[length:auto_50%] bg-[right_bottom_40px] bg-no-repeat pb-10 md:bg-[length:auto_70%] lg:bg-[url(/assets/404-background.png)] lg:bg-right-bottom lg:pb-20 xl:bg-[length:auto_80%]">
@@ -166,6 +222,125 @@ export default function Home() {
             </div>
           </main>
         </div>
+      </div>
+      <div className="relative h-[600vh]" ref={scrollSectionRef}>
+        <main className="sticky top-0 mx-auto h-[100vh] max-w-7xl overflow-hidden px-6 pb-20 pt-10 lg:pb-12 lg:pt-24 xl:overflow-visible">
+          <div className="absolute right-0 top-2/3 lg:right-32 lg:top-1/2">
+            <Pebble index={1} scrollYProgress={scrollYProgress} />
+            <Pebble index={2} scrollYProgress={scrollYProgress} />
+            <Pebble index={3} scrollYProgress={scrollYProgress} />
+            <Pebble index={4} scrollYProgress={scrollYProgress} />
+          </div>
+          <div className="pointer-events-none absolute bottom-20 left-0 z-20 flex w-full justify-start px-6 lg:bottom-12 lg:justify-end">
+            <PrimerExtractPopover />
+          </div>
+          <p>Let&apos;s look at a specific example...</p>
+          <div className="relative z-10 mt-6 max-w-[730px] text-xl sm:text-2xl lg:mt-7 lg:text-4xl">
+            <motion.p
+              style={{
+                ...firstParagraph,
+              }}
+            >
+              These resources and services provide value to people. Let&apos;s look at a short
+              example to show the concept of natural capital assets and flows of services in
+              practice.
+            </motion.p>
+            <motion.p style={{ ...secondParagraph }}>
+              When they combine, these resources transform into services such as...
+            </motion.p>
+            <motion.p style={{ ...thirdParagraph }}>
+              These services benefit people and society by bringing them specific value like...
+            </motion.p>
+          </div>
+          <motion.div
+            className="relative z-10 mt-6 flex flex-col gap-y-3 text-2xl sm:flex-row sm:gap-x-10 lg:mt-14 lg:text-4xl"
+            style={{ ...resources }}
+          >
+            <span className="text-orange">Soil</span>
+            <motion.span
+              className="text-turquoise"
+              style={{ opacity: resourcesIndividualOpacity.water }}
+            >
+              Water
+            </motion.span>
+            <motion.span
+              className="text-green-500"
+              style={{ opacity: resourcesIndividualOpacity.invertebrates }}
+            >
+              Invertebrates
+            </motion.span>
+          </motion.div>
+          <motion.div
+            className="relative z-10 mt-6 flex flex-col gap-y-4 text-xl sm:text-2xl lg:mt-10 lg:text-4xl"
+            style={{ ...services }}
+          >
+            <div className="flex items-center gap-x-2.5">
+              <Image
+                src="/assets/home-pollination.png"
+                width={105}
+                height={44}
+                alt=""
+                className="w-[60px] sm:w-[105px]"
+              />
+              Pollination
+            </div>
+            <div className="flex items-center gap-x-2.5">
+              <Image
+                src="/assets/home-crop-yields.png"
+                width={105}
+                height={44}
+                alt=""
+                className="w-[60px] sm:w-[105px]"
+              />
+              Crop yields
+            </div>
+          </motion.div>
+          <motion.div
+            className="relative z-10 mt-6 flex flex-col gap-y-4 text-xl sm:text-2xl lg:mt-10 lg:text-4xl"
+            style={{ ...values }}
+          >
+            <div className="flex items-center gap-x-2.5">
+              <Image
+                src="/assets/home-food-security.png"
+                width={105}
+                height={44}
+                alt=""
+                className="w-[60px] sm:w-[105px]"
+              />
+              Food security
+            </div>
+            <div className="flex items-center gap-x-2.5">
+              <Image
+                src="/assets/home-income-generation.png"
+                width={105}
+                height={44}
+                alt=""
+                className="w-[60px] sm:w-[105px]"
+              />
+              Income generation
+            </div>
+          </motion.div>
+          <motion.div className="relative z-10 mt-6 sm:mt-20 lg:mt-44" style={{ ...explore }}>
+            <p>Explore Natural Capital Primer:</p>
+            <div className="mt-3 flex flex-col gap-y-3 sm:flex-row sm:items-start sm:gap-x-3">
+              <Button variant="outline" asChild>
+                <Link href="/about">
+                  <HoverRepeatAnimation>About the Project</HoverRepeatAnimation>
+                </Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/key-concepts">
+                  <HoverRepeatAnimation>Key Concepts</HoverRepeatAnimation>
+                </Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/industry-use-cases">
+                  <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+        </main>
       </div>
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-6 p-6 text-center lg:gap-y-5">

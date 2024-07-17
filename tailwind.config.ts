@@ -71,6 +71,7 @@ const config = {
       purple: "#B152EC",
       black: "#191C34",
       white: "#F8F9EE",
+      transparent: "transparent",
     },
     container: {
       center: true,
