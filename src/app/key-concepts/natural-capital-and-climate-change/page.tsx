@@ -101,9 +101,9 @@ export default function ClimateChange() {
             </div>
           </div>
         </div>
-        <div className="border-t border-dashed border-grey-800 pt-20">
+        <div className="border-t border-dashed border-grey-800 pb-6 pt-20">
           <div className="mx-auto flex max-w-7xl flex-wrap gap-[43px]">
-            <div className="text-lg w-[251px]">Natural Capital and Climate Change</div>
+            <div className="w-[251px] text-lg">Natural Capital and Climate Change</div>
             <div className="flex grow flex-col gap-10">
               <div className="flex items-center gap-3">
                 <div>Key insights about this chapter</div>
