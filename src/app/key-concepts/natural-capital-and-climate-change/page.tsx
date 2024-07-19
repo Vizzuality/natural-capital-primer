@@ -13,7 +13,7 @@ export default function ClimateChange() {
       </div>
       <main className="-mt-[270px] max-w-[90%] lg:max-w-[1035px]">
         <div className="flex h-[88px] items-center bg-grey-800 md:h-[69px]">
-          <div className="flex w-full flex-wrap items-center gap-3 pl-6">
+          <div className="flex w-full flex-wrap items-center gap-3 pl-6 lg:pl-[60px]">
             <Link href="/key-concepts" className="flex items-center gap-3">
               <Caret className="h-3 text-white" />
               <div className="text-lg text-white">Back to content</div>
@@ -51,11 +51,11 @@ export default function ClimateChange() {
                 <div className="text-2xl lg:text-4xl">Reducing emissions</div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-5xl text-[52px] leading-[48px] text-sky">02</div>
+                <div className="text-[52px] lg:text-5xl leading-[48px] text-sky">02</div>
                 <div className="text-2xl lg:text-4xl">Sequestering carbon</div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-5xl text-[52px] leading-[48px] text-sky">03</div>
+                <div className="lg:text-5xl text-[52px] leading-[48px] text-sky">03</div>
                 <div className="text-2xl lg:text-4xl">Growing our natural capital asset base</div>
               </div>
               <div className="flex w-full gap-6">
