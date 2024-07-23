@@ -2,6 +2,9 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Caret from "@/icons/caret-right.svg";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import MarqueeText from "@/components/marquee-text";
+import ImageCarousel from "@/components/image-carousel";
 
 export default function ClimateChange() {
   return (
@@ -51,11 +54,11 @@ export default function ClimateChange() {
                 <div className="text-2xl lg:text-4xl">Reducing emissions</div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] lg:text-5xl leading-[48px] text-sky">02</div>
+                <div className="text-[52px] leading-[48px] text-sky lg:text-5xl">02</div>
                 <div className="text-2xl lg:text-4xl">Sequestering carbon</div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="lg:text-5xl text-[52px] leading-[48px] text-sky">03</div>
+                <div className="text-[52px] leading-[48px] text-sky lg:text-5xl">03</div>
                 <div className="text-2xl lg:text-4xl">Growing our natural capital asset base</div>
               </div>
               <div className="flex w-full gap-6">
@@ -86,7 +89,7 @@ export default function ClimateChange() {
               </div>
             </div>
           </div>
-          <div className="mb-20 flex w-full flex-wrap justify-between gap-10">
+          <div className="flex w-full flex-wrap-reverse justify-between gap-10 lg:mb-20">
             <div className="flex h-fit min-w-[394px] gap-6 text-grey-800">
               <div className="w-1.5 min-w-1.5 bg-sky" />
               <div className="max-w-[364px]">
@@ -100,8 +103,84 @@ export default function ClimateChange() {
               to better incorporate natural capital into climate strategies.
             </div>
           </div>
+          <div className="relative mb-10 w-full overflow-hidden bg-black p-20 text-white lg:m-20">
+            <div className="relative flex flex-col items-center gap-[25px]">
+              <ImageCarousel
+                images={[
+                  {
+                    src: "/assets/product-story-1.png",
+                  },
+                  {
+                    src: "/assets/product-story-2.png",
+                  },
+                  {
+                    src: "/assets/product-story-3.png",
+                  },
+                  {
+                    src: "/assets/product-story-4.png",
+                  },
+                ]}
+                alt="Product Story"
+                width={347}
+                height={357}
+                className="mb-6 h-[224px] w-[227px] lg:mb-0 xl:h-[357px] xl:min-h-[357px] xl:w-[347px] xl:min-w-[347px]"
+              />
+              <div className="max-w-[650px] text-center text-xl tracking-tight">
+                A short story which highlights the everyday reliance on natural capital through the
+                products we use.
+              </div>
+              <Button asChild variant="white" className="w-[200px] text-center">
+                <a href="/key-concepts/product-story">Discover the Story</a>
+              </Button>
+            </div>
+            {/* <div
+              className="absolute inset-0 h-full w-full"
+              style={{
+                background: "url(/assets/product-mask.png) no-repeat",
+                // WebkitMaskImage: "url(/assets/product-mask.png)",
+                // WebkitMaskSize: "100% 100%",
+                // WebkitMaskClip: "border-box",
+                // maskImage: "url(/assets/product-mask.png)",
+                // maskSize: "100% 100%",
+                // maskClip: "border-box",
+              }}
+            > */}
+            <MarqueeText
+              text="A Day in the Life ⎯ A Day in the Life ⎯ A Day in the Life"
+              className="absolute top-44 text-[85px]"
+            />
+            {/* <svg
+              height="0"
+              width="0"
+              version="1.2"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 219 221"
+              width="219"
+              height="221"
+            >
+              <title>product-mask</title>
+              <defs>
+                <clipPath id="svgPath">
+                  <image
+                    width="217"
+                    height="219"
+                    id="img1"
+                    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANkAAADbAQMAAADauKY+AAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAC/klEQVR4nM2ZXW7bMBCEzSRA/ZbeoL5Jc60+2b5Zc5P4Bu1bAzRxKe4uuSRn1oUFp9VDBOWDxJ3h6ofjtHHb/tvWH26SZ4fN2wOBn37lPz8/Y5hPzNvxgGB6L7vXLYKPP2TvTm3w6/fNeGqDZzDSMGRXcIVFiFziboJfXurVnp9GaPX4kircNwX1ugZbPe66Bu9/O2j1GmzFuusaNPNkUwsNOiVtUINOSRvU4NkzawiFnZL6b4WdklqRwk5J3k47B3slVpHCXol5r7BXYuUqdHPiylV4HpiUK3BUogYKHJWoFoGjEtUicFSiWgSOSjo4KRGhAicl0iki9n2CBRQ4yxQXCpxlOjjLFIsKnGWKRQXOMh2cZYp/Bc4yG0Qyi38LRDIrRDKLuQtEMitEMovzC0QyK0QyC1kgkmkQyizTcglCDwxCD8qEJuKBQeiBQehBme1LEBukEBsUw9wniRkkkBgUw9xEibknkLj3F5BYG8Pcmxcg8X0tJDO2tPwaSKZzJWSNsNxjKyDrkpWQ9dcFeDzEkDXfSsiabw18fooh68xbQta2y4Po/4Psbliebx8PX7e3gtyEt4ePh+e7oIeuh/kxdCPI77IYHm8F+aPmn8AUPFJvB/nbIYS5h66H/EWXO/56SF/Ly817JcyPmhjSGzSE+alJP3limN8OMaQtn9+CHKbg065A1rjleyiErP3Kp134fRt+GYff1KxPTrsAysKCzHYIZaVDZltWVxjqog1PqK4F8bSEUNefeFp0WYudP+0CqItw7Lwu37G5lgog/2qegCyqSQSCNcNA/tVohCUGdBFe4xiWUtCFf4uASGzCkgiXLJGohqUfLs0i2RGLYyS2IymPz97GijQqxJlUF+mNFWmyqRcfOkWKJfFanzEONvTp5DBo6nfdoBZIWzrZDWoxLAw9tdgKu0HDFDYNe+/9FO7GsbDz3upp0A1aA3CQcLdMfs7GUcLdBm2x+pTH41Td7IV5vNqLk3wVg38DkOuyXw/KzPjj/mB/OO388R8/BJDrcSjjzQAAAABJRU5ErkJggg=="
+                  />
+                </clipPath>
+              </defs>
+            </svg> */}
+            {/* <div
+              className="absolute inset-0 z-50 h-[224px] w-[227px] bg-sky mix-blend-multiply xl:h-[357px] xl:min-h-[357px] xl:w-[347px] xl:min-w-[347px]"
+              style={{
+                mask: "url(/assets/product-mask.svg) center/contain no-repeat",
+                maskComposite: "subtract",
+              }}
+            /> */}
+            {/* </div> */}
+          </div>
         </div>
-        <div className="border-t border-dashed border-grey-800 pb-6 pt-20">
+        <div className="border-t border-dashed border-grey-800 pt-6 lg:pb-6 lg:pt-20">
           <div className="mx-auto flex max-w-7xl flex-wrap gap-[43px]">
             <div className="w-[251px] text-lg">Natural Capital and Climate Change</div>
             <div className="flex grow flex-col gap-10">
