@@ -2,9 +2,20 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-// import Image from "next/image";
 
-const ImageCarousel = ({ images, height, width, alt, className }) => {
+const ImageCarousel = ({
+  images,
+  height,
+  width,
+  alt,
+  className,
+}: {
+  images: { src: string; alt?: string }[];
+  height: number;
+  width: number;
+  alt?: string;
+  className?: string;
+}) => {
   const [currentFrame, setCurrentFrame] = useState(0);
   const frameCount = images.length;
   useEffect(() => {
