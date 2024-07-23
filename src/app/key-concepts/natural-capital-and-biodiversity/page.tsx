@@ -34,7 +34,7 @@ export default function Biodiversity() {
             growing natural capital and generating ecosystem services.
           </div>
           <div className="w-full border border-grey-800"></div>
-          <div className="flex gap-10">
+          <div className="flex flex-col gap-10 lg:flex-row">
             <div>
               <div className="font-bold">Natural Capital</div>
               <div>
@@ -52,7 +52,7 @@ export default function Biodiversity() {
           </div>
         </div>
       </main>
-      <div className="mx-auto max-w-7xl bg-white px-6 py-10 text-grey-800 lg:px-[60px] lg:py-14">
+      <div className="mx-auto max-w-7xl bg-white px-6 py-6 text-grey-800 lg:px-[60px] lg:py-14">
         <div className="flex flex-col items-center gap-10 pb-6 lg:gap-20 lg:pb-20">
           <div className="flex w-full flex-col gap-6 self-start text-grey-800">
             <div className="text-lg">Natural Capital and Biodiversity</div>
@@ -127,13 +127,13 @@ export default function Biodiversity() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-6 self-start text-grey-800 lg:max-w-[799px]">
+          <div className="flex flex-col gap-6 self-start text-grey-800 max-lg:pb-5 lg:max-w-[799px]">
             <div className="text-2xl tracking-tight lg:max-w-[737px] lg:text-4xl">
               We need to protect both for sustainability for two reasons:
             </div>
           </div>
           <div className="flex w-full items-center justify-center">
-            <div className="flex flex-col items-center gap-6 lg:w-[559px] lg:gap-20">
+            <div className="flex flex-col items-center gap-10 lg:w-[559px] lg:gap-20">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
                 <div className="text-[52px] leading-[48px] text-pink lg:text-5xl">01</div>
                 <div className="text-2xl lg:text-4xl">Resilience to environmental changes</div>
@@ -169,9 +169,11 @@ export default function Biodiversity() {
             </div>
           </div>
         </div>
-        <div className="border-t border-dashed border-grey-800 py-6 lg:pt-20">
+        <div className="lg:ox-0 -mx-6 border-t border-dashed border-grey-800 px-6 py-6 lg:mx-0 lg:pt-20">
           <div className="mx-auto flex max-w-7xl flex-wrap gap-[43px]">
-            <div className="text-lg w-[251px]">Natural Capital and Biodiversity</div>
+            <div className="hidden w-[251px] text-lg lg:block">
+              Natural Capital and Biodiversity
+            </div>
             <div className="flex grow flex-col gap-10">
               <div className="flex items-center gap-3">
                 <div>Key insights about this chapter</div>

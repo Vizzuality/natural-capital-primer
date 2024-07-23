@@ -149,40 +149,13 @@ export default function ClimateChange() {
               text="A Day in the Life ⎯ A Day in the Life ⎯ A Day in the Life"
               className="absolute top-44 text-[85px]"
             />
-            {/* <svg
-              height="0"
-              width="0"
-              version="1.2"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 219 221"
-              width="219"
-              height="221"
-            >
-              <title>product-mask</title>
-              <defs>
-                <clipPath id="svgPath">
-                  <image
-                    width="217"
-                    height="219"
-                    id="img1"
-                    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANkAAADbAQMAAADauKY+AAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAC/klEQVR4nM2ZXW7bMBCEzSRA/ZbeoL5Jc60+2b5Zc5P4Bu1bAzRxKe4uuSRn1oUFp9VDBOWDxJ3h6ofjtHHb/tvWH26SZ4fN2wOBn37lPz8/Y5hPzNvxgGB6L7vXLYKPP2TvTm3w6/fNeGqDZzDSMGRXcIVFiFziboJfXurVnp9GaPX4kircNwX1ugZbPe66Bu9/O2j1GmzFuusaNPNkUwsNOiVtUINOSRvU4NkzawiFnZL6b4WdklqRwk5J3k47B3slVpHCXol5r7BXYuUqdHPiylV4HpiUK3BUogYKHJWoFoGjEtUicFSiWgSOSjo4KRGhAicl0iki9n2CBRQ4yxQXCpxlOjjLFIsKnGWKRQXOMh2cZYp/Bc4yG0Qyi38LRDIrRDKLuQtEMitEMovzC0QyK0QyC1kgkmkQyizTcglCDwxCD8qEJuKBQeiBQehBme1LEBukEBsUw9wniRkkkBgUw9xEibknkLj3F5BYG8Pcmxcg8X0tJDO2tPwaSKZzJWSNsNxjKyDrkpWQ9dcFeDzEkDXfSsiabw18fooh68xbQta2y4Po/4Psbliebx8PX7e3gtyEt4ePh+e7oIeuh/kxdCPI77IYHm8F+aPmn8AUPFJvB/nbIYS5h66H/EWXO/56SF/Ly817JcyPmhjSGzSE+alJP3limN8OMaQtn9+CHKbg065A1rjleyiErP3Kp134fRt+GYff1KxPTrsAysKCzHYIZaVDZltWVxjqog1PqK4F8bSEUNefeFp0WYudP+0CqItw7Lwu37G5lgog/2qegCyqSQSCNcNA/tVohCUGdBFe4xiWUtCFf4uASGzCkgiXLJGohqUfLs0i2RGLYyS2IymPz97GijQqxJlUF+mNFWmyqRcfOkWKJfFanzEONvTp5DBo6nfdoBZIWzrZDWoxLAw9tdgKu0HDFDYNe+/9FO7GsbDz3upp0A1aA3CQcLdMfs7GUcLdBm2x+pTH41Td7IV5vNqLk3wVg38DkOuyXw/KzPjj/mB/OO388R8/BJDrcSjjzQAAAABJRU5ErkJggg=="
-                  />
-                </clipPath>
-              </defs>
-            </svg> */}
-            {/* <div
-              className="absolute inset-0 z-50 h-[224px] w-[227px] bg-sky mix-blend-multiply xl:h-[357px] xl:min-h-[357px] xl:w-[347px] xl:min-w-[347px]"
-              style={{
-                mask: "url(/assets/product-mask.svg) center/contain no-repeat",
-                maskComposite: "subtract",
-              }}
-            /> */}
-            {/* </div> */}
           </div>
         </div>
-        <div className="border-t border-dashed border-grey-800 pt-6 lg:pb-6 lg:pt-20">
+        <div className="-mx-6 border-t border-dashed border-grey-800 px-6 pt-6 lg:mx-0 lg:px-0 lg:pb-6 lg:pt-20">
           <div className="mx-auto flex max-w-7xl flex-wrap gap-[43px]">
-            <div className="w-[251px] text-lg">Natural Capital and Climate Change</div>
+            <div className="hidden w-[251px] text-lg lg:block">
+              Natural Capital and Climate Change
+            </div>
             <div className="flex grow flex-col gap-10">
               <div className="flex items-center gap-3">
                 <div>Key insights about this chapter</div>
