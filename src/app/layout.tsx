@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
 
 const circular = localFont({
   src: [
@@ -37,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={circular.className}>
-      <body className="bg-white text-black">{children}</body>
+    <html lang="en" className={cn("overflow-x-clip", circular.className)}>
+      <body className="overflow-x-clip bg-white text-black">{children}</body>
     </html>
   );
 }

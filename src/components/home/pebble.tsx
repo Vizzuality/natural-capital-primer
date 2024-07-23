@@ -16,8 +16,6 @@ export interface PebbleProps {
 const Pebble: FC<PebbleProps> = ({ index, scrollYProgress }) => {
   const isMobile = useMediaQuery("not (min-width: 768px)", false);
 
-  console.log(isMobile);
-
   const getKey = useCallback(
     (property: string) => `pb${index}_${property}` as keyof typeof desktopData,
     [index],
