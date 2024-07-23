@@ -13,8 +13,26 @@ export default function About() {
       <div className="relative z-10">
         <Header />
       </div>
+      <div className="pb-10 lg:pb-5">
+        <div className="left-0 mx-0 bg-black px-6 py-10 pr-6 text-white lg:relative lg:-top-16 lg:px-20 lg:py-24 lg:pr-20 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)] xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)] xl:pr-36">
+          <main className="flex flex-col justify-start gap-y-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16">
+            <h2 className="flex-shrink-0 lg:w-[220px]">Introduction</h2>
+            <div className="flex flex-col gap-y-5">
+              <p className="text-2xl lg:text-4xl">
+                ‘Natural capital’ is the buzzword of the moment.
+              </p>
+              <p>
+                It’s prominent in global initiatives, government policies, marketing slogans and
+                sustainability frameworks around the world. But it can be confusing and overwhelming
+                for individuals and businesses to navigate different definitions and applications of
+                natural capital.
+              </p>
+            </div>
+          </main>
+        </div>
+      </div>
       <div className="pb-10 lg:pb-56">
-        <main className="mx-auto -mt-10 grid max-w-7xl grid-cols-1 gap-y-10 px-6 lg:mt-0 lg:grid-cols-[calc(100%_-_(55%_+_112px))_1fr_calc(100%_-_(55%_+_112px))] lg:gap-x-24 lg:gap-y-56 lg:px-20">
+        <main className="mx-auto grid max-w-7xl grid-cols-1 gap-y-10 px-6 lg:mt-0 lg:grid-cols-[calc(100%_-_(55%_+_112px))_1fr_calc(100%_-_(55%_+_112px))] lg:gap-x-24 lg:gap-y-56 lg:px-20">
           <div className="flex flex-col gap-y-6 lg:col-span-2 lg:gap-y-10">
             <div className="flex flex-col gap-y-6 lg:gap-y-5">
               <p>The purpose of the Natural Capital Primer</p>
