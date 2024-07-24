@@ -62,8 +62,8 @@ const DayInLifeCTA: FC = () => {
             className="mx-auto h-[224px] w-[227px] lg:h-[321px] lg:w-[325px]"
           />
         </div>
-        <div className="flex flex-col items-center gap-8 px-20 lg:gap-6">
-          <div className="max-w-[650px] text-center text-xl tracking-tight">
+        <div className="flex flex-col items-center gap-8 px-6 lg:gap-6 lg:px-20">
+          <div className="max-w-[650px] text-center lg:text-xl lg:tracking-tight">
             A short story which highlights the everyday reliance on natural capital through the
             products we use.
           </div>

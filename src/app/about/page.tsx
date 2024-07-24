@@ -10,6 +10,7 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import useMediaQuery from "@/hooks/use-media-query";
+import DayInLifeCTA from "@/components/day-in-life-cta";
 
 export default function About() {
   const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
@@ -129,7 +130,7 @@ export default function About() {
           </main>
         </div>
       </div>
-      <div className="pb-10 lg:pb-56">
+      <div className="pb-10 lg:pb-24">
         <main className="mx-auto grid max-w-7xl grid-cols-1 gap-y-10 px-6 lg:mt-0 lg:grid-cols-[calc(100%_-_(55%_+_112px))_1fr_calc(100%_-_(55%_+_112px))] lg:gap-x-24 lg:gap-y-56 lg:px-20">
           <div className="flex flex-col gap-y-6 lg:col-span-2 lg:gap-y-10">
             <div className="flex flex-col gap-y-6 lg:gap-y-5">
@@ -139,7 +140,7 @@ export default function About() {
                 capital by:
               </h2>
             </div>
-            <ol className="flex list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="list-decimal-leading-zero flex flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Providing a ‘one-stop shop’ for resources and information for learning about natural
                 capital
@@ -227,6 +228,9 @@ export default function About() {
             />
           </div>
         </main>
+      </div>
+      <div className="mx-auto max-w-7xl px-6 pb-10 lg:px-20 lg:pb-24">
+        <DayInLifeCTA />
       </div>
       <div className="bg-orange-500 pb-28 pt-10 lg:pb-52 lg:pt-24">
         <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
