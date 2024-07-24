@@ -121,18 +121,18 @@ export default function Home() {
               <Image
                 src="/assets/la-trobe-university.png"
                 alt="La Trobe University"
-                width={180}
-                height={48}
-                className="w-[111px] mix-blend-darken lg:w-[180px]"
+                width={135}
+                height={36}
+                className="h-auto w-[111px] mix-blend-darken lg:w-[135px]"
               />
             </Link>
             <Link href="https://macdochfoundation.org/" rel="noopener noreferrer" target="_blank">
               <Image
                 src="/assets/macdoch-foundation.png"
                 alt="Macdoch Foundation"
-                width={154}
-                height={68}
-                className="w-[98px] lg:w-[154px]"
+                width={116}
+                height={51}
+                className="h-auto w-[98px] lg:w-[116px]"
               />
             </Link>
           </div>
