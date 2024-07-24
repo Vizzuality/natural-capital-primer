@@ -122,7 +122,7 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
                       </Button>
                     </DialogClose>
                   </div>
-                  <ul className="flex flex-grow flex-col items-start justify-center gap-y-6 text-3xl font-medium xl:justify-end xl:text-5xl">
+                  <ul className="flex flex-grow flex-col items-stretch justify-center gap-y-6 text-3xl font-medium xl:justify-end xl:text-5xl">
                     <li>
                       <Link href="/">
                         <HoverRepeatAnimation>Home</HoverRepeatAnimation>
@@ -144,17 +144,14 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
                               </Link>
                               <ul className="flex flex-wrap gap-3 text-base font-normal">
                                 <li>
-                                  <Link
-                                    href="/key-concepts/assets"
-                                    className="block rounded-full border border-black px-6 py-2.5 transition-colors duration-300 hover:bg-black hover:text-white xl:px-8 xl:py-4"
-                                  >
+                                  <Link href="/key-concepts/assets" className="underline">
                                     Assets
                                   </Link>
                                 </li>
                                 <li>
                                   <Link
                                     href="/key-concepts/flows-of-services"
-                                    className="block rounded-full border border-black px-6 py-2.5 transition-colors duration-300 hover:bg-black hover:text-white xl:px-8 xl:py-4"
+                                    className="underline"
                                   >
                                     Flows of Services
                                   </Link>
@@ -162,7 +159,7 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
                                 <li>
                                   <Link
                                     href="/key-concepts/dependencies-and-impacts"
-                                    className="block rounded-full border border-black px-6 py-2.5 transition-colors duration-300 hover:bg-black hover:text-white xl:px-8 xl:py-4"
+                                    className="underline"
                                   >
                                     Dependencies and Impacts
                                   </Link>
@@ -179,20 +176,21 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
                       </ul>
                     </li>
                     <li>
-                      <ul className="flex flex-wrap gap-x-6 gap-y-4 text-base font-normal xl:gap-x-10">
+                      <ul className="flex flex-col items-stretch gap-y-4 text-base font-normal sm:flex-row sm:gap-x-4">
                         <li>
-                          <Link href="/resources" className="underline">
+                          <Link
+                            href="/a-day-in-the-life"
+                            className="block rounded-full border border-black px-6 py-2.5 text-center transition-colors duration-300 hover:bg-black hover:text-white xl:px-8 xl:py-4"
+                          >
+                            A Day in the Life
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/resources"
+                            className="block rounded-full border border-black px-6 py-2.5 text-center transition-colors duration-300 hover:bg-black hover:text-white xl:px-8 xl:py-4"
+                          >
                             Resources
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/privacy-policy" className="underline">
-                            Privacy Policy
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/terms-and-conditions" className="underline">
-                            Terms and Conditions
                           </Link>
                         </li>
                       </ul>
