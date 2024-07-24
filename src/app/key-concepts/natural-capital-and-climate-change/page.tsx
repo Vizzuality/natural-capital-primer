@@ -1,54 +1,55 @@
+"use client";
+
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Caret from "@/icons/caret-right.svg";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import MarqueeText from "@/components/marquee-text";
-import ImageCarousel from "@/components/image-carousel";
+import DayInLifeCTA from "@/components/day-in-life-cta";
 
 export default function ClimateChange() {
   return (
     <>
-      <div className="h-[430px] w-full bg-[url(/assets/climate-change-hero-background.png)] bg-cover bg-no-repeat pb-10 lg:h-[642px] lg:bg-[url(/assets/climate-change-hero-background.png)] lg:pb-20">
+      <div className="h-[430px] w-full bg-[url(/assets/key-concepts-climate-change-background.png)] bg-cover bg-no-repeat pb-10 lg:h-[642px] lg:pb-20">
         <div className="relative z-10">
           <Header logo="white" />
         </div>
       </div>
-      <main className="-mt-[270px] pr-6 lg:max-w-[1035px] lg:pr-20">
-        <div className="-mt-[270px] flex h-[88px] items-center bg-grey-800 pr-6 md:h-[69px] lg:pl-14 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_60px)] xl:pl-[calc((100vw_-_1280px)_/_2_+_60px)]">
-          <div className="flex w-full flex-wrap items-center gap-3 max-lg:pl-6">
+      <div className="-mt-[270px] pr-6 lg:pr-20 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)] xl:pr-36">
+        <main className="flex items-center bg-black px-6 py-4 lg:px-20 lg:py-6 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
+          <div className="flex flex-col gap-y-2 sm:flex-row sm:items-center sm:gap-x-3">
             <Link href="/key-concepts" className="flex items-center gap-3">
               <Caret className="h-3 text-white" />
               <div className="text-lg text-white">Back to content</div>
             </Link>
-            <span className="lg:border-r-white/12 h-4 lg:border"></span>
+            <span className="hidden h-4 border border-r-white/15 sm:block"></span>
             <div className="text-lg text-sky">Natural Capital and Climate Change</div>
           </div>
-        </div>
-        <div className="flex flex-col gap-6 bg-sky p-6 lg:px-[60px] lg:pl-14 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_60px)] xl:pl-[calc((100vw_-_1280px)_/_2_+_60px)]">
-          <div className="text-2xl lg:text-4xl">
-            The link between natural capital and climate change is inex​tricable.
-          </div>
-          <div className="text-grey-800">
+        </main>
+        <main className="flex flex-col gap-6 bg-sky px-6 py-10 lg:px-20 lg:py-20 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
+          <h1 className="text-2xl lg:text-4xl">
+            The link between natural capital and climate change is inextricable
+          </h1>
+          <div>
             We will not achieve net zero emissions without actions that build natural capital (and
             biodiversity), and we cannot build natural capital while consuming resources
             (non-renewable and renewable) at a rate that maintains or exacerbates the climate
             crisis. This inter-dependence is at once both the greatest risk to the planet and the
             potential solution.
           </div>
-        </div>
-      </main>
-      <div className="mx-auto max-w-7xl bg-white px-6 py-10 text-grey-800 lg:px-[60px] lg:py-20">
-        <div className="flex flex-col items-center gap-10 lg:gap-20">
-          <div className="flex flex-col gap-6 self-start text-grey-800 lg:max-w-[799px]">
+        </main>
+      </div>
+      <div className="mx-auto max-w-7xl px-6 py-6 lg:px-20 lg:py-14">
+        <div className="flex flex-col items-start gap-10 lg:gap-20">
+          <div className="flex flex-col gap-6 self-start lg:max-w-[799px]">
             <div className="text-lg">Natural Capital and Climate Change</div>
             <div className="text-2xl tracking-tight lg:text-4xl">
               Nature-based strategies are the key to fighting both the climate and biodiversity
               extinction crises through:
             </div>
           </div>
-          <div className="w-full lg:pl-[308px]">
-            <div className="flex flex-col gap-6 lg:max-w-[559px] lg:gap-20">
+          <div className="flex flex-col justify-start gap-y-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16">
+            <div className="flex-shrink-0 lg:w-[220px]" />
+            <div className="flex flex-grow flex-col gap-6 lg:max-w-[559px] lg:gap-20">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
                 <div className="text-[52px] leading-[48px] text-sky lg:text-5xl">01</div>
                 <div className="text-2xl lg:text-4xl">Reducing emissions</div>
@@ -71,7 +72,7 @@ export default function ClimateChange() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-sky bg-cover p-6 py-10 lg:bg-[url(/assets/climate-change-background-imperative.png)] lg:p-10">
+          <div className="w-full bg-sky bg-cover p-6 py-10 lg:bg-[url(/assets/key-concepts-biodiversity-background-2.png)] lg:p-10">
             <div className="flex flex-col gap-[25px]">
               <div className="max-w-[790px] text-balance text-2xl lg:text-4xl">
                 It is imperative that businesses recognise and respond to this inter-dependence.
@@ -90,7 +91,7 @@ export default function ClimateChange() {
             </div>
           </div>
           <div className="flex w-full justify-between gap-10 max-lg:flex-wrap-reverse">
-            <div className="flex h-fit min-w-[394px] gap-6 text-grey-800">
+            <div className="flex h-fit min-w-[394px] gap-6">
               <div className="w-1.5 min-w-1.5 bg-sky" />
               <div className="max-w-[364px]">
                 Balancing economic growth with environmental sustainability and biodiversity
@@ -103,81 +104,38 @@ export default function ClimateChange() {
               to better incorporate natural capital into climate strategies.
             </div>
           </div>
-          <div className="relative mb-10 w-full overflow-hidden bg-black p-20 text-white lg:mb-20">
-            <div className="relative flex flex-col items-center gap-[25px]">
-              <ImageCarousel
-                images={[
-                  {
-                    src: "/assets/product-story-1.png",
-                  },
-                  {
-                    src: "/assets/product-story-2.png",
-                  },
-                  {
-                    src: "/assets/product-story-3.png",
-                  },
-                  {
-                    src: "/assets/product-story-4.png",
-                  },
-                ]}
-                alt=""
-                width={347}
-                height={357}
-                className="mb-6 h-[224px] w-[227px] lg:mb-0 xl:h-[357px] xl:min-h-[357px] xl:w-[347px] xl:min-w-[347px]"
-              />
-              <div className="max-w-[650px] text-center text-xl tracking-tight">
-                A short story which highlights the everyday reliance on natural capital through the
-                products we use.
-              </div>
-              <Button asChild variant="white" className="w-[200px] text-center">
-                <a href="/key-concepts/product-story">Discover the Story</a>
-              </Button>
-            </div>
-            <MarqueeText
-              text="A Day in the Life ⎯ A Day in the Life ⎯ A Day in the Life"
-              className="absolute top-44 text-[85px]"
-            />
+          <div className="mb-10 w-full">
+            <DayInLifeCTA />
           </div>
         </div>
-        <div className="-mx-6 border-t border-dashed border-t-grey-800 p-6 lg:mx-0 lg:pb-0 lg:pt-20">
-          <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-x-16">
-            <div className="hidden w-[220px] flex-shrink-0 text-lg lg:block">
-              Natural Capital and Climate Change
+        <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
+          <p className="hidden flex-shrink-0 lg:block lg:w-[220px]">
+            Natural Capital and Climate Change
+          </p>
+          <div className="flex flex-grow flex-col gap-10">
+            <div className="flex items-center gap-3">
+              <h2>Key insights about this chapter</h2>
+              <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <div className="flex flex-grow flex-col gap-10">
-              <div className="flex items-center gap-3">
-                <div>Key insights about this chapter</div>
-                <div className="grow border-t border-t-grey-500"></div>
-              </div>
-              <div className="flex flex-col gap-5">
-                <div className="flex gap-3 lg:w-[540px]">
-                  <div>01.</div>
-                  <div>
-                    Achieving net zero emissions and enhancing natural capital (like biodiversity)
-                    are closely linked goals essential for effectively addressing climate change.
-                  </div>
-                </div>
-                <div className="flex gap-3 lg:w-[540px]">
-                  <div>02.</div>
-                  <div>
-                    Nature-based strategies not only help combat climate change but also support
-                    biodiversity. It’s crucial to ensure these actions benefit each other without
-                    unintended consequences.
-                  </div>
-                </div>
-                <div className="flex gap-3 lg:w-[540px]">
-                  <div>03.</div>
-                  <div>
-                    Businesses need to recognize and manage their dependencies on natural resources.
-                    Understanding these connections is crucial for effective climate strategies and
-                    mitigating business and societal risks related to climate change and
-                    biodiversity loss.
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
+              <li>
+                Achieving net zero emissions and enhancing natural capital (like biodiversity) are
+                closely linked goals essential for effectively addressing climate change.
+              </li>
+              <li>
+                Nature-based strategies not only help combat climate change but also support
+                biodiversity. It’s crucial to ensure these actions benefit each other without
+                unintended consequences.
+              </li>
+              <li>
+                Businesses need to recognize and manage their dependencies on natural resources.
+                Understanding these connections is crucial for effective climate strategies and
+                mitigating business and societal risks related to climate change and biodiversity
+                loss.
+              </li>
+            </ol>
           </div>
-        </div>
+        </main>
       </div>
       <Footer />
     </>

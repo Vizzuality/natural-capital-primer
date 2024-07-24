@@ -5,14 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const ImageCarousel = ({
   images,
-  height,
-  width,
   alt,
   className,
 }: {
   images: { src: string; alt?: string }[];
-  height: number;
-  width: number;
   alt?: string;
   className?: string;
 }) => {
@@ -27,7 +23,7 @@ const ImageCarousel = ({
   }, [frameCount]);
 
   return (
-    <div className={cn("relative", className)} style={{ height, width }}>
+    <div className={cn("relative", className)}>
       <AnimatePresence>
         {images.map((image, index) => (
           <motion.img
