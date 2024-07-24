@@ -9,23 +9,23 @@ import ImageCarousel from "@/components/image-carousel";
 export default function ClimateChange() {
   return (
     <>
-      <div className="h-[642px] w-full bg-[url(/assets/climate-change-hero-background.png)] bg-cover bg-no-repeat pb-10 lg:bg-[url(/assets/climate-change-hero-background.png)] lg:pb-20">
+      <div className="h-[430px] w-full bg-[url(/assets/climate-change-hero-background.png)] bg-cover bg-no-repeat pb-10 lg:h-[642px] lg:bg-[url(/assets/climate-change-hero-background.png)] lg:pb-20">
         <div className="relative z-10">
           <Header logo="white" />
         </div>
       </div>
-      <main className="-mt-[270px] max-w-[90%] lg:max-w-[1035px]">
-        <div className="flex h-[88px] items-center bg-grey-800 md:h-[69px]">
-          <div className="flex w-full flex-wrap items-center gap-3 pl-6 lg:pl-[60px]">
+      <main className="-mt-[270px] pr-6 lg:max-w-[1035px] lg:pr-20">
+        <div className="-mt-[270px] flex h-[88px] items-center bg-grey-800 pr-6 md:h-[69px] lg:pl-14 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_60px)] xl:pl-[calc((100vw_-_1280px)_/_2_+_60px)]">
+          <div className="flex w-full flex-wrap items-center gap-3 max-lg:pl-6">
             <Link href="/key-concepts" className="flex items-center gap-3">
               <Caret className="h-3 text-white" />
               <div className="text-lg text-white">Back to content</div>
             </Link>
-            <span className="border-r-white/12 h-4 border"></span>
+            <span className="lg:border-r-white/12 h-4 lg:border"></span>
             <div className="text-lg text-sky">Natural Capital and Climate Change</div>
           </div>
         </div>
-        <div className="flex flex-col gap-6 bg-sky p-6 lg:px-[60px] lg:py-20">
+        <div className="flex flex-col gap-6 bg-sky p-6 lg:px-[60px] lg:pl-14 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_60px)] xl:pl-[calc((100vw_-_1280px)_/_2_+_60px)]">
           <div className="text-2xl lg:text-4xl">
             The link between natural capital and climate change is inex​tricable.
           </div>
@@ -38,7 +38,7 @@ export default function ClimateChange() {
           </div>
         </div>
       </main>
-      <div className="mx-auto max-w-7xl bg-white px-6 py-10 text-grey-800 lg:px-[60px] lg:py-14">
+      <div className="mx-auto max-w-7xl bg-white px-6 py-10 text-grey-800 lg:px-[60px] lg:py-20">
         <div className="flex flex-col items-center gap-10 lg:gap-20">
           <div className="flex flex-col gap-6 self-start text-grey-800 lg:max-w-[799px]">
             <div className="text-lg">Natural Capital and Climate Change</div>
@@ -47,8 +47,8 @@ export default function ClimateChange() {
               extinction crises through:
             </div>
           </div>
-          <div className="flex w-full items-center justify-center">
-            <div className="flex flex-col items-center gap-6 lg:w-[559px] lg:gap-20">
+          <div className="w-full lg:pl-[308px]">
+            <div className="flex flex-col gap-6 lg:max-w-[559px] lg:gap-20">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
                 <div className="text-[52px] leading-[48px] text-sky lg:text-5xl">01</div>
                 <div className="text-2xl lg:text-4xl">Reducing emissions</div>
@@ -89,7 +89,7 @@ export default function ClimateChange() {
               </div>
             </div>
           </div>
-          <div className="flex w-full flex-wrap-reverse justify-between gap-10 lg:mb-20">
+          <div className="flex w-full justify-between gap-10 max-lg:flex-wrap-reverse">
             <div className="flex h-fit min-w-[394px] gap-6 text-grey-800">
               <div className="w-1.5 min-w-1.5 bg-sky" />
               <div className="max-w-[364px]">
@@ -103,7 +103,7 @@ export default function ClimateChange() {
               to better incorporate natural capital into climate strategies.
             </div>
           </div>
-          <div className="relative mb-10 w-full overflow-hidden bg-black p-20 text-white lg:m-20">
+          <div className="relative mb-10 w-full overflow-hidden bg-black p-20 text-white lg:mb-20">
             <div className="relative flex flex-col items-center gap-[25px]">
               <ImageCarousel
                 images={[
@@ -120,7 +120,7 @@ export default function ClimateChange() {
                     src: "/assets/product-story-4.png",
                   },
                 ]}
-                alt="Product Story"
+                alt=""
                 width={347}
                 height={357}
                 className="mb-6 h-[224px] w-[227px] lg:mb-0 xl:h-[357px] xl:min-h-[357px] xl:w-[347px] xl:min-w-[347px]"
@@ -133,33 +133,21 @@ export default function ClimateChange() {
                 <a href="/key-concepts/product-story">Discover the Story</a>
               </Button>
             </div>
-            {/* <div
-              className="absolute inset-0 h-full w-full"
-              style={{
-                background: "url(/assets/product-mask.png) no-repeat",
-                // WebkitMaskImage: "url(/assets/product-mask.png)",
-                // WebkitMaskSize: "100% 100%",
-                // WebkitMaskClip: "border-box",
-                // maskImage: "url(/assets/product-mask.png)",
-                // maskSize: "100% 100%",
-                // maskClip: "border-box",
-              }}
-            > */}
             <MarqueeText
               text="A Day in the Life ⎯ A Day in the Life ⎯ A Day in the Life"
               className="absolute top-44 text-[85px]"
             />
           </div>
         </div>
-        <div className="-mx-6 border-t border-dashed border-grey-800 px-6 pt-6 lg:mx-0 lg:px-0 lg:pb-6 lg:pt-20">
-          <div className="mx-auto flex max-w-7xl flex-wrap gap-[43px]">
-            <div className="hidden w-[251px] text-lg lg:block">
+        <div className="-mx-6 border-t border-dashed border-t-grey-800 p-6 lg:mx-0 lg:pb-0 lg:pt-20">
+          <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-x-16">
+            <div className="hidden w-[220px] flex-shrink-0 text-lg lg:block">
               Natural Capital and Climate Change
             </div>
-            <div className="flex grow flex-col gap-10">
+            <div className="flex flex-grow flex-col gap-10">
               <div className="flex items-center gap-3">
                 <div>Key insights about this chapter</div>
-                <div className="grow border border-grey-500"></div>
+                <div className="grow border-t border-t-grey-500"></div>
               </div>
               <div className="flex flex-col gap-5">
                 <div className="flex gap-3 lg:w-[540px]">

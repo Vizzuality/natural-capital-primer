@@ -16,7 +16,7 @@ const MarqueeText = ({
     <motion.div
       className={cn("relative inline-block w-fit overflow-hidden whitespace-nowrap", className)}
       initial={{ x: "60%" }} // Start off-screen to the left
-      animate={{ x: "-100%" }} // End off-screen to the right
+      animate={{ x: "-110%" }} // End off-screen to the right
       transition={{
         x: {
           duration, // Duration of one loop
