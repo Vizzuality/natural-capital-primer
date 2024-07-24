@@ -69,15 +69,15 @@ const Footer: FC = () => {
                     <ArrowSlideAnimation>Resources</ArrowSlideAnimation>
                   </Link>
                 </li>
+                <li>
+                  <Link href="/a-day-in-the-life" className="inline-block py-2 underline">
+                    <ArrowSlideAnimation>A Day in the Life</ArrowSlideAnimation>
+                  </Link>
+                </li>
               </ul>
             </li>
             <li>
               <ul className="flex flex-col gap-y-2.5">
-                <li>
-                  <Link href="/privacy-policy" className="inline-block py-2 underline">
-                    <ArrowSlideAnimation>Privacy Policy</ArrowSlideAnimation>
-                  </Link>
-                </li>
                 <li>
                   <Link href="/terms-and-conditions" className="inline-block py-2 underline">
                     <ArrowSlideAnimation>Terms and Conditions</ArrowSlideAnimation>
