@@ -12,6 +12,7 @@ import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import { useRef } from "react";
 import Pebble from "@/components/home/pebble";
 import PrimerExtractPopover from "@/components/home/primer-extract-popover";
+import MountainCoverImage from "@/components/mountain-cover-image";
 
 export default function Home() {
   const scrollSectionRef = useRef(null);
@@ -359,7 +360,7 @@ export default function Home() {
           </Button>
         </main>
       </div>
-      <div className="h-[400px] bg-[url(/assets/home-illustration-2.png)] bg-cover bg-bottom sm:aspect-[5/3] sm:h-auto lg:aspect-auto lg:h-[550px]"></div>
+      <MountainCoverImage />
       <Footer />
     </>
   );

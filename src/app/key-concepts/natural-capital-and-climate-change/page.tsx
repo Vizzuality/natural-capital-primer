@@ -22,10 +22,10 @@ export default function ClimateChange() {
               <div className="text-lg text-white">Back to content</div>
             </Link>
             <span className="hidden h-4 border border-r-white/15 sm:block"></span>
-            <div className="text-lg text-sky">Natural Capital and Climate Change</div>
+            <div className="text-lg text-turquoise">Natural Capital and Climate Change</div>
           </div>
         </main>
-        <main className="flex flex-col gap-6 bg-sky px-6 py-10 lg:px-20 lg:py-20 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
+        <main className="flex flex-col gap-6 bg-turquoise px-6 py-10 lg:px-20 lg:py-20 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
           <h1 className="text-2xl lg:text-4xl">
             The link between natural capital and climate change is inextricable
           </h1>
@@ -51,19 +51,19 @@ export default function ClimateChange() {
             <div className="flex-shrink-0 lg:w-[220px]" />
             <div className="flex flex-grow flex-col gap-6 lg:max-w-[559px] lg:gap-20">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-sky lg:text-5xl">01</div>
+                <div className="text-[52px] leading-[48px] text-turquoise lg:text-5xl">01</div>
                 <div className="text-2xl lg:text-4xl">Reducing emissions</div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-sky lg:text-5xl">02</div>
+                <div className="text-[52px] leading-[48px] text-turquoise lg:text-5xl">02</div>
                 <div className="text-2xl lg:text-4xl">Sequestering carbon</div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-sky lg:text-5xl">03</div>
+                <div className="text-[52px] leading-[48px] text-turquoise lg:text-5xl">03</div>
                 <div className="text-2xl lg:text-4xl">Growing our natural capital asset base</div>
               </div>
               <div className="flex w-full gap-6">
-                <div className="w-1.5 bg-sky" />
+                <div className="w-1.5 bg-turquoise" />
                 <div className="max-w-[510px] grow basis-0">
                   Such actions are usually mutualistic –building natural capital increases carbon
                   sequestration and vice-versa – but care is needed to guard against perverse
@@ -72,7 +72,7 @@ export default function ClimateChange() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-sky bg-cover p-6 py-10 lg:bg-[url(/assets/key-concepts-biodiversity-background-2.png)] lg:p-10">
+          <div className="w-full bg-turquoise bg-cover p-6 py-10 lg:bg-[url(/assets/key-concepts-biodiversity-background-2.png)] lg:p-10">
             <div className="flex flex-col gap-[25px]">
               <div className="max-w-[790px] text-balance text-2xl lg:text-4xl">
                 It is imperative that businesses recognise and respond to this inter-dependence.
@@ -92,7 +92,7 @@ export default function ClimateChange() {
           </div>
           <div className="flex w-full justify-between gap-10 max-lg:flex-wrap-reverse">
             <div className="flex h-fit min-w-[394px] gap-6">
-              <div className="w-1.5 min-w-1.5 bg-sky" />
+              <div className="w-1.5 min-w-1.5 bg-turquoise" />
               <div className="max-w-[364px]">
                 Balancing economic growth with environmental sustainability and biodiversity
                 conservation is a pressing challenge that demands collaborative and proactive
@@ -117,7 +117,7 @@ export default function ClimateChange() {
               <h2>Key insights about this chapter</h2>
               <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Achieving net zero emissions and enhancing natural capital (like biodiversity) are
                 closely linked goals essential for effectively addressing climate change.
