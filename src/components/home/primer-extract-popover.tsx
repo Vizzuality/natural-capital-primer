@@ -2,12 +2,16 @@
 
 import { Button } from "@/components/ui/button";
 import Manual from "@/icons/manual.svg";
+import Close from "@/icons/close.svg";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import useMediaQuery from "@/hooks/use-media-query";
 import { Popover, PopoverContent, PopoverPortal, PopoverTrigger } from "@/components/ui/popover";
 import Link from "next/link";
+
+const MotionManual = motion(Manual);
+const MotionClose = motion(Close);
 
 const PrimerExtractPopover = () => {
   const [tooltipOpen, setTooltipOpen] = useState(true);
@@ -22,7 +26,26 @@ const PrimerExtractPopover = () => {
             <TooltipTrigger asChild>
               <Button className="pointer-events-auto h-[72px] w-[72px] rounded-full">
                 <span className="sr-only">See Primer Extract</span>
-                <Manual aria-hidden="true" />
+                <AnimatePresence initial={false}>
+                  {!popoverOpen && (
+                    <MotionManual
+                      aria-hidden="true"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
+                  {popoverOpen && (
+                    <MotionClose
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      aria-hidden="true"
+                    />
+                  )}
+                </AnimatePresence>
               </Button>
             </TooltipTrigger>
           </PopoverTrigger>
@@ -69,7 +92,7 @@ const PrimerExtractPopover = () => {
                     <p className="mt-7 px-5">From the Primer</p>
                     <p className="mt-4 px-5 text-2xl">Environmental and Ecosystem Assets Chapter</p>
                     <div className="relative mt-4 overflow-hidden rounded-[20px] bg-white p-5 shadow-lg">
-                      <div className="pointer-events-none·absolute·inset-0·top-20·bg-gradient-to-b·from-transparent" />
+                      <div className="pointer-events-none absolute inset-0 top-20 bg-gradient-to-b from-transparent to-white" />
                       <p>
                         Natural capital assets includes both environmental assets and ecosystem
                         assets. Environmental assets are the individual components of the
@@ -78,7 +101,7 @@ const PrimerExtractPopover = () => {
                         environmental assets interact and function as a discrete unit
                       </p>
                       <Link
-                        href="/key-concepts/assets"
+                        href="/key-concepts#assets"
                         className="absolute bottom-5 left-1/2 block -translate-x-1/2 text-center text-xs font-bold uppercase underline"
                       >
                         Discover this Chapter

@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("overflow-x-clip", circular.className)}>
+    <html lang="en" className={cn("overflow-x-clip scroll-smooth", circular.className)}>
       <body className="overflow-x-clip bg-white text-black">{children}</body>
     </html>
   );

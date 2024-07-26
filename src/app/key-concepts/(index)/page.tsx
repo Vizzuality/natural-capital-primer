@@ -48,6 +48,7 @@ const KeyConceptsPage: FC = () => {
         </div>
       </div>
       <div
+        id="assets"
         className={cn(
           "lg:bg-[length:100%,auto 100%] bg-green-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
           {
@@ -140,6 +141,7 @@ const KeyConceptsPage: FC = () => {
         <p className="py-24 text-center lg:py-80">Content coming soon</p>
       </div>
       <div
+        id="flows-of-services"
         className={cn(
           "lg:bg-[length:100%,auto 100%] bg-blue-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
           {
@@ -397,6 +399,7 @@ const KeyConceptsPage: FC = () => {
         </div>
       </div>
       <div
+        id="dependencies-and-impacts"
         className={cn(
           "lg:bg-[length:100%,auto 100%] bg-orange-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
           {

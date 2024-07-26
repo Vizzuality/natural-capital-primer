@@ -8,12 +8,15 @@ import Menu from "@/icons/menu.svg";
 import MenuMobile from "@/icons/menu-mobile.svg";
 import Close from "@/icons/close.svg";
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { FC, useMemo, useState } from "react";
+import { FC, MouseEvent, useCallback, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import HoverRepeatAnimation from "./animations/hover-repeat";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+
+const DIALOG_ANIMATION_DURATION = 0.3;
 
 const logoVariants = cva("", {
   variants: {
@@ -30,6 +33,7 @@ const logoVariants = cva("", {
 
 const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   const pathname = usePathname();
 
   const triggerContent = useMemo(() => {
@@ -59,6 +63,31 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
 
     return "Menu";
   }, [pathname]);
+
+  const onClickKeyConceptsSection = useCallback(
+    (e: MouseEvent<HTMLAnchorElement>) => {
+      // This is a hacky solution for when the user is already on the Key Concepts page and clicks a
+      // link to a specific section on that page. By default, it seems that the dialog, somehow,
+      // scrolls back to the top when closed. In Radix UI's documentation, there seems to be a
+      // solution involving the `modal` prop but it would stop hiding what's outside the dialog from
+      // the accessibility tree. Instead, this is what we're doing:
+      // 1. Stop Next.js from navigating
+      // 2. Close the modal
+      // 3. Wait for the animation to be done and the component to be unmounted (50ms buffer)
+      // 4. Navigate to that section
+      if (pathname === "/key-concepts") {
+        e.preventDefault();
+        setOpen(false);
+        setTimeout(
+          () => {
+            router.push((e.target as HTMLAnchorElement).href);
+          },
+          DIALOG_ANIMATION_DURATION * 1000 + 50,
+        );
+      }
+    },
+    [pathname, router],
+  );
 
   return (
     <header>
@@ -100,7 +129,7 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
                   initial={{ x: "-50%", y: "-150%" }}
                   animate={{ x: "-50%", y: "-50%" }}
                   exit={{ x: "-50%", y: "-150%" }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: DIALOG_ANIMATION_DURATION }}
                 >
                   <div className="flex items-center justify-end">
                     <DialogTitle className="sr-only">Main navigation</DialogTitle>
@@ -144,22 +173,28 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
                               </Link>
                               <ul className="flex flex-wrap gap-3 text-base font-normal">
                                 <li>
-                                  <Link href="/key-concepts/assets" className="underline">
+                                  <Link
+                                    href="/key-concepts#assets"
+                                    className="underline"
+                                    onClick={onClickKeyConceptsSection}
+                                  >
                                     Assets
                                   </Link>
                                 </li>
                                 <li>
                                   <Link
-                                    href="/key-concepts/flows-of-services"
+                                    href="/key-concepts#flows-of-services"
                                     className="underline"
+                                    onClick={onClickKeyConceptsSection}
                                   >
                                     Flows of Services
                                   </Link>
                                 </li>
                                 <li>
                                   <Link
-                                    href="/key-concepts/dependencies-and-impacts"
+                                    href="/key-concepts#dependencies-and-impacts"
                                     className="underline"
+                                    onClick={onClickKeyConceptsSection}
                                   >
                                     Dependencies and Impacts
                                   </Link>
