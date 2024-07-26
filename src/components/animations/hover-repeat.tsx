@@ -10,14 +10,14 @@ const contentAnimation: Variants = {
     transition: { ease: ANIMATION_EASE, duration: ANIMATION_DURATION },
   },
   hover: {
-    y: "100%",
+    y: "105%", // Added an extra 5% as a buffer
     transition: { ease: ANIMATION_EASE, duration: ANIMATION_DURATION },
   },
 };
 
 const duplicatedContentAnimation: Variants = {
   rest: {
-    y: "-100%",
+    y: "-105%", // Added an extra 5% as a buffer
     transition: { ease: ANIMATION_EASE, duration: ANIMATION_DURATION },
   },
   hover: {
