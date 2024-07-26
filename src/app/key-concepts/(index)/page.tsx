@@ -349,7 +349,7 @@ const KeyConceptsPage: FC = () => {
           <p className="py-24 text-center lg:py-80">Content coming soon</p>
         </div>
       </div>
-      <div className="mx-auto max-w-7xl px-6 py-10 lg:px-20 lg:py-24">
+      <div id="role" className="mx-auto max-w-7xl px-6 py-10 lg:px-20 lg:py-24">
         <p className="mb-10 text-center text-2xl lg:mb-20 lg:text-[62px] lg:leading-none">
           Understanding the role of <span className="whitespace-nowrap">Natural Capital...</span>
         </p>
@@ -587,7 +587,7 @@ const KeyConceptsPage: FC = () => {
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-10 p-6 text-center lg:gap-y-16">
           <h2 className="max-w-[1120px] text-2xl lg:text-[62px] lg:leading-[68px]">
-            Learn more about dependencies and impacts in the industry use cases chapter
+            Learn more about dependencies and impacts in the industry use cases chapter.
           </h2>
           <Button variant="outline" asChild>
             <Link href="/industry-use-cases">

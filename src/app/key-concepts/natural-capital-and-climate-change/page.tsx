@@ -17,7 +17,7 @@ export default function ClimateChange() {
       <div className="-mt-[270px] pr-6 lg:pr-20 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)] xl:pr-36">
         <main className="flex items-center bg-black px-6 py-4 lg:px-20 lg:py-6 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
           <div className="flex flex-col gap-y-2 sm:flex-row sm:items-center sm:gap-x-3">
-            <Link href="/key-concepts" className="flex items-center gap-3">
+            <Link href="/key-concepts#role" className="flex items-center gap-3">
               <Caret className="h-3 text-white" />
               <div className="text-lg text-white">Back to content</div>
             </Link>

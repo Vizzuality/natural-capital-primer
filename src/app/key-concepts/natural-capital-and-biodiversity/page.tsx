@@ -20,7 +20,7 @@ export default function Biodiversity() {
       <div className="-mt-[270px] pr-6 lg:pr-20 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)] xl:pr-36">
         <main className="flex items-center bg-black px-6 py-4 lg:px-20 lg:py-6 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
           <div className="flex flex-col gap-y-2 sm:flex-row sm:items-center sm:gap-x-3">
-            <Link href="/key-concepts" className="flex items-center gap-3">
+            <Link href="/key-concepts#role" className="flex items-center gap-3">
               <Caret className="h-3 text-white" />
               <div className="text-lg text-white">Back to content</div>
             </Link>
@@ -188,7 +188,7 @@ export default function Biodiversity() {
               <h2>Key insights about this chapter</h2>
               <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Biodiversity is essential within natural capital, playing a vital role in ecosystem
                 services such as pollination and pest control.
