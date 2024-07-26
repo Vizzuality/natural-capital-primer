@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import useMediaQuery from "@/hooks/use-media-query";
 import DayInLifeCTA from "@/components/day-in-life-cta";
 
@@ -16,7 +16,18 @@ export default function About() {
   const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const clipBackgroundRef = useRef<HTMLImageElement | null>(null);
+  const illustration2Ref = useRef<HTMLDivElement | null>(null);
+  const illustration3Ref = useRef<HTMLDivElement | null>(null);
   const isXl = useMediaQuery("(min-width: 1280px)", false);
+
+  const isIllustration2InView = useInView(illustration2Ref, {
+    amount: 0.5,
+    once: true,
+  });
+  const isIllustration3InView = useInView(illustration3Ref, {
+    amount: 0.5,
+    once: true,
+  });
 
   const backgrounds = useMemo(
     () => [
@@ -98,7 +109,15 @@ export default function About() {
           <Header logo="black" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl p-6 pb-20 text-white lg:px-20 lg:pb-48 lg:pt-36 xl:pt-72">
-          <div className="absolute right-40 top-36 hidden h-[56px] w-[56px] -translate-y-24 rounded-full border border-dashed border-white lg:flex lg:items-center lg:justify-center xl:top-72">
+          <div
+            className={cn(
+              "absolute right-40 top-36 hidden h-[56px] w-[56px] -translate-y-24 rounded-full border border-dashed border-white transition-colors duration-1000 lg:flex lg:items-center lg:justify-center xl:top-72",
+              {
+                "border-white": !isAnimating,
+                "border-transparent": isAnimating,
+              },
+            )}
+          >
             <Button
               type="button"
               className="min-h-[44px] min-w-[44px] rounded-full bg-transparent hover:bg-transparent"
@@ -140,7 +159,7 @@ export default function About() {
                 capital by:
               </h2>
             </div>
-            <ol className="list-decimal-leading-zero flex flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="flex list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Providing a ‘one-stop shop’ for resources and information for learning about natural
                 capital
@@ -169,7 +188,13 @@ export default function About() {
               future generations.
             </p>
           </div>
-          <div className="relative hidden lg:block">
+          <motion.div
+            ref={illustration2Ref}
+            className="relative hidden lg:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isIllustration2InView ? 1 : 0 }}
+            transition={{ duration: 1 }}
+          >
             <Image
               src="/assets/about-illustration-2.png"
               alt=""
@@ -177,8 +202,14 @@ export default function About() {
               height={617}
               className="absolute top-20 max-w-none"
             />
-          </div>
-          <div className="relative hidden lg:block">
+          </motion.div>
+          <motion.div
+            ref={illustration3Ref}
+            className="relative hidden lg:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isIllustration3InView ? 1 : 0 }}
+            transition={{ duration: 1 }}
+          >
             <Image
               src="/assets/about-illustration-3.png"
               alt=""
@@ -186,7 +217,7 @@ export default function About() {
               height={566}
               className="absolute right-0 top-6 max-w-none"
             />
-          </div>
+          </motion.div>
           <div className="flex flex-col gap-y-6 lg:col-span-2 lg:gap-y-16">
             <h2 className="flex flex-col gap-y-6 text-2xl lg:gap-y-5 lg:text-4xl">
               How can you use the Natural Capital Primer?

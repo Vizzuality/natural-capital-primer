@@ -30,14 +30,14 @@ const DayInLifeCTA: FC = () => {
               </p>
             </MarqueeAnimation>
           </div>
-          {/* Black masked marquee */}
+          {/* Orange masked marquee */}
           <div
             className="absolute top-1/2 z-20 flex w-full -translate-y-1/2 flex-col items-center justify-center"
             aria-hidden="true"
           >
             <div className="h-[224px] w-[227px] [clip-path:_url(#pebble-clip-mobile)] lg:h-[321px] lg:w-[325px] lg:[clip-path:_url(#pebble-clip-desktop)]">
               <MarqueeAnimation className="absolute left-0 top-1/2 w-full -translate-y-1/2">
-                <p className="text-[52px] text-black lg:text-[85px]">
+                <p className="text-[52px] text-orange lg:text-[85px]">
                   A Day in the Life ⎯ A Day in the Life ⎯ A Day in the Life
                 </p>
               </MarqueeAnimation>
@@ -46,16 +46,25 @@ const DayInLifeCTA: FC = () => {
           <ImageCarousel
             images={[
               {
-                src: "/assets/key-concepts-climate-change-illustration.png",
+                src: "/assets/day-in-life-cta-illustration.png",
               },
               {
-                src: "/assets/key-concepts-climate-change-illustration-2.png",
+                src: "/assets/day-in-life-cta-illustration-2.png",
               },
               {
-                src: "/assets/key-concepts-climate-change-illustration-3.png",
+                src: "/assets/day-in-life-cta-illustration-3.png",
               },
               {
-                src: "/assets/key-concepts-climate-change-illustration-4.png",
+                src: "/assets/day-in-life-cta-illustration-4.png",
+              },
+              {
+                src: "/assets/day-in-life-cta-illustration-5.png",
+              },
+              {
+                src: "/assets/day-in-life-cta-illustration-6.png",
+              },
+              {
+                src: "/assets/day-in-life-cta-illustration-7.png",
               },
             ]}
             alt=""
