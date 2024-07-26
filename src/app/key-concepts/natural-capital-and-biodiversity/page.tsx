@@ -4,7 +4,7 @@ import Caret from "@/icons/caret-right.svg";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
-
+import AnimatedUnderline from "@/components/animations/animated-underline";
 export const metadata: Metadata = {
   title: "Natural Capital and Biodiversity",
 };
@@ -22,7 +22,7 @@ export default function Biodiversity() {
           <div className="flex flex-col gap-y-2 sm:flex-row sm:items-center sm:gap-x-3">
             <Link href="/key-concepts" className="flex items-center gap-3">
               <Caret className="h-3 text-white" />
-              <div className="text-lg text-white">Back to content</div>
+              <AnimatedUnderline className="text-lg text-white">Back to content</AnimatedUnderline>
             </Link>
             <span className="hidden h-4 border border-r-white/15 sm:block"></span>
             <div className="text-lg text-pink">Natural Capital and Biodiversity</div>
