@@ -77,7 +77,7 @@ const DayInLifeCTA: FC = () => {
             products we use.
           </div>
           <Button asChild variant="white" className="w-[200px] text-center">
-            <Link href="/key-concepts/product-story">
+            <Link href="/a-day-in-the-life">
               <HoverRepeatAnimation>Discover the Story</HoverRepeatAnimation>
             </Link>
           </Button>
