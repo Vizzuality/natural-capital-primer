@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import Caret from "@/icons/caret-right.svg";
 import Link from "next/link";
 import DayInLifeCTA from "@/components/day-in-life-cta";
+import AnimatedUnderline from "@/components/animations/animated-underline";
 
 export default function ClimateChange() {
   return (
@@ -19,7 +20,7 @@ export default function ClimateChange() {
           <div className="flex flex-col gap-y-2 sm:flex-row sm:items-center sm:gap-x-3">
             <Link href="/key-concepts#role" className="flex items-center gap-3">
               <Caret className="h-3 text-white" />
-              <div className="text-lg text-white">Back to content</div>
+              <AnimatedUnderline className="text-lg text-white">Back to content</AnimatedUnderline>
             </Link>
             <span className="hidden h-4 border border-r-white/15 sm:block"></span>
             <div className="text-lg text-turquoise">Natural Capital and Climate Change</div>
