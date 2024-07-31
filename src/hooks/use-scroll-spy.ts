@@ -22,20 +22,22 @@ const useScrollSpy = (items: ScrollSpyItem[], options?: ScrollSpyOptions) => {
       const windowHeight = window.innerHeight;
       const viewingPosition = (DEFAULT_OPTIONS.thresholdPercentage * windowHeight) / 100;
 
-      const itemsPositions = items.map(({ id, ref }) => {
-        const element = ref?.current;
-        if (!element) return null;
+      const itemsPositions = items
+        .map(({ id, ref }) => {
+          const element = ref?.current;
+          if (!element) return null;
 
-        const boundingRect = element.getBoundingClientRect();
+          const boundingRect = element.getBoundingClientRect();
 
-        return {
-          id,
-          top: boundingRect.top,
-          bottom: boundingRect.bottom,
-        };
-      });
+          return {
+            id,
+            top: boundingRect.top,
+            bottom: boundingRect.bottom,
+          };
+        })
+        .filter((item) => item !== null);
 
-      const activeItem = itemsPositions.find(({ top: itemTop, bottom: itemBottom }) => {
+      const activeItem = itemsPositions?.find(({ top: itemTop, bottom: itemBottom }) => {
         return itemTop < viewingPosition && itemBottom > viewingPosition;
       });
 
@@ -51,7 +53,7 @@ const useScrollSpy = (items: ScrollSpyItem[], options?: ScrollSpyOptions) => {
           setActiveId(lastItem.id);
         }
       } else {
-        setActiveId(activeItem?.id);
+        setActiveId(activeItem?.id ?? null);
       }
     };
 
