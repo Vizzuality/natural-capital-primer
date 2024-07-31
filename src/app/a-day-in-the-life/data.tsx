@@ -85,6 +85,7 @@ export const SECTIONS: SectionType[] = [
         title: "Resource",
         description: "Lithium",
         image: "/assets/a-day-in-the-life-pebble-1-2.png",
+        borderColorClass: "text-orange-500",
       },
       {
         title: "Asset",
@@ -338,7 +339,7 @@ export const SECTIONS: SectionType[] = [
         image: "/assets/a-day-in-the-life-pebble-7-3.png",
       },
     ],
-    legend: ["renewable-resource"],
+    legend: ["non-renewable-resource"],
     glossary: ["resource", "asset"],
     importance:
       "The tech industry relies heavily on natural resources. Investing in sustainable technologies and practices can help preserve these assets for future generations.",
