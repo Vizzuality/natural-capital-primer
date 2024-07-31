@@ -8,7 +8,7 @@ import InfoTooltip from "@/components/info-tooltip";
 import { cn } from "@/lib/utils";
 import AudioIconOn from "@/svgs/audio-icon-on.svg";
 import AudioIconOff from "@/svgs/audio-icon-off.svg";
-
+import BackgroundVideo from "@/components/bg-video";
 const CENTER_CLASSES = "mx-auto flex max-w-7xl px-6 lg:px-20";
 const ADJUSTMENT_LEFT_MARGIN = "lg:ml-[220px]";
 
@@ -17,6 +17,7 @@ const Section = ({
     id,
     title,
     mainImageURL,
+    videoURL,
     bgClass,
     story,
     question,
@@ -36,10 +37,10 @@ const Section = ({
   setSoundOn: (value: boolean) => void;
 }) => {
   return (
-    <section id={id} className={`${bgClass} text-black`} ref={sectionRef}>
-      <div className="mx-auto max-w-7xl">
-        <div className={`h-[800px] max-h-[800px] ${bgClass} px-6 pt-[163px] lg:px-20`}>
-          <div className="flex h-[220px] max-w-[826px] flex-col gap-5 lg:gap-10">
+    <section id={id} className={`${bgClass} relative text-black`} ref={sectionRef}>
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <div className={`h-[800px] max-h-[800px] px-6 pt-[163px] lg:px-20`}>
+          <div className="z-10 flex h-[220px] max-w-[826px] flex-col gap-5 lg:gap-10">
             <div className="lg:text-4.5xl text-2xl">{title}</div>
             <div className="inline-flex items-center justify-start gap-3">
               <Button
@@ -60,6 +61,7 @@ const Section = ({
           </div>
         </div>
       </div>
+      <BackgroundVideo src={videoURL} />
       <div
         className="relative h-0 w-full bg-white px-6 lg:h-[700px] lg:bg-cover lg:bg-no-repeat lg:px-20"
         style={{ backgroundImage: `url(${mainImageURL})` }}
