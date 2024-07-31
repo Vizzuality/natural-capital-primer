@@ -38,3 +38,4 @@ next-env.d.ts
 # Auto-generated JSON animation files
 /src/data/home-pebbles-animations-desktop.json
 /src/data/home-pebbles-animations-mobile.json
+/src/data/key-concepts-pebbles-animations-desktop.json

@@ -3,21 +3,111 @@ import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import DayInLifeCTA from "@/components/day-in-life-cta";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import Pebble from "@/components/key-concepts/pebble";
 import MountainCoverImage from "@/components/mountain-cover-image";
 import SeaCoverImage from "@/components/sea-cover-image";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import useMediaQuery from "@/hooks/use-media-query";
 import Lightbulb from "@/icons/lightbulb.svg";
 import ThinArrow from "@/icons/thin-arrow.svg";
 import { cn } from "@/lib/utils";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FC, useState } from "react";
+import { FC, Fragment, useCallback, useRef, useState } from "react";
 
 const KeyConceptsPage: FC = () => {
   const [chapter1Tab, setChapter1Tab] = useState("environmental");
   const [chapter2Tab, setChapter2Tab] = useState("abiotic");
   const [chapter3Tab, setChapter3Tab] = useState("dependencies");
+
+  const [activeSectionMobile, setActiveSectionMobile] = useState(0);
+
+  const isMobile = useMediaQuery("not (min-width: 1024px)", false);
+
+  const scrollSectionRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: scrollSectionRef,
+  });
+
+  const sectionsLinkStyle = [
+    {
+      textDecoration: useTransform(scrollYProgress, (value) =>
+        (isMobile && activeSectionMobile === 0) || (!isMobile && value < 4 / 13)
+          ? "underline"
+          : "none",
+      ),
+      fontWeight: useTransform(scrollYProgress, (value) =>
+        (isMobile && activeSectionMobile === 0) || (!isMobile && value < 4 / 13) ? 700 : 450,
+      ),
+    },
+    {
+      textDecoration: useTransform(scrollYProgress, (value) =>
+        (isMobile && activeSectionMobile === 1) || (!isMobile && value >= 4 / 13 && value < 9 / 13)
+          ? "underline"
+          : "none",
+      ),
+      fontWeight: useTransform(scrollYProgress, (value) =>
+        (isMobile && activeSectionMobile === 1) || (!isMobile && value >= 4 / 13 && value < 9 / 13)
+          ? 700
+          : 450,
+      ),
+    },
+    {
+      textDecoration: useTransform(scrollYProgress, (value) =>
+        (isMobile && activeSectionMobile === 2) || (!isMobile && value >= 9 / 13)
+          ? "underline"
+          : "none",
+      ),
+      fontWeight: useTransform(scrollYProgress, (value) =>
+        (isMobile && activeSectionMobile === 2) || (!isMobile && value >= 9 / 13) ? 700 : 450,
+      ),
+    },
+  ];
+
+  const sectionsStyle = [
+    {
+      opacity: useTransform(scrollYProgress, [3 / 13, 4 / 13], [1, 0]),
+      display: useTransform(scrollYProgress, (value) => (value < 4 / 13 ? "flex" : "none")),
+    },
+    {
+      opacity: useTransform(scrollYProgress, [4 / 13, 5 / 13, 8 / 13, 9 / 13], [0, 1, 1, 0]),
+      display: useTransform(scrollYProgress, (value) =>
+        value >= 4 / 13 && value <= 9 / 13 ? "flex" : "none",
+      ),
+    },
+    {
+      opacity: useTransform(scrollYProgress, [9 / 13, 10 / 13, 13 / 13], [0, 1, 1]),
+      display: useTransform(scrollYProgress, (value) => (value >= 9 / 13 ? "flex" : "none")),
+    },
+  ];
+
+  const SectionsContainer = isMobile ? Fragment : AnimatePresence;
+
+  const setActiveSection = useCallback(
+    (index: number) => {
+      if (isMobile) {
+        setActiveSectionMobile(index);
+        return;
+      }
+
+      // If `top` is positive, the top of the container is below the top of the screen. If `top` is
+      // negative, the user has already entered the scrolling section.
+      const { top, height } = scrollSectionRef.current?.getBoundingClientRect() ?? {
+        top: 0,
+        height: 0,
+      };
+
+      const sectionsYStart = [0, 5 / 13, 10 / 13];
+
+      document.documentElement.scrollBy({
+        top: top + height * sectionsYStart[index],
+        behavior: "smooth",
+      });
+    },
+    [scrollSectionRef, isMobile],
+  );
 
   return (
     <>
@@ -137,9 +227,251 @@ const KeyConceptsPage: FC = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto max-w-7xl px-6 lg:flex-row lg:px-20">
-        <p className="py-24 text-center lg:py-80">Content coming soon</p>
+      <div className="mx-auto max-w-7xl px-6 py-6 lg:px-20 lg:py-20">
+        <div className="flex flex-col items-start gap-10 pb-10 lg:gap-20 lg:pb-20">
+          <div className="flex flex-col gap-6 self-start lg:max-w-[690px]">
+            <div className="text-lg text-green-500">Assets and Resources</div>
+            <div className="text-2xl lg:text-[62px] lg:leading-none">
+              The three categories of natural resources.
+            </div>
+            <p>
+              Natural capital assets and natural resources are related but distinct. Natural capital
+              assets encompass the broader elements of nature that provide value through ecosystem
+              services. These assets include natural resources such as water, minerals, and forests,
+              which humans utilize for economic gain or other purposes.
+            </p>
+          </div>
+          <div
+            className="relative flex w-full flex-col justify-start gap-y-6 lg:h-[450vh] lg:flex-row lg:items-start lg:justify-between lg:gap-x-16"
+            ref={scrollSectionRef}
+          >
+            <ul className="flex flex-shrink-0 flex-row gap-4 lg:sticky lg:top-20 lg:h-[calc(100vh_-_80px)] lg:w-[220px] lg:flex-col">
+              <motion.li style={{ ...sectionsLinkStyle[0] }}>
+                <Button
+                  type="button"
+                  variant="link"
+                  size="auto"
+                  className="[text-decoration:inherit]"
+                  onClick={() => setActiveSection(0)}
+                >
+                  Renewable
+                </Button>
+              </motion.li>
+              <motion.li style={{ ...sectionsLinkStyle[1] }}>
+                <Button
+                  type="button"
+                  variant="link"
+                  size="auto"
+                  className="[text-decoration:inherit]"
+                  onClick={() => setActiveSection(1)}
+                >
+                  Cultivated
+                </Button>
+              </motion.li>
+              <motion.li style={{ ...sectionsLinkStyle[2] }}>
+                <Button
+                  type="button"
+                  variant="link"
+                  size="auto"
+                  className="[text-decoration:inherit]"
+                  onClick={() => setActiveSection(2)}
+                >
+                  Non-renewable
+                </Button>
+              </motion.li>
+            </ul>
+            <div className="relative flex flex-grow flex-col gap-6 pt-36 lg:sticky lg:top-20 lg:h-[calc(100vh_-_80px)] lg:gap-20 lg:pt-0">
+              {!isMobile && (
+                <div className="absolute right-0 top-0 lg:-right-32">
+                  <Pebble index={1} scrollYProgress={scrollYProgress} />
+                  <Pebble index={2} scrollYProgress={scrollYProgress} />
+                  <Pebble index={3} scrollYProgress={scrollYProgress} />
+                  <Pebble index={4} scrollYProgress={scrollYProgress} />
+                </div>
+              )}
+              {isMobile && (
+                <div className="absolute -right-10 -top-3 sm:right-0 sm:top-0 sm:scale-125 md:right-10 md:scale-150">
+                  <motion.div
+                    className="absolute right-0 top-0"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: activeSectionMobile === 0 ? 1 : 0 }}
+                    transition={{ duration: 0.3, ease: "linear" }}
+                  >
+                    <Image
+                      src="/assets/key-concepts-pebbles-1.png"
+                      alt=""
+                      width={185}
+                      height={194}
+                      sizes="(max-width: 640) 185px, (max-width: 768px) 231px, (max-width: 1024px) 278px, 185px"
+                      className="max-w-none"
+                    />
+                  </motion.div>
+                  <motion.div
+                    className="absolute right-0 top-0"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: activeSectionMobile === 1 ? 1 : 0 }}
+                    transition={{ duration: 0.3, ease: "linear" }}
+                  >
+                    <Image
+                      src="/assets/key-concepts-pebbles-2.png"
+                      alt=""
+                      width={174}
+                      height={210}
+                      sizes="(max-width: 640) 174px, (max-width: 768px) 218px, (max-width: 1024px) 261px, 174px"
+                      className="max-w-none"
+                    />
+                  </motion.div>
+                  <motion.div
+                    className="absolute right-0 top-0"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: activeSectionMobile === 2 ? 1 : 0 }}
+                    transition={{ duration: 0.3, ease: "linear" }}
+                  >
+                    <Image
+                      src="/assets/key-concepts-pebbles-3.png"
+                      alt=""
+                      width={114}
+                      height={202}
+                      sizes="(max-width: 640) 114px, (max-width: 768px) 143px, (max-width: 1024px) 171px, 114px"
+                      className="max-w-none"
+                    />
+                  </motion.div>
+                </div>
+              )}
+              <SectionsContainer>
+                <motion.div
+                  key="renewable"
+                  className={cn("relative z-10 flex max-w-[390px] flex-col gap-y-6 lg:gap-y-5", {
+                    "pointer-events-none": isMobile && activeSectionMobile !== 0,
+                  })}
+                  aria-hidden={isMobile && activeSectionMobile !== 0}
+                  transition={{ duration: 0.3, ease: "linear" }}
+                  {...(isMobile
+                    ? {
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
+                      }
+                    : { style: sectionsStyle[0] })}
+                >
+                  <p id="renewable" className="text-2xl text-green-500 lg:text-4xl">
+                    Renewable
+                  </p>
+                  <p>
+                    <b>Inexhaustible</b>
+                    <br />
+                    Physical resources that are restored by natural processes at a rate equal to or
+                    faster than they are used.
+                  </p>
+                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                    <Lightbulb className="shrink-0" />
+                    <span className="relative top-0.5">
+                      Example: solar radiation, wind, tidal energy, water flow, geothermal energy
+                    </span>
+                  </p>
+                  <p>
+                    <b>Exhaustible</b>
+                    <br />
+                    Biological resources that, if harvested slower than or equal to the rate at
+                    which they are replenished by natural processes. If biotic resources are
+                    harvested faster than they are replaced by natural processes, they become
+                    exhaustible (unsustainable).
+                  </p>
+                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                    <Lightbulb className="shrink-0" />
+                    <span className="relative top-0.5">Example: Timber, kelp, fisheries</span>
+                  </p>
+                  <p>
+                    <b>Recoverable</b>
+                    <br />
+                    Renewable resources that are replenished by natural processes on longer time
+                    scales (decades to centuries).
+                  </p>
+                </motion.div>
+                <motion.div
+                  key="cultivated"
+                  className={cn("flex max-w-[390px] flex-col gap-y-6 lg:gap-y-5", {
+                    absolute: isMobile,
+                    "pointer-events-none": isMobile && activeSectionMobile !== 1,
+                  })}
+                  aria-hidden={isMobile && activeSectionMobile !== 1}
+                  transition={{ duration: 0.3, ease: "linear" }}
+                  {...(isMobile
+                    ? {
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
+                      }
+                    : { style: sectionsStyle[1] })}
+                >
+                  <p id="cultivated" className="text-2xl text-green-500 lg:text-4xl">
+                    Cultivated
+                  </p>
+                  <p>
+                    Ecosystems that are maintained by human intervention but depend on the
+                    underlying environmental assets.
+                  </p>
+                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                    <Lightbulb className="shrink-0" />
+                    <span className="relative top-0.5">
+                      Example: agricultural systems, plantations, urban green spaces
+                    </span>
+                  </p>
+                </motion.div>
+                <motion.div
+                  key="non-renewable"
+                  className={cn("flex max-w-[390px] flex-col gap-y-6 lg:gap-y-5", {
+                    absolute: isMobile,
+                    "pointer-events-none": isMobile && activeSectionMobile !== 2,
+                  })}
+                  aria-hidden={isMobile && activeSectionMobile !== 2}
+                  transition={{ duration: 0.3, ease: "linear" }}
+                  {...(isMobile
+                    ? {
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
+                      }
+                    : { style: sectionsStyle[2] })}
+                >
+                  <p id="non-renewable" className="text-2xl text-green-500 lg:text-4xl">
+                    Non-renewable
+                  </p>
+                  <p>
+                    Non-renewable resources are finite and irreplaceable or those that can only be
+                    replaced over geological timescales.
+                  </p>
+                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                    <Lightbulb className="shrink-0" />
+                    <span className="relative top-0.5">Example: fossil fuels, minerals</span>
+                  </p>
+                </motion.div>
+              </SectionsContainer>
+            </div>
+          </div>
+        </div>
+        <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
+          <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
+          <div className="flex flex-grow flex-col gap-10">
+            <div className="flex items-center gap-3">
+              <h2>Key insights about this chapter</h2>
+              <div className="grow border-t border-t-grey-500"></div>
+            </div>
+            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
+              <li>
+                Assets form the basis of natural capital and can be categorized as either
+                environmental (individual) or ecosystem (interaction of environmental) assets.
+              </li>
+              <li>
+                There are three different resource classes: renewable (inexhaustible, exhaustible
+                and recoverable), cultivated and non-renewable.
+              </li>
+              <li>
+                These classes are determined by the amount of time taken to replenish them and the
+                process in which they are created.
+              </li>
+            </ol>
+          </div>
+        </main>
       </div>
+
       <div
         id="flows-of-services"
         className={cn(
@@ -209,7 +541,7 @@ const KeyConceptsPage: FC = () => {
               <p className="flex flex-row gap-x-4 rounded-[20px] bg-white/20 p-4 text-white backdrop-blur-[10px] lg:py-3">
                 <Lightbulb className="shrink-0" />
                 <span className="relative top-0.5">
-                  Example:  the supply of minerals (including metals) and fossil fuels, as well as
+                  Example: the supply of minerals (including metals) and fossil fuels, as well as
                   geothermal heat, wind, tides, sunlight and hydro-power.
                 </span>
               </p>

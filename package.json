@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "convert-animations": "node src/scripts/csv-parser.mjs src/data/home-pebbles-animations-desktop.csv --transpose && node src/scripts/csv-parser.mjs src/data/home-pebbles-animations-mobile.csv --transpose",
+    "convert-animations": "node src/scripts/csv-parser.mjs src/data/home-pebbles-animations-desktop.csv --transpose && node src/scripts/csv-parser.mjs src/data/home-pebbles-animations-mobile.csv --transpose && node src/scripts/csv-parser.mjs src/data/key-concepts-pebbles-animations-desktop.csv --transpose",
     "dev": "npm run convert-animations && next dev",
     "build": "npm run convert-animations && next build",
     "start": "next start",
