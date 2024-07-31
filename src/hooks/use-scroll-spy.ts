@@ -37,7 +37,9 @@ const useScrollSpy = (items: ScrollSpyItem[], options?: ScrollSpyOptions) => {
         })
         .filter((item) => item !== null);
 
-      const activeItem = itemsPositions?.find(({ top: itemTop, bottom: itemBottom }) => {
+      const activeItem = itemsPositions.find((itemPosition) => {
+        if (!itemPosition) return false;
+        const { top: itemTop, bottom: itemBottom } = itemPosition;
         return itemTop < viewingPosition && itemBottom > viewingPosition;
       });
 
@@ -45,11 +47,11 @@ const useScrollSpy = (items: ScrollSpyItem[], options?: ScrollSpyOptions) => {
         const firstItem = itemsPositions[0];
         const lastItem = itemsPositions[itemsPositions.length - 1];
 
-        if (viewingPosition < firstItem.top) {
+        if (!!firstItem && viewingPosition < firstItem.top) {
           setActiveId(firstItem.id);
         }
 
-        if (viewingPosition > lastItem.bottom) {
+        if (!!lastItem && viewingPosition > lastItem.bottom) {
           setActiveId(lastItem.id);
         }
       } else {
