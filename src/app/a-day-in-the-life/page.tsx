@@ -7,11 +7,13 @@ import Intro from "./intro";
 import { SECTIONS } from "./data";
 import Section from "./section";
 import useScrollSpy from "@/hooks/use-scroll-spy";
+import MobileMenu from "./mobile-menu";
+import type { Link } from "./data";
 
 export default function ADayInTheLife() {
   const [soundOn, setSoundOn] = useState(false);
 
-  const links = [
+  const links: Link[] = [
     {
       text: "Mobile Phone",
       id: "mobile-phone",
@@ -49,6 +51,7 @@ export default function ADayInTheLife() {
           setSoundOn={setSoundOn}
           key={`section-${section.title} `}
           section={section}
+          renderMobileMenu={({ id }) => <MobileMenu id={id} links={links} />}
         />
       ))}
       <Outro />

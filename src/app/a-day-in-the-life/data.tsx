@@ -1,5 +1,12 @@
 import Bell from "@/svgs/bell.svg";
 
+export type Link = {
+  text: string;
+  href: string;
+  ref: React.RefObject<HTMLDivElement>;
+  id: string;
+};
+
 export const LEGEND_TERMS: {
   [key: string]: { title: string; colorClass: string; infoTooltip: string };
 } = {

@@ -43,7 +43,7 @@ const Menu = ({ links, activeId }: { links: Link[]; activeId: string | null }) =
   }: {
     text: string;
     href: string;
-    ref: React.RefObject<HTMLAnchorElement>;
+    ref: React.RefObject<HTMLDivElement>;
   }) => (
     <Link
       key={href}
@@ -63,7 +63,7 @@ const Menu = ({ links, activeId }: { links: Link[]; activeId: string | null }) =
   );
 
   return (
-    <nav className="sticky -top-8 z-20 mx-auto flex h-0 max-w-[1140px] translate-y-[60px] flex-col gap-2.5">
+    <nav className="sticky -top-8 z-20 mx-auto hidden h-0 max-w-[1140px] translate-y-[60px] flex-col gap-2.5 lg:flex">
       <div className="flex h-11 items-center gap-2 rounded-[40px] border border-black bg-white/10 p-1 text-black backdrop-blur-[80px]">
         {links.map(link)}
       </div>

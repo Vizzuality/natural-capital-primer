@@ -41,7 +41,7 @@ const BackgroundVideo = ({ src }: { src: string }) => {
       loop
       muted
       playsInline
-      className="absolute inset-0 h-[800px] w-full object-cover opacity-20 mix-blend-luminosity motion-reduce:hidden"
+      className="pointer-events-none absolute inset-0 h-[800px] w-full object-cover opacity-20 mix-blend-luminosity motion-reduce:hidden"
     />
   );
 };

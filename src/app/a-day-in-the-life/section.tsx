@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import AudioIconOn from "@/svgs/audio-icon-on.svg";
 import AudioIconOff from "@/svgs/audio-icon-off.svg";
 import BackgroundVideo from "@/components/bg-video";
+
 const CENTER_CLASSES = "mx-auto flex max-w-7xl px-6 lg:px-20";
 const ADJUSTMENT_LEFT_MARGIN = "lg:ml-[220px]";
 
@@ -30,16 +31,19 @@ const Section = ({
   sectionRef,
   soundOn,
   setSoundOn,
+  renderMobileMenu,
 }: {
   section: SectionType;
   sectionRef: React.RefObject<HTMLDivElement>;
   soundOn: boolean;
   setSoundOn: (value: boolean) => void;
+  renderMobileMenu: ({ id }: { id: string }) => React.ReactElement;
 }) => {
   return (
     <section id={id} className={`${bgClass} relative text-black`} ref={sectionRef}>
+      {renderMobileMenu({ id })}
       <div className="relative z-10 mx-auto max-w-7xl">
-        <div className={`h-[800px] max-h-[800px] px-6 pt-[163px] lg:px-20`}>
+        <div className={`h-[800px] max-h-[800px] px-6 lg:px-20 lg:pt-[163px]`}>
           <div className="z-10 flex h-[220px] max-w-[826px] flex-col gap-5 lg:gap-10">
             <div className="lg:text-4.5xl text-2xl">{title}</div>
             <div className="inline-flex items-center justify-start gap-3">
