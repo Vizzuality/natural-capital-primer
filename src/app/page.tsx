@@ -345,8 +345,8 @@ export default function Home() {
       </div>
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-6 p-6 text-center lg:gap-y-5">
-          <h2 className="max-w-[820px] text-2xl lg:text-[62px] lg:leading-[68px]">
-            Understanding and valuing natural capital is crucial.
+          <h2 className="lg:text-4.5xl max-w-[820px] text-2xl">
+            Understanding and valuing natural capital is crucial
           </h2>
           <p className="max-w-[820px]">
             We can make informed choices to use and conserve our planet&apos;s resources by

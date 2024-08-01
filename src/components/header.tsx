@@ -97,7 +97,9 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
       >
         <Button variant="link" size="auto" className={cn(logoVariants({ logo }))} asChild>
           <Link href="/" className="-m-1.5 p-1.5">
-            {(!logo || logo === "default") && <Logo className="h-8" aria-hidden="true" />}
+            {(!logo || logo === "default") && (
+              <Logo className="h-8 text-white" aria-hidden="true" />
+            )}
             {logo && logo !== "default" && <LogoMonochrome className="h-8" aria-hidden="true" />}
             <span className="sr-only">Natural Capital Primer</span>
           </Link>
