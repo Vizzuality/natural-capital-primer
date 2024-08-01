@@ -4,7 +4,10 @@ import { FC } from "react";
 import ImageCarousel from "@/components/image-carousel";
 import MarqueeAnimation from "@/components/animations/marquee";
 
-const DayInLifeMarquee: FC = () => {
+const DayInLifeMarquee: FC<{
+  heightClass?: string;
+  widthClass?: string;
+}> = ({ heightClass = "h-[224px] lg:h-[321px]", widthClass = "w-[227px] lg:w-[325px]" }) => {
   return (
     <>
       <svg width="0" height="0">
@@ -30,7 +33,9 @@ const DayInLifeMarquee: FC = () => {
         className="absolute top-1/2 z-20 flex w-full -translate-y-1/2 flex-col items-center justify-center"
         aria-hidden="true"
       >
-        <div className="h-[224px] w-[227px] [clip-path:_url(#pebble-clip-mobile)] lg:h-[321px] lg:w-[325px] lg:[clip-path:_url(#pebble-clip-desktop)]">
+        <div
+          className={`${heightClass} ${widthClass} [clip-path:_url(#pebble-clip-mobile)] lg:[clip-path:_url(#pebble-clip-desktop)]`}
+        >
           <MarqueeAnimation className="absolute left-0 top-1/2 w-full -translate-y-1/2">
             <p className="text-[52px] text-orange lg:text-[85px]">
               A Day in the Life ⎯ A Day in the Life ⎯ A Day in the Life
@@ -54,7 +59,7 @@ const DayInLifeMarquee: FC = () => {
           },
         ]}
         alt=""
-        className="mx-auto h-[224px] w-[227px] lg:h-[321px] lg:w-[325px]"
+        className={`${heightClass} ${widthClass} mx-auto`}
       />
     </>
   );
