@@ -44,16 +44,20 @@ export default function ADayInTheLife() {
     <>
       <Intro />
       <Menu links={links} activeId={scrollActiveId} />
-      {SECTIONS.map((section) => (
-        <Section
-          sectionRef={links.find((link) => link.id === section.id)?.ref}
-          soundOn={soundOn}
-          setSoundOn={setSoundOn}
-          key={`section-${section.title} `}
-          section={section}
-          renderMobileMenu={({ id }) => <MobileMenu id={id} links={links} />}
-        />
-      ))}
+      {SECTIONS.map((section) => {
+        const sectionRef = links.find((link) => link.id === section.id)?.ref;
+        if (!sectionRef) return null;
+        return (
+          <Section
+            sectionRef={sectionRef}
+            soundOn={soundOn}
+            setSoundOn={setSoundOn}
+            key={`section-${section.title} `}
+            section={section}
+            renderMobileMenu={({ id }) => <MobileMenu id={id} links={links} />}
+          />
+        );
+      })}
       <Outro />
       <Footer />
     </>
