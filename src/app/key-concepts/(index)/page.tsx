@@ -16,6 +16,7 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment, useCallback, useRef, useState } from "react";
+import FadeInOnScroll from "@/components/animations/fade-in-on-scroll";
 
 const KeyConceptsPage: FC = () => {
   const [chapter1Tab, setChapter1Tab] = useState("environmental");
@@ -111,7 +112,18 @@ const KeyConceptsPage: FC = () => {
 
   return (
     <>
-      <Header />
+      <Header
+        headerClassName="fixed inset-0 w-full h-[92px] bg-white z-40"
+        anchors={
+          <FadeInOnScroll>
+            <nav className="flex gap-12">
+              <Link href="/key-concepts/#assets-and-resources">Assets and Resources</Link>
+              <Link href="/key-concepts/#flows-of-services">Flows of Services</Link>
+              <Link href="/key-concepts/#dependencies-and-impacts">Dependencies and Impacts</Link>
+            </nav>
+          </FadeInOnScroll>
+        }
+      />
       <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 pb-10 pt-10 lg:flex-row lg:gap-x-10 lg:px-20 lg:pb-20 lg:pt-36 xl:pt-64">
         <h1 className="flex-shrink-0 text-[52px] font-medium leading-none lg:w-[calc(50%_-_20px)] lg:text-[62px]">
           What is <span className="xl:whitespace-nowrap">Natural Capital?</span>
@@ -348,9 +360,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
-                      }
+                      initial: { opacity: 0 },
+                      animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
+                    }
                     : { style: sectionsStyle[0] })}
                 >
                   <p id="renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -397,9 +409,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
-                      }
+                      initial: { opacity: 0 },
+                      animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
+                    }
                     : { style: sectionsStyle[1] })}
                 >
                   <p id="cultivated" className="text-2xl text-green-500 lg:text-4xl">
@@ -426,9 +438,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
-                      }
+                      initial: { opacity: 0 },
+                      animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
+                    }
                     : { style: sectionsStyle[2] })}
                 >
                   <p id="non-renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -454,7 +466,7 @@ const KeyConceptsPage: FC = () => {
               <h2>Key insights about this chapter</h2>
               <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Assets form the basis of natural capital and can be categorized as either
                 environmental (individual) or ecosystem (interaction of environmental) assets.
@@ -654,7 +666,7 @@ const KeyConceptsPage: FC = () => {
               <h2>Key insights about this chapter</h2>
               <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Natural capital assets produce two types of services: abiotic services (geological
                 and physical processes) and ecosystem services (ecological processes).
@@ -890,7 +902,7 @@ const KeyConceptsPage: FC = () => {
               <h2>Key insights about this chapter</h2>
               <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Businesses depend on natural capital assets and ecosystem services to operate
                 effectively, such as extracting non-renewable resources or utilizing renewable

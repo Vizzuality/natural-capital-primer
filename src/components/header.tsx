@@ -31,7 +31,11 @@ const logoVariants = cva("", {
   },
 });
 
-const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
+const Header: FC<{
+  logo?: VariantProps<typeof logoVariants>["logo"];
+  headerClassName?: string;
+  anchors?: React.ReactElement;
+}> = ({ logo, anchors, headerClassName }) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -90,7 +94,7 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
   );
 
   return (
-    <header>
+    <header className={headerClassName}>
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-20"
         aria-label="Global"
@@ -104,6 +108,7 @@ const Header: FC<VariantProps<typeof logoVariants>> = ({ logo }) => {
             <span className="sr-only">Natural Capital Primer</span>
           </Link>
         </Button>
+        {anchors}
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button type="button" className="h-11 px-3 hover:bg-black lg:h-auto lg:pl-2.5">
