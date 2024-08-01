@@ -43,20 +43,20 @@ const Section = ({
     <section id={id} className={`${bgClass} relative text-black`} ref={sectionRef}>
       {renderMobileMenu({ id })}
       <div className="relative z-10 mx-auto max-w-7xl">
-        <div className={`h-[800px] max-h-[800px] px-6 lg:px-20 lg:pt-[163px]`}>
+        <div className="h-[657px] max-h-[657px] px-6 lg:h-[800px] lg:max-h-[800px] lg:px-20 lg:pt-[163px]">
           <div className="z-10 flex h-[220px] max-w-[826px] flex-col gap-5 lg:gap-10">
             <div className="lg:text-4.5xl text-2xl">{title}</div>
             <div className="inline-flex items-center justify-start gap-3">
               <Button
                 variant="transparent"
-                className="flex cursor-pointer gap-2 p-0"
+                className="flex cursor-pointer gap-3 p-0 lg:gap-2"
                 onClick={() => setSoundOn(!soundOn)}
               >
                 <>
                   {soundOn ? (
-                    <AudioIconOff className="h-11 w-11 rounded-full bg-black" />
+                    <AudioIconOff className="h-[52px] w-[52px] rounded-full bg-black lg:h-11 lg:w-11" />
                   ) : (
-                    <AudioIconOn className="h-11 w-11 rounded-full bg-black" />
+                    <AudioIconOn className="h-[52px] w-[52px] rounded-full bg-black lg:h-11 lg:w-11" />
                   )}
                   <span>Click to turn sound on</span>
                 </>
@@ -73,7 +73,7 @@ const Section = ({
         <div
           className={cn(
             ADJUSTMENT_LEFT_MARGIN,
-            "absolute flex max-h-[465px] min-h-[465px] w-full justify-end max-lg:-mt-[365px] lg:-top-[365px] lg:right-0 lg:mx-auto lg:h-full lg:max-w-[1068px] lg:pl-20 xl:mr-[calc((100vw_-_1280px)_/_2)]",
+            "absolute -top-[425px] flex max-h-[465px] min-h-[465px] w-full justify-end lg:-top-[365px] lg:right-0 lg:mx-auto lg:h-full lg:max-w-[1068px] lg:pl-20 xl:mr-[calc((100vw_-_1280px)_/_2)]",
           )}
         >
           <Image
@@ -86,7 +86,7 @@ const Section = ({
           <div className="absolute -top-[90px] right-[56px] lg:-top-[165px] lg:right-[112px]">
             <Pebble className="h-[163px] w-[158px] text-black lg:h-[250px] lg:w-[258px]" />
             <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
-              {SvgIcon}
+              <SvgIcon className="max-lg:h-16 max-lg:w-16" />
             </div>
           </div>
         </div>
@@ -98,7 +98,7 @@ const Section = ({
           </div>
         </div>
       </div>
-      <div className="flex w-full flex-col justify-start gap-y-10 bg-white pb-[68px] pt-[114px] text-black lg:gap-y-6 lg:pt-[347px]">
+      <div className="flex w-full flex-col justify-start gap-y-10 bg-white pb-[68px] pt-10 text-black lg:gap-y-6 lg:pt-[347px]">
         {/* Blue story div mobile */}
         <div className={cn("mx-auto block max-w-7xl pl-6 lg:hidden")}>
           <div className="flex flex-col justify-center gap-8 bg-black px-6 py-10 text-white lg:ml-[220px] lg:p-[60px]">

@@ -47,7 +47,7 @@ export interface SectionType {
   title: string;
   mainImageURL: string;
   videoURL: string;
-  SvgIcon: JSX.Element;
+  SvgIcon: React.FC<{ className?: string }>;
   bgClass: string;
   borderColorClass?: string;
   story: JSX.Element;
@@ -69,7 +69,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie’s mobile phone alarm goes off in the morning.",
     mainImageURL: "/assets/a-day-in-the-life-1.webp",
     videoURL: "/assets/video/a-day-in-the-life-1.mp4",
-    SvgIcon: <Bell className="max-lg:h-12 max-lg:w-12" />,
+    SvgIcon: Bell,
     bgClass: "bg-orange",
     story: (
       <>
@@ -110,7 +110,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie gets up and then she has a shower.",
     mainImageURL: "/assets/a-day-in-the-life-2.webp",
     videoURL: "/assets/video/a-day-in-the-life-2.mp4",
-    SvgIcon: <Bell />,
+    SvgIcon: Bell,
     bgClass: "bg-blue-500",
     story: (
       <>
@@ -154,7 +154,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie puts on her clothes.",
     mainImageURL: "/assets/a-day-in-the-life-3.webp",
     videoURL: "/assets/video/a-day-in-the-life-3.mp4",
-    SvgIcon: <Bell />,
+    SvgIcon: Bell,
     bgClass: "bg-purple",
     story: (
       <>
@@ -194,7 +194,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie turns on the kettle and prepares her morning coffee.",
     mainImageURL: "/assets/a-day-in-the-life-4.webp",
     videoURL: "/assets/video/a-day-in-the-life-4.mp4",
-    SvgIcon: <Bell />,
+    SvgIcon: Bell,
     bgClass: "bg-lime",
     story: (
       <>
@@ -234,7 +234,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie has a slice of toast and butter for breakfast.",
     mainImageURL: "/assets/a-day-in-the-life-5.webp",
     videoURL: "/assets/video/a-day-in-the-life-5.mp4",
-    SvgIcon: <Bell />,
+    SvgIcon: Bell,
     bgClass: "bg-orange-500",
     story: (
       <>
@@ -273,7 +273,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie catches the train to the city.",
     mainImageURL: "/assets/a-day-in-the-life-6.webp",
     videoURL: "/assets/video/a-day-in-the-life-6.mp4",
-    SvgIcon: <Bell />,
+    SvgIcon: Bell,
     bgClass: "bg-turquoise",
     story: (
       <>
@@ -315,7 +315,7 @@ export const SECTIONS: SectionType[] = [
     mainImageURL: "/assets/a-day-in-the-life-7.webp",
     videoURL: "/assets/video/a-day-in-the-life-7.mp4",
 
-    SvgIcon: <Bell />,
+    SvgIcon: Bell,
     bgClass: "bg-pink",
     story: (
       <>
