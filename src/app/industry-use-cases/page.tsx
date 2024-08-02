@@ -8,7 +8,7 @@ import { FC } from "react";
 const IndustryUseCasesPage: FC = () => {
   return (
     <>
-      <Header headerClassName="fixed inset-0 w-full h-[92px] bg-white z-40" />
+      <Header logo="color" headerClassName="fixed inset-0 w-full h-[92px] bg-white z-40" />
       <div className="mx-auto mt-[84px] flex max-w-7xl flex-col gap-x-10 gap-y-6 p-6 pb-10 pt-10 lg:mt-0 lg:gap-y-[60px] lg:px-20 lg:pb-20 lg:pt-36 xl:pt-64">
         <div className="text-black lg:hidden">Industry Use Cases</div>
         <h1 className="flex-shrink-0 text-2xl font-medium leading-9 lg:max-w-[974px] lg:text-5xl lg:leading-none lg:tracking-tight">
