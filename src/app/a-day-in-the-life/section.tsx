@@ -55,7 +55,7 @@ const Section = ({
   };
 
   const pebbleAnimation = {
-    y: useTransform(scrollYProgress, [0, 0.8], [0, -500]),
+    y: useTransform(scrollYProgress, [0, 1], [0, -500]),
   };
 
   scrollYProgress.on("change", (v) => {
