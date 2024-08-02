@@ -19,7 +19,8 @@ export const LEGEND_TERMS: {
   "renewable-resource": {
     title: "Renewable resource",
     colorClass: "bg-purple",
-    infoTooltip: "",
+    infoTooltip:
+      "Renewable resources can be restored by natural processes at a rate equal to or faster than they are used.",
   },
 };
 
