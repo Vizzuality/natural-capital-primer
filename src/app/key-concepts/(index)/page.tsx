@@ -1,4 +1,6 @@
 "use client";
+
+import dynamic from "next/dynamic";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import DayInLifeCTA from "@/components/day-in-life-cta";
 import Footer from "@/components/footer";
@@ -16,7 +18,11 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment, useCallback, useRef, useState } from "react";
-import FadeInOnScroll from "@/components/animations/fade-in-on-scroll";
+
+// FadeInOnScroll component uses window object, which is not available in SSR
+const FadeInOnScroll = dynamic(() => import("@/components/animations/fade-in-on-scroll"), {
+  ssr: false,
+});
 
 const KeyConceptsPage: FC = () => {
   const [chapter1Tab, setChapter1Tab] = useState("environmental");
