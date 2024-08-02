@@ -263,7 +263,7 @@ const KeyConceptsPage: FC = () => {
             className="relative flex w-full flex-col justify-start gap-y-6 lg:h-[450vh] lg:flex-row lg:items-start lg:justify-between lg:gap-x-16"
             ref={scrollSectionRef}
           >
-            <ul className="flex flex-shrink-0 flex-row gap-4 lg:sticky lg:top-20 lg:h-[calc(100vh_-_80px)] lg:w-[220px] lg:flex-col">
+            <ul className="flex flex-shrink-0 flex-row gap-4 lg:sticky lg:top-24 lg:h-[calc(100vh_-_80px)] lg:w-[220px] lg:flex-col">
               <motion.li style={{ ...sectionsLinkStyle[0] }}>
                 <Button
                   type="button"
@@ -298,7 +298,7 @@ const KeyConceptsPage: FC = () => {
                 </Button>
               </motion.li>
             </ul>
-            <div className="relative flex flex-grow flex-col gap-6 pt-36 lg:sticky lg:top-20 lg:h-[calc(100vh_-_80px)] lg:gap-20 lg:pt-0">
+            <div className="relative flex flex-grow flex-col gap-6 pt-36 lg:sticky lg:top-24 lg:h-[calc(100vh_-_80px)] lg:gap-20 lg:pt-0">
               {!isMobile && (
                 <div className="absolute right-0 top-0 lg:-right-32">
                   <Pebble index={1} scrollYProgress={scrollYProgress} />
