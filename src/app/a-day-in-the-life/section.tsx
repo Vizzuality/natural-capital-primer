@@ -98,7 +98,7 @@ const Section = ({
             {activeImage === 1 && (
               <motion.div
                 style={{ backgroundImage: `url(${mainImageURL})` }}
-                className="hidden min-h-full w-[1024px] object-none object-[-70px_0] lg:block lg:object-cover lg:object-[0_-30px]"
+                className="hidden lg:block lg:min-h-full lg:w-[1024px] lg:bg-cover"
                 key={`image-${id}-1`}
                 layoutId={`image-${id}`}
                 layout
@@ -109,8 +109,8 @@ const Section = ({
                 style={{ backgroundImage: `url(${mainImageURL})`, ...imageAnimation }}
                 initial={{ translateY: 0 }}
                 animate={{ translateY: 400 }}
-                transition={{ duration: 0.5 }}
-                className="hidden min-h-full w-screen bg-cover lg:block lg:object-cover lg:object-[0_-30px]"
+                transition={{ duration: 0.7, ease: "easeInOut" }}
+                className="hidden lg:block lg:min-h-full lg:w-screen lg:bg-cover"
                 key={`image-${id}-2`}
                 layoutId={`image-${id}`}
                 layout
