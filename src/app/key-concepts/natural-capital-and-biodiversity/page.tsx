@@ -141,7 +141,7 @@ export default function Biodiversity() {
             <div className="flex-shrink-0 lg:w-[220px]" />
             <div className="flex flex-grow flex-col gap-10 lg:max-w-[559px]">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-pink lg:text-5xl">01</div>
+                <div className="text-4.2xl text-pink lg:text-5xl">01</div>
                 <div className="text-2xl lg:text-4xl">
                   Resilience to
                   <br />
@@ -167,7 +167,7 @@ export default function Biodiversity() {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-pink lg:text-5xl">02</div>
+                <div className="text-4.2xl text-pink lg:text-5xl">02</div>
                 <div className="text-2xl lg:text-4xl">Well-defined and measurable attributes</div>
                 <div>
                   Biodiversity has well-defined and measurable attributes (e.g., the number of

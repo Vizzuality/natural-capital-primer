@@ -122,7 +122,7 @@ const KeyConceptsPage: FC = () => {
         headerClassName="fixed inset-0 w-full h-[92px] bg-white z-40"
         anchors={
           <FadeInOnScroll>
-            <nav className="flex gap-12">
+            <nav className="hidden gap-12 lg:flex">
               <Link href="/key-concepts/#assets-and-resources">Assets and Resources</Link>
               <Link href="/key-concepts/#flows-of-services">Flows of Services</Link>
               <Link href="/key-concepts/#dependencies-and-impacts">Dependencies and Impacts</Link>
@@ -130,11 +130,11 @@ const KeyConceptsPage: FC = () => {
           </FadeInOnScroll>
         }
       />
-      <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 pb-10 pt-10 lg:flex-row lg:gap-x-10 lg:px-20 lg:pb-20 lg:pt-36 xl:pt-64">
-        <h1 className="flex-shrink-0 text-[52px] font-medium leading-none lg:w-[calc(50%_-_20px)] lg:text-[62px]">
+      <div className="mx-auto mt-[84px] flex max-w-7xl flex-col gap-x-10 gap-y-6 p-6 pb-10 pt-10 lg:mt-0 lg:gap-y-[60px] lg:px-20 lg:pb-20 lg:pt-36 xl:pt-64">
+        <h1 className="flex-shrink-0 text-[52px] font-medium leading-[52px] lg:max-w-[974px] lg:text-5xl lg:leading-none lg:tracking-tight">
           What is <span className="xl:whitespace-nowrap">Natural Capital?</span>
         </h1>
-        <div className="flex flex-col gap-y-4">
+        <div className="flex max-w-[827px] flex-col gap-y-4 lg:text-xl">
           <p>
             Natural capital refers to all biotic (living) and abiotic (non-living) natural resources
             present in a defined area that produce flows of services that yield value to society.
@@ -589,7 +589,7 @@ const KeyConceptsPage: FC = () => {
             <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
             <div className="flex flex-grow flex-col gap-6 lg:gap-20">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-blue-500 lg:text-5xl">01</div>
+                <div className="text-4.2xl text-blue-500 lg:text-5xl">01</div>
                 <div className="text-2xl lg:text-4xl">Supporting services</div>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
                   <p>
@@ -607,7 +607,7 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-blue-500 lg:text-5xl">02</div>
+                <div className="text-4.2xl text-blue-500 lg:text-5xl">02</div>
                 <div className="text-2xl lg:text-4xl">Regulating</div>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
                   <p>
@@ -626,7 +626,7 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-blue-500 lg:text-5xl">03</div>
+                <div className="text-4.2xl text-blue-500 lg:text-5xl">03</div>
                 <div className="text-2xl lg:text-4xl">Provisioning</div>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
                   <p>
@@ -643,7 +643,7 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-blue-500 lg:text-5xl">04</div>
+                <div className="text-4.2xl text-blue-500 lg:text-5xl">04</div>
                 <div className="text-2xl lg:text-4xl">Cultural</div>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
                   <p>
@@ -841,7 +841,7 @@ const KeyConceptsPage: FC = () => {
             <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
             <div className="flex flex-grow flex-col gap-6 lg:gap-20">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-orange-500 lg:text-5xl">01</div>
+                <div className="text-4.2xl text-orange-500 lg:text-5xl">01</div>
                 <div className="text-2xl lg:text-4xl">Direct</div>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
                   <p>
@@ -858,7 +858,7 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-orange-500 lg:text-5xl">02</div>
+                <div className="text-4.2xl text-orange-500 lg:text-5xl">02</div>
                 <div className="text-2xl lg:text-4xl">Indirect</div>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
                   <p>
@@ -877,7 +877,7 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-orange-500 lg:text-5xl">03</div>
+                <div className="text-4.2xl text-orange-500 lg:text-5xl">03</div>
                 <div className="text-2xl lg:text-4xl">Cumulative</div>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
                   <p>

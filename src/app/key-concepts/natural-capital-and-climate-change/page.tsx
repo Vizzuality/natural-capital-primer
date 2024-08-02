@@ -52,15 +52,15 @@ export default function ClimateChange() {
             <div className="flex-shrink-0 lg:w-[220px]" />
             <div className="flex flex-grow flex-col gap-6 lg:max-w-[559px] lg:gap-20">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-turquoise lg:text-5xl">01</div>
+                <div className="text-4.2xl text-turquoise lg:text-5xl">01</div>
                 <div className="text-2xl lg:text-4xl">Reducing emissions</div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-turquoise lg:text-5xl">02</div>
+                <div className="text-4.2xl text-turquoise lg:text-5xl">02</div>
                 <div className="text-2xl lg:text-4xl">Sequestering carbon</div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-[52px] leading-[48px] text-turquoise lg:text-5xl">03</div>
+                <div className="text-4.2xl text-turquoise lg:text-5xl">03</div>
                 <div className="text-2xl lg:text-4xl">Growing our natural capital asset base</div>
               </div>
               <div className="flex w-full gap-6">
