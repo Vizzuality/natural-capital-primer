@@ -225,7 +225,7 @@ export default function Home() {
         </div>
       </div>
       <div className="relative h-[600vh]" ref={scrollSectionRef}>
-        <main className="sticky top-0 mx-auto h-[100vh] max-w-7xl overflow-hidden px-6 pb-20 pt-10 lg:pb-12 lg:pt-24 xl:overflow-visible">
+        <main className="sticky top-0 mx-auto min-h-[100vh] max-w-7xl overflow-hidden px-6 pb-20 pt-10 lg:pb-[280px] lg:pt-24 xl:overflow-visible">
           <div className="absolute right-0 top-2/3 lg:right-32 lg:top-1/2">
             <Pebble index={1} scrollYProgress={scrollYProgress} />
             <Pebble index={2} scrollYProgress={scrollYProgress} />
@@ -345,7 +345,7 @@ export default function Home() {
       </div>
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-6 p-6 text-center lg:gap-y-5">
-          <h2 className="lg:text-4.5xl max-w-[820px] text-2xl">
+          <h2 className="max-w-[820px] text-2xl lg:text-4.5xl">
             Understanding and valuing natural capital is crucial
           </h2>
           <p className="max-w-[820px]">
