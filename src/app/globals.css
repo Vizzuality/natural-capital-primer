@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.collapsible-content[data-state="open"] {
+  animation: slideDown 400ms ease-out;
+}
+
+.collapsible-content[data-state="closed"] {
+  animation: slideUp 400ms ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 10%;
+    transform: translateY(-1rem);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 10%;
+    transform: translateY(-1rem);
+  }
+}
