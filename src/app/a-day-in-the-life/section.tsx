@@ -45,21 +45,22 @@ const Section = ({
 }) => {
   const scrollSectionRef = useRef(null);
   const [activeImage, setActiveImage] = useState(0);
+
   const { scrollYProgress } = useScroll({
-    target: scrollSectionRef,
+    target: sectionRef,
   });
 
   const imageAnimation = {
-    marginTop: useTransform(scrollYProgress, [0.3, 1], [0, 360]),
-    height: useTransform(scrollYProgress, [0.3, 1], [465, 800]),
+    marginTop: useTransform(scrollYProgress, [0, 0.15], [0, 360]),
+    height: useTransform(scrollYProgress, [0, 0.15], [465, 800]),
   };
 
   const pebbleAnimation = {
-    y: useTransform(scrollYProgress, [0, 1], [0, -500]),
+    y: useTransform(scrollYProgress, [0, 0.3], [0, -500]),
   };
 
   scrollYProgress.on("change", (v) => {
-    setActiveImage(v > 0.95 ? 1 : 0);
+    setActiveImage(v > 0.15 ? 1 : 0);
   });
 
   return (
@@ -203,7 +204,7 @@ const Section = ({
               ))}
             </ul>
             <div className="flex h-fit">
-              <div className="border-t border-solid border-t-black lg:mx-10">
+              <div className="border-t border-solid border-t-black lg:ml-10">
                 <div className="divide-y-black flex flex-col space-y-5 divide-y divide-dashed">
                   {legend && (
                     <div className="pt-10 lg:pt-5">
@@ -238,10 +239,8 @@ const Section = ({
             </div>
           </div>
         </div>
-        <div
-          className={cn(CENTER_CLASSES, "w-full flex-col max-lg:border-t max-lg:border-t-black")}
-        >
-          <div className="max-lg:mt-10 lg:ml-20 xl:ml-[220px]">
+        <div className={cn(CENTER_CLASSES, "w-full flex-col")}>
+          <div className="max-lg:border-t max-lg:border-t-black max-lg:pt-10 lg:ml-20 xl:ml-[220px]">
             <div className="inline-flex w-full items-center gap-5 pb-3 lg:pb-10">
               <span>Importance</span>
               <span className="hidden h-px w-full bg-black lg:block"></span>
