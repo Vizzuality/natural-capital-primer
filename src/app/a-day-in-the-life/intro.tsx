@@ -11,7 +11,7 @@ const Intro: FC = () => (
       <Header menuVariant="white" />
     </div>
     <div className="relative mt-10 flex w-full items-center justify-center lg:absolute lg:top-[23vh] lg:mt-0 lg:h-[30vh] lg:px-20">
-      <DayInLifeMarquee widthClass="w-[248px] lg:w-[382px]" heightClass="h-[251px] lg:h-[386px]" />
+      <DayInLifeMarquee />
     </div>
     <div className="relative mt-10 w-full lg:absolute lg:bottom-[75px] lg:mt-0">
       <div className="mx-auto flex max-w-7xl justify-between px-6 lg:px-20">

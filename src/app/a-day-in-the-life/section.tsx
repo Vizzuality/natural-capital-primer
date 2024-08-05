@@ -68,7 +68,7 @@ const Section = ({
       <div className="relative z-10 mx-auto max-w-7xl" ref={scrollSectionRef}>
         <div className="h-[657px] max-h-[657px] px-6 lg:h-[800px] lg:max-h-[800px] lg:px-20 lg:pt-[163px]">
           <div className="z-10 flex h-[220px] max-w-[826px] flex-col gap-5 lg:gap-10">
-            <div className="lg:text-4.5xl text-2xl">{title}</div>
+            <div className="text-2xl lg:text-4.5xl">{title}</div>
             <div className="inline-flex items-center justify-start gap-3">
               <Button
                 variant="transparent"
@@ -138,8 +138,12 @@ const Section = ({
           </motion.div>
         </div>
         {/* Blue story div laptop */}
-        <div className={cn("mx-auto hidden max-w-7xl translate-y-[545px] pl-6 lg:flex lg:pl-20")}>
-          <div className="flex flex-col justify-center gap-8 bg-black p-[60px] text-white lg:ml-[220px]">
+        <div
+          className={cn(
+            "mx-auto hidden max-w-7xl translate-y-[545px] pl-6 lg:flex lg:max-h-[480px] lg:pl-20",
+          )}
+        >
+          <div className="flex flex-col justify-center gap-8 bg-black p-[60px] text-white xl:ml-[220px]">
             <div className="max-w-[915px] pb-8 text-4xl">{story}</div>
             <div className="text-xl leading-7">{question}</div>
           </div>
@@ -154,7 +158,7 @@ const Section = ({
           </div>
         </div>
         <div className={cn(CENTER_CLASSES, "w-full lg:mb-[68px] lg:gap-x-16")}>
-          <div className="divide-x-black flex flex-col items-end gap-10 lg:ml-[220px] lg:min-w-[975px] lg:flex-row">
+          <div className="divide-x-black flex flex-col items-end gap-10 lg:ml-20 lg:flex-row xl:ml-[220px]">
             <div className="w-full lg:border-r lg:border-dashed lg:border-r-black lg:pr-[69px]">
               {processes.map((process, i) => (
                 <div
@@ -237,7 +241,7 @@ const Section = ({
         <div
           className={cn(CENTER_CLASSES, "w-full flex-col max-lg:border-t max-lg:border-t-black")}
         >
-          <div className="max-lg:mt-10 lg:ml-[220px]">
+          <div className="max-lg:mt-10 lg:ml-20 xl:ml-[220px]">
             <div className="inline-flex w-full items-center gap-5 pb-3 lg:pb-10">
               <span>Importance</span>
               <span className="hidden h-px w-full bg-black lg:block"></span>
