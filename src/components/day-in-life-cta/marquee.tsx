@@ -23,9 +23,9 @@ const DayInLifeMarquee: FC = () => {
       {/* White marquee */}
       <div className="pointer-events-none absolute top-1/2 z-10 w-full -translate-y-1/2">
         <MarqueeAnimation>
-          <p className="text-[52px] text-white lg:text-[85px]">
+          <h1 className="text-[52px] text-white lg:text-[85px]">
             A Day in the Life ⎯ A Day in the Life ⎯ A Day in the Life
-          </p>
+          </h1>
         </MarqueeAnimation>
       </div>
       {/* Orange masked marquee */}

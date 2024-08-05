@@ -68,7 +68,7 @@ const Section = ({
       <div className="relative z-10 mx-auto max-w-7xl" ref={scrollSectionRef}>
         <div className="h-[657px] max-h-[657px] px-6 lg:h-[800px] lg:max-h-[800px] lg:px-20 lg:pt-[163px]">
           <div className="z-10 flex h-[220px] max-w-[826px] flex-col gap-5 lg:gap-10">
-            <div className="text-2xl lg:text-4.5xl">{title}</div>
+            <h2 className="text-2xl lg:text-4.5xl">{title}</h2>
             <div className="inline-flex items-center justify-start gap-3">
               <Button
                 variant="transparent"
@@ -159,9 +159,9 @@ const Section = ({
         </div>
         <div className={cn(CENTER_CLASSES, "w-full lg:mb-[68px] lg:gap-x-16")}>
           <div className="divide-x-black flex flex-col items-end gap-10 lg:ml-20 lg:flex-row xl:ml-[220px]">
-            <div className="w-full lg:border-r lg:border-dashed lg:border-r-black lg:pr-[69px]">
+            <ul className="w-full lg:border-r lg:border-dashed lg:border-r-black lg:pr-[69px]">
               {processes.map((process, i) => (
-                <div
+                <li
                   key={`process-${process.image} `}
                   className="flex flex-col items-center gap-[25px] lg:min-w-[472px]"
                 >
@@ -199,9 +199,9 @@ const Section = ({
                       <CaretDown className="max-lg:h-[18px]" />
                     </div>
                   )}
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
             <div className="flex h-fit">
               <div className="border-t border-solid border-t-black lg:mx-10">
                 <div className="divide-y-black flex flex-col space-y-5 divide-y divide-dashed">

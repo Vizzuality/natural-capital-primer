@@ -10,9 +10,9 @@ import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 
 const Outro = () => (
   <div className="flex flex-col items-center justify-center gap-10 border-t border-t-black px-6 py-20 text-black lg:px-[60px]">
-    <div className="max-w-[858px] text-center text-2xl tracking-tight lg:text-4.5xl">
+    <h2 className="max-w-[858px] text-center text-2xl tracking-tight lg:text-4.5xl">
       Understanding and valuing natural capital is crucial.
-    </div>
+    </h2>
     <div className="max-w-[830px] text-center">
       By following Julie&apos;s day, we see how deeply intertwined our lives are with natural
       capital. Every product and service we rely on depends on these vital resources, highlighting
