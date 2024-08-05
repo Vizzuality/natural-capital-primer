@@ -54,9 +54,12 @@ const Menu = ({ links, activeId }: { links: Link[]; activeId: string | null }) =
           ref?.current.scrollIntoView({ behavior: "smooth" });
         }
       }}
-      className={cn("flex h-full grow items-center justify-center gap-2 rounded-[50px] px-5", {
-        "bg-black text-white": isActive(href),
-      })}
+      className={cn(
+        "flex h-9 grow items-center justify-center gap-2 rounded-[50px] px-5 hover:bg-grey-500/10",
+        {
+          "bg-black text-white hover:bg-black": isActive(href),
+        },
+      )}
     >
       <div>{text}</div>
     </Link>

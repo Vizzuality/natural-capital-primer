@@ -34,9 +34,10 @@ const logoVariants = cva("", {
 
 const Header: FC<{
   logo?: VariantProps<typeof logoVariants>["logo"];
+  menuVariant?: "white";
   headerClassName?: string;
   anchors?: React.ReactElement;
-}> = ({ logo, anchors, headerClassName }) => {
+}> = ({ logo, menuVariant, anchors, headerClassName }) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -44,6 +45,10 @@ const Header: FC<{
   const triggerContent = useMemo(() => {
     if (pathname.startsWith("/about")) {
       return "About";
+    }
+
+    if (pathname.startsWith("/a-day-in-the-life")) {
+      return "A Day in the Life";
     }
 
     if (pathname.startsWith("/key-concepts")) {
@@ -114,10 +119,19 @@ const Header: FC<{
         {anchors}
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button type="button" className="h-11 px-3 hover:bg-black lg:h-auto lg:pl-2.5">
+            <Button
+              type="button"
+              variant={menuVariant}
+              className={cn("h-11 px-3 lg:h-auto lg:pl-2.5", {
+                "bg-black hover:bg-black": !menuVariant,
+              })}
+            >
               <Menu
                 aria-hidden="true"
-                className="mr-2.5 hidden h-5 w-5 rounded-full border border-white/20 text-white lg:block"
+                className={cn("mr-2.5 hidden h-5 w-5 rounded-full border lg:block", {
+                  "border-white/20 text-white": !menuVariant,
+                  "border-black/20": menuVariant === "white",
+                })}
               />
               <MenuMobile aria-hidden="true" className="h-5 w-5 text-white lg:hidden" />
               <span className="hidden lg:inline-block" aria-hidden>

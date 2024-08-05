@@ -3,11 +3,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import DayInLifeMarquee from "@/components/day-in-life-cta/marquee";
 import { FC } from "react";
+import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 
 const Intro: FC = () => (
   <header className="w-full bg-black lg:h-screen">
     <div className="relative z-10">
-      <Header />
+      <Header menuVariant="white" />
     </div>
     <div className="relative mt-10 flex w-full items-center justify-center lg:absolute lg:top-[23vh] lg:mt-0 lg:h-[30vh] lg:px-20">
       <DayInLifeMarquee widthClass="w-[248px] lg:w-[382px]" heightClass="h-[251px] lg:h-[386px]" />
@@ -23,18 +24,26 @@ const Intro: FC = () => (
           <div className="flex h-24 flex-col items-end justify-start gap-2">
             <div className="flex items-center gap-2">
               <Button asChild variant="outline-white" size="md">
-                <Link href="/assets">Assets</Link>
+                <Link href="/assets">
+                  <HoverRepeatAnimation>Assets</HoverRepeatAnimation>
+                </Link>
               </Button>
               <Button asChild variant="outline-white" size="md">
-                <Link href="/flows-of-services">Flows of Services</Link>
+                <Link href="/flows-of-services">
+                  <HoverRepeatAnimation>Flows of Services</HoverRepeatAnimation>
+                </Link>
               </Button>
             </div>
             <div className="flex items-center gap-2">
               <Button asChild variant="outline-white" size="md">
-                <Link href="/impacts-and-dependencies">Impacts and Dependencies</Link>
+                <Link href="/impacts-and-dependencies">
+                  <HoverRepeatAnimation>Impacts and Dependencies</HoverRepeatAnimation>
+                </Link>
               </Button>
               <Button asChild variant="outline-white" size="md">
-                <Link href="/use-cases">Use Cases</Link>
+                <Link href="/use-cases">
+                  <HoverRepeatAnimation>Use Cases</HoverRepeatAnimation>
+                </Link>
               </Button>
             </div>
           </div>

@@ -6,10 +6,11 @@ import Linkedin from "@/svgs/linkedin.svg";
 import Twitter from "@/svgs/X.svg";
 import Instagram from "@/svgs/instagram.svg";
 import Facebook from "@/svgs/facebook.svg";
+import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 
 const Outro = () => (
   <div className="flex flex-col items-center justify-center gap-10 border-t border-t-black px-6 py-20 text-black lg:px-[60px]">
-    <div className="lg:text-4.5xl max-w-[858px] text-center text-2xl tracking-tight">
+    <div className="max-w-[858px] text-center text-2xl tracking-tight lg:text-4.5xl">
       Understanding and valuing natural capital is crucial.
     </div>
     <div className="max-w-[830px] text-center">
@@ -24,16 +25,24 @@ const Outro = () => (
       </div>
       <div className="flex flex-col gap-2 lg:flex-row">
         <Button asChild variant="outline" size="md">
-          <Link href="/assets">Assets</Link>
+          <Link href="/assets">
+            <HoverRepeatAnimation>Assets</HoverRepeatAnimation>
+          </Link>
         </Button>
         <Button asChild variant="outline" size="md">
-          <Link href="/flows-of-services">Flows of Services</Link>
+          <Link href="/flows-of-services">
+            <HoverRepeatAnimation>Flows of Services</HoverRepeatAnimation>
+          </Link>
         </Button>
         <Button asChild variant="outline" size="md">
-          <Link href="/impacts-and-dependencies">Impacts and Dependencies</Link>
+          <Link href="/impacts-and-dependencies">
+            <HoverRepeatAnimation>Impacts and Dependencies</HoverRepeatAnimation>
+          </Link>
         </Button>
         <Button asChild variant="outline" size="md">
-          <Link href="/use-cases">Use Cases</Link>
+          <Link href="/use-cases">
+            <HoverRepeatAnimation>Use Cases</HoverRepeatAnimation>
+          </Link>
         </Button>
       </div>
     </div>
