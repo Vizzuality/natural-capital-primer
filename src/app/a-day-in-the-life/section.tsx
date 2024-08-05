@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+import { useTransform, useScroll, LayoutGroup } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { LEGEND_TERMS, GLOSSARY_TERMS } from "./data";
 import { SectionType } from "./data";
@@ -12,6 +14,8 @@ import BackgroundVideo from "@/components/bg-video";
 
 const CENTER_CLASSES = "mx-auto flex max-w-7xl px-6 lg:px-20";
 const ADJUSTMENT_LEFT_MARGIN = "lg:ml-[220px]";
+
+import { motion } from "framer-motion";
 
 const Section = ({
   section: {
@@ -39,10 +43,29 @@ const Section = ({
   setSoundOn: (value: boolean) => void;
   renderMobileMenu: ({ id }: { id: string }) => React.ReactElement;
 }) => {
+  const scrollSectionRef = useRef(null);
+  const [activeImage, setActiveImage] = useState(0);
+  const { scrollYProgress } = useScroll({
+    target: scrollSectionRef,
+  });
+
+  const imageAnimation = {
+    marginTop: useTransform(scrollYProgress, [0.3, 1], [0, 360]),
+    height: useTransform(scrollYProgress, [0.3, 1], [465, 800]),
+  };
+
+  const pebbleAnimation = {
+    y: useTransform(scrollYProgress, [0, 1], [0, -500]),
+  };
+
+  scrollYProgress.on("change", (v) => {
+    setActiveImage(v > 0.95 ? 1 : 0);
+  });
+
   return (
     <section id={id} className={`${bgClass} relative text-black`} ref={sectionRef}>
       {renderMobileMenu({ id })}
-      <div className="relative z-10 mx-auto max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-7xl" ref={scrollSectionRef}>
         <div className="h-[657px] max-h-[657px] px-6 lg:h-[800px] lg:max-h-[800px] lg:px-20 lg:pt-[163px]">
           <div className="z-10 flex h-[220px] max-w-[826px] flex-col gap-5 lg:gap-10">
             <div className="lg:text-4.5xl text-2xl">{title}</div>
@@ -66,29 +89,53 @@ const Section = ({
         </div>
       </div>
       <BackgroundVideo src={videoURL} />
-      <div
-        className="relative h-0 w-full bg-white px-6 lg:h-[700px] lg:bg-cover lg:bg-no-repeat lg:px-20"
-        style={{ backgroundImage: `url(${mainImageURL})` }}
-      >
+      <div className="relative h-0 w-full bg-white px-6 lg:h-[700px] lg:bg-cover lg:bg-no-repeat lg:px-20">
         <div
           className={cn(
             ADJUSTMENT_LEFT_MARGIN,
-            "absolute -top-[425px] flex max-h-[465px] min-h-[465px] w-full justify-end lg:-top-[365px] lg:right-0 lg:mx-auto lg:h-full lg:max-w-[1068px] lg:pl-20 xl:mr-[calc((100vw_-_1280px)_/_2)]",
+            "absolute -top-[425px] flex max-h-[465px] min-h-[465px] w-full justify-end lg:-top-[365px] lg:right-0 lg:mx-auto lg:h-full", // xl:mr-[calc((100vw_-_1280px)_/_2)]
           )}
         >
+          <LayoutGroup>
+            {activeImage === 0 && (
+              <motion.div
+                style={{ backgroundImage: `url(${mainImageURL})` }}
+                className="hidden lg:block lg:min-h-full lg:w-[1024px] lg:bg-cover"
+                key={`image-${id}-1`}
+                layoutId={`image-${id}`}
+                layout
+              />
+            )}
+            {activeImage === 1 && (
+              <motion.div
+                style={{ backgroundImage: `url(${mainImageURL})`, ...imageAnimation }}
+                initial={{ translateY: 0 }}
+                animate={{ translateY: 400 }}
+                transition={{ duration: 0.5 }}
+                className="hidden lg:block lg:min-h-full lg:w-screen lg:bg-cover"
+                key={`image-${id}-2`}
+                layoutId={`image-${id}`}
+                layout
+              />
+            )}
+          </LayoutGroup>
+
           <Image
             alt=""
             height={707}
             width={1060}
-            className="max-h-[465px] min-h-full w-full object-none object-[-70px_0] lg:block lg:w-[1024px] lg:object-cover lg:object-[0_-30px]"
+            className="max-h-[465px] min-h-full w-full object-none object-[-70px_0] lg:hidden"
             src={mainImageURL}
           />
-          <div className="absolute -top-[90px] right-[56px] lg:-top-[165px] lg:right-[112px]">
+          <motion.div
+            className="absolute -top-[90px] right-[56px] lg:-top-[165px] lg:right-[112px]"
+            style={{ ...pebbleAnimation }}
+          >
             <Pebble className="h-[163px] w-[158px] text-black lg:h-[250px] lg:w-[258px]" />
             <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
               <SvgIcon className="max-lg:h-16 max-lg:w-16" />
             </div>
-          </div>
+          </motion.div>
         </div>
         {/* Blue story div laptop */}
         <div className={cn("mx-auto hidden max-w-7xl translate-y-[545px] pl-6 lg:flex lg:pl-20")}>
