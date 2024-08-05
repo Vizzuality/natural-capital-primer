@@ -260,7 +260,7 @@ export default function About() {
           </div>
         </main>
       </div>
-      <div className="mx-auto max-w-7xl px-6 pb-10 lg:px-20 lg:pb-24">
+      <div className="flex w-full items-center justify-center">
         <DayInLifeCTA />
       </div>
       <div className="bg-orange-500 pb-28 pt-10 lg:pb-52 lg:pt-24">

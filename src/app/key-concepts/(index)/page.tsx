@@ -472,7 +472,7 @@ const KeyConceptsPage: FC = () => {
               <h2>Key insights about this chapter</h2>
               <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Assets form the basis of natural capital and can be categorized as either
                 environmental (individual) or ecosystem (interaction of environmental) assets.
@@ -672,7 +672,7 @@ const KeyConceptsPage: FC = () => {
               <h2>Key insights about this chapter</h2>
               <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Natural capital assets produce two types of services: abiotic services (geological
                 and physical processes) and ecosystem services (ecological processes).
@@ -908,7 +908,7 @@ const KeyConceptsPage: FC = () => {
               <h2>Key insights about this chapter</h2>
               <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Businesses depend on natural capital assets and ecosystem services to operate
                 effectively, such as extracting non-renewable resources or utilizing renewable
@@ -931,7 +931,7 @@ const KeyConceptsPage: FC = () => {
           </div>
         </main>
       </div>
-      <div className="mx-auto max-w-7xl px-6 pb-10 lg:px-20 lg:pb-24">
+      <div className="flex w-full items-center justify-center">
         <DayInLifeCTA />
       </div>
       <div className="bg-orange-500 py-10 lg:py-14">

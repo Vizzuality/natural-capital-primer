@@ -4,9 +4,8 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Caret from "@/icons/caret-right.svg";
 import Link from "next/link";
-import DayInLifeCTA from "@/components/day-in-life-cta";
 import AnimatedUnderline from "@/components/animations/animated-underline";
-
+import DayInTheLifeCTA from "@/components/day-in-life-cta";
 export default function ClimateChange() {
   return (
     <>
@@ -105,9 +104,7 @@ export default function ClimateChange() {
               to better incorporate natural capital into climate strategies.
             </div>
           </div>
-          <div className="mb-10 w-full">
-            <DayInLifeCTA />
-          </div>
+          <DayInTheLifeCTA />
         </div>
         <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
           <p className="hidden flex-shrink-0 lg:block lg:w-[220px]">
@@ -118,7 +115,7 @@ export default function ClimateChange() {
               <h2>Key insights about this chapter</h2>
               <div className="grow border-t border-t-grey-500"></div>
             </div>
-            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
+            <ol className="list-decimal-leading-zero flex max-w-[540px] flex-col gap-y-6 pl-9 lg:gap-y-5">
               <li>
                 Achieving net zero emissions and enhancing natural capital (like biodiversity) are
                 closely linked goals essential for effectively addressing climate change.
