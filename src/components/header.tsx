@@ -133,7 +133,13 @@ const Header: FC<{
                   "border-black/20": menuVariant === "white",
                 })}
               />
-              <MenuMobile aria-hidden="true" className="h-5 w-5 text-white lg:hidden" />
+              <MenuMobile
+                aria-hidden="true"
+                className={cn("h-5 w-5 lg:hidden", {
+                  "text-white": !menuVariant,
+                  "text-black": menuVariant === "white",
+                })}
+              />
               <span className="hidden lg:inline-block" aria-hidden>
                 <HoverRepeatAnimation>{triggerContent}</HoverRepeatAnimation>
               </span>
