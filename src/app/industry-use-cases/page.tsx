@@ -51,13 +51,22 @@ const TriggerContent = ({
   return (
     <div className="relative flex w-full gap-3.5">
       <div className="flex flex-col gap-4 text-4xl font-normal text-black">
-        <div className="flex gap-3">
+        {/* DESKTOP */}
+        <div className="hidden gap-3 lg:flex">
           <Image width={105} height={44} alt="" src={imageSrc1} />
           <div>{text1}</div>
         </div>
-        <div className="flex gap-3">
+        <div className="hidden gap-3 lg:flex">
           <Image width={105} height={44} alt="" src={imageSrc2} />
           <div>{text2}</div>
+        </div>
+        {/* MOBILE */}
+        <div className="flex h-11 gap-3 lg:hidden">
+          <Image width={105} height={44} alt="" src={imageSrc1} />
+          <Image width={105} height={44} alt="" src={imageSrc2} />
+        </div>
+        <div className="text-left lg:hidden">
+          {text1} {text2}
         </div>
       </div>
       <div className="absolute right-0 top-0 h-9 w-9 rounded-full bg-black">
@@ -114,10 +123,10 @@ const IndustryUseCasesPage: FC = () => {
           businesses and society across a range of contexts.
         </p>
       </div>
-      <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white px-6 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
-        <div className="sticky top-24 z-10 h-full flex-shrink-0 py-9 lg:w-[220px]">
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
+        <div className="top-24 z-10 hidden h-full flex-shrink-0 py-9 lg:sticky lg:block lg:w-[220px]">
           <ul
-            className={cn("flex flex-col gap-4 transition-opacity duration-200", {
+            className={cn("hidden flex-col gap-4 transition-opacity duration-200 lg:flex", {
               "lg:opacity-0": !activeItem,
               "lg:opacity-100": !!activeItem,
             })}
@@ -134,7 +143,7 @@ const IndustryUseCasesPage: FC = () => {
             ))}
           </ul>
         </div>
-        <div className="flex flex-grow flex-col gap-y-6 pb-40">
+        <div className="flex flex-grow flex-col gap-y-6 lg:pb-40">
           <Accordion
             type="single"
             onValueChange={setActiveItem}
