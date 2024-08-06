@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import MobileMenuIcon from "@/svgs/mobile-menu.svg";
 import type { Link as LinkType } from "./data";
@@ -27,7 +28,7 @@ const MobileMenu = ({ id, links }: { id: string; links: LinkType[] }) => {
             sideOffset={-56}
             alignOffset={-4}
             align="end"
-            className="w-[calc(100vw-28px*2)] justify-between rounded-[28px] bg-black p-1 backdrop-blur-[200px]"
+            className="sticky w-[calc(100vw-28px*2)] justify-between rounded-[28px] bg-black p-1 backdrop-blur-[200px]"
           >
             <PopoverClose>
               <Close className="absolute right-1 top-1 h-[52px] w-[52px] rounded-[220px] bg-white p-[11px]" />
@@ -37,7 +38,9 @@ const MobileMenu = ({ id, links }: { id: string; links: LinkType[] }) => {
                 <a
                   key={link.id}
                   href={`#${link.id}`}
-                  className="py-3 font-bold text-white"
+                  className={cn("py-3 text-white", {
+                    "font-bold": link.id === id,
+                  })}
                   onClick={
                     // Close the popover when a link is clicked
                     () => setPopoverOpen(false)
