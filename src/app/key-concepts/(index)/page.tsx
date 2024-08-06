@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
-import DayInLifeCTA from "@/components/day-in-life-cta";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Pebble from "@/components/key-concepts/pebble";
@@ -949,9 +948,6 @@ const KeyConceptsPage: FC = () => {
             </ol>
           </div>
         </main>
-      </div>
-      <div className="flex w-full items-center justify-center">
-        <DayInLifeCTA />
       </div>
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-10 p-6 text-center lg:gap-y-16">
