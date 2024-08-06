@@ -115,7 +115,7 @@ const KeyConceptsPage: FC = () => {
     },
     [scrollSectionRef, isMobile],
   );
-
+  const [showReadMore, setShowReadMore] = useState(false);
   return (
     <>
       <Header
@@ -134,25 +134,44 @@ const KeyConceptsPage: FC = () => {
         <h1 className="flex-shrink-0 text-[52px] font-medium leading-[52px] lg:max-w-[974px] lg:text-5xl lg:leading-none lg:tracking-tight">
           What is <span className="xl:whitespace-nowrap">Natural Capital?</span>
         </h1>
-        <div className="flex max-w-[827px] flex-col gap-y-4 lg:text-xl">
+        <div className="flex max-w-[827px] flex-col gap-y-4">
           <p>
             Natural capital refers to all biotic (living) and abiotic (non-living) natural resources
             present in a defined area that produce flows of services that yield value to society.
             Natural capital is also sometimes referred to as natural capital assets or stocks.
           </p>
-          <p>
-            <b>Biotic natural resources</b>
-            <br />
-            Biotic natural resources are those derived from living organisms, such as plants,
-            animals, fungi, bacteria and viruses.
-          </p>
-          <p>
-            <b>Abiotic natural resources</b>
-            <br />
-            Abiotic natural resources are those derived from non-living sources and include
-            geological resources (minerals, soil, fossil fuels), water and physical processes such
-            as solar radiation, wind and tides.
-          </p>
+          <AnimatePresence>
+            {showReadMore && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.15 }}
+              >
+                <p className="pb-4">
+                  <b>Biotic natural resources</b>
+                  <br />
+                  Biotic natural resources are those derived from living organisms, such as plants,
+                  animals, fungi, bacteria and viruses.
+                </p>
+                <p>
+                  <b>Abiotic natural resources</b>
+                  <br />
+                  Abiotic natural resources are those derived from non-living sources and include
+                  geological resources (minerals, soil, fossil fuels), water and physical processes
+                  such as solar radiation, wind and tides.
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <Button
+            variant="transparent"
+            className="justify-start p-0 text-xs font-bold uppercase underline"
+            onClick={() => setShowReadMore((prev) => !prev)}
+          >
+            {showReadMore ? "Close Detail" : "Read more"}
+            <span className="sr-only"> about Natural Capital</span>
+          </Button>
         </div>
       </div>
       <div
