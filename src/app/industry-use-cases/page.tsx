@@ -50,7 +50,7 @@ const TriggerContent = ({
   const { text1, imageSrc1, text2, imageSrc2 } = content;
   return (
     <div className="relative flex w-full gap-3.5">
-      <div className="flex flex-col gap-4 text-4xl font-normal text-black">
+      <div className="flex flex-col gap-5 text-2xl font-normal text-black lg:gap-4 lg:text-4xl">
         {/* DESKTOP */}
         <div className="hidden gap-3 lg:flex">
           <Image width={105} height={44} alt="" src={imageSrc1} />
