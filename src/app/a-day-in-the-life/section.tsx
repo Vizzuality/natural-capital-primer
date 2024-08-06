@@ -51,8 +51,8 @@ const Section = ({
   });
 
   const imageAnimation = {
-    marginTop: useTransform(scrollYProgress, [0, 0.15], [0, 360]),
-    height: useTransform(scrollYProgress, [0, 0.15], [465, 800]),
+    marginTop: useTransform(scrollYProgress, [0, 0.2], [0, 360]),
+    height: useTransform(scrollYProgress, [0, 0.2], [465, 800]),
   };
 
   const pebbleAnimation = {
@@ -66,7 +66,11 @@ const Section = ({
   return (
     <section id={id} className={`${bgClass} relative text-black`} ref={sectionRef}>
       {renderMobileMenu({ id })}
-      <div className="relative z-10 mx-auto max-w-7xl" ref={scrollSectionRef}>
+      <div
+        className="relative z-10 mx-auto max-w-7xl"
+        id={`section-scroll-${id}`}
+        ref={scrollSectionRef}
+      >
         <div className="h-[657px] max-h-[657px] px-6 lg:h-[800px] lg:max-h-[800px] lg:px-20 lg:pt-[163px]">
           <div className="z-10 flex h-[220px] max-w-[826px] flex-col gap-5 lg:gap-10">
             <h2 className="text-2xl lg:text-4.5xl">{title}</h2>
@@ -110,9 +114,6 @@ const Section = ({
             {activeImage === 1 && (
               <motion.div
                 style={{ backgroundImage: `url(${mainImageURL})`, ...imageAnimation }}
-                initial={{ translateY: 0 }}
-                animate={{ translateY: 400 }}
-                transition={{ duration: 0.5 }}
                 className="hidden lg:block lg:min-h-full lg:w-screen lg:bg-cover"
                 key={`image-${id}-2`}
                 layoutId={`image-${id}`}
@@ -141,7 +142,7 @@ const Section = ({
         {/* Blue story div laptop */}
         <div
           className={cn(
-            "mx-auto hidden max-w-7xl translate-y-[545px] pl-6 lg:flex lg:max-h-[480px] lg:pl-20",
+            "mx-auto hidden max-w-7xl translate-y-[545px] pl-6 lg:flex lg:h-[480px] lg:pl-20",
           )}
         >
           <div className="flex flex-col justify-center gap-8 bg-black p-[60px] text-white xl:ml-[220px]">
@@ -150,7 +151,7 @@ const Section = ({
           </div>
         </div>
       </div>
-      <div className="flex w-full flex-col justify-start gap-y-10 bg-white pb-[68px] pt-10 text-black lg:gap-y-6 lg:pt-[347px]">
+      <div className="flex w-full flex-col justify-start gap-y-10 bg-white pb-[68px] pt-10 text-black lg:gap-y-6 lg:pt-[407px]">
         {/* Blue story div mobile */}
         <div className={cn("mx-auto block max-w-7xl pl-6 lg:hidden")}>
           <div className="flex flex-col justify-center gap-8 bg-black px-6 py-10 text-white lg:ml-[220px] lg:p-[60px]">
@@ -158,7 +159,7 @@ const Section = ({
             <div className="text-xl leading-7">{question}</div>
           </div>
         </div>
-        <div className={cn(CENTER_CLASSES, "w-full lg:mb-[68px] lg:gap-x-16")}>
+        <div className={cn(CENTER_CLASSES, "z-20 w-full lg:mb-[68px] lg:gap-x-16")}>
           <div className="divide-x-black flex flex-col items-end gap-10 lg:ml-20 lg:flex-row xl:ml-[220px]">
             <ul className="w-full lg:border-r lg:border-dashed lg:border-r-black lg:pr-[69px]">
               {processes.map((process, i) => (
