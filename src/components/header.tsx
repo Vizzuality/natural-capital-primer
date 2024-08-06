@@ -122,7 +122,7 @@ const Header: FC<{
             <Button
               type="button"
               variant={menuVariant}
-              className={cn("h-11 px-3 lg:h-auto lg:pl-2.5", {
+              className={cn("h-11 px-6 lg:h-auto lg:pl-2.5", {
                 "bg-black hover:bg-black": !menuVariant,
               })}
             >
