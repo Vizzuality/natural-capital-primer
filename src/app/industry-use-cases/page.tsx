@@ -4,6 +4,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MountainCoverImage from "@/components/mountain-cover-image";
 import { FC } from "react";
+import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
@@ -69,28 +70,28 @@ const TriggerContent = ({
 
 const ACCORDION_ITEMS: AccordionContent[] = [
   {
-    id: "accordion1",
+    id: "Constructions",
     text1: "Constructions depend on",
     text2: "Forests.",
     imageSrc1: "/assets/industry-cases-accordion-1.png",
     imageSrc2: "/assets/industry-cases-accordion-2.png",
   },
   {
-    id: "accordion2",
+    id: "Tourism",
     text1: "Tourism depends on",
     text2: "Wetlands and Mangroves.",
     imageSrc1: "/assets/industry-cases-accordion-3.png",
     imageSrc2: "/assets/industry-cases-accordion-4.png",
   },
   {
-    id: "accordion3",
+    id: "Urban Planning",
     text1: "Retail depends on",
     text2: "Urban Green Spaces.",
     imageSrc1: "/assets/industry-cases-accordion-5.png",
     imageSrc2: "/assets/industry-cases-accordion-6.png",
   },
   {
-    id: "accordion4",
+    id: "Food",
     text1: "Food industry depends on",
     text2: "Farmlands.",
     imageSrc1: "/assets/industry-cases-accordion-7.png",
@@ -114,8 +115,26 @@ const IndustryUseCasesPage: FC = () => {
         </p>
       </div>
       <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white px-6 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
-        <div className="flex-shrink-0 lg:w-[220px]"></div>
-        <div className="flex flex-grow flex-col gap-y-6">
+        <div className="sticky top-24 z-10 h-full flex-shrink-0 py-9 lg:w-[220px]">
+          <ul
+            className={cn("flex flex-col gap-4 transition-opacity duration-200", {
+              "lg:opacity-0": !activeItem,
+              "lg:opacity-100": !!activeItem,
+            })}
+          >
+            {ACCORDION_ITEMS.map((accordionItem: AccordionContent) => (
+              <li
+                key={accordionItem.id}
+                className={cn({
+                  "font-bold underline underline-offset-4": activeItem === accordionItem.id,
+                })}
+              >
+                {accordionItem.id}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-grow flex-col gap-y-6 pb-40">
           <Accordion
             type="single"
             onValueChange={setActiveItem}
