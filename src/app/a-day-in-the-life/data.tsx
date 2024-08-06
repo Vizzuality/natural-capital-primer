@@ -1,4 +1,10 @@
-import Bell from "@/svgs/bell.svg";
+import Icon1 from "@/svgs/day-in-life-icons-1.svg";
+import Icon2 from "@/svgs/day-in-life-icons-2.svg";
+import Icon3 from "@/svgs/day-in-life-icons-3.svg";
+import Icon4 from "@/svgs/day-in-life-icons-4.svg";
+import Icon5 from "@/svgs/day-in-life-icons-5.svg";
+import Icon6 from "@/svgs/day-in-life-icons-6.svg";
+import Icon7 from "@/svgs/day-in-life-icons-7.svg";
 
 export type Link = {
   text: string;
@@ -70,7 +76,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie’s mobile phone alarm goes off in the morning.",
     mainImageURL: "/assets/a-day-in-the-life-1.webp",
     videoURL: "/assets/video/a-day-in-the-life-1.mp4",
-    SvgIcon: Bell,
+    SvgIcon: Icon1,
     bgClass: "bg-orange",
     story: (
       <>
@@ -111,7 +117,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie gets up and then she has a shower.",
     mainImageURL: "/assets/a-day-in-the-life-2.webp",
     videoURL: "/assets/video/a-day-in-the-life-2.mp4",
-    SvgIcon: Bell,
+    SvgIcon: Icon2,
     bgClass: "bg-blue-500",
     story: (
       <>
@@ -155,7 +161,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie puts on her clothes.",
     mainImageURL: "/assets/a-day-in-the-life-3.webp",
     videoURL: "/assets/video/a-day-in-the-life-3.mp4",
-    SvgIcon: Bell,
+    SvgIcon: Icon3,
     bgClass: "bg-purple",
     story: (
       <>
@@ -195,7 +201,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie turns on the kettle and prepares her morning coffee.",
     mainImageURL: "/assets/a-day-in-the-life-4.webp",
     videoURL: "/assets/video/a-day-in-the-life-4.mp4",
-    SvgIcon: Bell,
+    SvgIcon: Icon4,
     bgClass: "bg-lime",
     story: (
       <>
@@ -235,7 +241,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie has a slice of toast and butter for breakfast.",
     mainImageURL: "/assets/a-day-in-the-life-5.webp",
     videoURL: "/assets/video/a-day-in-the-life-5.mp4",
-    SvgIcon: Bell,
+    SvgIcon: Icon5,
     bgClass: "bg-orange-500",
     story: (
       <>
@@ -274,7 +280,7 @@ export const SECTIONS: SectionType[] = [
     title: "Julie catches the train to the city.",
     mainImageURL: "/assets/a-day-in-the-life-6.webp",
     videoURL: "/assets/video/a-day-in-the-life-6.mp4",
-    SvgIcon: Bell,
+    SvgIcon: Icon6,
     bgClass: "bg-turquoise",
     story: (
       <>
@@ -316,7 +322,7 @@ export const SECTIONS: SectionType[] = [
     mainImageURL: "/assets/a-day-in-the-life-7.webp",
     videoURL: "/assets/video/a-day-in-the-life-7.mp4",
 
-    SvgIcon: Bell,
+    SvgIcon: Icon7,
     bgClass: "bg-pink",
     story: (
       <>
