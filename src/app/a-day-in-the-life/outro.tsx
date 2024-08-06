@@ -23,7 +23,7 @@ const Outro = () => (
       <div className="text-center">
         Dive deeper into the Natural Capital Primer to understand key concepts:
       </div>
-      <div className="flex flex-col gap-2 lg:flex-row">
+      <div className="flex w-full flex-col gap-2 lg:flex-row">
         <Button asChild variant="outline" size="md">
           <Link href="/assets">
             <HoverRepeatAnimation>Assets</HoverRepeatAnimation>
