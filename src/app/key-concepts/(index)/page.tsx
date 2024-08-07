@@ -24,6 +24,17 @@ const FadeInOnScroll = dynamic(() => import("@/components/animations/fade-in-on-
   ssr: false,
 });
 
+const LightBulbMessage = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial={{ y: 100 }}
+    animate={{ y: 0 }}
+    className="flex flex-row gap-x-4 rounded-[20px] bg-white/20 p-4 text-white backdrop-blur-[10px] lg:py-3"
+  >
+    <Lightbulb className="shrink-0" />
+    <span className="relative top-0.5">{children}</span>
+  </motion.div>
+);
+
 const KeyConceptsPage: FC = () => {
   const [chapter1Tab, setChapter1Tab] = useState("environmental");
   const [chapter2Tab, setChapter2Tab] = useState("abiotic");
@@ -116,6 +127,7 @@ const KeyConceptsPage: FC = () => {
     [scrollSectionRef, isMobile],
   );
   const [showReadMore, setShowReadMore] = useState(false);
+
   return (
     <>
       <Header
@@ -245,21 +257,15 @@ const KeyConceptsPage: FC = () => {
             )}
           >
             {chapter1Tab === "environmental" && (
-              <p className="flex flex-row gap-x-4 rounded-[20px] bg-white/20 p-4 text-white backdrop-blur-[10px] lg:py-3">
-                <Lightbulb className="shrink-0" />
-                <span className="relative top-0.5">
-                  Example: Individual plant or animal species (biotic) and water, minerals, and soil
-                  (abiotic)
-                </span>
-              </p>
+              <LightBulbMessage>
+                Example: Individual plant or animal species (biotic) and water, minerals, and soil
+                (abiotic)
+              </LightBulbMessage>
             )}
             {chapter1Tab !== "environmental" && (
-              <p className="flex flex-row gap-x-4 rounded-[20px] bg-white/20 p-4 text-white backdrop-blur-[10px] lg:py-3">
-                <Lightbulb className="shrink-0" />
-                <span className="relative top-0.5">
-                  Example: grasslands, forests, woodlands, wetlands, mangroves, and peatlands
-                </span>
-              </p>
+              <LightBulbMessage>
+                Example: grasslands, forests, woodlands, wetlands, mangroves, and peatlands
+              </LightBulbMessage>
             )}
           </div>
         </div>
@@ -575,23 +581,17 @@ const KeyConceptsPage: FC = () => {
             )}
           >
             {chapter2Tab === "abiotic" && (
-              <p className="flex flex-row gap-x-4 rounded-[20px] bg-white/20 p-4 text-white backdrop-blur-[10px] lg:py-3">
-                <Lightbulb className="shrink-0" />
-                <span className="relative top-0.5">
-                  Example: the supply of minerals (including metals) and fossil fuels, as well as
-                  geothermal heat, wind, tides, sunlight and hydro-power.
-                </span>
-              </p>
+              <LightBulbMessage>
+                Example: the supply of minerals (including metals) and fossil fuels, as well as
+                geothermal heat, wind, tides, sunlight and hydro-power.
+              </LightBulbMessage>
             )}
             {chapter2Tab !== "abiotic" && (
-              <p className="flex flex-row gap-x-4 rounded-[20px] bg-white/20 p-4 text-white backdrop-blur-[10px] lg:py-3">
-                <Lightbulb className="shrink-0" />
-                <span className="relative top-0.5">
-                  Example: timber production, food and fibre, pollination and pest control, water
-                  regulation and clean air, climate regulation, and recreation and spiritual
-                  fulfilment
-                </span>
-              </p>
+              <LightBulbMessage>
+                Example: timber production, food and fibre, pollination and pest control, water
+                regulation and clean air, climate regulation, and recreation and spiritual
+                fulfilment
+              </LightBulbMessage>
             )}
           </div>
         </div>
@@ -846,15 +846,11 @@ const KeyConceptsPage: FC = () => {
             )}
           >
             {chapter3Tab === "dependencies" && (
-              <p className="flex flex-row gap-x-4 rounded-[20px] bg-white/20 p-4 text-white backdrop-blur-[10px] lg:py-3">
-                <Lightbulb className="shrink-0" />
-                <span className="relative top-0.5">
-                  Example: a company may be dependent on extracting a non-renewable resource (e.g.,
-                  mining), harnessing a renewable resource (e.g., water flow to generate
-                  electricity), or harvesting a biotic resource (e.g., fisheries) in order to
-                  generate income.
-                </span>
-              </p>
+              <LightBulbMessage>
+                Example: a company may be dependent on extracting a non-renewable resource (e.g.,
+                mining), harnessing a renewable resource (e.g., water flow to generate electricity),
+                or harvesting a biotic resource (e.g., fisheries) in order to generate income.
+              </LightBulbMessage>
             )}
           </div>
         </div>
