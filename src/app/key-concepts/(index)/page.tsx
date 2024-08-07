@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
+import HorizontalGroupHoverRepeatAnimation from "@/components/animations/horizontal-group-hover-repeat";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Pebble from "@/components/key-concepts/pebble";
@@ -721,49 +722,60 @@ const KeyConceptsPage: FC = () => {
         <p className="mb-10 text-center text-2xl lg:mb-20 lg:text-[62px] lg:leading-none">
           Understanding the role of <span className="whitespace-nowrap">Natural Capital...</span>
         </p>
-        <div className="grid grid-rows-2 gap-6 sm:grid-cols-2 sm:grid-rows-none lg:gap-x-11">
-          <Link
-            href="/key-concepts/natural-capital-and-climate-change"
-            className="grid grid-rows-2"
-          >
-            <div className="flex items-end gap-x-8 bg-turquoise p-6 lg:h-full lg:p-11 lg:pt-20">
-              <div className="h-full">
-                <p>Insights</p>
-                <p className="text-2xl lg:text-4xl">Natural Capital and Climate Change</p>
+        <div className="grid gap-6 lg:grid-cols-2 lg:grid-rows-none lg:gap-x-11">
+          <motion.div whileHover="animate">
+            <Link
+              href="/key-concepts/natural-capital-and-climate-change"
+              className="grid grid-rows-2 transition-transform duration-500 hover:-translate-y-6"
+            >
+              <div className="flex items-end gap-x-8 bg-turquoise p-6 lg:h-full lg:p-11 lg:pt-20">
+                <div className="h-full">
+                  <p>Insights</p>
+                  <p className="text-2xl lg:text-4xl">Natural Capital and Climate Change</p>
+                </div>
+                <div className="hidden h-[76px] w-[76px] shrink-0 rounded-full border border-black lg:flex lg:items-center lg:justify-center">
+                  <HorizontalGroupHoverRepeatAnimation>
+                    <ThinArrow className="h-6 w-6" />
+                  </HorizontalGroupHoverRepeatAnimation>
+                </div>
               </div>
-              <div className="hidden h-[76px] w-[76px] shrink-0 rounded-full border border-black lg:flex lg:items-center lg:justify-center">
-                <ThinArrow className="h-6 w-6" />
+              <div className="relative">
+                <Image
+                  src="/assets/key-concepts-illustration.png"
+                  alt=""
+                  fill
+                  className="object-cover"
+                />
               </div>
-            </div>
-            <div className="relative">
-              <Image
-                src="/assets/key-concepts-illustration.png"
-                alt=""
-                fill
-                className="object-cover"
-              />
-            </div>
-          </Link>
-          <Link href="/key-concepts/natural-capital-and-biodiversity" className="grid grid-rows-2">
-            <div className="flex items-end gap-x-8 bg-pink p-6 lg:h-full lg:p-11 lg:pt-20">
-              <div className="h-full">
-                <p>Insights</p>
-                <p className="text-2xl lg:text-4xl">Natural Capital and Biodiversity</p>
+            </Link>
+          </motion.div>
+          <motion.div whileHover="animate">
+            <Link
+              href="/key-concepts/natural-capital-and-biodiversity"
+              className="grid grid-rows-2 transition-transform duration-500 hover:-translate-y-6"
+            >
+              <div className="flex items-end gap-x-8 bg-pink p-6 lg:h-full lg:min-h-[292px] lg:p-11 lg:pt-20">
+                <div className="h-full">
+                  <p>Insights</p>
+                  <p className="text-2xl lg:text-4xl">Natural Capital and Biodiversity</p>
+                </div>
+                <div className="hidden h-[76px] w-[76px] shrink-0 rounded-full border border-black lg:flex lg:items-center lg:justify-center">
+                  <HorizontalGroupHoverRepeatAnimation>
+                    <ThinArrow className="h-6 w-6" />
+                  </HorizontalGroupHoverRepeatAnimation>
+                </div>
               </div>
-              <div className="hidden h-[76px] w-[76px] shrink-0 rounded-full border border-black lg:flex lg:items-center lg:justify-center">
-                <ThinArrow className="h-6 w-6" />
-              </div>
-            </div>
 
-            <div className="relative">
-              <Image
-                src="/assets/key-concepts-illustration-2.png"
-                alt=""
-                fill
-                className="object-cover"
-              />
-            </div>
-          </Link>
+              <div className="relative">
+                <Image
+                  src="/assets/key-concepts-illustration-2.png"
+                  alt=""
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </div>
       <div
