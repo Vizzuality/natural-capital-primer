@@ -14,7 +14,12 @@ const MobileMenu = ({ id, links }: { id: string; links: LinkType[] }) => {
   if (!selectedLink) return null;
 
   return (
-    <nav className="relative z-30 mx-7 block py-10 lg:hidden">
+    <nav
+      className={cn("z-50 mx-7 block py-10 lg:hidden", {
+        "sticky top-0 mb-96": popoverOpen,
+        relative: !popoverOpen,
+      })}
+    >
       <div className="flex min-h-11 items-center justify-between gap-2 rounded-[40px] border border-black bg-white/10 p-1 text-black backdrop-blur-[80px]">
         <div className="rounded-[50px] px-5">{selectedLink.text}</div>
         <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
