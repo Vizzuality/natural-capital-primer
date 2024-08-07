@@ -18,6 +18,7 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment, useCallback, useRef, useState } from "react";
+import FadeIn from "@/components/animations/fade-in";
 
 // FadeInOnScroll component uses window object, which is not available in SSR
 const FadeInOnScroll = dynamic(() => import("@/components/animations/fade-in-on-scroll"), {
@@ -607,78 +608,86 @@ const KeyConceptsPage: FC = () => {
           <div className="flex flex-col justify-start gap-y-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16">
             <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
             <div className="flex flex-grow flex-col gap-6 lg:gap-20">
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-4.2xl text-blue-500 lg:text-5xl">01</div>
-                <div className="text-2xl lg:text-4xl">Supporting services</div>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <p>
-                    Supporting services support all other ecosystem services. In practical terms,
-                    supporting services are difficult to measure directly, so tend to be assessed by
-                    using proxy measures such as the extent of ecosystems and the maintenance of
-                    genetic diversity among populations and communities.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: photosynthesis, nutrient cycling, soil formation, and water cycling
-                    </span>
-                  </p>
+              <FadeIn>
+                <div className="flex w-full flex-col gap-3 lg:gap-5">
+                  <div className="text-4.2xl text-blue-500 lg:text-5xl">01</div>
+                  <div className="text-2xl lg:text-4xl">Supporting services</div>
+                  <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
+                    <p>
+                      Supporting services support all other ecosystem services. In practical terms,
+                      supporting services are difficult to measure directly, so tend to be assessed
+                      by using proxy measures such as the extent of ecosystems and the maintenance
+                      of genetic diversity among populations and communities.
+                    </p>
+                    <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                      <Lightbulb className="shrink-0" />
+                      <span className="relative top-0.5">
+                        Example: photosynthesis, nutrient cycling, soil formation, and water cycling
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-4.2xl text-blue-500 lg:text-5xl">02</div>
-                <div className="text-2xl lg:text-4xl">Regulating</div>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <p>
-                    These are the services produced as a by-product of ecosystem processes. They do
-                    not produce a tangible product directly but they facilitate many of the
-                    provisioning services that do produce products, or moderate natural phenomena
-                    that support life.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: climate regulation, flood mitigation, erosion control, water
-                      purification and pollination.
-                    </span>
-                  </p>
+              </FadeIn>
+              <FadeIn>
+                <div className="flex w-full flex-col gap-3 lg:gap-5">
+                  <div className="text-4.2xl text-blue-500 lg:text-5xl">02</div>
+                  <div className="text-2xl lg:text-4xl">Regulating</div>
+                  <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
+                    <p>
+                      These are the services produced as a by-product of ecosystem processes. They
+                      do not produce a tangible product directly but they facilitate many of the
+                      provisioning services that do produce products, or moderate natural phenomena
+                      that support life.
+                    </p>
+                    <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                      <Lightbulb className="shrink-0" />
+                      <span className="relative top-0.5">
+                        Example: climate regulation, flood mitigation, erosion control, water
+                        purification and pollination.
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-4.2xl text-blue-500 lg:text-5xl">03</div>
-                <div className="text-2xl lg:text-4xl">Provisioning</div>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <p>
-                    These are ecosystem processes that produce any type of product that benefits
-                    people and can be extracted from nature.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: all food, raw materials (timber, minerals, gas, oil), fibres,
-                      medicines, drinking water
-                    </span>
-                  </p>
+              </FadeIn>
+              <FadeIn>
+                <div className="flex w-full flex-col gap-3 lg:gap-5">
+                  <div className="text-4.2xl text-blue-500 lg:text-5xl">03</div>
+                  <div className="text-2xl lg:text-4xl">Provisioning</div>
+                  <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
+                    <p>
+                      These are ecosystem processes that produce any type of product that benefits
+                      people and can be extracted from nature.
+                    </p>
+                    <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                      <Lightbulb className="shrink-0" />
+                      <span className="relative top-0.5">
+                        Example: all food, raw materials (timber, minerals, gas, oil), fibres,
+                        medicines, drinking water
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-4.2xl text-blue-500 lg:text-5xl">04</div>
-                <div className="text-2xl lg:text-4xl">Cultural</div>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <p>
-                    These are non-material benefits that contribute to the cultural and spiritual
-                    advancement of people.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: recreational services and tourism, mental and physical health and
-                      well-being derived from connecting with nature, creative inspiration,
-                      aesthetic amenity, spiritual renewal
-                    </span>
-                  </p>
+              </FadeIn>
+              <FadeIn>
+                <div className="flex w-full flex-col gap-3 lg:gap-5">
+                  <div className="text-4.2xl text-blue-500 lg:text-5xl">04</div>
+                  <div className="text-2xl lg:text-4xl">Cultural</div>
+                  <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
+                    <p>
+                      These are non-material benefits that contribute to the cultural and spiritual
+                      advancement of people.
+                    </p>
+                    <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                      <Lightbulb className="shrink-0" />
+                      <span className="relative top-0.5">
+                        Example: recreational services and tourism, mental and physical health and
+                        well-being derived from connecting with nature, creative inspiration,
+                        aesthetic amenity, spiritual renewal
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </FadeIn>
             </div>
           </div>
         </div>
@@ -866,62 +875,69 @@ const KeyConceptsPage: FC = () => {
           <div className="flex flex-col justify-start gap-y-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16">
             <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
             <div className="flex flex-grow flex-col gap-6 lg:gap-20">
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-4.2xl text-orange-500 lg:text-5xl">01</div>
-                <div className="text-2xl lg:text-4xl">Direct</div>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <p>
-                    This refers to the direct result of a company’s actions and operations, without
-                    intermediaries or secondary pathways. Such as direct pollution, habitat
-                    destruction, resource extraction and land use change.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: the release of waste into waterways negatively impacts water quality
-                    </span>
-                  </p>
+              <FadeIn>
+                <div className="flex w-full flex-col gap-3 lg:gap-5">
+                  <div className="text-4.2xl text-orange-500 lg:text-5xl">01</div>
+                  <div className="text-2xl lg:text-4xl">Direct</div>
+                  <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
+                    <p>
+                      This refers to the direct result of a company’s actions and operations,
+                      without intermediaries or secondary pathways. Such as direct pollution,
+                      habitat destruction, resource extraction and land use change.
+                    </p>
+                    <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                      <Lightbulb className="shrink-0" />
+                      <span className="relative top-0.5">
+                        Example: the release of waste into waterways negatively impacts water
+                        quality
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-4.2xl text-orange-500 lg:text-5xl">02</div>
-                <div className="text-2xl lg:text-4xl">Indirect</div>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <p>
-                    Indirect impacts from business on natural capital are unintended or secondary
-                    consequences arising through pathways such as financial support, supply chains,
-                    policy influences, and market dynamics, rather than direct actions.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: a company that provides financial credit to another company that is
-                      clearing forests for grazing land and/or residential development leading to
-                      changes in the condition of native vegetation
-                    </span>
-                  </p>
+              </FadeIn>
+              <FadeIn>
+                <div className="flex w-full flex-col gap-3 lg:gap-5">
+                  <div className="text-4.2xl text-orange-500 lg:text-5xl">02</div>
+                  <div className="text-2xl lg:text-4xl">Indirect</div>
+                  <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
+                    <p>
+                      Indirect impacts from business on natural capital are unintended or secondary
+                      consequences arising through pathways such as financial support, supply
+                      chains, policy influences, and market dynamics, rather than direct actions.
+                    </p>
+                    <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                      <Lightbulb className="shrink-0" />
+                      <span className="relative top-0.5">
+                        Example: a company that provides financial credit to another company that is
+                        clearing forests for grazing land and/or residential development leading to
+                        changes in the condition of native vegetation
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <div className="text-4.2xl text-orange-500 lg:text-5xl">03</div>
-                <div className="text-2xl lg:text-4xl">Cumulative</div>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <p>
-                    The gradual, collective effects of multiple activities, operations, or decisions
-                    over time that alter natural capital assets and ecosystem services. Cumulative
-                    impacts include climate change, habitat fragmentation, unsustainable water use,
-                    and land degradation, resulting from ongoing contributions rather than isolated
-                    events.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: Corporations are contributing to carbon emissions that are driving
-                      climate change.
-                    </span>
-                  </p>
+              </FadeIn>
+              <FadeIn>
+                <div className="flex w-full flex-col gap-3 lg:gap-5">
+                  <div className="text-4.2xl text-orange-500 lg:text-5xl">03</div>
+                  <div className="text-2xl lg:text-4xl">Cumulative</div>
+                  <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
+                    <p>
+                      The gradual, collective effects of multiple activities, operations, or
+                      decisions over time that alter natural capital assets and ecosystem services.
+                      Cumulative impacts include climate change, habitat fragmentation,
+                      unsustainable water use, and land degradation, resulting from ongoing
+                      contributions rather than isolated events.
+                    </p>
+                    <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
+                      <Lightbulb className="shrink-0" />
+                      <span className="relative top-0.5">
+                        Example: Corporations are contributing to carbon emissions that are driving
+                        climate change.
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </FadeIn>
             </div>
           </div>
         </div>
