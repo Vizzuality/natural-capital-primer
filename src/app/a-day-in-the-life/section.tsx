@@ -197,7 +197,7 @@ const Section = ({
                     </div>
                   </div>
                   {i < processes.length - 1 && (
-                    <div className="flex h-full w-full pl-[196px] lg:pl-[250px]">
+                    <div className="mb-[25px] flex h-full w-full pl-[196px] lg:pl-[250px]">
                       <CaretDown className="max-lg:h-[18px]" />
                     </div>
                   )}
