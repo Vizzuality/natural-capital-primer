@@ -286,7 +286,7 @@ export const SECTIONS: SectionType[] = [
       <>
         <span>The train is powered by </span>
         <span className="text-turquoise">
-          solar electricity, a clean and renewable energy source.
+          solar electricity, a clean and renewable energy source.{" "}
         </span>
         <span>Solar panels capture sunlight and convert it into electricity. </span>
       </>

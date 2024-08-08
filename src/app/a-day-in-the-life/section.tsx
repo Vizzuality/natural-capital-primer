@@ -12,7 +12,7 @@ import AudioIconOn from "@/svgs/audio-icon-on.svg";
 import AudioIconOff from "@/svgs/audio-icon-off.svg";
 import BackgroundVideo from "@/components/bg-video";
 
-const CENTER_CLASSES = "mx-auto flex max-w-7xl px-6 lg:px-20";
+const CENTER_CLASSES = "mx-auto flex max-w-7xl px-6 lg:pl-20";
 const ADJUSTMENT_LEFT_MARGIN = "lg:ml-[220px]";
 
 import { motion } from "framer-motion";
@@ -145,67 +145,71 @@ const Section = ({
             "mx-auto hidden max-w-7xl translate-y-[545px] pl-6 lg:flex lg:h-[480px] lg:pl-20",
           )}
         >
-          <div className="flex flex-col justify-center gap-8 bg-black p-[60px] text-white xl:ml-[220px]">
+          <div className="flex flex-col justify-center bg-black p-[60px] text-white xl:ml-[220px] xl:w-[980px]">
             <div className="max-w-[915px] pb-8 text-4xl">{story}</div>
-            <div className="text-xl leading-7">{question}</div>
+            <div>{question}</div>
           </div>
         </div>
       </div>
       <div className="flex w-full flex-col justify-start gap-y-10 bg-white pb-[68px] pt-10 text-black lg:gap-y-6 lg:pt-[407px]">
         {/* Blue story div mobile */}
         <div className={cn("mx-auto block max-w-7xl pl-6 lg:hidden")}>
-          <div className="flex flex-col justify-center gap-8 bg-black px-6 py-10 text-white lg:ml-[220px] lg:p-[60px]">
+          <div className="flex flex-col justify-center bg-black px-6 py-10 text-white lg:ml-[220px] lg:gap-8 lg:p-[60px]">
             <div className="max-w-[915px] pb-8 text-2xl lg:text-4xl">{story}</div>
-            <div className="text-xl leading-7">{question}</div>
+            <div>{question}</div>
           </div>
         </div>
-        <div className={cn(CENTER_CLASSES, "z-20 w-full lg:mb-[68px] lg:gap-x-16")}>
+        <div className={cn(CENTER_CLASSES, "w-full lg:mb-[68px] lg:gap-x-16")}>
           <div className="divide-x-black flex flex-col items-end gap-10 lg:ml-20 lg:flex-row xl:ml-[220px]">
-            <ul className="w-full lg:border-r lg:border-dashed lg:border-r-black lg:pr-[69px]">
+            <ul className="flex h-[489px] w-full flex-col justify-around lg:h-[676px] lg:border-r lg:border-dashed lg:border-r-black lg:pr-[69px]">
               {processes.map((process, i) => (
-                <li
-                  key={`process-${process.image} `}
-                  className="flex flex-col items-center gap-[25px] lg:min-w-[472px]"
-                >
-                  <div className="flex w-full">
-                    <div className="relative h-[148px] w-[146px] min-w-[146px] lg:h-[204px] lg:w-[202px] lg:min-w-[202px]">
-                      {process.borderColorClass && (
-                        <Pebble
-                          className={`h-[148px] w-[146px] lg:h-[204px] lg:w-[202px] ${process.borderColorClass} `}
-                        />
-                      )}
-                      <div className="absolute inset-0 flex w-full items-center justify-center">
-                        <Image
-                          alt=""
-                          height={179}
-                          width={181}
-                          className="z-10 hidden h-[181px] max-h-[181px] w-[179px] max-w-[179px] object-cover lg:block"
-                          src={process.image}
-                        />
-                        <Image
-                          alt=""
-                          height={129}
-                          width={127}
-                          className="z-10 block h-[129px] max-h-[129px] w-[127px] max-w-[127px] object-cover lg:hidden"
-                          src={process.image}
-                        />
+                <>
+                  <li
+                    key={`process-${process.image} `}
+                    className="flex flex-col items-center gap-[25px] lg:min-w-[472px]"
+                  >
+                    <div className="flex w-full items-center">
+                      <div className="relative flex h-0 items-center justify-center">
+                        <div className="h-[148px] w-[146px] min-w-[146px] lg:h-[204px] lg:w-[202px] lg:min-w-[202px]">
+                          {process.borderColorClass && (
+                            <Pebble
+                              className={`h-[148px] w-[146px] lg:h-[204px] lg:w-[202px] ${process.borderColorClass} `}
+                            />
+                          )}
+                          <div className="absolute inset-0 flex w-full items-center justify-center">
+                            <Image
+                              alt=""
+                              height={179}
+                              width={181}
+                              className="z-10 hidden h-[181px] max-h-[181px] w-[179px] max-w-[179px] object-cover lg:block"
+                              src={process.image}
+                            />
+                            <Image
+                              alt=""
+                              height={129}
+                              width={127}
+                              className="z-10 block h-[129px] max-h-[129px] w-[127px] max-w-[127px] object-cover lg:hidden"
+                              src={process.image}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-normal ml-10 flex flex-col justify-center gap-3 leading-7 lg:text-xl">
+                        <div className="font-bold">{process.title}</div>
+                        <div>{process.description}</div>
                       </div>
                     </div>
-                    <div className="text-normal ml-12 flex flex-col justify-center gap-3 leading-7 lg:text-xl">
-                      <div className="font-bold leading-7">{process.title}</div>
-                      <div className="leading-7">{process.description}</div>
-                    </div>
-                  </div>
+                  </li>
                   {i < processes.length - 1 && (
-                    <div className="mb-[25px] flex h-full w-full pl-[196px] lg:pl-[250px]">
+                    <div className="flex h-[17px] w-full pl-[196px] lg:pl-[250px]">
                       <CaretDown className="max-lg:h-[18px]" />
                     </div>
                   )}
-                </li>
+                </>
               ))}
             </ul>
             <div className="flex h-fit">
-              <div className="border-t border-solid border-t-black lg:ml-10">
+              <div className="border-t border-solid border-t-black">
                 <div className="divide-y-black flex flex-col space-y-5 divide-y divide-dashed">
                   {legend && (
                     <div className="pt-10 lg:pt-5">
