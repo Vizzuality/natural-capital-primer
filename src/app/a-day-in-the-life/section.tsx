@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { useTransform, useScroll, LayoutGroup, useInView } from "framer-motion";
+import { useRef } from "react";
+import { useTransform, useScroll, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { LEGEND_TERMS, GLOSSARY_TERMS } from "./data";
 import { SectionType } from "./data";
@@ -44,24 +44,21 @@ const Section = ({
   renderMobileMenu: ({ id }: { id: string }) => React.ReactElement;
 }) => {
   const scrollSectionRef = useRef(null);
-  const [activeImage, setActiveImage] = useState(0);
   const sectionInView = useInView(sectionRef, { margin: "-100px 0px 0px -500px" });
   const { scrollYProgress } = useScroll({
     target: sectionRef,
   });
+  const windowWidth = typeof window !== "undefined" ? window.innerWidth : 8000;
 
   const imageAnimation = {
-    marginTop: useTransform(scrollYProgress, [0, 0.2], [0, 360]),
-    height: useTransform(scrollYProgress, [0, 0.2], [465, 800]),
+    marginTop: useTransform(scrollYProgress, [0, 0.4], [0, 360]),
+    height: useTransform(scrollYProgress, [0, 0.4], [465, 800]),
+    width: useTransform(scrollYProgress, [0, 0.4], [1024, windowWidth]),
   };
 
   const pebbleAnimation = {
     y: useTransform(scrollYProgress, [0, 0.3], [0, -500]),
   };
-
-  scrollYProgress.on("change", (v) => {
-    setActiveImage(v > 0.15 ? 1 : 0);
-  });
 
   return (
     <section id={id} className={`${bgClass} relative text-black`} ref={sectionRef}>
@@ -98,30 +95,13 @@ const Section = ({
         <div
           className={cn(
             ADJUSTMENT_LEFT_MARGIN,
-            "absolute -top-[425px] flex max-h-[465px] min-h-[465px] w-full justify-end lg:-top-[365px] lg:right-0 lg:mx-auto lg:h-full", // xl:mr-[calc((100vw_-_1280px)_/_2)]
+            "absolute -top-[425px] flex max-h-[465px] min-h-[465px] w-full justify-end lg:-top-[365px] lg:right-0 lg:mx-auto lg:h-full",
           )}
         >
-          <LayoutGroup>
-            {activeImage === 0 && (
-              <motion.div
-                style={{ backgroundImage: `url(${mainImageURL})` }}
-                className="hidden lg:block lg:min-h-full lg:w-[1024px] lg:bg-cover"
-                key={`image-${id}-1`}
-                layoutId={`image-${id}`}
-                layout
-              />
-            )}
-            {activeImage === 1 && (
-              <motion.div
-                style={{ backgroundImage: `url(${mainImageURL})`, ...imageAnimation }}
-                className="hidden lg:block lg:min-h-full lg:w-screen lg:bg-cover"
-                key={`image-${id}-2`}
-                layoutId={`image-${id}`}
-                layout
-              />
-            )}
-          </LayoutGroup>
-
+          <motion.div
+            style={{ backgroundImage: `url(${mainImageURL})`, ...imageAnimation }}
+            className="hidden lg:block lg:min-h-full lg:w-[1024px] lg:bg-cover"
+          />
           <Image
             alt=""
             height={707}
