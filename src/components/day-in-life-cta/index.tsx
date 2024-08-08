@@ -7,7 +7,7 @@ import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 
 const DayInLifeCTA: FC = () => {
   return (
-    <div className="relative flex h-[520px] w-full max-w-7xl items-center bg-black bg-[url(/assets/key-concepts-climate-change-a-day-cta-background.png)] bg-right bg-no-repeat px-[60px] lg:h-[584px]">
+    <div className="relative mx-6 mb-10 flex h-[520px] w-full max-w-7xl items-start bg-black bg-[url(/assets/about-a-day-cta-background-mobile.png)] bg-right-bottom bg-no-repeat p-6 lg:mb-20 lg:h-[584px] lg:items-center lg:bg-[url(/assets/about-a-day-cta-background.png)] lg:bg-right lg:px-[60px]">
       <div className="flex max-w-[801px] flex-col items-start gap-16">
         <div className="flex flex-col gap-10 text-white">
           <div className="text-[52px] leading-[52px] lg:text-[100px] lg:leading-[92px]">
@@ -18,7 +18,7 @@ const DayInLifeCTA: FC = () => {
             products we use.
           </div>
         </div>
-        <Button variant="white" asChild>
+        <Button size="sm" variant="white" asChild>
           <Link href="/a-day-in-the-life">
             <HoverRepeatAnimation>Discover the Story</HoverRepeatAnimation>
           </Link>
