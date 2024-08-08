@@ -13,6 +13,11 @@ import { useRef } from "react";
 import Pebble from "@/components/home/pebble";
 import PrimerExtractPopover from "@/components/home/primer-extract-popover";
 import MountainCoverImage from "@/components/mountain-cover-image";
+import dynamic from "next/dynamic";
+
+const Parallax = dynamic(() => import("@/components/animations/parallax"), {
+  ssr: false,
+});
 
 export default function Home() {
   const scrollSectionRef = useRef(null);
@@ -139,7 +144,7 @@ export default function Home() {
           </div>
         </main>
       </div>
-      <div className="bg-green-500 pb-28 pt-10 lg:pb-52 lg:pt-24">
+      <div className="bg-green-500 pb-48 pt-10 lg:pb-60 lg:pt-24">
         <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
           <h2 className="flex-shrink-0 lg:w-[220px]">What is natural capital?</h2>
           <div className="grid flex-grow grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
@@ -165,7 +170,12 @@ export default function Home() {
         </main>
       </div>
       <div className="bg-black pb-10 text-white lg:pb-24">
-        <div className="relative -top-20 mx-6 aspect-[3/2] bg-[url(/assets/home-illustration.png)] bg-cover bg-center sm:aspect-[2/1] lg:-top-24 lg:mx-20 lg:aspect-auto lg:h-[550px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"></div>
+        <Parallax
+          mobileHeight={327}
+          height={547}
+          className="mx-6 aspect-[3/2] -translate-y-[117px] pb-10 sm:aspect-[2/1] lg:mx-20 lg:-translate-y-[145px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
+          src="/assets/home-illustration.png"
+        />
         <div className="flex flex-col gap-y-6 lg:gap-y-20">
           <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
             <h2 className="flex-shrink-0 lg:w-[220px]">Why is natural capital important to me?</h2>

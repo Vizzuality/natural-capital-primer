@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import useMediaQuery from "@/hooks/use-media-query";
 import DayInLifeCTA from "@/components/day-in-life-cta";
+import Parallax from "@/components/animations/parallax";
 
 export default function About() {
   const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
@@ -325,7 +326,12 @@ export default function About() {
         </main>
       </div>
       <div className="pb-10 lg:pb-24">
-        <div className="relative -top-20 mx-6 aspect-[3/2] bg-[url(/assets/about-illustration.png)] bg-cover bg-center sm:aspect-[2/1] lg:-top-24 lg:mx-20 lg:aspect-auto lg:h-[550px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"></div>
+        <Parallax
+          mobileHeight={327}
+          height={547}
+          className="-top-20 ml-6 aspect-[3/2] pb-10 sm:aspect-[2/1] lg:-top-24 lg:mx-20 lg:aspect-auto xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
+          src="/assets/about-illustration.png"
+        />
         <main className="mx-auto -mt-10 flex max-w-7xl flex-col-reverse justify-start gap-y-10 px-6 lg:mt-0 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 xl:gap-x-44">
           <p className="flex-shrink-0 border-l-[6px] border-l-orange-500 pl-6 lg:w-[400px]">
             The Natural Capital Primer is a collaborative project by the Macdoch Foundation and La

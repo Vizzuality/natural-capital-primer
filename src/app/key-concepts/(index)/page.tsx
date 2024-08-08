@@ -19,6 +19,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment, useCallback, useRef, useState } from "react";
 import FadeIn from "@/components/animations/fade-in";
+import Parallax from "@/components/animations/parallax";
 
 // FadeInOnScroll component uses window object, which is not available in SSR
 const FadeInOnScroll = dynamic(() => import("@/components/animations/fade-in-on-scroll"), {
@@ -721,7 +722,13 @@ const KeyConceptsPage: FC = () => {
           </div>
         </main>
       </div>
-      <SeaCoverImage />
+      <Parallax
+        mobileHeight={400}
+        height={550}
+        className="sm:aspect-[5/3] sm:h-auto lg:aspect-auto"
+      >
+        <SeaCoverImage />
+      </Parallax>
       <div className="bg-black text-white">
         <div className="mx-auto max-w-7xl px-6 lg:flex-row lg:px-20">
           <p className="py-24 text-center lg:py-80">Content coming soon</p>
