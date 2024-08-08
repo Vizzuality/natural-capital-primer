@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useTransform, useScroll, LayoutGroup } from "framer-motion";
+import { useTransform, useScroll, LayoutGroup, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { LEGEND_TERMS, GLOSSARY_TERMS } from "./data";
 import { SectionType } from "./data";
@@ -45,7 +45,7 @@ const Section = ({
 }) => {
   const scrollSectionRef = useRef(null);
   const [activeImage, setActiveImage] = useState(0);
-
+  const sectionInView = useInView(sectionRef, { margin: "-100px 0px 0px -500px" });
   const { scrollYProgress } = useScroll({
     target: sectionRef,
   });
@@ -86,14 +86,14 @@ const Section = ({
                   ) : (
                     <AudioIconOn className="h-[52px] w-[52px] rounded-full bg-black lg:h-11 lg:w-11" />
                   )}
-                  <span>Click to turn sound on</span>
+                  <span>Click to turn sound {soundOn ? "off" : "on"}</span>
                 </>
               </Button>
             </div>
           </div>
         </div>
       </div>
-      <BackgroundVideo src={videoURL} />
+      <BackgroundVideo src={videoURL} soundOn={soundOn} sectionInView={sectionInView} />
       <div className="relative h-0 w-full bg-white px-6 lg:h-[700px] lg:bg-cover lg:bg-no-repeat lg:px-20">
         <div
           className={cn(
