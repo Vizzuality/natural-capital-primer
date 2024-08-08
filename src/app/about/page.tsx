@@ -327,8 +327,7 @@ export default function About() {
       </div>
       <div className="pb-10 lg:pb-24">
         <Parallax
-          mobileHeight={327}
-          height={547}
+          heightClasses="h-[327px] lg:h-[547px]"
           className="-top-20 ml-6 aspect-[3/2] pb-10 sm:aspect-[2/1] lg:-top-24 lg:mx-20 lg:aspect-auto xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
           src="/assets/about-illustration.png"
         />

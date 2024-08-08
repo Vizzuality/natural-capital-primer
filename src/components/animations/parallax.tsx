@@ -7,12 +7,11 @@ import { FC, cloneElement, isValidElement } from "react";
 type ParallaxProps = {
   className?: string;
   src?: string;
-  height: number;
-  mobileHeight: number;
+  heightClasses: string;
   children?: React.ReactNode & { className?: string; style?: { [key: string]: string } };
 };
 
-const Parallax: FC<ParallaxProps> = ({ className, src, mobileHeight, height, children }) => {
+const Parallax: FC<ParallaxProps> = ({ className, src, heightClasses, children }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [offsetY, setOffsetY] = useState(0);
   const { scrollYProgress } = useScroll({
@@ -28,10 +27,7 @@ const Parallax: FC<ParallaxProps> = ({ className, src, mobileHeight, height, chi
   return (
     <div
       ref={ref}
-      className={cn(
-        `relative overflow-hidden lg:aspect-auto h-[${mobileHeight}px] lg:h-[${height}px]`,
-        className,
-      )}
+      className={cn(`relative overflow-hidden lg:aspect-auto`, heightClasses, className)}
     >
       {isValidElement(children) ? (
         cloneElement(children, {

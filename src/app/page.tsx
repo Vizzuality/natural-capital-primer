@@ -171,8 +171,7 @@ export default function Home() {
       </div>
       <div className="bg-black pb-10 text-white lg:pb-24">
         <Parallax
-          mobileHeight={327}
-          height={547}
+          heightClasses="h-[327px] lg:h-[547px]"
           className="mx-6 aspect-[3/2] -translate-y-[117px] pb-10 sm:aspect-[2/1] lg:mx-20 lg:-translate-y-[145px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
           src="/assets/home-illustration.png"
         />

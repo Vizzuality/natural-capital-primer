@@ -723,8 +723,7 @@ const KeyConceptsPage: FC = () => {
         </main>
       </div>
       <Parallax
-        mobileHeight={400}
-        height={550}
+        heightClasses="h-[400px] lg:h-[547px]"
         className="sm:aspect-[5/3] sm:h-auto lg:aspect-auto"
       >
         <SeaCoverImage />
