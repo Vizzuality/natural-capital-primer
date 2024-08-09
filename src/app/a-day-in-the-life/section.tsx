@@ -45,7 +45,7 @@ const Section = ({
   renderMobileMenu: ({ id }: { id: string }) => React.ReactElement;
 }) => {
   const scrollSectionRef = useRef(null);
-  const sectionInView = useInView(sectionRef, { margin: "-100px 0px 0px -500px" });
+  const sectionInView = useInView(sectionRef, { margin: "-600px 0px 0px -600px" });
   const { scrollYProgress } = useScroll({
     target: sectionRef,
   });
