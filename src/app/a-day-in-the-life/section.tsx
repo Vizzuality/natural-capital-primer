@@ -91,13 +91,14 @@ const Section = ({
         </div>
       </div>
       <BackgroundVideo src={videoURL} soundOn={soundOn} sectionInView={sectionInView} />
-      <div className="relative h-0 w-full bg-white px-6 lg:h-[700px] lg:bg-cover lg:bg-no-repeat lg:px-20">
+      <div className="relative z-10 h-0 w-full bg-white px-6 lg:z-0 lg:h-[700px] lg:bg-cover lg:bg-no-repeat lg:px-20">
         <div
           className={cn(
             ADJUSTMENT_LEFT_MARGIN,
             "absolute -top-[425px] flex max-h-[465px] min-h-[465px] w-full justify-end lg:-top-[365px] lg:right-0 lg:mx-auto lg:h-full",
           )}
         >
+          {/* Animated desktop image */}
           <motion.div
             style={{
               backgroundImage: `url(${mainImageURL})`,
@@ -105,20 +106,7 @@ const Section = ({
             }}
             className="hidden lg:block lg:min-h-full lg:w-[1024px] lg:bg-cover"
           />
-          <Image
-            alt=""
-            height={707}
-            width={1060}
-            className="hidden max-h-[465px] min-h-full w-full object-none object-[-70px_0] md:block lg:hidden"
-            src={mainImageURL}
-          />
-          <Image
-            alt=""
-            height={485}
-            width={351}
-            className="max-h-[485px] min-h-full w-full object-cover md:hidden"
-            src={mainImageMobileURL}
-          />
+          {/* Animated Pebble */}
           <motion.div
             className="absolute -top-[90px] right-[56px] lg:-top-[165px] lg:right-[112px]"
             style={{ ...pebbleAnimation }}
@@ -129,29 +117,34 @@ const Section = ({
             </div>
           </motion.div>
         </div>
-        {/* Blue story div laptop */}
-        <div
-          className={cn(
-            "mx-auto hidden max-w-7xl translate-y-[545px] pl-6 lg:flex lg:h-[480px] lg:pl-20",
-          )}
-        >
-          <div className="flex flex-col justify-center bg-black p-[60px] text-white xl:ml-[220px] xl:w-[980px]">
-            <div className="max-w-[915px] pb-8 text-4xl">{story}</div>
-            <div>{question}</div>
-          </div>
-        </div>
       </div>
-      <div className="flex w-full flex-col justify-start gap-y-10 bg-white pb-[68px] pt-10 text-black lg:gap-y-6 lg:pt-[407px]">
-        {/* Blue story div mobile */}
-        <div className={cn("mx-auto block max-w-7xl pl-6 lg:hidden")}>
+      <div className="relative flex w-full flex-col justify-start gap-y-10 bg-white pb-[68px] pt-10 text-black lg:gap-y-6 lg:pt-[360px]">
+        {/* Blue story div mobile with image */}
+        <div className="mx-auto -mt-[485px] block max-w-7xl pl-6 lg:hidden">
+          <Image
+            alt=""
+            height={485}
+            width={351}
+            className="max-h-[485px] min-h-full w-full object-cover lg:hidden"
+            src={mainImageMobileURL}
+          />
           <div className="flex flex-col justify-center bg-black px-6 py-10 text-white lg:ml-[220px] lg:gap-8 lg:p-[60px]">
             <div className="max-w-[915px] pb-8 text-2xl lg:text-4xl">{story}</div>
             <div>{question}</div>
           </div>
         </div>
+        {/* Blue story div laptop */}
+        <div className={cn("absolute bottom-[calc(100%-280px)] hidden w-full lg:flex")}>
+          <div className="mx-auto flex w-full max-w-7xl px-6 lg:pl-20">
+            <div className="flex flex-col justify-center bg-black p-[60px] text-white lg:ml-20 xl:ml-[220px] xl:w-[980px]">
+              <div className="max-w-[915px] pb-8 text-4xl">{story}</div>
+              <div>{question}</div>
+            </div>
+          </div>
+        </div>
         <div className={cn(CENTER_CLASSES, "w-full lg:mb-[68px] lg:gap-x-16")}>
           <div className="divide-x-black flex flex-col items-end gap-10 lg:ml-20 lg:flex-row xl:ml-[220px]">
-            <ul className="flex h-[489px] w-full flex-col justify-around lg:h-[676px] lg:border-r lg:border-dashed lg:border-r-black lg:pr-[69px]">
+            <ul className="flex h-[489px] w-full flex-col justify-around py-7 lg:h-[676px] lg:border-r lg:border-dashed lg:border-r-black lg:pr-[69px]">
               {processes.map((process, i) => (
                 <>
                   <li
