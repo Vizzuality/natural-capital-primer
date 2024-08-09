@@ -53,6 +53,7 @@ export interface SectionType {
   id: string;
   title: string;
   mainImageURL: string;
+  mainImageMobileURL: string;
   videoURL: string;
   SvgIcon: React.FC<{ className?: string }>;
   bgClass: string;
@@ -75,6 +76,7 @@ export const SECTIONS: SectionType[] = [
     id: "mobile-phone",
     title: "Julie’s mobile phone alarm goes off in the morning.",
     mainImageURL: "/assets/a-day-in-the-life-1.webp",
+    mainImageMobileURL: "/assets/a-day-in-the-life-1-mobile.webp",
     videoURL: "/assets/video/a-day-in-the-life-1.mp4",
     SvgIcon: Icon1,
     bgClass: "bg-orange",
@@ -116,6 +118,7 @@ export const SECTIONS: SectionType[] = [
     id: "shower",
     title: "Julie gets up and then she has a shower.",
     mainImageURL: "/assets/a-day-in-the-life-2.webp",
+    mainImageMobileURL: "/assets/a-day-in-the-life-2-mobile.webp",
     videoURL: "/assets/video/a-day-in-the-life-2.mp4",
     SvgIcon: Icon2,
     bgClass: "bg-blue-500",
@@ -160,6 +163,7 @@ export const SECTIONS: SectionType[] = [
     id: "clothes",
     title: "Julie puts on her clothes.",
     mainImageURL: "/assets/a-day-in-the-life-3.webp",
+    mainImageMobileURL: "/assets/a-day-in-the-life-3-mobile.webp",
     videoURL: "/assets/video/a-day-in-the-life-3.mp4",
     SvgIcon: Icon3,
     bgClass: "bg-purple",
@@ -200,6 +204,7 @@ export const SECTIONS: SectionType[] = [
     id: "kettle-and-coffee",
     title: "Julie turns on the kettle and prepares her morning coffee.",
     mainImageURL: "/assets/a-day-in-the-life-4.webp",
+    mainImageMobileURL: "/assets/a-day-in-the-life-4-mobile.webp",
     videoURL: "/assets/video/a-day-in-the-life-4.mp4",
     SvgIcon: Icon4,
     bgClass: "bg-lime",
@@ -240,6 +245,7 @@ export const SECTIONS: SectionType[] = [
     id: "bread-and-butter",
     title: "Julie has a slice of toast and butter for breakfast.",
     mainImageURL: "/assets/a-day-in-the-life-5.webp",
+    mainImageMobileURL: "/assets/a-day-in-the-life-5-mobile.webp",
     videoURL: "/assets/video/a-day-in-the-life-5.mp4",
     SvgIcon: Icon5,
     bgClass: "bg-orange-500",
@@ -279,6 +285,7 @@ export const SECTIONS: SectionType[] = [
     id: "train",
     title: "Julie catches the train to the city.",
     mainImageURL: "/assets/a-day-in-the-life-6.webp",
+    mainImageMobileURL: "/assets/a-day-in-the-life-6-mobile.webp",
     videoURL: "/assets/video/a-day-in-the-life-6.mp4",
     SvgIcon: Icon6,
     bgClass: "bg-turquoise",
@@ -320,6 +327,7 @@ export const SECTIONS: SectionType[] = [
     id: "laptop",
     title: "Julie goes to work in the stock exchange.",
     mainImageURL: "/assets/a-day-in-the-life-7.webp",
+    mainImageMobileURL: "/assets/a-day-in-the-life-7-mobile.webp",
     videoURL: "/assets/video/a-day-in-the-life-7.mp4",
 
     SvgIcon: Icon7,

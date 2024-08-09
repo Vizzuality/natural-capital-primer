@@ -22,6 +22,7 @@ const Section = ({
     id,
     title,
     mainImageURL,
+    mainImageMobileURL,
     videoURL,
     bgClass,
     story,
@@ -59,7 +60,6 @@ const Section = ({
   const pebbleAnimation = {
     y: useTransform(scrollYProgress, [0, 0.3], [0, -500]),
   };
-
   return (
     <section id={id} className={`${bgClass} relative text-black`} ref={sectionRef}>
       {renderMobileMenu({ id })}
@@ -99,15 +99,25 @@ const Section = ({
           )}
         >
           <motion.div
-            style={{ backgroundImage: `url(${mainImageURL})`, ...imageAnimation }}
+            style={{
+              backgroundImage: `url(${mainImageURL})`,
+              ...imageAnimation,
+            }}
             className="hidden lg:block lg:min-h-full lg:w-[1024px] lg:bg-cover"
           />
           <Image
             alt=""
             height={707}
             width={1060}
-            className="max-h-[465px] min-h-full w-full object-none object-[-70px_0] lg:hidden"
+            className="hidden max-h-[465px] min-h-full w-full object-none object-[-70px_0] md:block lg:hidden"
             src={mainImageURL}
+          />
+          <Image
+            alt=""
+            height={485}
+            width={351}
+            className="max-h-[485px] min-h-full w-full object-cover md:hidden"
+            src={mainImageMobileURL}
           />
           <motion.div
             className="absolute -top-[90px] right-[56px] lg:-top-[165px] lg:right-[112px]"
