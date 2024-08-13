@@ -18,10 +18,12 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment, useCallback, useRef, useState } from "react";
-import RevealLines from "@/components/animations/reveal-lines";
 import Parallax from "@/components/animations/parallax";
 
-// FadeInOnScroll component uses window object, which is not available in SSR
+// FadeInOnScroll and RevealLines components use window object, which is not available in SSR
+const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
+  ssr: false,
+});
 const FadeInOnScroll = dynamic(() => import("@/components/animations/fade-in-on-scroll"), {
   ssr: false,
 });
