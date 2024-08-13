@@ -54,13 +54,6 @@ const RevealLines: FC<RevealLinesProps> = ({
 
   return (
     <AnimatePresence>
-      <div className="invisible h-0" aria-hidden="true">
-        {childElements.map((child, index) =>
-          cloneElement(child as React.ReactElement, {
-            ref: (ref: HTMLDivElement) => (childrenRef.current[index] = ref),
-          }),
-        )}
-      </div>
       <motion.div
         style={{ height: splitChars ? lineHeight : totalHeight }}
         whileInView={splitChars ? "start" : undefined}
@@ -80,6 +73,14 @@ const RevealLines: FC<RevealLinesProps> = ({
             : undefined
         }
       >
+        {/* Div created just to get the refs to calculate the children lines and lineHeight */}
+        <div className="invisible h-0" aria-hidden="true">
+          {childElements.map((child, index) =>
+            cloneElement(child as React.ReactElement, {
+              ref: (ref: HTMLDivElement) => (childrenRef.current[index] = ref),
+            }),
+          )}
+        </div>
         {splittedText.map((text, index) => (
           <span
             key={`text-${text}-${index}`}
