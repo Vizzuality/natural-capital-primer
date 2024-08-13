@@ -610,10 +610,10 @@ const KeyConceptsPage: FC = () => {
             <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
             <div className="flex flex-grow flex-col gap-6 lg:gap-20">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars heightOffset={isMobile ? 10 : 25}>
+                <RevealLines splitChars>
                   <div className="text-4.2xl text-blue-500 lg:text-5xl">01</div>
                 </RevealLines>
-                <RevealLines heightOffset={isMobile ? 0 : 6}>
+                <RevealLines>
                   <div className="text-2xl lg:text-4xl">Supporting services</div>
                 </RevealLines>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
@@ -634,10 +634,10 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars heightOffset={isMobile ? 10 : 25}>
+                <RevealLines splitChars>
                   <div className="text-4.2xl text-blue-500 lg:text-5xl">02</div>
                 </RevealLines>
-                <RevealLines heightOffset={isMobile ? 0 : 6}>
+                <RevealLines>
                   <div className="text-2xl lg:text-4xl">Regulating</div>
                 </RevealLines>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
@@ -659,10 +659,10 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars heightOffset={isMobile ? 10 : 25}>
+                <RevealLines splitChars>
                   <div className="text-4.2xl text-blue-500 lg:text-5xl">03</div>
                 </RevealLines>
-                <RevealLines heightOffset={isMobile ? 0 : 6}>
+                <RevealLines>
                   <div className="text-2xl lg:text-4xl">Provisioning</div>
                 </RevealLines>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
@@ -682,7 +682,7 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars heightOffset={isMobile ? 10 : 25}>
+                <RevealLines splitChars>
                   <div className="text-4.2xl text-blue-500 lg:text-5xl">04</div>
                 </RevealLines>
                 <RevealLines>
@@ -898,10 +898,10 @@ const KeyConceptsPage: FC = () => {
             <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
             <div className="flex flex-grow flex-col gap-6 lg:gap-20">
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars heightOffset={isMobile ? 10 : 25}>
+                <RevealLines splitChars>
                   <div className="text-4.2xl text-orange-500 lg:text-5xl">01</div>
                 </RevealLines>
-                <RevealLines heightOffset={isMobile ? 0 : 14}>
+                <RevealLines>
                   <div className="text-2xl lg:text-4xl">Direct</div>
                 </RevealLines>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
@@ -921,10 +921,10 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars heightOffset={isMobile ? 10 : 25}>
+                <RevealLines splitChars>
                   <div className="text-4.2xl text-orange-500 lg:text-5xl">02</div>
                 </RevealLines>
-                <RevealLines heightOffset={isMobile ? 0 : 14}>
+                <RevealLines>
                   <div className="text-2xl lg:text-4xl">Indirect</div>
                 </RevealLines>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
@@ -946,10 +946,10 @@ const KeyConceptsPage: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars heightOffset={isMobile ? 10 : 25}>
+                <RevealLines splitChars>
                   <div className="text-4.2xl text-orange-500 lg:text-5xl">03</div>
                 </RevealLines>
-                <RevealLines heightOffset={isMobile ? 0 : 14}>
+                <RevealLines>
                   <div className="text-2xl lg:text-4xl">Cumulative</div>
                 </RevealLines>
                 <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">

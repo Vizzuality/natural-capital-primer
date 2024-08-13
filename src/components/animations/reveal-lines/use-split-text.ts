@@ -1,6 +1,10 @@
 import { useEffect, useState, MutableRefObject } from "react";
 
-export const useSplitText = (text: string, containerRefs: MutableRefObject<HTMLDivElement[]>) => {
+export const useSplitText = (
+  text: string,
+  containerRefs: MutableRefObject<HTMLDivElement[]>,
+  windowWidth: number,
+) => {
   const [lines, setLines] = useState<string[]>([]);
   const [lineHeight, setLineHeight] = useState<number>(0);
 
@@ -38,7 +42,7 @@ export const useSplitText = (text: string, containerRefs: MutableRefObject<HTMLD
         // Continue building the line
         tempLine = testLine;
       }
-      setLineHeight(testSpan.offsetHeight);
+      setLineHeight(parseInt(window.getComputedStyle(testSpan).lineHeight, 10));
       // If it's the last word, push the final line
       if (index === words.length - 1) {
         tempLines.push(tempLine.trim());
@@ -48,7 +52,7 @@ export const useSplitText = (text: string, containerRefs: MutableRefObject<HTMLD
     // Clean up the test span
     ref.removeChild(testSpan);
     setLines(tempLines);
-  }, [text, containerRefs]);
+  }, [text, containerRefs, windowWidth]);
 
   return { lines, lineHeight };
 };

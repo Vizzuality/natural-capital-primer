@@ -1,34 +1,44 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useRef, FC, Children, cloneElement, isValidElement } from "react";
+import { useRef, FC, Children, cloneElement, isValidElement, useEffect, useState } from "react";
 import { useSplitText } from "./use-split-text";
 import { cn } from "@/lib/utils";
 
 interface RevealLinesProps {
   children: React.ReactNode;
   splitChars?: boolean;
-  heightOffset?: number;
   delay?: number;
   duration?: number;
 }
+
+const isReactElement = (child: React.ReactNode): child is React.ReactElement => {
+  return isValidElement(child);
+};
 
 // Receives only one node ('div', 'p', ...) containing a string value and animates it line by line or char by char
 const RevealLines: FC<RevealLinesProps> = ({
   children,
   splitChars = false,
-  heightOffset = 0,
   delay = 0.1,
   duration = 0.4,
 }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const childrenRef = useRef<HTMLDivElement[]>([]);
 
-  const isReactElement = (child: React.ReactNode): child is React.ReactElement => {
-    return isValidElement(child);
-  };
   const childElements = Children.toArray(children).filter(isReactElement);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const { lines, lineHeight } = useSplitText(
     childElements[0].props.children as string,
     childrenRef,
+    windowWidth,
   );
 
   const item = {
@@ -45,23 +55,21 @@ const RevealLines: FC<RevealLinesProps> = ({
   return (
     <AnimatePresence>
       <div className="invisible h-0" aria-hidden="true">
-        {Children.toArray(children)
-          .filter((child) => isValidElement(child))
-          .map((child, index) =>
-            cloneElement(child as React.ReactElement, {
-              ref: (ref: HTMLDivElement) => (childrenRef.current[index] = ref),
-            }),
-          )}
+        {childElements.map((child, index) =>
+          cloneElement(child as React.ReactElement, {
+            ref: (ref: HTMLDivElement) => (childrenRef.current[index] = ref),
+          }),
+        )}
       </div>
       <motion.div
-        style={{ height: splitChars ? lineHeight - heightOffset : totalHeight }}
+        style={{ height: splitChars ? lineHeight : totalHeight }}
         whileInView={splitChars ? "start" : undefined}
         viewport={{ once: true }}
         className={cn({
           "overflow-hidden": splitChars,
         })}
         variants={splitChars ? item : undefined}
-        initial={splitChars ? { y: lineHeight - heightOffset } : undefined}
+        initial={splitChars ? { y: lineHeight } : undefined}
         transition={
           splitChars
             ? {
@@ -74,19 +82,19 @@ const RevealLines: FC<RevealLinesProps> = ({
       >
         {splittedText.map((text, index) => (
           <span
-            key={index}
+            key={`text-${text}-${index}`}
             className={cn("overflow-hidden", {
               block: !splitChars,
               "inline-block": splitChars,
             })}
-            style={{ height: `${lineHeight - heightOffset}px` }}
+            style={{ height: `${lineHeight}px` }}
           >
             <motion.div
               key={index}
               whileInView="start"
               // Only show the effect once
               viewport={{ once: true }}
-              initial={{ y: lineHeight - heightOffset }}
+              initial={{ y: lineHeight }}
               transition={{
                 delay: delay * index,
                 duration,
