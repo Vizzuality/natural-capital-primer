@@ -12,6 +12,9 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import useMediaQuery from "@/hooks/use-media-query";
 import DayInLifeCTA from "@/components/day-in-life-cta";
 import Parallax from "@/components/animations/parallax";
+import dynamic from "next/dynamic";
+
+const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), { ssr: false });
 
 export default function About() {
   const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
@@ -269,46 +272,70 @@ export default function About() {
           <h2 className="flex-shrink-0 lg:w-[220px]">What can you find on The Primer?</h2>
           <div className="flex flex-col gap-y-6 lg:gap-y-10">
             <div className="flex flex-col gap-y-3">
-              <p className="text-2xl lg:text-4xl">Types of Natural Capital</p>
-              <p>
-                Examine the natural capital present in different ecosystems and understand why it is
-                important to individuals, businesses, and governments.
-              </p>
+              <RevealLines>
+                <p className="text-2xl lg:text-4xl">Types of Natural Capital</p>
+              </RevealLines>
+              <RevealLines>
+                <p>
+                  Examine the natural capital present in different ecosystems and understand why it
+                  is important to individuals, businesses, and governments.
+                </p>
+              </RevealLines>
             </div>
             <div className="flex flex-col gap-y-3">
-              <p className="text-2xl lg:text-4xl">Interactive Content</p>
-              <p>
-                Engage with videos, infographics, and interactive tools to make learning about
-                natural capital enjoyable and relatable.
-              </p>
+              <RevealLines>
+                <p className="text-2xl lg:text-4xl">Interactive Content</p>
+              </RevealLines>
+              <RevealLines>
+                <p>
+                  Engage with videos, infographics, and interactive tools to make learning about
+                  natural capital enjoyable and relatable.
+                </p>
+              </RevealLines>
             </div>
             <div className="flex flex-col gap-y-3">
-              <p className="text-2xl lg:text-4xl">Business Dependencies and Impacts</p>
-              <p>
-                Explore businesses&apos; dependencies and impacts on natural capital and why they
-                must account for and manage it.
-              </p>
+              <RevealLines>
+                <p className="text-2xl lg:text-4xl">Business Dependencies and Impacts</p>
+              </RevealLines>
+              <RevealLines>
+                <p>
+                  Explore businesses&apos; dependencies and impacts on natural capital and why they
+                  must account for and manage it.
+                </p>
+              </RevealLines>
             </div>
             <div className="flex flex-col gap-y-3">
-              <p className="text-2xl lg:text-4xl">Case Studies and Examples</p>
-              <p>
-                Discover real-world examples from various industries and ecosystems illustrating
-                natural capital&apos;s practical applications and benefits.
-              </p>
+              <RevealLines>
+                <p className="text-2xl lg:text-4xl">Case Studies and Examples</p>
+              </RevealLines>
+              <RevealLines>
+                <p>
+                  Discover real-world examples from various industries and ecosystems illustrating
+                  natural capital&apos;s practical applications and benefits.
+                </p>
+              </RevealLines>
             </div>
             <div className="flex flex-col gap-y-3">
-              <p className="text-2xl lg:text-4xl">Educational Resources</p>
-              <p>
-                Access clear definitions, explanations, and examples to help you understand the
-                elements of natural capital and its significance.
-              </p>
+              <RevealLines>
+                <p className="text-2xl lg:text-4xl">Educational Resources</p>
+              </RevealLines>
+              <RevealLines>
+                <p>
+                  Access clear definitions, explanations, and examples to help you understand the
+                  elements of natural capital and its significance.
+                </p>
+              </RevealLines>
             </div>
             <div className="flex flex-col gap-y-3">
-              <p className="text-2xl lg:text-4xl">Guides and Frameworks</p>
-              <p>
-                Utilize guides on natural capital accounting, assessment, and reporting to help
-                businesses and policymakers integrate these practices into their operations.
-              </p>
+              <RevealLines>
+                <p className="text-2xl lg:text-4xl">Guides and Frameworks</p>
+              </RevealLines>
+              <RevealLines>
+                <p>
+                  Utilize guides on natural capital accounting, assessment, and reporting to help
+                  businesses and policymakers integrate these practices into their operations.
+                </p>
+              </RevealLines>
             </div>
             <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-x-3">
               <Button variant="outline" size="lg" asChild>
