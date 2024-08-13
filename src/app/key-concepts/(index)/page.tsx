@@ -19,6 +19,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment, useCallback, useRef, useState } from "react";
 import Parallax from "@/components/animations/parallax";
+import Quiz from "@/components/quiz";
+import type { QuizData } from "@/components/quiz";
 
 // FadeInOnScroll and RevealLines components use window object, which is not available in SSR
 const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
@@ -39,6 +41,30 @@ const LightBulbMessage = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
+const QUIZ_DATA: QuizData[] = [
+  {
+    key: "quiz-chapter-1",
+    colorClass: "text-green-500",
+    chapterName: "01—03  Assets and Resources",
+    questions: [
+      {
+        title: (
+          <>
+            Which of the following is a{" "}
+            <span className="text-green-500">non-renewable resource?</span>
+          </>
+        ),
+        options: ["Fossil fuels", "Water", "Kelp"],
+        images: [
+          "/assets/key-concepts-quiz-1-1.png",
+          "/assets/key-concepts-quiz-1-2.png",
+          "/assets/key-concepts-quiz-1-3.png",
+        ],
+        answer: 0,
+      },
+    ],
+  },
+];
 const KeyConceptsPage: FC = () => {
   const [chapter1Tab, setChapter1Tab] = useState("environmental");
   const [chapter2Tab, setChapter2Tab] = useState("abiotic");
@@ -517,6 +543,7 @@ const KeyConceptsPage: FC = () => {
             </ol>
           </div>
         </main>
+        <Quiz data={QUIZ_DATA[0]} />
       </div>
 
       <div
