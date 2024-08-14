@@ -4,7 +4,10 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import QuizButton from "./quiz-button";
 import AnsweredAnimation from "./answered-animation";
-import AnsweredAnimationMobile from "./answered-animation-mobile";
+import dynamic from "next/dynamic";
+const AnsweredAnimationMobile = dynamic(() => import("./answered-animation-mobile"), {
+  ssr: false,
+});
 
 export interface QuizData {
   key: string;
