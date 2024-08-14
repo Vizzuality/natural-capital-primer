@@ -14,6 +14,8 @@ import {
 import Image from "next/image";
 import Plus from "@/svgs/plus.svg";
 import Minus from "@/svgs/minus.svg";
+import { Button } from "@/components/ui/button";
+import { AnimatePresence, motion } from "framer-motion";
 
 type TriggerImagesAndText = {
   text1: string;
@@ -26,13 +28,16 @@ type AccordionContent = {
   id: string;
 } & TriggerImagesAndText;
 
+const MotionPlus = motion(Plus);
+const MotionMinus = motion(Minus);
+
 const Item = ({ content, active }: { content: AccordionContent; active: boolean }) => {
   return (
     <AccordionItem value={content.id}>
       <AccordionTrigger className="w-full">
         <TriggerContent content={content} open={active} />
       </AccordionTrigger>
-      <AccordionContent className="Accordion-content">
+      <AccordionContent>
         Explore the stocks of natural capital, the services that flow from it and the values for
         businesses and society across a range of contexts.
       </AccordionContent>
@@ -49,31 +54,71 @@ const TriggerContent = ({
 }) => {
   const { text1, imageSrc1, text2, imageSrc2 } = content;
   return (
-    <div className="relative flex w-full gap-3.5">
-      <div className="flex flex-col gap-5 text-2xl font-normal text-black lg:gap-4 lg:text-4xl">
+    <span className="relative flex w-full items-start justify-between gap-3.5">
+      <span className="flex flex-col gap-5 text-2xl font-normal text-black lg:gap-4 lg:text-4xl">
         {/* DESKTOP */}
-        <div className="hidden gap-3 lg:flex">
-          <Image width={105} height={44} alt="" src={imageSrc1} />
-          <div>{text1}</div>
-        </div>
-        <div className="hidden gap-3 lg:flex">
-          <Image width={105} height={44} alt="" src={imageSrc2} />
-          <div>{text2}</div>
-        </div>
+        <span className="hidden text-left leading-tight group-hover:underline lg:inline">
+          <Image
+            width={105}
+            height={44}
+            alt=""
+            src={imageSrc1}
+            className="relative -top-1 mr-3 inline-block"
+          />
+          {text1}
+          <br />
+          <Image
+            width={105}
+            height={44}
+            alt=""
+            src={imageSrc2}
+            className="relative -top-1 mr-3 inline-block"
+          />
+          {text2}
+        </span>
         {/* MOBILE */}
-        <div className="flex h-11 gap-3 lg:hidden">
+        <span className="flex h-11 gap-3 lg:hidden">
           <Image width={105} height={44} alt="" src={imageSrc1} />
           <Image width={105} height={44} alt="" src={imageSrc2} />
-        </div>
-        <div className="text-left lg:hidden">
+        </span>
+        <span className="text-left lg:hidden">
           {text1} {text2}
-        </div>
-      </div>
-      <div className="absolute right-0 top-0 h-9 w-9 rounded-full bg-black">
-        {open ? <Minus /> : <Plus />}
-        <div className="sr-only">Open detail</div>
-      </div>
-    </div>
+        </span>
+      </span>
+      <span className="absolute right-0 top-0 flex shrink-0 items-center gap-x-3 lg:relative lg:top-1">
+        <span
+          className="sr-only font-normal text-grey-300 opacity-0 transition-opacity group-hover:opacity-100 lg:not-sr-only"
+          aria-hidden="true"
+        >
+          {!open && "Open detail"}
+          {open && "Close detail"}
+        </span>
+        <span className="h-11 w-11 rounded-full bg-black text-white transition-colors group-hover:bg-grey-300 lg:h-9 lg:w-9">
+          <AnimatePresence initial={false}>
+            {open && (
+              <MotionMinus
+                aria-hidden="true"
+                className="h-full w-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            )}
+            {!open && (
+              <MotionPlus
+                aria-hidden="true"
+                className="h-full w-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            )}
+          </AnimatePresence>
+        </span>
+      </span>
+    </span>
   );
 };
 
@@ -109,7 +154,8 @@ const ACCORDION_ITEMS: AccordionContent[] = [
 ];
 
 const IndustryUseCasesPage: FC = () => {
-  const [activeItem, setActiveItem] = useState<string | null>(null);
+  const [activeItem, setActiveItem] = useState<string>("");
+
   return (
     <>
       <Header logo="color" headerClassName="fixed inset-0 w-full h-[92px] bg-white z-40" />
@@ -132,13 +178,21 @@ const IndustryUseCasesPage: FC = () => {
             })}
           >
             {ACCORDION_ITEMS.map((accordionItem: AccordionContent) => (
-              <li
-                key={accordionItem.id}
-                className={cn({
-                  "font-bold underline underline-offset-4": activeItem === accordionItem.id,
-                })}
-              >
-                {accordionItem.id}
+              <li key={accordionItem.id}>
+                <Button
+                  type="button"
+                  variant="link"
+                  size="auto"
+                  className={cn("transition-all hover:font-bold", {
+                    "font-bold underline underline-offset-4": activeItem === accordionItem.id,
+                  })}
+                  aria-expanded={activeItem === accordionItem.id}
+                  onClick={() =>
+                    setActiveItem(activeItem === accordionItem.id ? "" : accordionItem.id)
+                  }
+                >
+                  {accordionItem.id}
+                </Button>
               </li>
             ))}
           </ul>
@@ -146,8 +200,10 @@ const IndustryUseCasesPage: FC = () => {
         <div className="flex flex-grow flex-col gap-y-6 lg:pb-40">
           <Accordion
             type="single"
+            value={activeItem ?? undefined}
             onValueChange={setActiveItem}
             className="flex flex-col lg:gap-y-20"
+            collapsible
           >
             {ACCORDION_ITEMS.map((accordionItem: AccordionContent) => (
               <Item
