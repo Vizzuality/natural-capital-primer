@@ -44,8 +44,9 @@ const LightBulbMessage = ({ children }: { children: React.ReactNode }) => (
 const QUIZ_DATA: QuizData[] = [
   {
     key: "quiz-chapter-1",
-    colorClass: "text-green-500",
-    chapterName: "01—03  Assets and Resources",
+    colorClass: "lg:text-green-500",
+    chapterNumber: "01",
+    chapterName: "Assets and Resources",
     questions: [
       {
         title: (
@@ -56,9 +57,148 @@ const QUIZ_DATA: QuizData[] = [
         ),
         options: ["Fossil fuels", "Water", "Kelp"],
         images: [
-          "/assets/key-concepts-quiz-1-1.png",
-          "/assets/key-concepts-quiz-1-2.png",
-          "/assets/key-concepts-quiz-1-3.png",
+          "/assets/key-concepts-quiz-1-1-1.png",
+          "/assets/key-concepts-quiz-1-1-2.png",
+          "/assets/key-concepts-quiz-1-1-3.png",
+        ],
+        answer: 0,
+      },
+      {
+        title: (
+          <>
+            <span className="text-green-500">Ecosystem assets</span> are formed through the
+            interaction of:
+          </>
+        ),
+        options: ["Different Species", "Climate & Geology", "Environmental Assets"],
+        images: [
+          "/assets/key-concepts-quiz-1-2-1.png",
+          "/assets/key-concepts-quiz-1-2-2.png",
+          "/assets/key-concepts-quiz-1-2-3.png",
+        ],
+        answer: 0,
+      },
+      {
+        title: (
+          <>
+            What are two main categories of{" "}
+            <span className="text-green-500">natural capital assets?</span>
+          </>
+        ),
+        options: ["Biotic & Abiotic", "Environmental & Ecosystem", "Cultivated & Recoverable"],
+        images: [
+          "/assets/key-concepts-quiz-1-3-1.png",
+          "/assets/key-concepts-quiz-1-3-2.png",
+          "/assets/key-concepts-quiz-1-3-3.png",
+        ],
+        answer: 0,
+      },
+    ],
+  },
+  {
+    key: "quiz-chapter-2",
+    colorClass: "lg:text-blue-450",
+    chapterNumber: "02",
+    chapterName: "Flows of services",
+    questions: [
+      {
+        title: (
+          <>
+            <span className="text-blue-450">Supporting and ecosystem services </span>
+            relationship is:
+          </>
+        ),
+        options: ["Independent", "Interdependent", "Comparative"],
+        images: [
+          "/assets/key-concepts-quiz-1-1-1.png",
+          "/assets/key-concepts-quiz-1-1-2.png",
+          "/assets/key-concepts-quiz-1-1-3.png",
+        ],
+        answer: 0,
+      },
+      {
+        title: (
+          <>
+            Which <span className="text-blue-450">type of service </span> provides food, water, and
+            timber?
+          </>
+        ),
+        options: ["Regulating", "Ecosystem", "Abiotic"],
+        images: [
+          "/assets/key-concepts-quiz-1-2-1.png",
+          "/assets/key-concepts-quiz-1-2-2.png",
+          "/assets/key-concepts-quiz-1-2-3.png",
+        ],
+        answer: 0,
+      },
+      {
+        title: (
+          <>
+            <span className="text-blue-450">Minerals and fossil fuels</span> are benefits derived
+            from:
+          </>
+        ),
+        options: ["Abiotic Services", "Ecosystem Services", "Supporting Services"],
+        images: [
+          "/assets/key-concepts-quiz-1-3-1.png",
+          "/assets/key-concepts-quiz-1-3-2.png",
+          "/assets/key-concepts-quiz-1-3-3.png",
+        ],
+        answer: 0,
+      },
+    ],
+  },
+  {
+    key: "quiz-chapter-3",
+    colorClass: "lg:text-orange-500",
+    chapterNumber: "03",
+    chapterName: "Dependencies and Impacts",
+    questions: [
+      {
+        title: (
+          <>
+            An iron extracting company <span className="text-orange-500">has a dependency on:</span>
+          </>
+        ),
+        options: ["Renewable Resources", "Not-Renewable Resources", "Services"],
+        images: [
+          "/assets/key-concepts-quiz-1-1-1.png",
+          "/assets/key-concepts-quiz-1-1-2.png",
+          "/assets/key-concepts-quiz-1-1-3.png",
+        ],
+        answer: 0,
+      },
+      {
+        title: (
+          <>
+            How can <span className="text-orange-500">business&apos;s actions</span> affect the
+            environment?
+          </>
+        ),
+        options: [
+          "Directly through pollution",
+          "Indirectly through supply chains",
+          "Both directly and indirectly",
+        ],
+        images: [
+          "/assets/key-concepts-quiz-1-2-1.png",
+          "/assets/key-concepts-quiz-1-2-2.png",
+          "/assets/key-concepts-quiz-1-2-3.png",
+        ],
+        answer: 0,
+      },
+      {
+        title: (
+          <>
+            <span className="text-orange-500">Climate change </span>
+            is an example of which type of impact?
+          </>
+        ),
+        options: ["Direct", "Indirect", "Cumulative"],
+        images: [
+          "/assets/key-concepts-quiz-1-3-1.png",
+          "/assets/key-concepts-quiz-1-3-2.png",
+          "/assets/key-concepts-quiz-1-3-3.png",
         ],
         answer: 0,
       },
@@ -421,9 +561,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
-                      }
+                      initial: { opacity: 0 },
+                      animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
+                    }
                     : { style: sectionsStyle[0] })}
                 >
                   <p id="renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -470,9 +610,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
-                      }
+                      initial: { opacity: 0 },
+                      animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
+                    }
                     : { style: sectionsStyle[1] })}
                 >
                   <p id="cultivated" className="text-2xl text-green-500 lg:text-4xl">
@@ -499,9 +639,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
-                      }
+                      initial: { opacity: 0 },
+                      animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
+                    }
                     : { style: sectionsStyle[2] })}
                 >
                   <p id="non-renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -520,7 +660,7 @@ const KeyConceptsPage: FC = () => {
             </div>
           </div>
         </div>
-        <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
+        <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:p-20">
           <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
           <div className="flex flex-grow flex-col gap-10">
             <div className="flex items-center gap-3">
@@ -766,6 +906,7 @@ const KeyConceptsPage: FC = () => {
             </ol>
           </div>
         </main>
+        <Quiz data={QUIZ_DATA[1]} />
       </div>
       <Parallax
         heightClasses="h-[400px] lg:h-[547px]"
@@ -1034,6 +1175,7 @@ const KeyConceptsPage: FC = () => {
             </ol>
           </div>
         </main>
+        <Quiz data={QUIZ_DATA[2]} />
       </div>
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-10 p-6 text-center lg:gap-y-16">
