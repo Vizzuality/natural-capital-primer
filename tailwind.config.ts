@@ -66,6 +66,7 @@ const config = {
         900: "#05060A",
         950: "#030305",
       },
+      red: "#FF2149",
       pink: "#FD4BE1",
       turquoise: "#23B0FF",
       lime: "#CFE44F",

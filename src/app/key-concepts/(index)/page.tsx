@@ -76,7 +76,7 @@ const QUIZ_DATA: QuizData[] = [
           "/assets/key-concepts-quiz-1-2-2.png",
           "/assets/key-concepts-quiz-1-2-3.png",
         ],
-        answer: 0,
+        answer: 2,
       },
       {
         title: (
@@ -91,7 +91,7 @@ const QUIZ_DATA: QuizData[] = [
           "/assets/key-concepts-quiz-1-3-2.png",
           "/assets/key-concepts-quiz-1-3-3.png",
         ],
-        answer: 0,
+        answer: 1,
       },
     ],
   },
@@ -109,12 +109,7 @@ const QUIZ_DATA: QuizData[] = [
           </>
         ),
         options: ["Independent", "Interdependent", "Comparative"],
-        images: [
-          "/assets/key-concepts-quiz-1-1-1.png",
-          "/assets/key-concepts-quiz-1-1-2.png",
-          "/assets/key-concepts-quiz-1-1-3.png",
-        ],
-        answer: 0,
+        answer: 1,
       },
       {
         title: (
@@ -124,12 +119,7 @@ const QUIZ_DATA: QuizData[] = [
           </>
         ),
         options: ["Regulating", "Ecosystem", "Abiotic"],
-        images: [
-          "/assets/key-concepts-quiz-1-2-1.png",
-          "/assets/key-concepts-quiz-1-2-2.png",
-          "/assets/key-concepts-quiz-1-2-3.png",
-        ],
-        answer: 0,
+        answer: 1,
       },
       {
         title: (
@@ -139,11 +129,6 @@ const QUIZ_DATA: QuizData[] = [
           </>
         ),
         options: ["Abiotic Services", "Ecosystem Services", "Supporting Services"],
-        images: [
-          "/assets/key-concepts-quiz-1-3-1.png",
-          "/assets/key-concepts-quiz-1-3-2.png",
-          "/assets/key-concepts-quiz-1-3-3.png",
-        ],
         answer: 0,
       },
     ],
@@ -161,12 +146,7 @@ const QUIZ_DATA: QuizData[] = [
           </>
         ),
         options: ["Renewable Resources", "Not-Renewable Resources", "Services"],
-        images: [
-          "/assets/key-concepts-quiz-1-1-1.png",
-          "/assets/key-concepts-quiz-1-1-2.png",
-          "/assets/key-concepts-quiz-1-1-3.png",
-        ],
-        answer: 0,
+        answer: 1,
       },
       {
         title: (
@@ -180,12 +160,7 @@ const QUIZ_DATA: QuizData[] = [
           "Indirectly through supply chains",
           "Both directly and indirectly",
         ],
-        images: [
-          "/assets/key-concepts-quiz-1-2-1.png",
-          "/assets/key-concepts-quiz-1-2-2.png",
-          "/assets/key-concepts-quiz-1-2-3.png",
-        ],
-        answer: 0,
+        answer: 2,
       },
       {
         title: (
@@ -195,12 +170,7 @@ const QUIZ_DATA: QuizData[] = [
           </>
         ),
         options: ["Direct", "Indirect", "Cumulative"],
-        images: [
-          "/assets/key-concepts-quiz-1-3-1.png",
-          "/assets/key-concepts-quiz-1-3-2.png",
-          "/assets/key-concepts-quiz-1-3-3.png",
-        ],
-        answer: 0,
+        answer: 2,
       },
     ],
   },

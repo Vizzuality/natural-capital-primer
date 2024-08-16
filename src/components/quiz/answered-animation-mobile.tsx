@@ -1,8 +1,15 @@
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Correct from "@/svgs/correct.svg";
+import Wrong from "@/svgs/wrong.svg";
 
-const AnsweredAnimationMobile = ({ visible }: { visible: boolean }) => {
+const AnsweredAnimationMobile = ({
+  visible,
+  isRight = false,
+}: {
+  visible: boolean;
+  isRight: boolean;
+}) => {
   return createPortal(
     <AnimatePresence>
       {visible && (
@@ -21,14 +28,14 @@ const AnsweredAnimationMobile = ({ visible }: { visible: boolean }) => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
             >
-              <Correct />
+              {isRight ? <Correct /> : <Wrong />}
             </motion.div>
             <motion.span
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.1, type: "spring", bounce: 0.15, damping: 15 }}
             >
-              The answer was correct!
+              {isRight ? "The answer was correct!" : "Don’t worry! We will help you."}
             </motion.span>
           </div>
         </motion.div>

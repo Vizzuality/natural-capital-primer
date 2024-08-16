@@ -8,6 +8,7 @@ const QuizButton = ({
   onMouseEnter,
   onMouseLeave,
   onClick,
+  disabled,
   ...props
 }: {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ const QuizButton = ({
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onClick: () => void;
+  disabled?: boolean;
   props?: { [key: string]: unknown };
 }) => (
   <Button
@@ -25,12 +27,13 @@ const QuizButton = ({
       {
         "bg-black text-white": !isActive,
         "bg-green-500 text-black": isActive && isRight,
-        "bg-orange text-black": isActive && !isRight,
+        "bg-red text-black": isActive && !isRight,
       },
     )}
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
     onClick={onClick}
+    disabled={disabled}
     {...props}
   >
     <span
