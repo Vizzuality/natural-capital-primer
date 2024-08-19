@@ -23,7 +23,7 @@ const QuizButton = ({
   <Button
     variant="outline-white"
     className={cn(
-      "flex gap-[10px] border-grey-400 py-[5px] pl-[5px] pr-[15px] hover:border-white",
+      "flex gap-[10px] border-grey-400 py-[5px] pl-[5px] pr-[15px] hover:border-white disabled:opacity-100",
       {
         "bg-black text-white": !isActive,
         "bg-green-500 text-black": isActive && isRight,

@@ -45,7 +45,6 @@ const QUIZ_DATA: QuizData[] = [
   {
     key: "quiz-chapter-1",
     colorClass: "lg:text-green-500",
-    chapterNumber: "01",
     chapterName: "Assets and Resources",
     questions: [
       {
@@ -56,11 +55,6 @@ const QUIZ_DATA: QuizData[] = [
           </>
         ),
         options: ["Fossil fuels", "Water", "Kelp"],
-        images: [
-          "/assets/key-concepts-quiz-1-1-1.png",
-          "/assets/key-concepts-quiz-1-1-2.png",
-          "/assets/key-concepts-quiz-1-1-3.png",
-        ],
         answer: 0,
       },
       {
@@ -71,11 +65,6 @@ const QUIZ_DATA: QuizData[] = [
           </>
         ),
         options: ["Different Species", "Climate & Geology", "Environmental Assets"],
-        images: [
-          "/assets/key-concepts-quiz-1-2-1.png",
-          "/assets/key-concepts-quiz-1-2-2.png",
-          "/assets/key-concepts-quiz-1-2-3.png",
-        ],
         answer: 2,
       },
       {
@@ -86,11 +75,6 @@ const QUIZ_DATA: QuizData[] = [
           </>
         ),
         options: ["Biotic & Abiotic", "Environmental & Ecosystem", "Cultivated & Recoverable"],
-        images: [
-          "/assets/key-concepts-quiz-1-3-1.png",
-          "/assets/key-concepts-quiz-1-3-2.png",
-          "/assets/key-concepts-quiz-1-3-3.png",
-        ],
         answer: 1,
       },
     ],
@@ -98,7 +82,6 @@ const QUIZ_DATA: QuizData[] = [
   {
     key: "quiz-chapter-2",
     colorClass: "lg:text-blue-450",
-    chapterNumber: "02",
     chapterName: "Flows of services",
     questions: [
       {
@@ -136,7 +119,6 @@ const QUIZ_DATA: QuizData[] = [
   {
     key: "quiz-chapter-3",
     colorClass: "lg:text-orange-500",
-    chapterNumber: "03",
     chapterName: "Dependencies and Impacts",
     questions: [
       {
@@ -151,8 +133,8 @@ const QUIZ_DATA: QuizData[] = [
       {
         title: (
           <>
-            How can <span className="text-orange-500">business&apos;s actions</span> affect the
-            environment?
+            How can business&apos;s actions{" "}
+            <span className="text-orange-500">affect the environment?</span>
           </>
         ),
         options: [
@@ -165,8 +147,8 @@ const QUIZ_DATA: QuizData[] = [
       {
         title: (
           <>
-            <span className="text-orange-500">Climate change </span>
-            is an example of which type of impact?
+            Climate change is an example of{" "}
+            <span className="text-orange-500">which type of impact?</span>
           </>
         ),
         options: ["Direct", "Indirect", "Cumulative"],

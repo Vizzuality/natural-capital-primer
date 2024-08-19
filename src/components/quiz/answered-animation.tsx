@@ -12,6 +12,7 @@ const AnsweredAnimation = ({ isRight = false }: { isRight: boolean }) => {
       ease: "easeIn",
     },
   };
+
   return (
     <div className="relative flex h-[226px] w-[226px] items-center justify-center">
       <div className="flex flex-col items-center">
