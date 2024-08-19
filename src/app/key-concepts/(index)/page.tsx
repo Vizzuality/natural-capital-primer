@@ -19,6 +19,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment, useCallback, useRef, useState } from "react";
 import Parallax from "@/components/animations/parallax";
+import Quiz from "@/components/quiz";
+import type { QuizData } from "@/components/quiz";
 
 // FadeInOnScroll and RevealLines components use window object, which is not available in SSR
 const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
@@ -39,6 +41,122 @@ const LightBulbMessage = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
+const QUIZ_DATA: QuizData[] = [
+  {
+    key: "quiz-chapter-1",
+    colorClass: "lg:text-green-500",
+    chapterName: "Assets and Resources",
+    questions: [
+      {
+        title: (
+          <>
+            Which of the following is a{" "}
+            <span className="text-green-500">non-renewable resource?</span>
+          </>
+        ),
+        options: ["Fossil fuels", "Water", "Kelp"],
+        answer: 0,
+      },
+      {
+        title: (
+          <>
+            <span className="text-green-500">Ecosystem assets</span> are formed through the
+            interaction of:
+          </>
+        ),
+        options: ["Different Species", "Climate & Geology", "Environmental Assets"],
+        answer: 2,
+      },
+      {
+        title: (
+          <>
+            What are two main categories of{" "}
+            <span className="text-green-500">natural capital assets?</span>
+          </>
+        ),
+        options: ["Biotic & Abiotic", "Environmental & Ecosystem", "Cultivated & Recoverable"],
+        answer: 1,
+      },
+    ],
+  },
+  {
+    key: "quiz-chapter-2",
+    colorClass: "lg:text-blue-450",
+    chapterName: "Flows of services",
+    questions: [
+      {
+        title: (
+          <>
+            <span className="text-blue-450">Supporting and ecosystem services </span>
+            relationship is:
+          </>
+        ),
+        options: ["Independent", "Interdependent", "Comparative"],
+        answer: 1,
+      },
+      {
+        title: (
+          <>
+            Which <span className="text-blue-450">type of service </span> provides food, water, and
+            timber?
+          </>
+        ),
+        options: ["Regulating", "Ecosystem", "Abiotic"],
+        answer: 1,
+      },
+      {
+        title: (
+          <>
+            <span className="text-blue-450">Minerals and fossil fuels</span> are benefits derived
+            from:
+          </>
+        ),
+        options: ["Abiotic Services", "Ecosystem Services", "Supporting Services"],
+        answer: 0,
+      },
+    ],
+  },
+  {
+    key: "quiz-chapter-3",
+    colorClass: "lg:text-orange-500",
+    chapterName: "Dependencies and Impacts",
+    questions: [
+      {
+        title: (
+          <>
+            An iron extracting company <span className="text-orange-500">has a dependency on:</span>
+          </>
+        ),
+        options: ["Renewable Resources", "Not-Renewable Resources", "Services"],
+        answer: 1,
+      },
+      {
+        title: (
+          <>
+            How can business&apos;s actions{" "}
+            <span className="text-orange-500">affect the environment?</span>
+          </>
+        ),
+        options: [
+          "Directly through pollution",
+          "Indirectly through supply chains",
+          "Both directly and indirectly",
+        ],
+        answer: 2,
+      },
+      {
+        title: (
+          <>
+            Climate change is an example of{" "}
+            <span className="text-orange-500">which type of impact?</span>
+          </>
+        ),
+        options: ["Direct", "Indirect", "Cumulative"],
+        answer: 2,
+      },
+    ],
+  },
+];
 const KeyConceptsPage: FC = () => {
   const [chapter1Tab, setChapter1Tab] = useState("environmental");
   const [chapter2Tab, setChapter2Tab] = useState("abiotic");
@@ -395,9 +513,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
-                      }
+                      initial: { opacity: 0 },
+                      animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
+                    }
                     : { style: sectionsStyle[0] })}
                 >
                   <p id="renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -444,9 +562,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
-                      }
+                      initial: { opacity: 0 },
+                      animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
+                    }
                     : { style: sectionsStyle[1] })}
                 >
                   <p id="cultivated" className="text-2xl text-green-500 lg:text-4xl">
@@ -473,9 +591,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
-                      }
+                      initial: { opacity: 0 },
+                      animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
+                    }
                     : { style: sectionsStyle[2] })}
                 >
                   <p id="non-renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -494,7 +612,7 @@ const KeyConceptsPage: FC = () => {
             </div>
           </div>
         </div>
-        <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
+        <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:p-20">
           <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
           <div className="flex flex-grow flex-col gap-10">
             <div className="flex items-center gap-3">
@@ -517,6 +635,7 @@ const KeyConceptsPage: FC = () => {
             </ol>
           </div>
         </main>
+        <Quiz data={QUIZ_DATA[0]} />
       </div>
 
       <div
@@ -739,6 +858,7 @@ const KeyConceptsPage: FC = () => {
             </ol>
           </div>
         </main>
+        <Quiz data={QUIZ_DATA[1]} />
       </div>
       <Parallax
         heightClasses="h-[400px] lg:h-[547px]"
@@ -1007,6 +1127,7 @@ const KeyConceptsPage: FC = () => {
             </ol>
           </div>
         </main>
+        <Quiz data={QUIZ_DATA[2]} />
       </div>
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-10 p-6 text-center lg:gap-y-16">
