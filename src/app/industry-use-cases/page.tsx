@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MountainCoverImage from "@/components/mountain-cover-image";
@@ -16,6 +16,8 @@ import Plus from "@/svgs/plus.svg";
 import Minus from "@/svgs/minus.svg";
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
+import AccordionItemContent from "@/components/industry-use-cases/accordion-item-content";
+import type { AccordionItemsContentType } from "@/components/industry-use-cases/accordion-item-content";
 
 type TriggerImagesAndText = {
   text1: string;
@@ -26,21 +28,27 @@ type TriggerImagesAndText = {
 
 type AccordionContent = {
   id: string;
+  content?: ReactNode;
 } & TriggerImagesAndText;
 
 const MotionPlus = motion(Plus);
 const MotionMinus = motion(Minus);
 
-const Item = ({ content, active }: { content: AccordionContent; active: boolean }) => {
+const Item = ({
+  triggerContent,
+  content,
+  active,
+}: {
+  triggerContent: AccordionContent;
+  content?: ReactNode;
+  active: boolean;
+}) => {
   return (
-    <AccordionItem value={content.id}>
+    <AccordionItem value={triggerContent.id}>
       <AccordionTrigger className="w-full">
-        <TriggerContent content={content} open={active} />
+        <TriggerContent content={triggerContent} open={active} />
       </AccordionTrigger>
-      <AccordionContent>
-        Explore the stocks of natural capital, the services that flow from it and the values for
-        businesses and society across a range of contexts.
-      </AccordionContent>
+      {content && <AccordionContent>{content}</AccordionContent>}
     </AccordionItem>
   );
 };
@@ -65,7 +73,7 @@ const TriggerContent = ({
             src={imageSrc1}
             className="relative -top-1 mr-3 inline-block"
           />
-          {text1}
+          <span>{text1}</span>
           <br />
           <Image
             width={105}
@@ -122,6 +130,104 @@ const TriggerContent = ({
   );
 };
 
+const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
+  constructions: {
+    ecosystem: {
+      content1: (
+        <>
+          <div className="text-xl tracking-tight">
+            Why are forests essential for businesses and society?
+          </div>
+          <p className="max-w-[685px] tracking-tight">
+            Forests are indispensable for tackling climate change. Forests act as the Earth’s lungs,
+            absorbing enormous amounts of carbon dioxide and replenishing the oxygen in the
+            atmosphere.
+          </p>
+        </>
+      ),
+      image1: "/assets/industry-cases-constructions-ecosystem-1.png",
+      imageText:
+        "Conservation of the world's biodiversity is inextricably tied to forests. Forests cover only 31% of the global land area but support 80% of the world's amphibian species, 75% of bird species, and 68% of mammals.",
+      content2: (
+        <>
+          <div className="mb-5 text-xl">
+            Forests provide goods and services to businesses and society.
+          </div>
+          <div className="flex flex-col gap-5">
+            <p>
+              Forests supply essential raw materials such as timber and minerals, and genetic
+              material for pharmaceuticals, food and fibre,, support crucial ecosystem services like
+              climate regulation and water filtration, and offer recreational opportunities that
+              boost tourism.
+            </p>
+            <p>
+              Forests hold cultural significance, enriching communities with places for reflection,
+              relaxation and spiritual renewal. Forests support traditional practices and social
+              spaces.
+            </p>
+            <p>
+              These benefits underscore the importance of sustainable forest management for
+              economic, cultural and environmental well-being.
+            </p>
+          </div>
+        </>
+      ),
+      image2: "/assets/industry-cases-constructions-ecosystem-2.png",
+      directIndustries: [
+        {
+          title: "Building design and construction",
+          tooltip:
+            "Rely on forests for timber, a fundamental material for creating structural components and finishes.",
+        },
+        {
+          title: "Furniture design and construction",
+          tooltip:
+            "Rely on forests for timber, which provides the essential materials for crafting durable and aesthetically pleasing pieces.",
+        },
+        {
+          title: "Mining",
+          tooltip:
+            "Minerals extraction relies on forests for ecosystem services that support biodiversity and maintain soil and water quality, which are crucial for sustainable mining operations.",
+        },
+        {
+          title: "Tourism, recreation and hospitality",
+          tooltip:
+            "Rely on forests for scenic beauty and natural landscapes, which attract visitors and enhance outdoor experiences.",
+        },
+      ],
+      indirectIndustries: [
+        {
+          title: "Food and beverage manufacturers",
+          tooltip:
+            "Rely on forests for vital ecosystem services such as pollination and water regulation, which are essential for crop growth and the quality of raw materials.",
+        },
+        {
+          title: "Fibre and clothing manufacturers",
+          tooltip:
+            "Rely on forests for wood and plant-based fibres, essential for producing sustainable textiles and packaging materials.",
+        },
+        {
+          title: "Retail",
+          tooltip:
+            "Rely on forests for packaging materials and paper products, which are essential for product presentation and distribution.",
+        },
+        {
+          title: "Technology",
+          tooltip:
+            "Rely on forests to provide biomaterials like cellulose, which produce bio-based plastics and other sustainable materials for technology products.",
+        },
+      ],
+      image3: "/assets/industry-cases-constructions-ecosystem-3.png",
+      insights: [
+        "Essential Raw Materials: Forests provide timber and minerals for construction, making sustainable forest management crucial for reliable material supply.",
+        "Vital Ecosystem Services: Forests support construction through climate regulation, carbon storage, and soil and water quality, which are critical for sustainable operations.",
+        "Deforestation Risks: Deforestation can cause biodiversity loss and degrade ecosystem services, leading to operational, financial, and reputational risks for the construction industry.",
+      ],
+    },
+    dependencies: {},
+    impacts: {},
+  },
+};
 const ACCORDION_ITEMS: AccordionContent[] = [
   {
     id: "Constructions",
@@ -129,6 +235,7 @@ const ACCORDION_ITEMS: AccordionContent[] = [
     text2: "Forests.",
     imageSrc1: "/assets/industry-cases-accordion-1.png",
     imageSrc2: "/assets/industry-cases-accordion-2.png",
+    content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["constructions"]} />,
   },
   {
     id: "Tourism",
@@ -136,6 +243,7 @@ const ACCORDION_ITEMS: AccordionContent[] = [
     text2: "Wetlands and Mangroves.",
     imageSrc1: "/assets/industry-cases-accordion-3.png",
     imageSrc2: "/assets/industry-cases-accordion-4.png",
+    content: <div>Byyeeee</div>,
   },
   {
     id: "Urban Planning",
@@ -161,7 +269,7 @@ const IndustryUseCasesPage: FC = () => {
       <Header logo="color" headerClassName="fixed inset-0 w-full h-[92px] bg-white z-40" />
       <div className="mx-auto mt-[84px] flex max-w-7xl flex-col gap-x-10 gap-y-6 p-6 pb-10 pt-10 lg:mt-0 lg:gap-y-[60px] lg:px-20 lg:pb-20 lg:pt-36 xl:pt-64">
         <div className="text-black lg:hidden">Industry Use Cases</div>
-        <h1 className="flex-shrink-0 text-2xl font-medium leading-9 lg:max-w-[974px] lg:text-5xl lg:leading-none lg:tracking-tight">
+        <h1 className="text-2xl leading-9 lg:max-w-[974px] lg:text-5xl lg:leading-none lg:tracking-tight">
           How do different industries impact and are dependent on natural capital?
         </h1>
         <p className="max-w-[827px] lg:text-xl">
@@ -208,8 +316,9 @@ const IndustryUseCasesPage: FC = () => {
             {ACCORDION_ITEMS.map((accordionItem: AccordionContent) => (
               <Item
                 key={accordionItem.id}
-                content={accordionItem}
+                triggerContent={accordionItem}
                 active={activeItem === accordionItem.id}
+                content={accordionItem.content}
               />
             ))}
           </Accordion>

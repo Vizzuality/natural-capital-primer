@@ -22,7 +22,7 @@ const InfoTooltip = ({ title, content }: { title?: string; content: string }) =>
               size="sm"
               className="inline-flex min-w-[335px] max-w-[335px] flex-col gap-4 rounded-xl border border-black/10 bg-white p-5"
             >
-              <div className="font-bold">{capitalize(String(title))}</div>
+              {title && <div className="font-bold">{capitalize(String(title))}</div>}
               <div>{content}</div>
             </TooltipContent>
           )}
