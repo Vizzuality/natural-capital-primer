@@ -53,10 +53,10 @@ const Quiz = ({ data }: { data: QuizData }) => {
 
   const isRight = selectedOption === answer;
   return (
-    <div className="flex w-full max-w-7xl flex-col overflow-hidden bg-black pt-10 lg:mb-20 lg:pt-[77px]">
+    <div className="relative flex w-full max-w-7xl flex-col overflow-hidden bg-black pt-10 lg:mb-20 lg:pt-[77px]">
       <AnsweredAnimationMobile isRight={isRight} visible={playAnimation} />
       <div className="relative mb-[15px] flex w-full justify-between">
-        <div className="z-10 mx-6 flex flex-col gap-6 text-white lg:ml-[53px] lg:mr-0 lg:max-w-[835px] lg:gap-8 lg:pb-[73px]">
+        <div className="z-10 mx-6 flex w-full flex-col gap-6 text-white lg:ml-[53px] lg:mr-0 lg:max-w-[835px] lg:gap-8 lg:pb-[73px]">
           <div className="flex flex-col gap-2 lg:flex-row lg:gap-5">
             <span className="flex items-center gap-3">
               Check your Understanding

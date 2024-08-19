@@ -10,7 +10,7 @@ const AnsweredAnimationMobile = ({
   visible: boolean;
   isRight: boolean;
 }) => {
-  return createPortal(
+  return (
     <AnimatePresence>
       {visible && (
         <motion.div
@@ -19,7 +19,7 @@ const AnsweredAnimationMobile = ({
           animate={{ opacity: 1 }}
           transition={{ duration: 0.1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black/90 lg:hidden"
+          className="absolute inset-0 z-50 flex h-full w-full items-center justify-center bg-black/90 lg:hidden"
         >
           <div className="relative flex w-[110px] items-center justify-center text-center text-white">
             <motion.div
@@ -40,8 +40,7 @@ const AnsweredAnimationMobile = ({
           </div>
         </motion.div>
       )}
-    </AnimatePresence>,
-    document.body,
+    </AnimatePresence>
   );
 };
 
