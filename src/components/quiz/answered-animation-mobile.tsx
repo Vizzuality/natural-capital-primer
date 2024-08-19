@@ -1,4 +1,3 @@
-import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Correct from "@/svgs/correct.svg";
 import Wrong from "@/svgs/wrong.svg";
