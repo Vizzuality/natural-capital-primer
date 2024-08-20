@@ -226,7 +226,7 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
 export const ACCORDION_ITEMS: AccordionContentType[] = [
   {
     id: "Constructions",
-    text1: "Manufacturing and construction",
+    text1: "Manufacturing",
     text2: "depend on Forests.",
     imageSrc1: "/assets/industry-cases-accordion-1.png",
     imageSrc2: "/assets/industry-cases-accordion-2.png",
@@ -241,15 +241,15 @@ export const ACCORDION_ITEMS: AccordionContentType[] = [
   },
   {
     id: "Urban Planning",
-    text1: "Retail depends on",
-    text2: "Urban Green Spaces.",
+    text1: "Retail",
+    text2: "depends on Urban Green Spaces.",
     imageSrc1: "/assets/industry-cases-accordion-5.png",
     imageSrc2: "/assets/industry-cases-accordion-6.png",
   },
   {
     id: "Food",
-    text1: "Food Security depends on",
-    text2: "Ecosystem Assets.",
+    text1: "Food Security",
+    text2: "depends on Ecosystem Assets.",
     imageSrc1: "/assets/industry-cases-accordion-7.png",
     imageSrc2: "/assets/industry-cases-accordion-8.png",
     content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["food"]} />,
