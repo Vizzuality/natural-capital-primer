@@ -33,7 +33,7 @@ const Item = ({
 }) => {
   return (
     <AccordionItem value={triggerContent.id}>
-      <AccordionTrigger className="w-full">
+      <AccordionTrigger className="mx-6 w-full lg:mx-0">
         <TriggerContent content={triggerContent} open={active} />
       </AccordionTrigger>
       {content && <AccordionContent>{content}</AccordionContent>}
@@ -134,8 +134,8 @@ const IndustryUseCasesPage: FC = () => {
           businesses and society across a range of contexts.
         </p>
       </div>
-      <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
-        <div className="top-24 z-10 hidden h-full flex-shrink-0 py-9 lg:sticky lg:block lg:w-[220px]">
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
+        <div className="top-24 z-10 hidden h-full flex-shrink-0 px-6 py-9 lg:sticky lg:block lg:w-[220px]">
           <ul
             className={cn("hidden flex-col gap-4 transition-opacity duration-200 lg:flex", {
               "lg:opacity-0": !activeItem,

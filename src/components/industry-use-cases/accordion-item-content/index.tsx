@@ -56,7 +56,7 @@ const AccordionItemContent = ({
   return (
     <div className="flex w-full flex-col">
       <Tabs value={tab} onValueChange={setTab}>
-        <TabsList className="mb-[20px] flex-col rounded-[26px] lg:mb-5 lg:flex-row">
+        <TabsList className="mg:px-0 mx-6 mb-[20px] flex-col rounded-[26px] lg:mb-5 lg:flex-row">
           <TabsTrigger value="ecosystem" className="w-full">
             Ecosystem
           </TabsTrigger>
@@ -68,8 +68,8 @@ const AccordionItemContent = ({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="ecosystem" className="flex flex-col gap-y-10 text-black">
-          <div className="mt-5 flex flex-col gap-6 lg:gap-5">{content1}</div>
-          <div>
+          <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
+          <div className="px-6 lg:px-0">
             <Image
               className="min-h-[388px] object-cover max-lg:w-full"
               src={image1}
@@ -82,7 +82,7 @@ const AccordionItemContent = ({
             </div>
           </div>
           <div className="relative -mt-[71px] flex flex-col justify-between gap-10 text-pretty tracking-tight lg:flex-row lg:items-end lg:gap-4">
-            <div className="max-w-[395px]">{content2}</div>
+            <div className="max-w-[395px] px-6 lg:px-0">{content2}</div>
             <Image
               src={image2}
               alt=""
@@ -133,7 +133,7 @@ const AccordionItemContent = ({
               height={300}
             />
           </div>
-          <div className="mb-10 flex flex-grow flex-col gap-10 lg:mb-0">
+          <div className="mb-10 flex flex-grow flex-col gap-10 px-6 lg:mb-0 lg:px-0">
             <div className="flex items-center gap-3">
               <h2>Key insights</h2>
               <div className="grow border-t border-t-grey-500"></div>
