@@ -56,7 +56,7 @@ const AccordionItemContent = ({
   return (
     <div className="flex w-full flex-col">
       <Tabs value={tab} onValueChange={setTab}>
-        <TabsList className="mg:px-0 mx-6 mb-[20px] flex-col rounded-[26px] lg:mb-5 lg:flex-row">
+        <TabsList className="mx-6 mb-[20px] flex-col rounded-[26px] lg:mx-0 lg:mb-5 lg:flex-row">
           <TabsTrigger value="ecosystem" className="w-full">
             Ecosystem
           </TabsTrigger>
