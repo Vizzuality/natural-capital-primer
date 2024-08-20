@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MountainCoverImage from "@/components/mountain-cover-image";
@@ -16,31 +16,27 @@ import Plus from "@/svgs/plus.svg";
 import Minus from "@/svgs/minus.svg";
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-
-type TriggerImagesAndText = {
-  text1: string;
-  imageSrc1: string;
-  text2: string;
-  imageSrc2: string;
-};
-
-type AccordionContent = {
-  id: string;
-} & TriggerImagesAndText;
+import { ACCORDION_ITEMS } from "./data";
+import { AccordionContentType, TriggerImagesAndText } from "./types";
 
 const MotionPlus = motion(Plus);
 const MotionMinus = motion(Minus);
 
-const Item = ({ content, active }: { content: AccordionContent; active: boolean }) => {
+const Item = ({
+  triggerContent,
+  content,
+  active,
+}: {
+  triggerContent: AccordionContentType;
+  content?: ReactNode;
+  active: boolean;
+}) => {
   return (
-    <AccordionItem value={content.id}>
-      <AccordionTrigger className="w-full">
-        <TriggerContent content={content} open={active} />
+    <AccordionItem value={triggerContent.id}>
+      <AccordionTrigger className="mx-6 w-full lg:mx-0">
+        <TriggerContent content={triggerContent} open={active} />
       </AccordionTrigger>
-      <AccordionContent>
-        Explore the stocks of natural capital, the services that flow from it and the values for
-        businesses and society across a range of contexts.
-      </AccordionContent>
+      {content && <AccordionContent>{content}</AccordionContent>}
     </AccordionItem>
   );
 };
@@ -65,7 +61,7 @@ const TriggerContent = ({
             src={imageSrc1}
             className="relative -top-1 mr-3 inline-block"
           />
-          {text1}
+          <span>{text1}</span>
           <br />
           <Image
             width={105}
@@ -122,37 +118,6 @@ const TriggerContent = ({
   );
 };
 
-const ACCORDION_ITEMS: AccordionContent[] = [
-  {
-    id: "Constructions",
-    text1: "Constructions depend on",
-    text2: "Forests.",
-    imageSrc1: "/assets/industry-cases-accordion-1.png",
-    imageSrc2: "/assets/industry-cases-accordion-2.png",
-  },
-  {
-    id: "Tourism",
-    text1: "Tourism depends on",
-    text2: "Wetlands and Mangroves.",
-    imageSrc1: "/assets/industry-cases-accordion-3.png",
-    imageSrc2: "/assets/industry-cases-accordion-4.png",
-  },
-  {
-    id: "Urban Planning",
-    text1: "Retail depends on",
-    text2: "Urban Green Spaces.",
-    imageSrc1: "/assets/industry-cases-accordion-5.png",
-    imageSrc2: "/assets/industry-cases-accordion-6.png",
-  },
-  {
-    id: "Food",
-    text1: "Food industry depends on",
-    text2: "Farmlands.",
-    imageSrc1: "/assets/industry-cases-accordion-7.png",
-    imageSrc2: "/assets/industry-cases-accordion-8.png",
-  },
-];
-
 const IndustryUseCasesPage: FC = () => {
   const [activeItem, setActiveItem] = useState<string>("");
 
@@ -161,7 +126,7 @@ const IndustryUseCasesPage: FC = () => {
       <Header logo="color" headerClassName="fixed inset-0 w-full h-[92px] bg-white z-40" />
       <div className="mx-auto mt-[84px] flex max-w-7xl flex-col gap-x-10 gap-y-6 p-6 pb-10 pt-10 lg:mt-0 lg:gap-y-[60px] lg:px-20 lg:pb-20 lg:pt-36 xl:pt-64">
         <div className="text-black lg:hidden">Industry Use Cases</div>
-        <h1 className="flex-shrink-0 text-2xl font-medium leading-9 lg:max-w-[974px] lg:text-5xl lg:leading-none lg:tracking-tight">
+        <h1 className="text-2xl leading-9 lg:max-w-[974px] lg:text-5xl lg:leading-none lg:tracking-tight">
           How do different industries impact and are dependent on natural capital?
         </h1>
         <p className="max-w-[827px] lg:text-xl">
@@ -169,15 +134,15 @@ const IndustryUseCasesPage: FC = () => {
           businesses and society across a range of contexts.
         </p>
       </div>
-      <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
-        <div className="top-24 z-10 hidden h-full flex-shrink-0 py-9 lg:sticky lg:block lg:w-[220px]">
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
+        <div className="top-24 z-10 hidden h-full flex-shrink-0 px-6 py-9 lg:sticky lg:block lg:w-[220px]">
           <ul
             className={cn("hidden flex-col gap-4 transition-opacity duration-200 lg:flex", {
               "lg:opacity-0": !activeItem,
               "lg:opacity-100": !!activeItem,
             })}
           >
-            {ACCORDION_ITEMS.map((accordionItem: AccordionContent) => (
+            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType) => (
               <li key={accordionItem.id}>
                 <Button
                   type="button"
@@ -205,11 +170,12 @@ const IndustryUseCasesPage: FC = () => {
             className="flex flex-col lg:gap-y-20"
             collapsible
           >
-            {ACCORDION_ITEMS.map((accordionItem: AccordionContent) => (
+            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType) => (
               <Item
                 key={accordionItem.id}
-                content={accordionItem}
+                triggerContent={accordionItem}
                 active={activeItem === accordionItem.id}
+                content={accordionItem.content}
               />
             ))}
           </Accordion>

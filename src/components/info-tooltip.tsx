@@ -13,7 +13,7 @@ const InfoTooltip = ({ title, content }: { title?: string; content: string }) =>
   return (
     <TooltipProvider>
       <Tooltip delayDuration={0} open={tooltipOpen} onOpenChange={setTooltipOpen}>
-        <TooltipTrigger>
+        <TooltipTrigger className="rounded-full ring-offset-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black focus-visible:ring-offset-1">
           <Info aria-label="Info" />
         </TooltipTrigger>
         <AnimatePresence>
@@ -22,7 +22,7 @@ const InfoTooltip = ({ title, content }: { title?: string; content: string }) =>
               size="sm"
               className="inline-flex min-w-[335px] max-w-[335px] flex-col gap-4 rounded-xl border border-black/10 bg-white p-5"
             >
-              <div className="font-bold">{capitalize(String(title))}</div>
+              {title && <div className="font-bold">{capitalize(String(title))}</div>}
               <div>{content}</div>
             </TooltipContent>
           )}
