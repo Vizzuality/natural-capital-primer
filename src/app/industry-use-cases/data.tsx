@@ -102,7 +102,23 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
         "Deforestation Risks: Deforestation can cause biodiversity loss and degrade ecosystem services, leading to operational, financial, and reputational risks for the construction industry.",
       ],
     },
-    dependencies: {},
+    dependencies: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">
+            How does manufacturing and construction depend on forests?
+          </h3>
+          <p className="max-w-[685px] tracking-tight">
+            Forests are fundamental for manufacturing and construction because they provide
+            essential raw materials. Companies that extract raw materials from forests (e.g., timber
+            for construction and furniture, minerals that support digital technology and renewable
+            energy, metals for construction and wiring) or use those materials to build or
+            manufacture products depend on forests. Explore the diagram to see how natural capital
+            supports manufacturing and construction.
+          </p>
+        </>
+      ),
+    },
     impacts: {},
   },
   food: {
@@ -218,7 +234,20 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
         "Properly managed farmlands are important for protecting biodiversity and mitigating climate change.",
       ],
     },
-    dependencies: {},
+    dependencies: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">
+            How does the food industry depend on farmlands?
+          </h3>
+          <p className="max-w-[685px] tracking-tight">
+            Farmlands are fundamental to the food industry because they provide essential resources
+            and ecosystem services. Explore the diagram to see how natural capital benefits the food
+            industry.
+          </p>
+        </>
+      ),
+    },
     impacts: {},
   },
 };
