@@ -119,7 +119,51 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
         </>
       ),
     },
-    impacts: {},
+    impacts: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">
+            How does manufacturing and construction impact forests?
+          </h3>
+          <p className="max-w-[685px] tracking-tight">
+            Forests provide raw materials for manufacturing and construction. Sustainable
+            harvesting, best-practice waste management and post-mining rehabilitation can minimise
+            impacts on natural capital. However, poor management practices pose a significant threat
+            to forests.
+          </p>
+        </>
+      ),
+      list: [
+        {
+          title: "Deforestation",
+          text: "Deforestation associated with mining and timber harvesting (legal and illegal) continues to result in significant loss and severe degradation of forest ecosystems globally. Deforestation threatens the survival of many species and can lead to the loss of ecosystem services such as healthy and stable soils, climate regulation, carbon sequestration and water production.",
+        },
+        {
+          title: "Waste management and access",
+          text: "Extracting raw materials from forested landscapes requires transport, heavy machinery and people. Roads and infrastructure fragment forests and provide access for introduced species, weeds and pathogens. Waste (often toxic), sludge and sediment from mining and forestry operations are often discharged into rivers, wetlands and dams, impacting water quality and aquatic biodiversity. Poor soil management associated with road construction, mining and forestry can increase soil erosion and destabilise hillsides leading to landslides.",
+        },
+        {
+          title: "Nature-related risk",
+          text: "Companies that extract raw materials from forests or depend on those materials to build or manufacture products are heavily dependent on natural capital and, therefore, exposed to nature-related risk.",
+        },
+        {
+          title: "Operational issues",
+          text: "The nature-related risk to these businesses is currently limited to operational risk(e.g., reliable supply of raw materials), financial risk (e.g., costs of production, remediation, and supply), and reputational risk (e.g., ESG and morale corporate citizenship).",
+        },
+        {
+          title: "Legal risk",
+          text: "This may soon extend to legal risk, with company executives liable for the nature-related impacts and legacies of their operations and those of their supply chain. For this reason, nature-related dependencies and impacts need to be explicitly documented, measured and managed.",
+        },
+      ],
+      image1: "/assets/industry-cases-construction-impacts.png",
+      content2: (
+        <>
+          Companies in these industries must urgently recognize and address their reliance on
+          natural resources to reduce financial, reputational, and legal risks. Taking action now
+          will help secure a sustainable and successful business model for the future.
+        </>
+      ),
+    },
   },
   food: {
     ecosystem: {
@@ -248,7 +292,52 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
         </>
       ),
     },
-    impacts: {},
+    impacts: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">How does the food industry impact farmlands?</h3>
+          <p className="max-w-[685px] tracking-tight">
+            The natural capital leveraged for agricultural production contributes to global food
+            security and financial returns for farmers and the entire agricultural supply chain.
+            This is why big food companies, and the financial institutions that support them, need
+            to be aware of the importance of natural capital and their responsibility to ensure
+            their supply chains are not irreversibly destroying the very natural capital upon which
+            their business depends
+          </p>
+        </>
+      ),
+      list: [
+        {
+          title: "Market pressure",
+          text: "Historically, farmers have been incentivised to manage land in a way that erodes natural capital due to government policies (or lack thereof) and market forces and terms of trade that lock in poor practices for short-term financial benefits.",
+        },
+        {
+          title: "Nature negative practices",
+          text: "High rates of land clearing and chemical application (fertilisers, pesticides, herbicides), over-extraction of water, and overgrazing erode the natural capital upon which agriculture is based.",
+        },
+        {
+          title: "Ecosystem degradation",
+          text: "Overexploitation turns farmlands into a non-renewable resource that can only be maintained through continual inputs into the system. This has disastrous consequences for biodiversity in agricultural landscapes and contributes significantly to global greenhouse gas emissions.",
+        },
+        {
+          title: "Operational issues",
+          text: "The nature-related risk to these businesses is currently limited to operational risk (e.g., reliable supply of raw materials), financial risk (i.e., costs of production, remediation and supply) and reputational risk damage (e.g., ESG and morale corporate citizenship).",
+        },
+        {
+          title: "Legal risk",
+          text: "This may soon extend to legal risk, with company executives liable for the nature-related impacts and legacies of their operations and those of their supply chain. For this reason, nature-related dependencies and impacts need to be explicitly documented, measured, and managed.",
+        },
+      ],
+      image1: "/assets/industry-cases-food-impacts.png",
+      content2: (
+        <>
+          Businesses that benefit from the agricultural supply chain (e.g., food and beverage
+          companies, clothing manufacturers, financial institutions, and retailers) must explicitly
+          recognise their dependency and impact on natural capital and adopt strategies that reward
+          nature-positive farming practices.
+        </>
+      ),
+    },
   },
 };
 

@@ -25,7 +25,15 @@ export interface AccordionItemContentType {
     insights: string[];
   };
   dependencies: { content1: React.ReactElement };
-  impacts: unknown;
+  impacts: {
+    content1: React.ReactElement;
+    content2: React.ReactElement;
+    image1: string;
+    list: {
+      title: string;
+      text: string;
+    }[];
+  };
 }
 
 export interface AccordionItemsContentType {
@@ -135,7 +143,7 @@ const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["depe
       {/* WIP image and text. Replace with chart */}
       <div className="relative w-full">
         <Image
-          className="min-h-[388px] object-cover max-lg:w-full"
+          className="mx-6 min-h-[388px] w-[calc(100%-48px)] max-lg:object-contain lg:mx-0 lg:w-full"
           src="/assets/industry-cases-construction-dependencies-wip.png"
           alt=""
           width={830}
@@ -149,9 +157,45 @@ const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["depe
   );
 };
 
+const ImpactsTabContent = ({ data }: { data: AccordionItemContentType["impacts"] }) => {
+  const { content1, content2, image1, list } = data;
+  return (
+    <TabsContent value="impacts" className="flex flex-col gap-y-10 text-black">
+      <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
+      <div className="mx-6 lg:mx-0">
+        <ul className="flex flex-col gap-6 bg-orange px-6 py-[40px] lg:gap-20 lg:p-[50px]">
+          {list.map(({ title, text }, index) => (
+            <li key={title} className="flex flex-col gap-3 lg:gap-10">
+              <div className="flex flex-col gap-3 lg:gap-2">
+                <div className="text-[52px] leading-9 lg:text-5xl">
+                  {(index + 1).toString().padStart(2, "0")}
+                </div>
+                <h3 className="max-w-[642px] text-2xl lg:text-4xl">{title}</h3>
+              </div>
+              <div className="max-w-[642px]">{text}</div>
+            </li>
+          ))}
+        </ul>
+        <Image
+          className="min-h-[403px] w-full object-cover"
+          src={image1}
+          alt=""
+          width={831}
+          height={403}
+        />
+      </div>
+      <div className="mx-6 mb-10 flex max-w-[831px] gap-6 lg:mx-0 lg:mb-0">
+        <div className="w-1.5 self-stretch bg-orange" />
+        <div className="w-[654px]">{content2}</div>
+      </div>
+    </TabsContent>
+  );
+};
+
 const AccordionItemContent = ({
   ecosystem,
   dependencies,
+  impacts,
 }: {
   ecosystem: AccordionItemsContentType["constructions"]["ecosystem"];
   dependencies: AccordionItemsContentType["constructions"]["dependencies"];
@@ -175,6 +219,7 @@ const AccordionItemContent = ({
         </TabsList>
         <EcosystemTabContent data={ecosystem} />
         <DependenciesTabContent data={dependencies} />
+        <ImpactsTabContent data={impacts} />
       </Tabs>
     </div>
   );
