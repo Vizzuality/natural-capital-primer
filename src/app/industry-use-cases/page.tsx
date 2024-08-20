@@ -139,9 +139,15 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
             Why are forests essential for businesses and society?
           </div>
           <p className="max-w-[685px] tracking-tight">
-            Forests are indispensable for tackling climate change. Forests act as the Earth’s lungs,
-            absorbing enormous amounts of carbon dioxide and replenishing the oxygen in the
-            atmosphere.
+            Forests are indispensable to society&apos;s efforts to tackle climate change. They act
+            as the Earth&apos;s lungs, absorbing enormous amounts of carbon dioxide and replenishing
+            the oxygen in the atmosphere. Forests also provide vital raw materials like timber,
+            paper, and biofuels, supporting key construction, manufacturing, and energy industries.
+          </p>
+          <p className="max-w-[685px] tracking-tight">
+            Conservation of the world&apos;s biodiversity is inextricably tied to forests. Forests
+            cover only 31% of the global land area but support 80% of the world&apos;s amphibian
+            species, 75% of bird species, and 68% of mammals.
           </p>
         </>
       ),
@@ -155,14 +161,14 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           </div>
           <div className="flex flex-col gap-5">
             <p>
-              Forests supply essential raw materials such as timber and minerals, and genetic
-              material for pharmaceuticals, food and fibre,, support crucial ecosystem services like
-              climate regulation and water filtration, and offer recreational opportunities that
-              boost tourism.
+              Forests supply essential raw materials such as timber and minerals, as well as genetic
+              material for pharmaceuticals, food, and fibre. They also support crucial ecosystem
+              services like climate regulation and water filtration and offer recreational
+              opportunities that boost tourism.
             </p>
             <p>
-              Forests hold cultural significance, enriching communities with places for reflection,
-              relaxation and spiritual renewal. Forests support traditional practices and social
+              Forests are culturally significant, enriching communities with places for reflection,
+              relaxation, and spiritual renewal. They also support traditional practices and social
               spaces.
             </p>
             <p>
@@ -175,46 +181,45 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
       image2: "/assets/industry-cases-constructions-ecosystem-2.png",
       directIndustries: [
         {
-          title: "Building design and construction",
-          tooltip:
-            "Rely on forests for timber, a fundamental material for creating structural components and finishes.",
+          title: "Manufacturing and construction",
+          tooltip: "For raw materials (timber, minerals, clay) used in manufacturing of products.",
         },
         {
-          title: "Furniture design and construction",
+          title: "Building and furniture design",
           tooltip:
-            "Rely on forests for timber, which provides the essential materials for crafting durable and aesthetically pleasing pieces.",
+            "Forests for timber, a fundamental material for creating structural components and furniture.",
         },
         {
           title: "Mining",
           tooltip:
-            "Minerals extraction relies on forests for ecosystem services that support biodiversity and maintain soil and water quality, which are crucial for sustainable mining operations.",
+            "Significant reserves of many minerals (e.g., bauxite, cobalt, gold, nickel, copper, tin, iron ore) are found beneath forest ecosystems.",
         },
         {
           title: "Tourism, recreation and hospitality",
           tooltip:
-            "Rely on forests for scenic beauty and natural landscapes, which attract visitors and enhance outdoor experiences.",
+            "For scenic beauty and natural landscapes, which attract visitors and enhance outdoor experiences.",
         },
       ],
       indirectIndustries: [
         {
           title: "Food and beverage manufacturers",
           tooltip:
-            "Rely on forests for vital ecosystem services such as pollination and water regulation, which are essential for crop growth and the quality of raw materials.",
+            "For raw materials like paper and packaging, and ingredients such as fruits, nuts, herbs and spices.",
         },
         {
           title: "Fibre and clothing manufacturers",
           tooltip:
-            "Rely on forests for wood and plant-based fibres, essential for producing sustainable textiles and packaging materials.",
+            "For wood and plant-based fibres, essential for producing sustainable textiles and packaging materials.",
         },
         {
           title: "Retail",
           tooltip:
-            "Rely on forests for packaging materials and paper products, which are essential for product presentation and distribution.",
+            "For packaging materials and paper products, which are essential for product presentation and distribution.",
         },
         {
           title: "Technology",
           tooltip:
-            "Rely on forests to provide biomaterials like cellulose, which produce bio-based plastics and other sustainable materials for technology products.",
+            "For rare minerals like lithium and cobalt for batteries and electronics, and biomaterials like cellulose for paper and biodegradable plastics.",
         },
       ],
       image3: "/assets/industry-cases-constructions-ecosystem-3.png",
@@ -231,16 +236,16 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
 const ACCORDION_ITEMS: AccordionContent[] = [
   {
     id: "Constructions",
-    text1: "Constructions depend on",
-    text2: "Forests.",
+    text1: "Manufacturing and construction",
+    text2: "depend on Forests.",
     imageSrc1: "/assets/industry-cases-accordion-1.png",
     imageSrc2: "/assets/industry-cases-accordion-2.png",
     content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["constructions"]} />,
   },
   {
     id: "Tourism",
-    text1: "Tourism depends on",
-    text2: "Wetlands and Mangroves.",
+    text1: "Tourism and Hospitality",
+    text2: "depend on Coastal Ecosystems.",
     imageSrc1: "/assets/industry-cases-accordion-3.png",
     imageSrc2: "/assets/industry-cases-accordion-4.png",
     content: <div>Byyeeee</div>,
@@ -254,8 +259,8 @@ const ACCORDION_ITEMS: AccordionContent[] = [
   },
   {
     id: "Food",
-    text1: "Food industry depends on",
-    text2: "Farmlands.",
+    text1: "Food Security depends on",
+    text2: "Ecosystem Assets.",
     imageSrc1: "/assets/industry-cases-accordion-7.png",
     imageSrc2: "/assets/industry-cases-accordion-8.png",
   },
