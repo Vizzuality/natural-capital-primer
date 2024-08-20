@@ -13,7 +13,7 @@ const InfoTooltip = ({ title, content }: { title?: string; content: string }) =>
   return (
     <TooltipProvider>
       <Tooltip delayDuration={0} open={tooltipOpen} onOpenChange={setTooltipOpen}>
-        <TooltipTrigger>
+        <TooltipTrigger className="rounded-full ring-offset-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black focus-visible:ring-offset-1">
           <Info aria-label="Info" />
         </TooltipTrigger>
         <AnimatePresence>
