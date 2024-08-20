@@ -5,28 +5,32 @@ import { useState } from "react";
 import Image from "next/image";
 import InfoTooltip from "@/components/info-tooltip";
 
-export interface AccordionItemsContentType {
-  constructions: {
-    ecosystem: {
-      content1: React.ReactElement;
-      content2: React.ReactElement;
-      image1: string;
-      image2: string;
-      image3: string;
-      imageText: string;
-      directIndustries: {
-        title: string;
-        tooltip: string;
-      }[];
-      indirectIndustries: {
-        title: string;
-        tooltip: string;
-      }[];
-      insights: string[];
-    };
-    dependencies: unknown;
-    impacts: unknown;
+export interface AccordionItemContentType {
+  ecosystem: {
+    content1: React.ReactElement;
+    content2: React.ReactElement;
+    image1: string;
+    image2: string;
+    image3: string;
+    imageText: string;
+    industriesRelyOnText: string;
+    directIndustries: {
+      title: string;
+      tooltip: string;
+    }[];
+    indirectIndustries: {
+      title: string;
+      tooltip: string;
+    }[];
+    insights: string[];
   };
+  dependencies: unknown;
+  impacts: unknown;
+}
+
+export interface AccordionItemsContentType {
+  constructions: AccordionItemContentType;
+  food: AccordionItemContentType;
 }
 
 const AccordionItemContent = ({
@@ -43,6 +47,7 @@ const AccordionItemContent = ({
     imageText,
     content2,
     image2,
+    industriesRelyOnText,
     directIndustries,
     indirectIndustries,
     image3,
@@ -89,12 +94,12 @@ const AccordionItemContent = ({
           <div>
             <div className="flex flex-col gap-5 bg-orange px-6 py-[40px] lg:p-[50px]">
               <div className="max-w-[642px] text-2xl lg:text-4xl">
-                Many industries rely directly or indirectly on forests.
+                Many industries rely directly or indirectly on {industriesRelyOnText}.
               </div>
               <div className="flex flex-col flex-wrap gap-6 border-t border-t-black/20 pt-[20px] lg:flex-row lg:gap-11 lg:pt-[30px]">
                 <div className="flex min-w-full flex-col lg:min-w-[344px]">
                   <div className="mb-[10px] font-bold">
-                    Industry that directly relies on forests
+                    Industry that directly relies on {industriesRelyOnText}
                   </div>
                   <ul className="flex flex-col gap-4 py-[10px]">
                     {directIndustries.map(({ title, tooltip }) => (
