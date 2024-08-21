@@ -36,7 +36,7 @@ const Item = ({
       <AccordionTrigger className="mx-6 w-full lg:mx-0">
         <TriggerContent content={triggerContent} open={active} />
       </AccordionTrigger>
-      {content && <AccordionContent>{content}</AccordionContent>}
+      {content && <AccordionContent className="lg:pt-0">{content}</AccordionContent>}
     </AccordionItem>
   );
 };

@@ -55,6 +55,7 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
     image3,
     insights,
   } = data;
+
   return (
     <TabsContent value="ecosystem" className="flex flex-col gap-y-10 text-black">
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
@@ -199,6 +200,8 @@ const ImpactsTabContent = ({ data }: { data: AccordionItemContentType["impacts"]
   );
 };
 
+type TabKeys = "ecosystem" | "dependencies" | "impacts";
+
 const AccordionItemContent = ({
   ecosystem,
   dependencies,
@@ -208,22 +211,26 @@ const AccordionItemContent = ({
   dependencies: AccordionItemsContentType["constructions"]["dependencies"];
   impacts: AccordionItemsContentType["constructions"]["impacts"];
 }) => {
-  const [tab, setTab] = useState("ecosystem");
-
+  const [tab, setTab] = useState<TabKeys>("ecosystem");
+  const handleTabChange = (value: string) => {
+    setTab(value as TabKeys);
+  };
   return (
-    <div className="flex w-full flex-col">
-      <Tabs value={tab} onValueChange={setTab}>
-        <TabsList className="mx-6 mb-[20px] flex-col rounded-[26px] lg:mx-0 lg:mb-5 lg:flex-row">
-          <TabsTrigger value="ecosystem" className="w-full">
-            Ecosystem
-          </TabsTrigger>
-          <TabsTrigger value="dependencies" className="w-full">
-            Dependencies
-          </TabsTrigger>
-          <TabsTrigger value="impacts" className="w-full">
-            Impacts
-          </TabsTrigger>
-        </TabsList>
+    <div className={`flex h-[calc(100vh-250px)] w-full flex-col`}>
+      <Tabs value={tab} onValueChange={handleTabChange} className="relative">
+        <div className="sticky top-0 z-10 mb-[20px] bg-white lg:mb-5 lg:pt-10">
+          <TabsList className="mx-6 flex-col rounded-[26px] lg:mx-0 lg:flex-row">
+            <TabsTrigger value="ecosystem" className="w-full">
+              Ecosystem
+            </TabsTrigger>
+            <TabsTrigger value="dependencies" className="w-full">
+              Dependencies
+            </TabsTrigger>
+            <TabsTrigger value="impacts" className="w-full">
+              Impacts
+            </TabsTrigger>
+          </TabsList>
+        </div>
         <EcosystemTabContent data={ecosystem} />
         <DependenciesTabContent data={dependencies} />
         <ImpactsTabContent data={impacts} />
