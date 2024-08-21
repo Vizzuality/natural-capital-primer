@@ -14,6 +14,7 @@ const config = {
     colors: {
       orange: {
         DEFAULT: "#FAAD25",
+        hover: "#E79A11",
         50: "#FFEFEA",
         100: "#FFE0D3",
         200: "#FFBEA6",
@@ -55,6 +56,7 @@ const config = {
       },
       grey: {
         50: "#E8E8EB",
+        75: "#E6E7DF",
         100: "#D1D2D6",
         200: "#A3A4AE",
         300: "#757785",

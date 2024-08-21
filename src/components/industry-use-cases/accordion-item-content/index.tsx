@@ -94,7 +94,7 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
                 {directIndustries.map(({ title, tooltip }) => (
                   <li key={title} className="flex justify-between">
                     {title}
-                    <InfoTooltip content={tooltip} />
+                    <InfoTooltip content={tooltip} className="group-hover:fill-orange-hover" />
                   </li>
                 ))}
               </ul>
@@ -105,7 +105,7 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
                 {indirectIndustries.map(({ title, tooltip }) => (
                   <li key={title} className="flex justify-between">
                     {title}
-                    <InfoTooltip content={tooltip} />
+                    <InfoTooltip content={tooltip} className="group-hover:fill-orange-hover" />
                   </li>
                 ))}
               </ul>

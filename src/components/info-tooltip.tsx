@@ -7,14 +7,22 @@ import { AnimatePresence } from "framer-motion";
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-const InfoTooltip = ({ title, content }: { title?: string; content: string }) => {
+const InfoTooltip = ({
+  title,
+  content,
+  className,
+}: {
+  title?: string;
+  content: string;
+  className?: string;
+}) => {
   const [tooltipOpen, setTooltipOpen] = useState(true);
 
   return (
     <TooltipProvider>
       <Tooltip delayDuration={0} open={tooltipOpen} onOpenChange={setTooltipOpen}>
-        <TooltipTrigger className="rounded-full ring-offset-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black focus-visible:ring-offset-1">
-          <Info aria-label="Info" />
+        <TooltipTrigger className="group rounded-full ring-offset-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black focus-visible:ring-offset-1">
+          <Info aria-label="Info" className={className} />
         </TooltipTrigger>
         <AnimatePresence>
           {tooltipOpen && (
