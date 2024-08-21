@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import Image from "next/image";
 import InfoTooltip from "@/components/info-tooltip";
+import RevealLines from "@/components/animations/reveal-lines";
 
 export interface AccordionItemContentType {
   ecosystem: {
@@ -138,7 +139,7 @@ const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["depe
   const { content1 } = data;
 
   return (
-    <TabsContent value="dependencies" className="flex flex-col gap-y-10 text-black">
+    <TabsContent value="dependencies" className="flex flex-col text-black lg:gap-y-10">
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
       {/* WIP image and text. Replace with chart */}
       <div className="relative w-full">
@@ -167,12 +168,18 @@ const ImpactsTabContent = ({ data }: { data: AccordionItemContentType["impacts"]
           {list.map(({ title, text }, index) => (
             <li key={title} className="flex flex-col gap-3 lg:gap-10">
               <div className="flex flex-col gap-3 lg:gap-2">
-                <div className="text-[52px] leading-9 lg:text-5xl">
-                  {(index + 1).toString().padStart(2, "0")}
-                </div>
-                <h3 className="max-w-[642px] text-2xl lg:text-4xl">{title}</h3>
+                <RevealLines splitChars>
+                  <div className="text-[52px] leading-9 lg:text-5xl">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </div>
+                </RevealLines>
+                <RevealLines>
+                  <h3 className="max-w-[642px] text-2xl lg:text-4xl">{title}</h3>
+                </RevealLines>
               </div>
-              <div className="max-w-[642px]">{text}</div>
+              <RevealLines>
+                <div className="max-w-[642px]">{text}</div>
+              </RevealLines>
             </li>
           ))}
         </ul>
