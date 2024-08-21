@@ -231,7 +231,7 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
         {
           title: "Agribusiness",
           tooltip:
-            "ncluding farmers, machinery sales, and farm supplies manufacturers and retailers, rely on farmlands to produce crops and livestock, which are essential for their operations and products.",
+            "Including farmers, machinery sales, and farm supplies manufacturers and retailers, rely on farmlands to produce crops and livestock, which are essential for their operations and products.",
         },
         {
           title: "Farm consultants / advisors",
