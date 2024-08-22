@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import Image from "next/image";
 import InfoTooltip from "@/components/info-tooltip";
+import RevealLines from "@/components/animations/reveal-lines";
 
 export interface AccordionItemContentType {
   ecosystem: {
@@ -24,8 +25,16 @@ export interface AccordionItemContentType {
     }[];
     insights: string[];
   };
-  dependencies: unknown;
-  impacts: unknown;
+  dependencies: { content1: React.ReactElement };
+  impacts: {
+    content1: React.ReactElement;
+    content2: React.ReactElement;
+    image1: string;
+    list: {
+      title: string;
+      text: string;
+    }[];
+  };
 }
 
 export interface AccordionItemsContentType {
@@ -33,14 +42,7 @@ export interface AccordionItemsContentType {
   food: AccordionItemContentType;
 }
 
-const AccordionItemContent = ({
-  ecosystem,
-}: {
-  ecosystem: AccordionItemsContentType["constructions"]["ecosystem"];
-  dependencies: AccordionItemsContentType["constructions"]["dependencies"];
-  impacts: AccordionItemsContentType["constructions"]["impacts"];
-}) => {
-  const [tab, setTab] = useState("ecosystem");
+const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosystem"] }) => {
   const {
     content1,
     image1,
@@ -52,7 +54,162 @@ const AccordionItemContent = ({
     indirectIndustries,
     image3,
     insights,
-  } = ecosystem;
+  } = data;
+  return (
+    <TabsContent value="ecosystem" className="flex flex-col gap-y-10 text-black">
+      <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
+      <div className="px-6 lg:px-0">
+        <Image
+          className="min-h-[388px] object-cover max-lg:w-full"
+          src={image1}
+          alt=""
+          width={685}
+          height={388}
+        />
+        <div className="flex w-full -translate-y-[71px] justify-end text-white">
+          <div className="max-w-[724px] bg-black p-6 lg:p-10">{imageText}</div>
+        </div>
+      </div>
+      <div className="relative -mt-[71px] flex flex-col justify-between gap-10 text-pretty tracking-tight lg:flex-row lg:items-end lg:gap-4">
+        <div className="max-w-[395px] px-6 lg:px-0">{content2}</div>
+        <Image
+          src={image2}
+          alt=""
+          className="translate-x-8 self-end lg:translate-x-0"
+          width={373}
+          height={375}
+        />
+      </div>
+      <div>
+        <div className="flex flex-col gap-5 bg-orange px-6 py-[40px] lg:p-[50px]">
+          <div className="max-w-[642px] text-2xl lg:text-4xl">
+            Many industries rely directly or indirectly on {industriesRelyOnText}.
+          </div>
+          <div className="flex flex-col flex-wrap gap-6 border-t border-t-black/20 pt-[20px] lg:flex-row lg:gap-11 lg:pt-[30px]">
+            <div className="flex min-w-full flex-col lg:min-w-[344px]">
+              <div className="mb-[10px] font-bold">
+                Industry that directly relies on {industriesRelyOnText}
+              </div>
+              <ul className="flex flex-col gap-4 py-[10px]">
+                {directIndustries.map(({ title, tooltip }) => (
+                  <li key={title} className="flex justify-between">
+                    {title}
+                    <InfoTooltip content={tooltip} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex min-w-full flex-col lg:min-w-[344px]">
+              <div className="mb-[10px] font-bold">Industry that indirectly relies on forests</div>
+              <ul className="flex flex-col gap-4 py-[10px]">
+                {indirectIndustries.map(({ title, tooltip }) => (
+                  <li key={title} className="flex justify-between">
+                    {title}
+                    <InfoTooltip content={tooltip} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <Image
+          className="min-h-[300px] w-full object-cover"
+          src={image3}
+          alt=""
+          width={871}
+          height={300}
+        />
+      </div>
+      <div className="mb-10 flex flex-grow flex-col gap-10 px-6 lg:mb-0 lg:px-0">
+        <div className="flex items-center gap-3">
+          <h2>Key insights</h2>
+          <div className="grow border-t border-t-grey-500"></div>
+        </div>
+        <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
+          {insights.map((insight) => (
+            <li key={insight}>{insight}</li>
+          ))}
+        </ol>
+      </div>
+    </TabsContent>
+  );
+};
+
+const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["dependencies"] }) => {
+  const { content1 } = data;
+
+  return (
+    <TabsContent value="dependencies" className="flex flex-col text-black lg:gap-y-10">
+      <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
+      {/* WIP image and text. Replace with chart */}
+      <div className="relative w-full">
+        <Image
+          className="mx-6 w-[calc(100%-48px)] max-lg:object-contain max-lg:pb-10 max-lg:pt-12 lg:mx-0 lg:min-h-[388px] lg:w-full"
+          src="/assets/industry-cases-construction-dependencies-wip.png"
+          alt=""
+          width={830}
+          height={583}
+        />
+        <div className="absolute inset-0 left-12 top-1/2 h-fit w-full -rotate-12 text-3xl">
+          Interactive chart coming soon
+        </div>
+      </div>
+    </TabsContent>
+  );
+};
+
+const ImpactsTabContent = ({ data }: { data: AccordionItemContentType["impacts"] }) => {
+  const { content1, content2, image1, list } = data;
+  return (
+    <TabsContent value="impacts" className="flex flex-col gap-y-10 text-black">
+      <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
+      <div className="mx-6 lg:mx-0">
+        <ul className="flex flex-col gap-6 bg-orange px-6 py-[40px] lg:gap-20 lg:p-[50px]">
+          {list.map(({ title, text }, index) => (
+            <li key={title} className="flex flex-col gap-3 lg:gap-10">
+              <div className="flex flex-col gap-3 lg:gap-2">
+                <RevealLines splitChars>
+                  <div className="text-[52px] leading-9 lg:text-5xl">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </div>
+                </RevealLines>
+                <RevealLines>
+                  <h3 className="max-w-[642px] text-2xl lg:text-4xl">{title}</h3>
+                </RevealLines>
+              </div>
+              <RevealLines>
+                <div className="max-w-[642px]">{text}</div>
+              </RevealLines>
+            </li>
+          ))}
+        </ul>
+        <Image
+          className="min-h-[403px] w-full object-cover"
+          src={image1}
+          alt=""
+          width={831}
+          height={403}
+        />
+      </div>
+      <div className="mx-6 mb-10 flex max-w-[831px] gap-6 lg:mx-0 lg:mb-0">
+        <div className="w-1.5 self-stretch bg-orange" />
+        <div className="w-[654px]">{content2}</div>
+      </div>
+    </TabsContent>
+  );
+};
+
+const AccordionItemContent = ({
+  ecosystem,
+  dependencies,
+  impacts,
+}: {
+  ecosystem: AccordionItemsContentType["constructions"]["ecosystem"];
+  dependencies: AccordionItemsContentType["constructions"]["dependencies"];
+  impacts: AccordionItemsContentType["constructions"]["impacts"];
+}) => {
+  const [tab, setTab] = useState("ecosystem");
+
   return (
     <div className="flex w-full flex-col">
       <Tabs value={tab} onValueChange={setTab}>
@@ -67,84 +224,9 @@ const AccordionItemContent = ({
             Impacts
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="ecosystem" className="flex flex-col gap-y-10 text-black">
-          <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
-          <div className="px-6 lg:px-0">
-            <Image
-              className="min-h-[388px] object-cover max-lg:w-full"
-              src={image1}
-              alt=""
-              width={685}
-              height={388}
-            />
-            <div className="flex w-full -translate-y-[71px] justify-end text-white">
-              <div className="max-w-[724px] bg-black p-6 lg:p-10">{imageText}</div>
-            </div>
-          </div>
-          <div className="relative -mt-[71px] flex flex-col justify-between gap-10 text-pretty tracking-tight lg:flex-row lg:items-end lg:gap-4">
-            <div className="max-w-[395px] px-6 lg:px-0">{content2}</div>
-            <Image
-              src={image2}
-              alt=""
-              className="translate-x-8 self-end lg:translate-x-0"
-              width={373}
-              height={375}
-            />
-          </div>
-          <div>
-            <div className="flex flex-col gap-5 bg-orange px-6 py-[40px] lg:p-[50px]">
-              <div className="max-w-[642px] text-2xl lg:text-4xl">
-                Many industries rely directly or indirectly on {industriesRelyOnText}.
-              </div>
-              <div className="flex flex-col flex-wrap gap-6 border-t border-t-black/20 pt-[20px] lg:flex-row lg:gap-11 lg:pt-[30px]">
-                <div className="flex min-w-full flex-col lg:min-w-[344px]">
-                  <div className="mb-[10px] font-bold">
-                    Industry that directly relies on {industriesRelyOnText}
-                  </div>
-                  <ul className="flex flex-col gap-4 py-[10px]">
-                    {directIndustries.map(({ title, tooltip }) => (
-                      <li key={title} className="flex justify-between">
-                        {title}
-                        <InfoTooltip content={tooltip} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="flex min-w-full flex-col lg:min-w-[344px]">
-                  <div className="mb-[10px] font-bold">
-                    Industry that indirectly relies on forests
-                  </div>
-                  <ul className="flex flex-col gap-4 py-[10px]">
-                    {indirectIndustries.map(({ title, tooltip }) => (
-                      <li key={title} className="flex justify-between">
-                        {title}
-                        <InfoTooltip content={tooltip} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <Image
-              className="min-h-[300px] w-full object-cover"
-              src={image3}
-              alt=""
-              width={871}
-              height={300}
-            />
-          </div>
-          <div className="mb-10 flex flex-grow flex-col gap-10 px-6 lg:mb-0 lg:px-0">
-            <div className="flex items-center gap-3">
-              <h2>Key insights</h2>
-              <div className="grow border-t border-t-grey-500"></div>
-            </div>
-            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
-              {insights.map((insight) => (
-                <li key={insight}>{insight}</li>
-              ))}
-            </ol>
-          </div>
-        </TabsContent>
+        <EcosystemTabContent data={ecosystem} />
+        <DependenciesTabContent data={dependencies} />
+        <ImpactsTabContent data={impacts} />
       </Tabs>
     </div>
   );
