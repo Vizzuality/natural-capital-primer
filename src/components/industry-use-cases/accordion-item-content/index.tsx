@@ -144,7 +144,7 @@ const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["depe
       {/* WIP image and text. Replace with chart */}
       <div className="relative w-full">
         <Image
-          className="mx-6 min-h-[388px] w-[calc(100%-48px)] max-lg:object-contain lg:mx-0 lg:w-full"
+          className="mx-6 w-[calc(100%-48px)] max-lg:object-contain max-lg:pb-10 max-lg:pt-12 lg:mx-0 lg:min-h-[388px] lg:w-full"
           src="/assets/industry-cases-construction-dependencies-wip.png"
           alt=""
           width={830}
