@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import InfoTooltip from "@/components/info-tooltip";
 import RevealLines from "@/components/animations/reveal-lines";
@@ -211,7 +211,7 @@ const AccordionItemContent = ({
   ecosystem: AccordionItemsContentType["constructions"]["ecosystem"];
   dependencies: AccordionItemsContentType["constructions"]["dependencies"];
   impacts: AccordionItemsContentType["constructions"]["impacts"];
-  accordionContentRef: React.RefObject<HTMLDivElement>;
+  accordionContentRef?: React.RefObject<HTMLDivElement>;
 }) => {
   const [tab, setTab] = useState<TabKeys>("ecosystem");
   const handleTabChange = (value: string) => {
@@ -219,7 +219,7 @@ const AccordionItemContent = ({
   };
 
   const scrollTabToTop = () => {
-    accordionContentRef.current?.scrollTo({ top: 0 });
+    accordionContentRef?.current?.scrollTo({ top: 0 });
   };
 
   return (
