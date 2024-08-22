@@ -88,13 +88,13 @@ const Quiz = ({ data }: { data: QuizData }) => {
           </div>
         </div>
       </div>
-      <div className="text-sm mt-6 flex w-full flex-col-reverse items-center justify-between gap-4 border-t border-dashed border-t-grey-400 px-6 pb-10 pt-6 text-white lg:mt-0 lg:h-[84px] lg:flex-row lg:px-[53px] lg:py-[30px]">
+      <div className="text-sm mt-6 flex w-full flex-col-reverse justify-between gap-4 border-t border-dashed border-t-grey-400 px-6 pb-10 pt-6 text-white lg:mt-0 lg:h-[84px] lg:flex-row lg:items-center lg:px-[53px] lg:py-[30px]">
         We don’t collect your answers. We want to provide a learning experience.
         {waitForNext && (
           <Button
             variant="outline-white"
             onClick={() => handleNext(quizQuestion)}
-            className="relative px-12 py-[10px] max-lg:w-full"
+            className="relative px-12 py-[10px] max-lg:max-w-[180px]"
           >
             {quizQuestion < 2 ? (
               <>
