@@ -219,7 +219,7 @@ const AccordionItemContent = ({
   };
 
   const scrollTabToTop = () => {
-    accordionContentRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    accordionContentRef.current?.scrollTo({ top: 0 });
   };
 
   return (
@@ -230,10 +230,10 @@ const AccordionItemContent = ({
             <TabsTrigger value="ecosystem" className="w-full" onClick={scrollTabToTop}>
               Ecosystem
             </TabsTrigger>
-            <TabsTrigger value="dependencies" className="w-full">
+            <TabsTrigger value="dependencies" className="w-full" onClick={scrollTabToTop}>
               Dependencies
             </TabsTrigger>
-            <TabsTrigger value="impacts" className="w-full">
+            <TabsTrigger value="impacts" className="w-full" onClick={scrollTabToTop}>
               Impacts
             </TabsTrigger>
           </TabsList>

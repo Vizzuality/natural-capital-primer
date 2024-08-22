@@ -57,6 +57,7 @@ const Item = ({
       // wait 150ms for the accordion to expand
       setTimeout(() => {
         accordionItemsRef.current[index]?.scrollIntoView({ behavior: "smooth" });
+        accordionContentRef.current?.scrollTo({ top: 0 });
       }, 150);
     }
   };
