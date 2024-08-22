@@ -45,6 +45,7 @@ const QUIZ_DATA: QuizData[] = [
   {
     key: "quiz-chapter-1",
     colorClass: "lg:text-green-500",
+    color: "green",
     chapterName: "Assets and Resources",
     questions: [
       {
@@ -82,6 +83,7 @@ const QUIZ_DATA: QuizData[] = [
   {
     key: "quiz-chapter-2",
     colorClass: "lg:text-blue-450",
+    color: "blue",
     chapterName: "Flows of services",
     questions: [
       {
@@ -119,6 +121,7 @@ const QUIZ_DATA: QuizData[] = [
   {
     key: "quiz-chapter-3",
     colorClass: "lg:text-orange-500",
+    color: "orange",
     chapterName: "Dependencies and Impacts",
     questions: [
       {
@@ -513,9 +516,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                      initial: { opacity: 0 },
-                      animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
-                    }
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
+                      }
                     : { style: sectionsStyle[0] })}
                 >
                   <p id="renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -562,9 +565,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                      initial: { opacity: 0 },
-                      animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
-                    }
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
+                      }
                     : { style: sectionsStyle[1] })}
                 >
                   <p id="cultivated" className="text-2xl text-green-500 lg:text-4xl">
@@ -591,9 +594,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                      initial: { opacity: 0 },
-                      animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
-                    }
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
+                      }
                     : { style: sectionsStyle[2] })}
                 >
                   <p id="non-renewable" className="text-2xl text-green-500 lg:text-4xl">
