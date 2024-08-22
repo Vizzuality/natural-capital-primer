@@ -1,5 +1,5 @@
 "use client";
-import { useState, ReactNode, useRef } from "react";
+import { useState, ReactNode, useRef, cloneElement, isValidElement } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MountainCoverImage from "@/components/mountain-cover-image";
@@ -51,26 +51,38 @@ const Item = ({
   accordionItemsRef: React.MutableRefObject<HTMLButtonElement[]>;
   index: number;
 }) => {
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const accordionContentRef = useRef<HTMLDivElement>(null);
   const handleClick = () => {
-    if (triggerRef.current) {
-      triggerRef.current.scrollIntoView({ behavior: "smooth" });
+    if (accordionItemsRef.current) {
+      // wait 150ms for the accordion to expand
+      setTimeout(() => {
+        accordionItemsRef.current[index]?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
     }
   };
 
+  const EnhancedContent = ({
+    content,
+    ...props
+  }: {
+    content: ReactNode;
+    accordionContentRef: React.RefObject<HTMLDivElement>;
+  }) => isValidElement(content) && cloneElement(content, props);
+
   return (
-    <AccordionItem
-      value={triggerContent.id}
-      ref={(el) => addRef(accordionItemsRef, index, el as unknown as HTMLButtonElement)}
-    >
+    <AccordionItem value={triggerContent.id}>
       <AccordionTrigger
-        ref={triggerRef}
+        ref={(el) => addRef(accordionItemsRef, index, el as unknown as HTMLButtonElement)}
         className="mx-6 w-full scroll-m-[90px] lg:mx-0"
         onClick={handleClick}
       >
         <TriggerContent content={triggerContent} open={active} />
       </AccordionTrigger>
-      {content && <AccordionContent className="lg:pt-0">{content}</AccordionContent>}
+      {content && (
+        <AccordionContent ref={accordionContentRef} className="lg:pt-0">
+          <EnhancedContent content={content} accordionContentRef={accordionContentRef} />
+        </AccordionContent>
+      )}
     </AccordionItem>
   );
 };
@@ -188,15 +200,11 @@ const IndustryUseCasesPage: FC = () => {
                   })}
                   aria-expanded={activeItem === accordionItem.id}
                   onClick={() => {
-                    const triggerRef = accordionItemsRef.current?.[index];
-                    const triggerYPosition = triggerRef?.getBoundingClientRect().top;
-                    if (triggerYPosition) {
-                      window.scrollTo({
-                        top: window.scrollY + triggerYPosition - 90,
-                        behavior: "smooth",
-                      });
-                    }
                     setActiveItem(activeItem === accordionItem.id ? "" : accordionItem.id);
+                    const triggerRef = accordionItemsRef.current?.[index];
+                    setTimeout(() => {
+                      triggerRef?.scrollIntoView({ behavior: "smooth" });
+                    }, 150);
                   }}
                 >
                   {accordionItem.id}
