@@ -343,7 +343,7 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
 
 export const ACCORDION_ITEMS: AccordionContentType[] = [
   {
-    id: "Constructions",
+    id: "Manufacturing",
     text1: "Manufacturing depends on",
     text2: "Forests.",
     imageSrc1: "/assets/industry-cases-accordion-1.png",
