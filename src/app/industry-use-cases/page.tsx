@@ -1,5 +1,5 @@
 "use client";
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, useRef } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MountainCoverImage from "@/components/mountain-cover-image";
@@ -22,18 +22,52 @@ import { AccordionContentType, TriggerImagesAndText } from "./types";
 const MotionPlus = motion(Plus);
 const MotionMinus = motion(Minus);
 
+const addRef = (
+  accordionItemsRef: React.MutableRefObject<HTMLButtonElement[]>,
+  index: number,
+  el: HTMLButtonElement,
+) => {
+  if (!accordionItemsRef.current) {
+    accordionItemsRef.current = [];
+  }
+
+  if (accordionItemsRef.current.length <= index) {
+    accordionItemsRef.current.push(el);
+  } else {
+    accordionItemsRef.current[index] = el;
+  }
+};
+
 const Item = ({
   triggerContent,
   content,
   active,
+  accordionItemsRef,
+  index,
 }: {
   triggerContent: AccordionContentType;
   content?: ReactNode;
   active: boolean;
+  accordionItemsRef: React.MutableRefObject<HTMLButtonElement[]>;
+  index: number;
 }) => {
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const handleClick = () => {
+    if (triggerRef.current) {
+      triggerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <AccordionItem value={triggerContent.id}>
-      <AccordionTrigger className="mx-6 w-full lg:mx-0">
+    <AccordionItem
+      value={triggerContent.id}
+      ref={(el) => addRef(accordionItemsRef, index, el as unknown as HTMLButtonElement)}
+    >
+      <AccordionTrigger
+        ref={triggerRef}
+        className="mx-6 w-full scroll-m-[90px] lg:mx-0"
+        onClick={handleClick}
+      >
         <TriggerContent content={triggerContent} open={active} />
       </AccordionTrigger>
       {content && <AccordionContent className="lg:pt-0">{content}</AccordionContent>}
@@ -120,6 +154,7 @@ const TriggerContent = ({
 
 const IndustryUseCasesPage: FC = () => {
   const [activeItem, setActiveItem] = useState<string>("");
+  const accordionItemsRef = useRef<HTMLButtonElement[]>([]);
 
   return (
     <>
@@ -142,7 +177,7 @@ const IndustryUseCasesPage: FC = () => {
               "lg:opacity-100": !!activeItem,
             })}
           >
-            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType) => (
+            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType, index) => (
               <li key={accordionItem.id}>
                 <Button
                   type="button"
@@ -152,9 +187,17 @@ const IndustryUseCasesPage: FC = () => {
                     "font-bold underline underline-offset-4": activeItem === accordionItem.id,
                   })}
                   aria-expanded={activeItem === accordionItem.id}
-                  onClick={() =>
-                    setActiveItem(activeItem === accordionItem.id ? "" : accordionItem.id)
-                  }
+                  onClick={() => {
+                    const triggerRef = accordionItemsRef.current?.[index];
+                    const triggerYPosition = triggerRef?.getBoundingClientRect().top;
+                    if (triggerYPosition) {
+                      window.scrollTo({
+                        top: window.scrollY + triggerYPosition - 90,
+                        behavior: "smooth",
+                      });
+                    }
+                    setActiveItem(activeItem === accordionItem.id ? "" : accordionItem.id);
+                  }}
                 >
                   {accordionItem.id}
                 </Button>
@@ -170,12 +213,14 @@ const IndustryUseCasesPage: FC = () => {
             className="flex flex-col lg:gap-y-20"
             collapsible
           >
-            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType) => (
+            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType, index) => (
               <Item
                 key={accordionItem.id}
                 triggerContent={accordionItem}
                 active={activeItem === accordionItem.id}
                 content={accordionItem.content}
+                accordionItemsRef={accordionItemsRef}
+                index={index}
               />
             ))}
           </Accordion>

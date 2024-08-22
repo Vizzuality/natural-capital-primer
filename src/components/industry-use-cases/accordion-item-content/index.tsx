@@ -216,9 +216,9 @@ const AccordionItemContent = ({
     setTab(value as TabKeys);
   };
   return (
-    <div className={`flex h-[calc(100vh-250px)] w-full flex-col`}>
+    <div className={`flex h-[calc(100vh-200px)] w-full flex-col`}>
       <Tabs value={tab} onValueChange={handleTabChange} className="relative">
-        <div className="sticky top-0 z-10 mb-[20px] bg-white lg:mb-5 lg:pt-10">
+        <div className="sticky top-0 z-10 mb-[20px] bg-white lg:mb-5 lg:pt-6">
           <TabsList className="mx-6 flex-col rounded-[26px] lg:mx-0 lg:flex-row">
             <TabsTrigger value="ecosystem" className="w-full">
               Ecosystem
