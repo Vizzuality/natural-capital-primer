@@ -5,16 +5,22 @@ import Header from "@/components/header";
 import Caret from "@/icons/caret-right.svg";
 import Link from "next/link";
 import AnimatedUnderline from "@/components/animations/animated-underline";
+import Parallax from "@/components/animations/parallax";
 
 export default function ClimateChange() {
   return (
     <>
-      <div className="h-[430px] w-full bg-[url(/assets/key-concepts-climate-change-background.png)] bg-cover bg-no-repeat pb-10 lg:h-[642px] lg:pb-20">
-        <div className="relative z-10">
+      <div className="relative z-0">
+        <div className="absolute inset-0 z-10 w-full">
           <Header logo="white" />
         </div>
+        <Parallax
+          heightClasses="h-[430px] lg:h-[642px]"
+          className="w-full bg-cover bg-no-repeat pb-10 lg:pb-20"
+          src="/assets/key-concepts-climate-change-background.png"
+        />
       </div>
-      <div className="-mt-[270px] pr-6 lg:pr-20 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)] xl:pr-36">
+      <div className="relative -mt-[270px] pr-6 lg:pr-20 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)] xl:pr-36">
         <main className="flex items-center bg-black px-6 py-4 lg:px-20 lg:py-6 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
           <div className="flex flex-col gap-y-2 sm:flex-row sm:items-center sm:gap-x-3">
             <Link href="/key-concepts#role" className="flex items-center gap-3">

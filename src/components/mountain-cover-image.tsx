@@ -1,8 +1,13 @@
 import { FC } from "react";
+import Parallax from "@/components/animations/parallax";
 
 const MountainCoverImage: FC = () => {
   return (
-    <div className="h-[400px] bg-[url(/assets/home-illustration-2.png)] bg-cover bg-bottom sm:aspect-[5/3] sm:h-auto lg:aspect-auto lg:h-[550px]"></div>
+    <Parallax
+      heightClasses="h-[400px] lg:h-[550px]"
+      className="bg-cover bg-bottom sm:aspect-[5/3] sm:h-auto lg:aspect-auto"
+      src="/assets/home-illustration-2.png"
+    />
   );
 };
 
