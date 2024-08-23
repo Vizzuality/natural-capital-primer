@@ -75,6 +75,7 @@ const Item = ({
       <AccordionTrigger
         ref={(el) => addRef(accordionItemsRef, index, el as unknown as HTMLButtonElement)}
         className="mx-6 w-full scroll-m-[90px] lg:mx-0"
+        headerClassName="sticky top-[90px] z-40 bg-white"
         onClick={handleClick}
       >
         <TriggerContent content={triggerContent} open={active} />
