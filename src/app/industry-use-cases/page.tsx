@@ -51,40 +51,16 @@ const Item = ({
   accordionItemsRef: React.MutableRefObject<HTMLButtonElement[]>;
   index: number;
 }) => {
-  const accordionContentRef = useRef<HTMLDivElement>(null);
-  const handleClick = () => {
-    if (accordionItemsRef.current) {
-      // wait 150ms for the accordion to expand
-      setTimeout(() => {
-        accordionItemsRef.current[index]?.scrollIntoView({ behavior: "smooth" });
-        accordionContentRef.current?.scrollTo({ top: 0 });
-      }, 150);
-    }
-  };
-
-  const EnhancedContent = ({
-    content,
-    ...props
-  }: {
-    content: ReactNode;
-    accordionContentRef: React.RefObject<HTMLDivElement>;
-  }) => isValidElement(content) && cloneElement(content, props);
-
   return (
     <AccordionItem value={triggerContent.id}>
       <AccordionTrigger
         ref={(el) => addRef(accordionItemsRef, index, el as unknown as HTMLButtonElement)}
         className="mx-6 w-full scroll-m-[90px] lg:mx-0"
-        headerClassName="sticky top-[90px] z-40 bg-white"
-        onClick={handleClick}
+        headerClassName="sticky top-[90px] z-30 bg-white"
       >
         <TriggerContent content={triggerContent} open={active} />
       </AccordionTrigger>
-      {content && (
-        <AccordionContent ref={accordionContentRef} className="lg:pt-0">
-          <EnhancedContent content={content} accordionContentRef={accordionContentRef} />
-        </AccordionContent>
-      )}
+      {content && <AccordionContent className="lg:pt-0">{content}</AccordionContent>}
     </AccordionItem>
   );
 };
@@ -99,9 +75,9 @@ const TriggerContent = ({
   const { text1, imageSrc1, text2, imageSrc2 } = content;
   return (
     <span className="relative flex w-full items-start justify-between gap-3.5">
-      <span className="flex flex-col gap-5 text-2xl font-normal text-black lg:gap-4 lg:text-4xl">
+      <span className="flex flex-col gap-5 text-2xl font-normal text-black lg:gap-4 xl:text-4xl">
         {/* DESKTOP */}
-        <span className="hidden text-left leading-tight group-hover:underline lg:inline">
+        <span className="hidden text-left leading-tight group-hover:underline xl:inline">
           <Image
             width={105}
             height={44}
@@ -121,11 +97,11 @@ const TriggerContent = ({
           {text2}
         </span>
         {/* MOBILE */}
-        <span className="flex h-11 gap-3 lg:hidden">
+        <span className="flex h-11 gap-3 xl:hidden">
           <Image width={105} height={44} alt="" src={imageSrc1} />
           <Image width={105} height={44} alt="" src={imageSrc2} />
         </span>
-        <span className="text-left lg:hidden">
+        <span className="text-left xl:hidden">
           {text1} {text2}
         </span>
       </span>
@@ -185,12 +161,8 @@ const IndustryUseCasesPage: FC = () => {
       </div>
       <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
         <div className="top-24 z-10 hidden h-full flex-shrink-0 px-6 py-9 lg:sticky lg:block lg:w-[220px]">
-          <ul
-            className={cn("hidden flex-col gap-4 transition-opacity duration-200 lg:flex", {
-              "lg:opacity-0": !activeItem,
-              "lg:opacity-100": !!activeItem,
-            })}
-          >
+          {/* Accordion menu */}
+          <ul className="hidden flex-col gap-4 transition-opacity duration-200 lg:flex">
             {ACCORDION_ITEMS.map((accordionItem: AccordionContentType, index) => (
               <li key={accordionItem.id}>
                 <Button

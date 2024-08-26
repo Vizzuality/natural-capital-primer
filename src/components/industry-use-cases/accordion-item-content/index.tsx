@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import InfoTooltip from "@/components/info-tooltip";
 import RevealLines from "@/components/animations/reveal-lines";
@@ -42,7 +42,21 @@ export interface AccordionItemsContentType {
   food: AccordionItemContentType;
 }
 
-const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosystem"] }) => {
+type TabRef = React.RefObject<{ [key in TabKeys]: HTMLDivElement | null }>;
+
+const setRef = (el: HTMLDivElement | null, tab: TabKeys, ref: TabRef): void => {
+  if (el) {
+    ref?.current && (ref.current[tab] = el);
+  }
+};
+
+const EcosystemTabContent = ({
+  data,
+  tabsTopRef,
+}: {
+  data: AccordionItemContentType["ecosystem"];
+  tabsTopRef: TabRef;
+}) => {
   const {
     content1,
     image1,
@@ -55,9 +69,12 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
     image3,
     insights,
   } = data;
-
   return (
-    <TabsContent value="ecosystem" className="flex flex-col gap-y-10 text-black">
+    <TabsContent
+      value="ecosystem"
+      className="flex flex-col gap-y-10 text-black"
+      ref={(el) => setRef(el, "ecosystem", tabsTopRef)}
+    >
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
       <div className="px-6 lg:px-0">
         <Image
@@ -136,11 +153,21 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
   );
 };
 
-const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["dependencies"] }) => {
+const DependenciesTabContent = ({
+  data,
+  tabsTopRef,
+}: {
+  data: AccordionItemContentType["dependencies"];
+  tabsTopRef: TabRef;
+}) => {
   const { content1 } = data;
 
   return (
-    <TabsContent value="dependencies" className="flex flex-col text-black lg:gap-y-10">
+    <TabsContent
+      value="dependencies"
+      className="flex flex-col text-black lg:gap-y-10"
+      ref={(el) => setRef(el, "dependencies", tabsTopRef)}
+    >
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
       {/* WIP image and text. Replace with chart */}
       <div className="relative w-full">
@@ -159,10 +186,20 @@ const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["depe
   );
 };
 
-const ImpactsTabContent = ({ data }: { data: AccordionItemContentType["impacts"] }) => {
+const ImpactsTabContent = ({
+  data,
+  tabsTopRef,
+}: {
+  data: AccordionItemContentType["impacts"];
+  tabsTopRef: TabRef;
+}) => {
   const { content1, content2, image1, list } = data;
   return (
-    <TabsContent value="impacts" className="flex flex-col gap-y-10 text-black">
+    <TabsContent
+      value="impacts"
+      className="flex flex-col gap-y-10 text-black"
+      ref={(el) => setRef(el, "impacts", tabsTopRef)}
+    >
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
       <div className="mx-6 lg:mx-0">
         <ul className="flex flex-col gap-6 bg-orange px-6 py-[40px] lg:gap-20 lg:p-[50px]">
@@ -206,26 +243,32 @@ const AccordionItemContent = ({
   ecosystem,
   dependencies,
   impacts,
-  accordionContentRef,
 }: {
   ecosystem: AccordionItemsContentType["constructions"]["ecosystem"];
   dependencies: AccordionItemsContentType["constructions"]["dependencies"];
   impacts: AccordionItemsContentType["constructions"]["impacts"];
-  accordionContentRef?: React.RefObject<HTMLDivElement>;
 }) => {
   const [tab, setTab] = useState<TabKeys>("ecosystem");
   const handleTabChange = (value: string) => {
     setTab(value as TabKeys);
   };
 
+  const tabsTopRef = useRef<{ [key in TabKeys]: HTMLDivElement | null }>({
+    ecosystem: null,
+    dependencies: null,
+    impacts: null,
+  });
+
   const scrollTabToTop = () => {
-    accordionContentRef?.current?.scrollTo({ top: 0 });
+    setTimeout(() => {
+      tabsTopRef.current?.[tab]?.scrollIntoView({ behavior: "smooth" });
+    }, 150);
   };
 
   return (
     <div className="flex w-full flex-col">
       <Tabs value={tab} onValueChange={handleTabChange} className="relative">
-        <div className="sticky top-[196px] z-30 mb-[20px] bg-white lg:mb-5 lg:pt-6">
+        <div className="sticky top-[307px] z-20 mb-[20px] bg-white min-[585px]:top-[271px] lg:top-[198px] lg:mb-5 lg:pt-6 xl:top-[196px]">
           <TabsList className="mx-6 flex-col rounded-[26px] lg:mx-0 lg:flex-row">
             <TabsTrigger value="ecosystem" className="w-full" onClick={scrollTabToTop}>
               Ecosystem
@@ -238,9 +281,9 @@ const AccordionItemContent = ({
             </TabsTrigger>
           </TabsList>
         </div>
-        <EcosystemTabContent data={ecosystem} />
-        <DependenciesTabContent data={dependencies} />
-        <ImpactsTabContent data={impacts} />
+        <EcosystemTabContent data={ecosystem} tabsTopRef={tabsTopRef} />
+        <DependenciesTabContent data={dependencies} tabsTopRef={tabsTopRef} />
+        <ImpactsTabContent data={impacts} tabsTopRef={tabsTopRef} />
       </Tabs>
     </div>
   );
