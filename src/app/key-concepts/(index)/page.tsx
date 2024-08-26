@@ -513,9 +513,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                      initial: { opacity: 0 },
-                      animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
-                    }
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
+                      }
                     : { style: sectionsStyle[0] })}
                 >
                   <p id="renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -562,9 +562,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                      initial: { opacity: 0 },
-                      animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
-                    }
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
+                      }
                     : { style: sectionsStyle[1] })}
                 >
                   <p id="cultivated" className="text-2xl text-green-500 lg:text-4xl">
@@ -591,9 +591,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                      initial: { opacity: 0 },
-                      animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
-                    }
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
+                      }
                     : { style: sectionsStyle[2] })}
                 >
                   <p id="non-renewable" className="text-2xl text-green-500 lg:text-4xl">
