@@ -55,8 +55,8 @@ const Item = ({
     <AccordionItem value={triggerContent.id}>
       <AccordionTrigger
         ref={(el) => addRef(accordionItemsRef, index, el as unknown as HTMLButtonElement)}
-        className="mx-6 w-full scroll-m-[90px] lg:mx-0"
-        headerClassName="sticky top-[90px] z-30 bg-white"
+        className="mx-6 w-full lg:mx-0"
+        headerClassName="lg:sticky lg:top-[90px] z-30 bg-white lg:min-h-[132px] xl:min-h-auto"
       >
         <TriggerContent content={triggerContent} open={active} />
       </AccordionTrigger>
@@ -163,7 +163,7 @@ const IndustryUseCasesPage: FC = () => {
         <div className="top-24 z-10 hidden h-full flex-shrink-0 px-6 py-9 lg:sticky lg:block lg:w-[220px]">
           {/* Accordion menu */}
           <ul className="hidden flex-col gap-4 transition-opacity duration-200 lg:flex">
-            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType, index) => (
+            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType) => (
               <li key={accordionItem.id}>
                 <Button
                   type="button"
@@ -175,10 +175,6 @@ const IndustryUseCasesPage: FC = () => {
                   aria-expanded={activeItem === accordionItem.id}
                   onClick={() => {
                     setActiveItem(activeItem === accordionItem.id ? "" : accordionItem.id);
-                    const triggerRef = accordionItemsRef.current?.[index];
-                    setTimeout(() => {
-                      triggerRef?.scrollIntoView({ behavior: "smooth" });
-                    }, 150);
                   }}
                 >
                   {accordionItem.id}
