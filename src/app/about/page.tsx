@@ -99,20 +99,22 @@ export default function About() {
             </AnimatePresence>
           </div>
         </Parallax>
-        <motion.div
-          key="initial"
-          className="absolute inset-0 hidden lg:block"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Image
-            src={backgrounds[activeBackgroundIndex % backgrounds.length]}
-            alt=""
-            fill
-            className="h-[130%] object-cover object-bottom lg:[clip-path:circle(22px_at_calc(100vw_-_203px)_168px)] xl:[clip-path:circle(22px_at_calc(100%_-_188px_-(100%_-_1280px)_/_2)_312px)]"
-          />
-        </motion.div>
+        {!isAnimating && (
+          <motion.div
+            key="initial"
+            className="absolute inset-0 hidden lg:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image
+              src={backgrounds[(activeBackgroundIndex + 1) % backgrounds.length]}
+              alt=""
+              fill
+              className="h-[130%] object-cover object-bottom lg:[clip-path:circle(22px_at_calc(100vw_-_203px)_168px)] xl:[clip-path:circle(22px_at_calc(100%_-_188px_-(100%_-_1280px)_/_2)_312px)]"
+            />
+          </motion.div>
+        )}
         <div className="absolute inset-0 z-10">
           <div className="relative z-10">
             <Header logo="black" />
