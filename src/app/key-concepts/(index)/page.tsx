@@ -21,6 +21,7 @@ import { FC, Fragment, useCallback, useRef, useState } from "react";
 import Parallax from "@/components/animations/parallax";
 import Quiz from "@/components/quiz";
 import type { QuizData } from "@/components/quiz";
+import NaturalCapitalChart from "./natural-capital-chart";
 
 // FadeInOnScroll and RevealLines components use window object, which is not available in SSR
 const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
@@ -871,7 +872,9 @@ const KeyConceptsPage: FC = () => {
       </Parallax>
       <div className="bg-black text-white">
         <div className="mx-auto max-w-7xl px-6 lg:flex-row lg:px-20">
-          <p className="py-24 text-center lg:py-80">Content coming soon</p>
+          <p className="py-24 text-center lg:py-80">
+            <NaturalCapitalChart />
+          </p>
         </div>
       </div>
       <div id="role" className="mx-auto max-w-7xl px-6 py-10 lg:px-20 lg:py-24">
