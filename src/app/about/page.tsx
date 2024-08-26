@@ -19,7 +19,6 @@ const RevealLines = dynamic(() => import("@/components/animations/reveal-lines")
 export default function About() {
   const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const clipBackgroundRef = useRef<HTMLImageElement | null>(null);
   const illustration2Ref = useRef<HTMLDivElement | null>(null);
   const illustration3Ref = useRef<HTMLDivElement | null>(null);
   const isXl = useMediaQuery("(min-width: 1280px)", false);
@@ -51,88 +50,97 @@ export default function About() {
 
   return (
     <>
-      <div className="relative">
-        {/* All the backgrounds */}
-        {backgrounds.map((url, index) => (
-          <Image
-            key={url}
-            src={url}
-            alt=""
-            fill
-            className={cn("object-cover object-bottom", {
-              "opacity-0": activeBackgroundIndex !== index,
-            })}
-          />
-        ))}
-        {/* Clip background for the button */}
-        <AnimatePresence mode="wait">
-          {isAnimating ? (
-            <motion.div
-              key="animated"
-              className="absolute inset-0 hidden lg:block"
-              initial={{
-                clipPath: isXl
-                  ? "circle(22px at calc(100% - 188px - (100% - 1280px) / 2) 312px)"
-                  : `circle(22px at calc(100% - 188px) 168px)`,
-              }}
-              animate={{
-                clipPath: isXl
-                  ? "circle(100% at calc(100% - 188px - (100% - 1280px) / 2) 312px)"
-                  : `circle(100% at calc(100% - 188px) 168px)`,
-              }}
-              transition={{ duration: 1, ease: "linear" }}
-              onAnimationComplete={onAnimationComplete}
-            >
+      <div>
+        <Parallax
+          heightClasses="h-[352px] lg:h-[645px]"
+          className=""
+          containerHeightPercentageMobile={142}
+        >
+          <div className="relative">
+            {/* All the backgrounds */}
+            {backgrounds.map((url, index) => (
               <Image
-                ref={clipBackgroundRef}
-                src={backgrounds[(activeBackgroundIndex + 1) % backgrounds.length]}
+                key={url}
+                src={url}
                 alt=""
                 fill
-                className="object-cover object-bottom"
+                className={cn("object-cover object-bottom", {
+                  "opacity-0": activeBackgroundIndex !== index,
+                })}
               />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="initial"
-              className="absolute inset-0 hidden lg:block"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Image
-                ref={clipBackgroundRef}
-                src={backgrounds[(activeBackgroundIndex + 1) % backgrounds.length]}
-                alt=""
-                fill
-                className="object-cover object-bottom lg:[clip-path:circle(22px_at_calc(100vw_-_188px)_168px)] xl:[clip-path:circle(22px_at_calc(100%_-_188px_-(100%_-_1280px)_/_2)_312px)]"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-        <div className="relative z-10">
-          <Header logo="black" />
-        </div>
-        <div className="relative z-10 mx-auto max-w-7xl p-6 pb-20 text-white lg:px-20 lg:pb-48 lg:pt-36 xl:pt-72">
-          <div
-            className={cn(
-              "absolute right-40 top-36 hidden h-[56px] w-[56px] -translate-y-24 rounded-full border border-dashed border-white transition-colors duration-1000 lg:flex lg:items-center lg:justify-center xl:top-72",
-              {
-                "border-white": !isAnimating,
-                "border-transparent": isAnimating,
-              },
-            )}
-          >
-            <Button
-              type="button"
-              className="min-h-[44px] min-w-[44px] rounded-full bg-transparent hover:bg-transparent"
-              onClick={() => setIsAnimating(true)}
-            >
-              <span className="sr-only">Change background</span>
-            </Button>
+            ))}
+            {/* Clip background for the button */}
+            <AnimatePresence mode="wait">
+              {isAnimating ? (
+                <motion.div
+                  key="animated"
+                  className="absolute inset-0 hidden lg:block"
+                  initial={{
+                    clipPath: isXl
+                      ? "circle(22px at calc(100% - 188px - (100% - 1280px) / 2) 384px)"
+                      : `circle(22px at calc(100% - 188px) 230px)`,
+                  }}
+                  animate={{
+                    clipPath: isXl
+                      ? "circle(100% at calc(100% - 188px - (100% - 1280px) / 2) 394px)"
+                      : `circle(100% at calc(100% - 188px) 168px)`,
+                  }}
+                  transition={{ duration: 1, ease: "linear" }}
+                  onAnimationComplete={onAnimationComplete}
+                >
+                  <Image
+                    src={backgrounds[(activeBackgroundIndex + 1) % backgrounds.length]}
+                    alt=""
+                    fill
+                    className="object-cover object-bottom"
+                  />
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
           </div>
-          <h1 className="text-[52px] font-medium leading-none lg:text-[72px]">
-            About the Natural Capital Primer
-          </h1>
+        </Parallax>
+        {!isAnimating && (
+          <motion.div
+            key="initial"
+            className="absolute inset-0 hidden lg:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image
+              src={backgrounds[(activeBackgroundIndex + 1) % backgrounds.length]}
+              alt=""
+              fill
+              className="h-[130%] object-cover object-bottom lg:[clip-path:circle(22px_at_calc(100vw_-_203px)_168px)] xl:[clip-path:circle(22px_at_calc(100%_-_188px_-(100%_-_1280px)_/_2)_312px)]"
+            />
+          </motion.div>
+        )}
+        <div className="absolute inset-0 z-10">
+          <div className="relative z-10">
+            <Header logo="black" />
+          </div>
+          <div className="relative z-10 mx-auto max-w-7xl p-6 pb-20 text-white lg:px-20 lg:pb-48 lg:pt-36 xl:pt-72">
+            <div
+              className={cn(
+                "absolute right-40 top-36 hidden h-[56px] w-[56px] -translate-y-24 rounded-full border border-dashed border-white transition-colors duration-1000 lg:flex lg:items-center lg:justify-center xl:top-72",
+                {
+                  "border-white": !isAnimating,
+                  "border-transparent": isAnimating,
+                },
+              )}
+            >
+              <Button
+                type="button"
+                className="min-h-[44px] min-w-[44px] rounded-full bg-transparent hover:bg-transparent"
+                onClick={() => setIsAnimating(true)}
+              >
+                <span className="sr-only">Change background</span>
+              </Button>
+            </div>
+            <h1 className="text-[52px] font-medium leading-none lg:text-[72px]">
+              About the Natural Capital Primer
+            </h1>
+          </div>
         </div>
       </div>
       <div className="pb-10 lg:pb-5">

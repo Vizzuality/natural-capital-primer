@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 import AnimatedUnderline from "@/components/animations/animated-underline";
+import Parallax from "@/components/animations/parallax";
+
 export const metadata: Metadata = {
   title: "Natural Capital and Biodiversity",
 };
@@ -12,13 +14,18 @@ export const metadata: Metadata = {
 export default function Biodiversity() {
   return (
     <>
-      <div className="h-[430px] w-full bg-[url(/assets/biodiversity-hero-background.png)] bg-cover bg-no-repeat pb-10 lg:h-[642px] lg:bg-[url(/assets/key-concepts-biodiversity-background.png)] lg:pb-20">
-        <div className="relative z-10">
+      <div className="relative z-0">
+        <div className="absolute inset-0 z-10 w-full">
           <Header logo="white" />
         </div>
+        <Parallax
+          heightClasses="h-[430px] lg:h-[642px]"
+          className="w-full bg-cover bg-no-repeat pb-10 lg:pb-20"
+          src="/assets/key-concepts-biodiversity-background.png"
+        />
       </div>
-      <div className="-mt-[270px] pr-6 lg:pr-20 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)] xl:pr-36">
-        <main className="flex items-center bg-black px-6 py-4 lg:px-20 lg:py-6 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
+      <div className="relative z-10 -mt-[270px] pr-6 lg:pr-20 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)] xl:pr-36">
+        <header className="flex items-center bg-black px-6 py-4 lg:px-20 lg:py-6 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
           <div className="flex flex-col gap-y-2 sm:flex-row sm:items-center sm:gap-x-3">
             <Link href="/key-concepts#role" className="flex items-center gap-3">
               <Caret className="h-3 text-white" />
@@ -27,7 +34,7 @@ export default function Biodiversity() {
             <span className="hidden h-4 border border-r-white/15 sm:block"></span>
             <div className="text-lg text-pink">Natural Capital and Biodiversity</div>
           </div>
-        </main>
+        </header>
         <main className="flex flex-col gap-6 bg-pink px-6 py-10 lg:px-20 lg:py-20 xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)]">
           <h1 className="text-2xl lg:text-4xl">
             Biodiversity has a special relationship with natural capital
