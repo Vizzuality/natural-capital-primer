@@ -1,5 +1,5 @@
 "use client";
-import { useState, ReactNode, useRef, cloneElement, isValidElement } from "react";
+import { useState, ReactNode, useRef } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MountainCoverImage from "@/components/mountain-cover-image";
