@@ -1,10 +1,12 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import InfoTooltip from "@/components/info-tooltip";
 import RevealLines from "@/components/animations/reveal-lines";
+import { usePrevious } from "@uidotdev/usehooks";
+import useMediaQuery from "@/hooks/use-media-query";
 
 export interface AccordionItemContentType {
   ecosystem: {
@@ -94,7 +96,7 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
                 {directIndustries.map(({ title, tooltip }) => (
                   <li key={title} className="flex justify-between">
                     {title}
-                    <InfoTooltip content={tooltip} />
+                    <InfoTooltip content={tooltip} className="group-hover:fill-orange-hover" />
                   </li>
                 ))}
               </ul>
@@ -105,7 +107,7 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
                 {indirectIndustries.map(({ title, tooltip }) => (
                   <li key={title} className="flex justify-between">
                     {title}
-                    <InfoTooltip content={tooltip} />
+                    <InfoTooltip content={tooltip} className="group-hover:fill-orange-hover" />
                   </li>
                 ))}
               </ul>
@@ -199,6 +201,8 @@ const ImpactsTabContent = ({ data }: { data: AccordionItemContentType["impacts"]
   );
 };
 
+type TabKeys = "ecosystem" | "dependencies" | "impacts";
+
 const AccordionItemContent = ({
   ecosystem,
   dependencies,
@@ -208,22 +212,50 @@ const AccordionItemContent = ({
   dependencies: AccordionItemsContentType["constructions"]["dependencies"];
   impacts: AccordionItemsContentType["constructions"]["impacts"];
 }) => {
-  const [tab, setTab] = useState("ecosystem");
+  const [tab, setTab] = useState<TabKeys>("ecosystem");
+  const previousTab = usePrevious(tab);
+  const handleTabChange = (value: string) => {
+    setTab(value as TabKeys);
+  };
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const isDesktop = useMediaQuery("(min-width: 1024px)", false);
+
+  // Scroll to the top of the accordion's content when the accordion is expanded or its active tab
+  // is changed
+  useEffect(() => {
+    const scrollTop = () => containerRef.current?.scrollIntoView({ behavior: "smooth" });
+
+    if (!isDesktop) {
+      return;
+    }
+
+    // `previousTab` is `null` when the accordion is expanded and has a value when the user switched
+    // tab
+    if (previousTab === null) {
+      // The accordion expand/collapse in 200ms so the timeout must be at least 200ms
+      setTimeout(scrollTop, 250);
+    } else {
+      setTimeout(scrollTop, 0);
+    }
+  }, [isDesktop, tab, previousTab]);
 
   return (
-    <div className="flex w-full flex-col">
-      <Tabs value={tab} onValueChange={setTab}>
-        <TabsList className="mx-6 mb-[20px] flex-col rounded-[26px] lg:mx-0 lg:mb-5 lg:flex-row">
-          <TabsTrigger value="ecosystem" className="w-full">
-            Ecosystem
-          </TabsTrigger>
-          <TabsTrigger value="dependencies" className="w-full">
-            Dependencies
-          </TabsTrigger>
-          <TabsTrigger value="impacts" className="w-full">
-            Impacts
-          </TabsTrigger>
-        </TabsList>
+    <div className="flex w-full flex-col lg:scroll-mt-[200px]" ref={containerRef}>
+      <Tabs value={tab} onValueChange={handleTabChange} className="relative">
+        <div className="z-20 mb-[20px] bg-white min-[585px]:top-[271px] lg:sticky lg:top-[198px] lg:mb-5 lg:pt-6 xl:top-[210px]">
+          <TabsList className="mx-6 flex-col rounded-[26px] lg:mx-0 lg:flex-row">
+            <TabsTrigger value="ecosystem" className="w-full">
+              Ecosystem
+            </TabsTrigger>
+            <TabsTrigger value="dependencies" className="w-full">
+              Dependencies
+            </TabsTrigger>
+            <TabsTrigger value="impacts" className="w-full">
+              Impacts
+            </TabsTrigger>
+          </TabsList>
+        </div>
         <EcosystemTabContent data={ecosystem} />
         <DependenciesTabContent data={dependencies} />
         <ImpactsTabContent data={impacts} />

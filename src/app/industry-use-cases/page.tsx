@@ -1,5 +1,5 @@
 "use client";
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, useRef } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import MountainCoverImage from "@/components/mountain-cover-image";
@@ -22,21 +22,45 @@ import { AccordionContentType, TriggerImagesAndText } from "./types";
 const MotionPlus = motion(Plus);
 const MotionMinus = motion(Minus);
 
+const addRef = (
+  accordionItemsRef: React.MutableRefObject<HTMLButtonElement[]>,
+  index: number,
+  el: HTMLButtonElement,
+) => {
+  if (!accordionItemsRef.current) {
+    accordionItemsRef.current = [];
+  }
+
+  if (accordionItemsRef.current.length <= index) {
+    accordionItemsRef.current.push(el);
+  } else {
+    accordionItemsRef.current[index] = el;
+  }
+};
+
 const Item = ({
   triggerContent,
   content,
   active,
+  accordionItemsRef,
+  index,
 }: {
   triggerContent: AccordionContentType;
   content?: ReactNode;
   active: boolean;
+  accordionItemsRef: React.MutableRefObject<HTMLButtonElement[]>;
+  index: number;
 }) => {
   return (
     <AccordionItem value={triggerContent.id}>
-      <AccordionTrigger className="mx-6 w-full lg:mx-0">
+      <AccordionTrigger
+        ref={(el) => addRef(accordionItemsRef, index, el as unknown as HTMLButtonElement)}
+        className="mx-6 w-full lg:mx-0"
+        headerClassName="lg:sticky lg:top-[90px] z-30 bg-white lg:min-h-[132px] xl:min-h-auto"
+      >
         <TriggerContent content={triggerContent} open={active} />
       </AccordionTrigger>
-      {content && <AccordionContent>{content}</AccordionContent>}
+      {content && <AccordionContent className="lg:pt-0">{content}</AccordionContent>}
     </AccordionItem>
   );
 };
@@ -51,9 +75,9 @@ const TriggerContent = ({
   const { text1, imageSrc1, text2, imageSrc2 } = content;
   return (
     <span className="relative flex w-full items-start justify-between gap-3.5">
-      <span className="flex flex-col gap-5 text-2xl font-normal text-black lg:gap-4 lg:text-4xl">
+      <span className="flex flex-col gap-5 text-2xl font-normal text-black lg:gap-4 xl:text-4xl">
         {/* DESKTOP */}
-        <span className="hidden text-left leading-tight group-hover:underline lg:inline">
+        <span className="hidden text-left leading-tight group-hover:underline xl:inline">
           <Image
             width={105}
             height={44}
@@ -73,11 +97,11 @@ const TriggerContent = ({
           {text2}
         </span>
         {/* MOBILE */}
-        <span className="flex h-11 gap-3 lg:hidden">
+        <span className="flex h-11 gap-3 xl:hidden">
           <Image width={105} height={44} alt="" src={imageSrc1} />
           <Image width={105} height={44} alt="" src={imageSrc2} />
         </span>
-        <span className="text-left lg:hidden">
+        <span className="text-left xl:hidden">
           {text1} {text2}
         </span>
       </span>
@@ -120,6 +144,7 @@ const TriggerContent = ({
 
 const IndustryUseCasesPage: FC = () => {
   const [activeItem, setActiveItem] = useState<string>("");
+  const accordionItemsRef = useRef<HTMLButtonElement[]>([]);
 
   return (
     <>
@@ -136,12 +161,8 @@ const IndustryUseCasesPage: FC = () => {
       </div>
       <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
         <div className="top-24 z-10 hidden h-full flex-shrink-0 px-6 py-9 lg:sticky lg:block lg:w-[220px]">
-          <ul
-            className={cn("hidden flex-col gap-4 transition-opacity duration-200 lg:flex", {
-              "lg:opacity-0": !activeItem,
-              "lg:opacity-100": !!activeItem,
-            })}
-          >
+          {/* Accordion menu */}
+          <ul className="hidden flex-col gap-4 transition-opacity duration-200 lg:flex">
             {ACCORDION_ITEMS.map((accordionItem: AccordionContentType) => (
               <li key={accordionItem.id}>
                 <Button
@@ -152,9 +173,9 @@ const IndustryUseCasesPage: FC = () => {
                     "font-bold underline underline-offset-4": activeItem === accordionItem.id,
                   })}
                   aria-expanded={activeItem === accordionItem.id}
-                  onClick={() =>
-                    setActiveItem(activeItem === accordionItem.id ? "" : accordionItem.id)
-                  }
+                  onClick={() => {
+                    setActiveItem(activeItem === accordionItem.id ? "" : accordionItem.id);
+                  }}
                 >
                   {accordionItem.id}
                 </Button>
@@ -170,12 +191,14 @@ const IndustryUseCasesPage: FC = () => {
             className="flex flex-col lg:gap-y-20"
             collapsible
           >
-            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType) => (
+            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType, index) => (
               <Item
                 key={accordionItem.id}
                 triggerContent={accordionItem}
                 active={activeItem === accordionItem.id}
                 content={accordionItem.content}
+                accordionItemsRef={accordionItemsRef}
+                index={index}
               />
             ))}
           </Accordion>
