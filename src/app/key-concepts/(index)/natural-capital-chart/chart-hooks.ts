@@ -91,7 +91,19 @@ export const useHovered = ({ hovered }: { hovered?: string }) => {
         linkedNodeNameGroup
           .append("foreignObject")
           .classed("node-name", true)
-          .attr("x", -45)
+          .attr("x", () => {
+            // Exceptions to avoid overlapping
+            if (
+              (nodeId === "plants-and-animals" && linkedNodes.includes("atmosphere")) ||
+              (nodeId === "mangroves" && linkedNodes.includes("grasslands")) ||
+              (nodeId === "fossil-fuels" && linkedNodes.includes("mineral-extraction")) ||
+              (nodeId === "recreation-sites" && linkedNodes.includes("tourism"))
+            ) {
+              return -30;
+            }
+
+            return -45;
+          })
           .attr("y", type === "target" ? 40 : -90)
           .attr("width", 90)
           .attr("height", 50)
