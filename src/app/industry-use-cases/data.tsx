@@ -165,6 +165,173 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
       ),
     },
   },
+  tourism: {
+    ecosystem: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">
+            Why are coastal ecosystems essential for businesses and society?
+          </h3>
+          <p className="max-w-[685px] tracking-tight">
+            Coastal ecosystems include sea-grass meadows, rocky platforms, coral reefs, mangroves,
+            sand beaches and dunes, estuaries and coastal wetlands. Coastal areas comprise only 4%
+            of Earth’s land, yet host &gt;30% of the world’s human population. They account for 90%
+            of the marine fish catch and provide a multitude of ecosystem services that are
+            essential to human wellbeing.
+          </p>
+        </>
+      ),
+      image1: "/assets/industry-cases-tourism-ecosystem-1.png",
+      imageText: (
+        <>
+          <p>
+            Ecosystem assets of coastal ecosystems, such as mangroves and estuarine marshes, store
+            up to five times as much carbon per hectare as tropical forests, reduce coastline
+            erosion and protect coastal communities in events such as cyclones and storm surges.
+          </p>
+          <p>
+            These ecosystem assets are also nurseries for many commercially important fish species
+            and provide habitat for a wide range of birds, invertebrates and mammals, many of which
+            are found only in these habitats.
+          </p>
+        </>
+      ),
+      content2: (
+        <>
+          <div className="flex flex-col gap-5">
+            <p>
+              Ecosystem assets of coastal ecosystems, such as mangroves and estuarine marshes, store
+              up to five times as much carbon per hectare as tropical forests, reduce coastline
+              erosion and protect coastal communities in events such as cyclones and storm surges.
+            </p>
+            <p>
+              These ecosystem assets are also nurseries for many commercially important fish species
+              and provide habitat for a wide range of birds, invertebrates and mammals, many of
+              which are found only in these habitats.
+            </p>
+          </div>
+        </>
+      ),
+      image2: "/assets/industry-cases-tourism-ecosystem-2.png",
+      industriesRelyOnText: "coastal ecosystems",
+      directIndustries: [
+        {
+          title: "Tourism and hospitality",
+          tooltip:
+            "For recreational, scenic and spiritual renewal opportunities (e.g., swimming, surfing, diving, beachcombing, birdwatching and bushwalking).",
+        },
+        {
+          title: "Fisheries",
+          tooltip:
+            "Key habitats for breeding and nurseries of commercial fishing species, as well as fishing grounds for harvest.",
+        },
+        {
+          title: "Coastal housing construction and maintenance / landscaping",
+          tooltip: "For landscape protection against coastal erosion, flood and storm surges.",
+        },
+        {
+          title: "Recreational fishing",
+          tooltip: "To maintain fish populations and the rich fishing spots they provide.",
+        },
+      ],
+      indirectIndustries: [
+        {
+          title: "Real estate and property developers",
+          tooltip:
+            "For protection against coastal erosion, floods, and storms, urban development plans need to incorporate these areas to preserve their protective functions and landscape attractiveness.",
+        },
+        {
+          title: "Health and education (in coastal areas)",
+          tooltip:
+            "To provide clean air and water to nearby communities, mental and physical health benefits, and offer opportunities for research and education on-site.",
+        },
+        {
+          title: "Blue carbon",
+          tooltip:
+            "Efficient systems to capture and store large amounts of carbon from the atmosphere.",
+        },
+        {
+          title: "Retail",
+          tooltip:
+            "To promote local economies, provide produce and raw materials, and attract tourism and businesses.",
+        },
+      ],
+      image3: "/assets/industry-cases-constructions-ecosystem-3.png",
+      insights: [
+        "Coastal ecosystems provide a range of ecosystem services, including protection from coastal erosion, floods, and storm surges. They also support a variety of industries, such as fisheries, tourism and hospitality, residential development, and retail.",
+        "Tourism and hospitality are highly dependent on natural capital, with most visitors attracted by the visual amenities, recreational opportunities and fresh produce derived from coastal ecosystems.",
+        "Excessive tourism and unregulated exploitation pressure the natural capital base of coastal ecosystems. Tourism and hospitality must be managed sustainably to maintain the integrity of the ecosystems on which the industry depends.",
+      ],
+    },
+    dependencies: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">
+            How does tourism and hospitality depend on coastal ecosystems?
+          </h3>
+          <p className="max-w-[685px] tracking-tight">
+            Coastal ecosystems buffer built infrastructure from floods, inundation, coastal erosion
+            and storm surges. Coastal ecosystems attract tourists to explore, relax and adventure in
+            seaside localities. Tourists support hotels, cafes, restaurants and retail outlets.
+            Explore the diagram to see how natural capital benefits tourism and hospitality
+            providers.
+          </p>
+        </>
+      ),
+    },
+    impacts: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">
+            How does tourism and hospitality impact coastal ecosystems?
+          </h3>
+          <p className="max-w-[685px] tracking-tight">
+            Tourism and hospitality have a unique opportunity to protect and preserve the coastal
+            ecosystems they rely on. This stunning natural capital draws visitors from around the
+            world, and with committed management, we can ensure it remains vibrant and healthy for
+            generations to come. Businesses in the tourism and hospitality sectors, both large and
+            small, must understand their impact on natural capital to take meaningful steps towards
+            sustainability. The rise of ecotourism is a promising sign of this commitment, but these
+            efforts must go beyond labels and marketing. True ecotourism is about taking real,
+            actionable steps backed by credible accreditation, ensuring that the environment is
+            genuinely cared for and protected.
+          </p>
+        </>
+      ),
+      list: [
+        {
+          title: "Pollution",
+          text: "Accommodation and hospitality providers often discharge pollutants, such as chemicals and wastewater, into coastal wetlands. Road run-off and litter also pollute coastal ecosystems. This can degrade water quality, harm aquatic life, disrupt coastal ecosystems, and diminish visual and visitor amenities.",
+        },
+        {
+          title: "Habitat destruction",
+          text: "New hotels, resorts, marinas, retail precincts, real estate projects, infrastructure expansion, or hydrological alterations can directly result in the loss of wetland habitats. These activities can also drain, fill, or convert wetlands into built infrastructure, greatly reducing biodiversity and ecosystem services.",
+        },
+        {
+          title: "Overexploitation",
+          text: "Unsustainable fishing practices can deplete fish stocks, and unregulated collection can eliminate shellfish from local areas,  disrupting the ecological balance of these areas. Some recreational activities, such as dune buggies and 4WDing on beaches, can erode dunes and beaches, reducing protection from high tides and storm surges,  and endangering biodiversity.",
+        },
+        {
+          title: "Operational issues",
+          text: "The nature-related risk to these businesses is currently limited to operational risk (e.g., reliable supply of services and amenities), financial risk (i.e., costs of supply and maintenance of amenities) and reputational risk damage (e.g., ESG and morale corporate citizenship).",
+        },
+        {
+          title: "Legal risk",
+          text: "This may soon extend to legal risk, with company executives liable for the nature-related impacts and legacies of their operations and those of their supply chain. For this reason, nature-related dependencies and impacts need to be explicitly documented, measured and managed.",
+        },
+      ],
+      image1: "/assets/industry-cases-tourism-impacts.png",
+      content2: (
+        <>
+          Businesses depending on coastal ecosystems must recognize their role in sustaining these
+          environments and take proactive steps to minimize their impact. By embracing sustainable
+          practices to support ecosystem conservation, such as ecotourism, responsible fisheries,
+          and green buildings, businesses can protect the natural resources they rely on and ensure
+          their long-term success and resilience.
+        </>
+      ),
+    },
+  },
   food: {
     ecosystem: {
       content1: (
@@ -356,6 +523,7 @@ export const ACCORDION_ITEMS: AccordionContentType[] = [
     text2: "Wetlands & Mangroves.",
     imageSrc1: "/assets/industry-cases-accordion-3.png",
     imageSrc2: "/assets/industry-cases-accordion-4.png",
+    content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["tourism"]} />,
   },
   {
     id: "Urban Planning",

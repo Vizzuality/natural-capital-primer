@@ -15,7 +15,7 @@ export interface AccordionItemContentType {
     image1: string;
     image2: string;
     image3: string;
-    imageText: string;
+    imageText: React.ReactNode;
     industriesRelyOnText: string;
     directIndustries: {
       title: string;
@@ -41,6 +41,7 @@ export interface AccordionItemContentType {
 
 export interface AccordionItemsContentType {
   constructions: AccordionItemContentType;
+  tourism: AccordionItemContentType;
   food: AccordionItemContentType;
 }
 
@@ -69,43 +70,45 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
           height={388}
         />
         <div className="flex w-full -translate-y-[71px] justify-end text-white">
-          <div className="max-w-[724px] bg-black p-6 lg:p-10">{imageText}</div>
+          <div className="flex max-w-[724px] flex-col gap-5 bg-black p-6 lg:p-10">{imageText}</div>
         </div>
       </div>
-      <div className="relative -mt-[71px] flex flex-col justify-between gap-10 text-pretty tracking-tight lg:flex-row lg:items-end lg:gap-4">
+      <div className="relative -mt-[71px] flex flex-col justify-between gap-10 text-pretty tracking-tight sm:gap-0 lg:flex-row lg:items-end lg:gap-4">
         <div className="max-w-[395px] px-6 lg:px-0">{content2}</div>
         <Image
           src={image2}
           alt=""
-          className="translate-x-8 self-end lg:translate-x-0"
+          className="translate-x-8 self-end sm:-mt-32 lg:mt-0 lg:translate-x-0"
           width={373}
           height={375}
         />
       </div>
       <div>
         <div className="flex flex-col gap-5 bg-orange px-6 py-[40px] lg:p-[50px]">
-          <div className="max-w-[642px] text-2xl lg:text-4xl">
+          <div className="max-w-[642px] text-2xl lg:text-4xl xl:max-w-none">
             Many industries rely directly or indirectly on {industriesRelyOnText}.
           </div>
-          <div className="flex flex-col flex-wrap gap-6 border-t border-t-black/20 pt-[20px] lg:flex-row lg:gap-11 lg:pt-[30px]">
-            <div className="flex min-w-full flex-col lg:min-w-[344px]">
+          <div className="flex flex-col gap-6 border-t border-t-black/20 pt-5 md:flex-row md:gap-11 md:pt-8 lg:flex-col lg:pt-5 xl:flex-row xl:pt-8">
+            <div className="flex flex-1 flex-col">
               <div className="mb-[10px] font-bold">
                 Industry that directly relies on {industriesRelyOnText}
               </div>
               <ul className="flex flex-col gap-4 py-[10px]">
                 {directIndustries.map(({ title, tooltip }) => (
-                  <li key={title} className="flex justify-between">
+                  <li key={title} className="flex items-start justify-between">
                     {title}
                     <InfoTooltip content={tooltip} className="group-hover:fill-orange-hover" />
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="flex min-w-full flex-col lg:min-w-[344px]">
-              <div className="mb-[10px] font-bold">Industry that indirectly relies on forests</div>
+            <div className="flex flex-1 flex-col">
+              <div className="mb-[10px] font-bold">
+                Industry that indirectly relies on {industriesRelyOnText}
+              </div>
               <ul className="flex flex-col gap-4 py-[10px]">
                 {indirectIndustries.map(({ title, tooltip }) => (
-                  <li key={title} className="flex justify-between">
+                  <li key={title} className="flex items-start justify-between">
                     {title}
                     <InfoTooltip content={tooltip} className="group-hover:fill-orange-hover" />
                   </li>
@@ -244,7 +247,7 @@ const AccordionItemContent = ({
     <div className="flex w-full flex-col lg:scroll-mt-[200px]" ref={containerRef}>
       <Tabs value={tab} onValueChange={handleTabChange} className="relative">
         <div className="z-20 mb-[20px] bg-white min-[585px]:top-[271px] lg:sticky lg:top-[198px] lg:mb-5 lg:pt-6 xl:top-[210px]">
-          <TabsList className="mx-6 flex-col rounded-[26px] lg:mx-0 lg:flex-row">
+          <TabsList className="mx-6 flex-col rounded-[26px] md:flex-row lg:mx-0">
             <TabsTrigger value="ecosystem" className="w-full">
               Ecosystem
             </TabsTrigger>
