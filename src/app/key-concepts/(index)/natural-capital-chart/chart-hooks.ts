@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { select, selectAll } from "d3-selection";
 import { relationships } from "./data";
 import type { SourceNodes } from "./data";
-import { linkVertical } from "d3-shape";
+import { linkVertical, DefaultLinkObject } from "d3-shape";
 
 export const GREY = "#515679";
 
@@ -38,9 +38,11 @@ export const useHovered = ({ hovered }: { hovered?: string }) => {
           : linksElement.selectAll(`[data-target="${hovered}"]`);
       higlightedLinks.attr("stroke", "white");
       higlightedLinks.raise();
-      console.log(higlightedLinks);
+
       // Create new element for the hovered node name
-      const bbox = element.node().getBBox();
+      const svgNode = element.node() as SVGGraphicsElement | undefined;
+      if (!svgNode) return;
+      const bbox = svgNode?.getBBox();
       const x = bbox.x + 30;
       const y = bbox.y + 30;
 
@@ -75,7 +77,9 @@ export const useHovered = ({ hovered }: { hovered?: string }) => {
       linkedNodes.forEach((nodeId) => {
         const linkedElement = select(`#${nodeId}`);
         const linkedName = linkedElement.attr("data-name");
-        const bbox = linkedElement.node().getBBox();
+        const svgNode = linkedElement.node() as SVGGraphicsElement | undefined;
+        if (!svgNode) return;
+        const bbox = svgNode?.getBBox();
         const x = bbox.x + 30;
         const y = bbox.y + 30;
 
@@ -119,31 +123,37 @@ export const useInitLinks = () => {
   useEffect(() => {
     // Create links for the relationships between source and target nodes
 
-    type Node = { id: string; position: [number, number] } & SVGGraphicsElement;
-    const nodePositions = selectAll(".node")
+    type Node = SVGGraphicsElement;
+    type NodePosition = {
+      id: string;
+      type: string | null;
+      position: number[];
+    };
+    const nodePositions: NodePosition[] = selectAll(".node")
       .nodes()
-      .map((node: Node) => {
-        const bbox = node.getBBox();
-        const type = node.getAttribute("data-type");
+      .map((node) => {
+        const typedNode = node as Node;
+        const bbox = typedNode.getBBox();
+        const type = typedNode.getAttribute("data-type");
         return {
-          id: node.id,
+          id: typedNode.id,
           type,
           position: [bbox.x + bbox.width / 2, bbox.y + bbox.height / 2],
         };
       });
-    type Link = {
-      source: [number, number];
-      target: [number, number];
+
+    interface Link extends DefaultLinkObject {
       sourceName: string;
       targetName: string;
-    };
+    }
+
     const links: Link[] = Object.entries(relationships)
       .map(([source, targets]) => {
         if (source && targets) {
-          const sourcePosition = nodePositions.find((node: Node) => node.id === source);
+          const sourcePosition = nodePositions.find((node) => node.id === source);
           if (!sourcePosition) return;
           return targets.map((target) => {
-            const targetPosition = nodePositions.find((node: Node) => node.id === target);
+            const targetPosition = nodePositions.find((node) => node.id === target);
             return {
               source: sourcePosition?.position,
               target: targetPosition?.position,
@@ -155,15 +165,14 @@ export const useInitLinks = () => {
       })
       .flat()
       .filter((e) => e?.source && e?.target)
-      .filter((e) => e !== undefined);
+      .filter((link): link is Link => link !== undefined);
 
     // Create link paths in d3
-
     const link = linkVertical()
-      .source(function (d: Link) {
+      .source(function (d: DefaultLinkObject) {
         return [d.source[0], d.source[1]];
       })
-      .target(function (d: Link) {
+      .target(function (d: DefaultLinkObject) {
         return [d.target[0], d.target[1]];
       });
 
