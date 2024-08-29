@@ -1,155 +1,8 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import { select, selectAll } from "d3-selection";
-import { relationships } from "./data";
-import type { SourceNodes } from "./data";
-import { linkVertical } from "d3-shape";
+import { useState } from "react";
 
-// Function to invert object keys and values
-const invert = (obj: { [key: string]: string[] }) =>
-  Object.entries(obj).reduce((acc, [key, values]) => {
-    values.forEach((value) => {
-      if (!acc[value]) {
-        acc[value] = [];
-      }
-      acc[value].push(key);
-    });
-    return acc;
-  }, {} as { [key: string]: string[] });
-
-const useHovered = ({ hovered }: { hovered?: string }) => {
-  useEffect(() => {
-    if (hovered) {
-      const element = select(`#${hovered}`);
-      if (!element) return;
-
-      // TODO: Fix this
-      // Highlight the corespondant links
-      const name = element.attr("data-name");
-      const type = element.attr("data-type");
-      const linksElement = select("#links");
-      const links = type === "source" ? linksElement.select(`[data-source="${name}"]`) : linksElement.select(`[data-target="${name}"]`);
-      links.attr("stroke", "#fff")
-      links.raise();
-
-      // Create new element for the hovered node name
-      const bbox = element.node().getBBox();
-      const x = bbox.x + bbox.width / 2;
-      const y = bbox.y + bbox.height / 2;
-
-      const nodeNameGroup = select("#chart")
-        .append("g")
-        .classed("node-name", true)
-        .attr("transform", `translate(${x}, ${y})`);
-
-      nodeNameGroup
-        .append("foreignObject")
-        .classed("node-name", true)
-        .attr("x", -45)
-        .attr("y", type === "source" ? 40 : -90)
-        .attr("width", 90)
-        .attr("height", 50)
-        .append("xhtml:div")
-        .classed("flex justify-end h-full", true)
-        .append("xhtml:div")
-        .classed("bg-white rounded-full text-black text-xs h-fit px-3 py-1", true)
-        .html(name);
-
-      // Create new elements for the linked nodes
-      const linkedNodes: string[] = type === "source" ?
-        relationships[(hovered as SourceNodes)] :
-        invert(relationships)[(hovered as SourceNodes)];
-
-      if (!linkedNodes) return;
-      linkedNodes.forEach((nodeId) => {
-        const linkedElement = select(`#${nodeId}`);
-        const linkedName = linkedElement.attr("data-name");
-        const bbox = linkedElement.node().getBBox();
-        const x = bbox.x + bbox.width / 2;
-        const y = bbox.y + bbox.height / 2;
-
-        const linkedNodeNameGroup = select("#chart")
-          .append("g")
-          .classed("node-name", true)
-          .attr("transform", `translate(${x}, ${y})`);
-
-        linkedNodeNameGroup
-          .append("foreignObject")
-          .classed("node-name", true)
-          .attr("x", -30)
-          .attr("y", type === "target" ? 40 : -90)
-          .attr("width", 90)
-          .attr("height", 50)
-          .append("xhtml:div")
-          .classed("flex h-full", true)
-          .append("xhtml:div")
-          .classed("bg-gray-450/40 backdrop-blur border border-3 border-white rounded-full text-white text-xs w-fit h-fit px-[10px] py-1", true)
-          .html(linkedName);
-      });
-    }
-
-    if (!hovered) {
-      // Clear links
-      const allLinks = select("#links").selectAll("path");
-      allLinks.attr("stroke", "#515679");
-      // Clear node name
-      selectAll(".node-name").remove();
-    }
-  }, [hovered]);
-}
-
-const useInitLinks = () => {
-  useEffect(() => {
-    // Create links for the relatiships between source and target nodes
-    // Get the position for each node
-
-    type Node = { id: string, position: [number, number] } & SVGGraphicsElement;
-    const nodePositions = selectAll('.node').nodes().map((node: Node) => {
-      const bbox = node.getBBox();
-      const type = node.getAttribute('data-type')
-      return {
-        id: node.id,
-        type,
-        position: [bbox.x + bbox.width / 2, bbox.y + bbox.height / 2]
-      }
-    })
-    type Link = { source: [number, number], target: [number, number], sourceName: string, targetName: string }
-    const links: Link[] = Object.entries(relationships).map(([source, targets]) => {
-      if (source && targets) {
-        const sourcePosition = nodePositions.find((node: Node) => node.id === source)
-        if (!sourcePosition) return;
-        return targets.map(target => {
-          const targetPosition = nodePositions.find((node: Node) => node.id === target)
-          return {
-            source: sourcePosition?.position, target: targetPosition?.position,
-            sourceName: source, targetName: target
-          };
-        });
-      }
-    }).flat().filter(e => e?.source && e?.target).filter(e => e !== undefined);
-
-    // Create link paths in d3
-
-    const link = linkVertical()
-      .source(function (d: Link) {
-        return [d.source[0], d.source[1]];
-      })
-      .target(function (d: Link) {
-        return [d.target[0], d.target[1]];
-      });
-
-    select('#links')
-      .selectAll('path').data(links).enter().append('path')
-      .attr('d', (d: Link) => link(d))
-      .attr('data-source', (d: Link) => d.sourceName)
-      .attr('data-target', (d: Link) => d.targetName)
-      .attr('stroke', '#515679').attr('stroke-width', 2).attr('stroke-linecap', 'round');
-
-    // Raise the rest group above the links
-    select('#rest').raise();
-  }, [])
-}
+import { useInitLinks, useHovered, GREY } from "./chart-hooks";
 
 const ChartSvg = ({ width = 1106 }: { width?: number }) => {
   const [hovered, setHovered] = useState<string>();
@@ -231,14 +84,14 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
               <path
                 id="Vector 134"
                 d="M560.936 1V1C560.936 20.8823 544.818 37 524.936 37H210.436C192.763 37 178.436 51.3269 178.436 69V69"
-                stroke="#515679"
+                stroke={GREY}
                 strokeWidth="2"
                 strokeLinecap="round"
               />
               <path
                 id="Vector 135"
                 d="M561.436 1V1C561.436 20.8823 577.554 37 597.436 37H911.936C929.609 37 943.936 51.3269 943.936 69V69"
-                stroke="#515679"
+                stroke={GREY}
                 strokeWidth="2"
                 strokeLinecap="round"
               />
@@ -251,7 +104,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                   </mask>
                   <path
                     d="M119 75H413.372V63H119V75Z"
-                    fill="#515679"
+                    fill={GREY}
                     mask="url(#path-3-inside-1_884_1590)"
                   />
                   <g id="Frame 2341642">
@@ -340,7 +193,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                   </mask>
                   <path
                     d="M709 75H1003.37V63H709V75Z"
-                    fill="#515679"
+                    fill={GREY}
                     mask="url(#path-11-inside-2_884_1590)"
                   />
                   <g id="Frame 2341642_2">
@@ -432,7 +285,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                 <g id="Frame 2341668">
                   <path
                     d="M24.3945 431C24.3945 414.431 37.826 401 54.3945 401H722.326C738.894 401 752.326 414.431 752.326 431V593C752.326 609.569 738.894 623 722.326 623H54.3945C37.826 623 24.3945 609.569 24.3945 593V431Z"
-                    fill="#515679"
+                    fill={GREY}
                     fill-opacity="0.2"
                   />
                   <g id="Frame 2341875">
@@ -474,7 +327,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                           <path
                             id="Vector 138"
                             d="M48.4878 490.28V490.28C48.4878 498.012 54.7558 504.28 62.4878 504.28H169.488C177.22 504.28 183.488 498.012 183.488 490.28V490.28"
-                            stroke="#515679"
+                            stroke={GREY}
                             strokeWidth="2"
                             strokeLinecap="round"
                           />
@@ -526,7 +379,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                           <path
                             id="Vector 138_2"
                             d="M230.767 490.28V490.28C230.767 498.012 237.035 504.28 244.767 504.28H351.767C359.499 504.28 365.767 498.012 365.767 490.28V490.28"
-                            stroke="#515679"
+                            stroke={GREY}
                             strokeWidth="2"
                             strokeLinecap="round"
                           />
@@ -578,7 +431,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                           <path
                             id="Vector 138_3"
                             d="M413.046 490.28V490.28C413.046 498.012 419.314 504.28 427.046 504.28H534.046C541.778 504.28 548.046 498.012 548.046 490.28V490.28"
-                            stroke="#515679"
+                            stroke={GREY}
                             strokeWidth="2"
                             strokeLinecap="round"
                           />
@@ -630,7 +483,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                           <path
                             id="Vector 138_4"
                             d="M593.233 490.28V490.28C593.233 498.012 599.501 504.28 607.233 504.28H714.233C721.965 504.28 728.233 498.012 728.233 490.28V490.28"
-                            stroke="#515679"
+                            stroke={GREY}
                             strokeWidth="2"
                             strokeLinecap="round"
                           />
@@ -666,7 +519,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                 <g id="Frame 2341669">
                   <path
                     d="M822.326 432C822.326 415.431 835.757 402 852.326 402H1051.1C1067.67 402 1081.1 415.431 1081.1 432V593C1081.1 609.569 1067.67 623 1051.1 623H852.326C835.757 623 822.326 609.569 822.326 593V432Z"
-                    fill="#515679"
+                    fill={GREY}
                     fill-opacity="0.2"
                   />
                   <g id="Frame 2341651_2">
@@ -738,14 +591,14 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                 <path
                   id="Vector 136"
                   d="M549.5 699V699C549.5 679.118 533.382 663 513.5 663H33C15.3269 663 1 648.673 1 631V631"
-                  stroke="#515679"
+                  stroke={GREY}
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
                 <path
                   id="Vector 137"
                   d="M549.5 699V699C549.5 679.118 565.618 663 585.5 663H1072.5C1090.17 663 1104.5 648.673 1104.5 631V631"
-                  stroke="#515679"
+                  stroke={GREY}
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
@@ -765,8 +618,8 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
           y2="417.28"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#515679" />
-          <stop offset="1" stop-color="#515679" />
+          <stop stopColor={GREY} />
+          <stop offset="1" stopColor={GREY} />
         </linearGradient>
         <linearGradient
           id="paint1_linear_884_1590"
@@ -776,8 +629,8 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
           y2="417.28"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#515679" />
-          <stop offset="1" stop-color="#515679" />
+          <stop stopColor={GREY} />
+          <stop offset="1" stopColor={GREY} />
         </linearGradient>
         <linearGradient
           id="paint2_linear_884_1590"
@@ -787,8 +640,8 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
           y2="417.78"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#515679" />
-          <stop offset="1" stop-color="#515679" />
+          <stop stopColor={GREY} />
+          <stop offset="1" stopColor={GREY} />
         </linearGradient>
         <linearGradient
           id="paint3_linear_884_1590"
@@ -798,8 +651,8 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
           y2="419.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#515679" />
-          <stop offset="1" stop-color="#515679" />
+          <stop stopColor={GREY} />
+          <stop offset="1" stopColor={GREY} />
         </linearGradient>
         <linearGradient
           id="paint4_linear_884_1590"
@@ -809,8 +662,8 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
           y2="419"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#515679" />
-          <stop offset="1" stop-color="#515679" />
+          <stop stopColor={GREY} />
+          <stop offset="1" stopColor={GREY} />
         </linearGradient>
         <clipPath id="clip0_884_1590">
           <rect width="20" height="20" fill="white" transform="translate(237 91)" />
