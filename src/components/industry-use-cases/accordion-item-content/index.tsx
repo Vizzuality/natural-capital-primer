@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import InfoTooltip from "@/components/info-tooltip";
 import RevealLines from "@/components/animations/reveal-lines";
@@ -12,9 +12,22 @@ export interface AccordionItemContentType {
   ecosystem: {
     content1: React.ReactElement;
     content2: React.ReactElement;
-    image1: string;
-    image2: string;
-    image3: string;
+    content3: React.ReactElement;
+    image1: {
+      src: string;
+      width: number;
+      height: number;
+    };
+    image2: {
+      src: string;
+      width: number;
+      height: number;
+    };
+    image3: {
+      src: string;
+      width: number;
+      height: number;
+    };
     imageText: React.ReactNode;
     industriesRelyOnText: string;
     directIndustries: {
@@ -30,8 +43,11 @@ export interface AccordionItemContentType {
   dependencies: { content1: React.ReactElement };
   impacts: {
     content1: React.ReactElement;
-    content2: React.ReactElement;
-    image1: string;
+    image1: {
+      src: string;
+      width: number;
+      height: number;
+    };
     list: {
       title: string;
       text: string;
@@ -56,18 +72,26 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
     directIndustries,
     indirectIndustries,
     image3,
+    content3,
     insights,
   } = data;
   return (
-    <TabsContent value="ecosystem" className="flex flex-col gap-y-10 text-black">
+    <TabsContent
+      value="ecosystem"
+      // `forceMount` and the class `data-[state=inactive]:hidden` are used together to make sure
+      // there are not scroll jumps when switching from one tab to another so that we can
+      // programmatically scroll to the top of the tab
+      className="flex flex-col gap-y-10 text-black data-[state=inactive]:hidden"
+      forceMount
+    >
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
       <div className="px-6 lg:px-0">
         <Image
           className="min-h-[388px] object-cover max-lg:w-full"
-          src={image1}
+          src={image1.src}
           alt=""
-          width={685}
-          height={388}
+          width={image1.width}
+          height={image1.height}
         />
         <div className="flex w-full -translate-y-[71px] justify-end text-white">
           <div className="flex max-w-[724px] flex-col gap-5 bg-black p-6 lg:p-10">{imageText}</div>
@@ -76,11 +100,11 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
       <div className="relative -mt-[71px] flex flex-col justify-between gap-10 text-pretty tracking-tight sm:gap-0 lg:flex-row lg:items-end lg:gap-4">
         <div className="max-w-[395px] px-6 lg:px-0">{content2}</div>
         <Image
-          src={image2}
+          src={image2.src}
           alt=""
           className="translate-x-8 self-end sm:-mt-32 lg:mt-0 lg:translate-x-0"
-          width={373}
-          height={375}
+          width={image2.width}
+          height={image2.height}
         />
       </div>
       <div>
@@ -119,11 +143,15 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
         </div>
         <Image
           className="min-h-[300px] w-full object-cover"
-          src={image3}
+          src={image3.src}
           alt=""
-          width={871}
-          height={300}
+          width={image3.width}
+          height={image3.height}
         />
+      </div>
+      <div className="mx-6 mb-10 flex max-w-[831px] gap-6 lg:mx-0 lg:mb-0">
+        <div className="w-1.5 self-stretch bg-orange" />
+        <div className="w-[654px]">{content3}</div>
       </div>
       <div className="mb-10 flex flex-grow flex-col gap-10 px-6 lg:mb-0 lg:px-0">
         <div className="flex items-center gap-3">
@@ -144,7 +172,14 @@ const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["depe
   const { content1 } = data;
 
   return (
-    <TabsContent value="dependencies" className="flex flex-col text-black lg:gap-y-10">
+    <TabsContent
+      value="dependencies"
+      // `forceMount` and the class `data-[state=inactive]:hidden` are used together to make sure
+      // there are not scroll jumps when switching from one tab to another so that we can
+      // programmatically scroll to the top of the tab
+      className="flex flex-col text-black data-[state=inactive]:hidden lg:gap-y-10"
+      forceMount
+    >
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
       {/* WIP image and text. Replace with chart */}
       <div className="relative w-full">
@@ -164,9 +199,16 @@ const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["depe
 };
 
 const ImpactsTabContent = ({ data }: { data: AccordionItemContentType["impacts"] }) => {
-  const { content1, content2, image1, list } = data;
+  const { content1, image1, list } = data;
   return (
-    <TabsContent value="impacts" className="flex flex-col gap-y-10 text-black">
+    <TabsContent
+      value="impacts"
+      // `forceMount` and the class `data-[state=inactive]:hidden` are used together to make sure
+      // there are not scroll jumps when switching from one tab to another so that we can
+      // programmatically scroll to the top of the tab
+      className="flex flex-col gap-y-10 text-black data-[state=inactive]:hidden"
+      forceMount
+    >
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
       <div className="mx-6 lg:mx-0">
         <ul className="flex flex-col gap-6 bg-orange px-6 py-[40px] lg:gap-20 lg:p-[50px]">
@@ -190,15 +232,11 @@ const ImpactsTabContent = ({ data }: { data: AccordionItemContentType["impacts"]
         </ul>
         <Image
           className="min-h-[403px] w-full object-cover"
-          src={image1}
+          src={image1.src}
           alt=""
-          width={831}
-          height={403}
+          width={image1.width}
+          height={image1.height}
         />
-      </div>
-      <div className="mx-6 mb-10 flex max-w-[831px] gap-6 lg:mx-0 lg:mb-0">
-        <div className="w-1.5 self-stretch bg-orange" />
-        <div className="w-[654px]">{content2}</div>
       </div>
     </TabsContent>
   );
@@ -217,19 +255,18 @@ const AccordionItemContent = ({
 }) => {
   const [tab, setTab] = useState<TabKeys>("ecosystem");
   const previousTab = usePrevious(tab);
-  const handleTabChange = (value: string) => {
+  const handleTabChange = useCallback((value: string) => {
     setTab(value as TabKeys);
-  };
+  }, []);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const isDesktop = useMediaQuery("(min-width: 1024px)", false);
+  const isDesktopLg = useMediaQuery("(min-width: 1024px)", false);
+  const isDesktopXl = useMediaQuery("(min-width: 1280px)", false);
 
   // Scroll to the top of the accordion's content when the accordion is expanded or its active tab
   // is changed
   useEffect(() => {
-    const scrollTop = () => containerRef.current?.scrollIntoView({ behavior: "smooth" });
-
-    if (!isDesktop) {
+    if (!isDesktopLg) {
       return;
     }
 
@@ -237,11 +274,14 @@ const AccordionItemContent = ({
     // tab
     if (previousTab === null) {
       // The accordion expand/collapse in 200ms so the timeout must be at least 200ms
-      setTimeout(scrollTop, 250);
+      setTimeout(() => containerRef.current?.scrollIntoView({ behavior: "smooth" }), 250);
     } else {
-      setTimeout(scrollTop, 0);
+      const { top } = containerRef.current?.getBoundingClientRect() ?? { top: 0 };
+      // The `210` and `198` values match the `top` values of the the `TabList`'s container below
+      const scroll = top - (isDesktopXl ? 210 : 198);
+      window.scrollBy({ top: scroll, behavior: "instant" });
     }
-  }, [isDesktop, tab, previousTab]);
+  }, [isDesktopLg, isDesktopXl, tab, previousTab]);
 
   return (
     <div className="flex w-full flex-col lg:scroll-mt-[200px]" ref={containerRef}>

@@ -23,7 +23,11 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           </p>
         </>
       ),
-      image1: "/assets/industry-cases-constructions-ecosystem-1.png",
+      image1: {
+        src: "/assets/industry-cases-constructions-ecosystem-1.png",
+        width: 685,
+        height: 388,
+      },
       imageText:
         "Conservation of the world's biodiversity is inextricably tied to forests. Forests cover only 31% of the global land area but support 80% of the world's amphibian species, 75% of bird species, and 68% of mammals.",
       content2: (
@@ -50,7 +54,11 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           </div>
         </>
       ),
-      image2: "/assets/industry-cases-constructions-ecosystem-2.png",
+      image2: {
+        src: "/assets/industry-cases-constructions-ecosystem-2.png",
+        width: 373,
+        height: 375,
+      },
       industriesRelyOnText: "forests",
       directIndustries: [
         {
@@ -95,7 +103,18 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
             "For rare minerals like lithium and cobalt for batteries and electronics, and biomaterials like cellulose for paper and biodegradable plastics.",
         },
       ],
-      image3: "/assets/industry-cases-constructions-ecosystem-3.png",
+      image3: {
+        src: "/assets/industry-cases-constructions-ecosystem-3.png",
+        width: 871,
+        height: 300,
+      },
+      content3: (
+        <>
+          Companies in these industries must urgently recognize and address their reliance on
+          natural resources to reduce financial, reputational, and legal risks. Taking action now
+          will help secure a sustainable and successful business model for the future.
+        </>
+      ),
       insights: [
         "Essential Raw Materials: Forests provide timber and minerals for construction, making sustainable forest management crucial for reliable material supply.",
         "Vital Ecosystem Services: Forests support construction through climate regulation, carbon storage, and soil and water quality, which are critical for sustainable operations.",
@@ -155,14 +174,11 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           text: "This may soon extend to legal risk, with company executives liable for the nature-related impacts and legacies of their operations and those of their supply chain. For this reason, nature-related dependencies and impacts need to be explicitly documented, measured and managed.",
         },
       ],
-      image1: "/assets/industry-cases-construction-impacts.png",
-      content2: (
-        <>
-          Companies in these industries must urgently recognize and address their reliance on
-          natural resources to reduce financial, reputational, and legal risks. Taking action now
-          will help secure a sustainable and successful business model for the future.
-        </>
-      ),
+      image1: {
+        src: "/assets/industry-cases-construction-impacts.png",
+        width: 831,
+        height: 403,
+      },
     },
   },
   tourism: {
@@ -181,7 +197,11 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           </p>
         </>
       ),
-      image1: "/assets/industry-cases-tourism-ecosystem-1.png",
+      image1: {
+        src: "/assets/industry-cases-tourism-ecosystem-1.png",
+        width: 685,
+        height: 388,
+      },
       imageText: (
         <>
           <p>
@@ -197,22 +217,24 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
         </>
       ),
       content2: (
-        <>
-          <div className="flex flex-col gap-5">
-            <p>
-              Ecosystem assets of coastal ecosystems, such as mangroves and estuarine marshes, store
-              up to five times as much carbon per hectare as tropical forests, reduce coastline
-              erosion and protect coastal communities in events such as cyclones and storm surges.
-            </p>
-            <p>
-              These ecosystem assets are also nurseries for many commercially important fish species
-              and provide habitat for a wide range of birds, invertebrates and mammals, many of
-              which are found only in these habitats.
-            </p>
-          </div>
-        </>
+        <div className="flex flex-col gap-5 xl:pb-10">
+          <p>
+            Ecosystem assets of coastal ecosystems, such as mangroves and estuarine marshes, store
+            up to five times as much carbon per hectare as tropical forests, reduce coastline
+            erosion and protect coastal communities in events such as cyclones and storm surges.
+          </p>
+          <p>
+            These ecosystem assets are also nurseries for many commercially important fish species
+            and provide habitat for a wide range of birds, invertebrates and mammals, many of which
+            are found only in these habitats.
+          </p>
+        </div>
       ),
-      image2: "/assets/industry-cases-tourism-ecosystem-2.png",
+      image2: {
+        src: "/assets/industry-cases-tourism-ecosystem-2.png",
+        width: 353,
+        height: 322,
+      },
       industriesRelyOnText: "coastal ecosystems",
       directIndustries: [
         {
@@ -256,7 +278,20 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
             "To promote local economies, provide produce and raw materials, and attract tourism and businesses.",
         },
       ],
-      image3: "/assets/industry-cases-constructions-ecosystem-3.png",
+      image3: {
+        src: "/assets/industry-cases-tourism-ecosystem-3.png",
+        width: 871,
+        height: 300,
+      },
+      content3: (
+        <>
+          Businesses depending on coastal ecosystems must recognize their role in sustaining these
+          environments and take proactive steps to minimize their impact. By embracing sustainable
+          practices to support ecosystem conservation, such as ecotourism, responsible fisheries,
+          and green buildings, businesses can protect the natural resources they rely on and ensure
+          their long-term success and resilience.
+        </>
+      ),
       insights: [
         "Coastal ecosystems provide a range of ecosystem services, including protection from coastal erosion, floods, and storm surges. They also support a variety of industries, such as fisheries, tourism and hospitality, residential development, and retail.",
         "Tourism and hospitality are highly dependent on natural capital, with most visitors attracted by the visual amenities, recreational opportunities and fresh produce derived from coastal ecosystems.",
@@ -320,16 +355,11 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           text: "This may soon extend to legal risk, with company executives liable for the nature-related impacts and legacies of their operations and those of their supply chain. For this reason, nature-related dependencies and impacts need to be explicitly documented, measured and managed.",
         },
       ],
-      image1: "/assets/industry-cases-tourism-impacts.png",
-      content2: (
-        <>
-          Businesses depending on coastal ecosystems must recognize their role in sustaining these
-          environments and take proactive steps to minimize their impact. By embracing sustainable
-          practices to support ecosystem conservation, such as ecotourism, responsible fisheries,
-          and green buildings, businesses can protect the natural resources they rely on and ensure
-          their long-term success and resilience.
-        </>
-      ),
+      image1: {
+        src: "/assets/industry-cases-tourism-impacts.png",
+        width: 831,
+        height: 403,
+      },
     },
   },
   food: {
@@ -357,7 +387,11 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           </p>
         </>
       ),
-      image1: "/assets/industry-cases-food-ecosystem-1.png",
+      image1: {
+        src: "/assets/industry-cases-food-ecosystem-1.png",
+        width: 685,
+        height: 388,
+      },
       imageText:
         "Conservation of the world's biodiversity is inextricably tied to forests. Forests cover only 31% of the global land area but support 80% of the world's amphibian species, 75% of bird species, and 68% of mammals.",
       content2: (
@@ -392,7 +426,11 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           </div>
         </div>
       ),
-      image2: "/assets/industry-cases-food-ecosystem-2.png",
+      image2: {
+        src: "/assets/industry-cases-food-ecosystem-2.png",
+        width: 373,
+        height: 375,
+      },
       industriesRelyOnText: "farmlands",
       directIndustries: [
         {
@@ -438,7 +476,19 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
             "For a continuous supply of fresh, locally sourced ingredients crucial for their menu offerings and customer experiences.",
         },
       ],
-      image3: "/assets/industry-cases-food-ecosystem-3.png",
+      image3: {
+        src: "/assets/industry-cases-food-ecosystem-3.png",
+        width: 871,
+        height: 300,
+      },
+      content3: (
+        <>
+          Businesses that benefit from the agricultural supply chain (e.g., food and beverage
+          companies, clothing manufacturers, financial institutions, and retailers) must explicitly
+          recognise their dependency and impact on natural capital and adopt strategies that reward
+          nature-positive farming practices.
+        </>
+      ),
       insights: [
         "Farmlands are a combination of natural and human-maintained ecosystems.",
         "Natural capital in farmland delivers a range of provisioning ecosystem services in the form of crops, forage and livestock, and key regulating services that increase productivity, such as micro-climate regulation, pollination, pest control and nutrient cycling.",
@@ -495,15 +545,11 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           text: "This may soon extend to legal risk, with company executives liable for the nature-related impacts and legacies of their operations and those of their supply chain. For this reason, nature-related dependencies and impacts need to be explicitly documented, measured, and managed.",
         },
       ],
-      image1: "/assets/industry-cases-food-impacts.png",
-      content2: (
-        <>
-          Businesses that benefit from the agricultural supply chain (e.g., food and beverage
-          companies, clothing manufacturers, financial institutions, and retailers) must explicitly
-          recognise their dependency and impact on natural capital and adopt strategies that reward
-          nature-positive farming practices.
-        </>
-      ),
+      image1: {
+        src: "/assets/industry-cases-food-impacts.png",
+        width: 831,
+        height: 403,
+      },
     },
   },
 };
@@ -526,14 +572,14 @@ export const ACCORDION_ITEMS: AccordionContentType[] = [
     content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["tourism"]} />,
   },
   {
-    id: "Urban Planning",
+    id: "Retail",
     text1: "Retail depends on",
     text2: "Urban Green Spaces.",
     imageSrc1: "/assets/industry-cases-accordion-5.png",
     imageSrc2: "/assets/industry-cases-accordion-6.png",
   },
   {
-    id: "Food",
+    id: "Food Security",
     text1: "Food industry depends on",
     text2: "Farmlands.",
     imageSrc1: "/assets/industry-cases-accordion-7.png",
