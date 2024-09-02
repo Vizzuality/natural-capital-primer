@@ -21,6 +21,7 @@ import { FC, Fragment, useCallback, useRef, useState } from "react";
 import Parallax from "@/components/animations/parallax";
 import Quiz from "@/components/quiz";
 import type { QuizData } from "@/components/quiz";
+import NaturalCapitalChart from "./natural-capital-chart";
 
 // FadeInOnScroll and RevealLines components use window object, which is not available in SSR
 const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
@@ -314,7 +315,7 @@ const KeyConceptsPage: FC = () => {
       <div
         id="assets"
         className={cn(
-          "lg:bg-[length:100%,auto 100%] bg-green-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
+          "lg:bg-[length:100%,auto 100%] scroll-mt-[92px] bg-green-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
           {
             "lg:bg-[linear-gradient(to_right,theme(colors.green.500)_50%,transparent_50%),url(/assets/key-concepts-background.png)]":
               chapter1Tab === "environmental",
@@ -644,7 +645,7 @@ const KeyConceptsPage: FC = () => {
       <div
         id="flows-of-services"
         className={cn(
-          "lg:bg-[length:100%,auto 100%] bg-blue-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
+          "lg:bg-[length:100%,auto 100%] scroll-mt-[92px] bg-blue-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
           {
             "lg:bg-[linear-gradient(to_right,theme(colors.blue.500)_50%,transparent_50%),url(/assets/key-concepts-background-3.png)]":
               chapter2Tab === "abiotic",
@@ -870,8 +871,8 @@ const KeyConceptsPage: FC = () => {
         <SeaCoverImage />
       </Parallax>
       <div className="bg-black text-white">
-        <div className="mx-auto max-w-7xl px-6 lg:flex-row lg:px-20">
-          <p className="py-24 text-center lg:py-80">Content coming soon</p>
+        <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-20">
+          <NaturalCapitalChart />
         </div>
       </div>
       <div id="role" className="mx-auto max-w-7xl px-6 py-10 lg:px-20 lg:py-24">
@@ -937,7 +938,7 @@ const KeyConceptsPage: FC = () => {
       <div
         id="dependencies-and-impacts"
         className={cn(
-          "lg:bg-[length:100%,auto 100%] bg-orange-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
+          "lg:bg-[length:100%,auto 100%] scroll-mt-[92px] bg-orange-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
           {
             "lg:bg-[linear-gradient(to_right,theme(colors.orange.500)_50%,transparent_50%),url(/assets/key-concepts-background-5.png)]":
               chapter3Tab === "dependencies",

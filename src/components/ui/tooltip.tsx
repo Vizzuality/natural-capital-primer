@@ -31,14 +31,16 @@ const tooltipContentVariants = cva("z-50 overflow-hidden", {
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> &
-    VariantProps<typeof tooltipContentVariants>
+  VariantProps<typeof tooltipContentVariants>
 >(({ className, variant, size, sideOffset = 4, ...props }, ref) => (
-  <TooltipPrimitive.Content
-    ref={ref}
-    sideOffset={sideOffset}
-    className={cn(tooltipContentVariants({ variant, size, className }))}
-    {...props}
-  />
+  <TooltipPrimitive.Portal>
+    <TooltipPrimitive.Content
+      ref={ref}
+      sideOffset={sideOffset}
+      className={cn(tooltipContentVariants({ variant, size, className }))}
+      {...props}
+    />
+  </TooltipPrimitive.Portal>
 ));
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 

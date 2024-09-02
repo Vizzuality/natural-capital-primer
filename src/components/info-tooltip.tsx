@@ -4,6 +4,7 @@ import Info from "@/svgs/info.svg";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -11,10 +12,12 @@ const InfoTooltip = ({
   title,
   content,
   className,
+  theme = "light",
 }: {
   title?: string;
   content: string;
   className?: string;
+  theme?: "light" | "dark";
 }) => {
   const [tooltipOpen, setTooltipOpen] = useState(true);
 
@@ -22,7 +25,13 @@ const InfoTooltip = ({
     <TooltipProvider>
       <Tooltip delayDuration={0} open={tooltipOpen} onOpenChange={setTooltipOpen}>
         <TooltipTrigger className="group rounded-full ring-offset-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black focus-visible:ring-offset-1">
-          <Info aria-label="Info" className={className} />
+          <Info
+            aria-label="Info"
+            className={cn(className, {
+              "text-black": theme === "light",
+              "text-white": theme === "dark",
+            })}
+          />
         </TooltipTrigger>
         <AnimatePresence>
           {tooltipOpen && (
