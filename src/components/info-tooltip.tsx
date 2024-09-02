@@ -25,10 +25,13 @@ const InfoTooltip = ({
     <TooltipProvider>
       <Tooltip delayDuration={0} open={tooltipOpen} onOpenChange={setTooltipOpen}>
         <TooltipTrigger className="group rounded-full ring-offset-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black focus-visible:ring-offset-1">
-          <Info aria-label="Info" className={cn(className, {
-            "text-black": theme === "light",
-            "text-white": theme === "dark",
-          })} />
+          <Info
+            aria-label="Info"
+            className={cn(className, {
+              "text-black": theme === "light",
+              "text-white": theme === "dark",
+            })}
+          />
         </TooltipTrigger>
         <AnimatePresence>
           {tooltipOpen && (
@@ -42,7 +45,7 @@ const InfoTooltip = ({
           )}
         </AnimatePresence>
       </Tooltip>
-    </TooltipProvider >
+    </TooltipProvider>
   );
 };
 

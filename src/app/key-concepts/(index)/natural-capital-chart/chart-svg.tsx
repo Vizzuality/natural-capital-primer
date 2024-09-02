@@ -1,18 +1,23 @@
-'use client';
+"use client";
 
-import { useState } from "react";
+import { useRef } from "react";
 
 import { useInitLinks, useHovered, GREY } from "./chart-hooks";
 import InfoTooltip from "@/components/info-tooltip";
 
-const ChartSvg = ({ width = 1106 }: { width?: number }) => {
-  const [hovered, setHovered] = useState<string>();
-  useInitLinks();
-  useHovered({ hovered });
+export interface ChartSvgProps {
+  width: number;
+}
+
+const ChartSvg = ({ width }: ChartSvgProps) => {
+  const svgRef = useRef<SVGSVGElement | null>(null);
+
+  useInitLinks(svgRef.current);
+  const [hovered, setHovered] = useHovered(svgRef.current);
 
   return (
     <svg
-      id="chart"
+      ref={svgRef}
       width={width}
       height="700"
       viewBox="0 0 1106 700"
@@ -79,6 +84,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
         </pattern>
       </defs>
       <g id="chart">
+        <g id="links"></g>
         <g id="rest">
           <g id="Frame 2341884">
             <g id="Group 1055">
@@ -127,7 +133,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                       strokeOpacity={hovered === "plants-and-animals" ? 1 : 0}
                       className="node transition-all duration-200"
                       onMouseEnter={() => setHovered("plants-and-animals")}
-                      onMouseLeave={() => setHovered(undefined)}
+                      onMouseLeave={() => setHovered(null)}
                       data-type="source"
                       data-id="4"
                       fill="url(#img-plants-and-animals)"
@@ -141,7 +147,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                       strokeOpacity={hovered === "atmosphere" ? 1 : 0}
                       className="node transition-all duration-200"
                       onMouseEnter={() => setHovered("atmosphere")}
-                      onMouseLeave={() => setHovered(undefined)}
+                      onMouseLeave={() => setHovered(null)}
                       data-type="source"
                       data-id="3"
                       fill="url(#img-atmosphere)"
@@ -156,7 +162,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                       strokeOpacity={hovered === "soil" ? 1 : 0}
                       className="node transition-all duration-200"
                       onMouseEnter={() => setHovered("soil")}
-                      onMouseLeave={() => setHovered(undefined)}
+                      onMouseLeave={() => setHovered(null)}
                       data-type="source"
                       data-id="2"
                       d="M201.623 156.213C202.966 152.213 212.367 143.775 216.899 140.057C220.849 137.551 226.421 134.809 241.949 140.356C257.477 145.903 254.24 160.075 257.534 169.731C260.827 179.387 246.291 190.616 243.113 192.706C239.966 194.775 238.093 195.19 231.335 196.688L231.135 196.733C224.214 198.267 219.905 195.237 210.25 190.186C200.596 185.135 199.479 171.591 198.833 168.605C198.187 165.618 199.944 161.214 201.623 156.213Z"
@@ -169,7 +175,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                       strokeOpacity={hovered === "water" ? 1 : 0}
                       className="node transition-all duration-200"
                       onMouseEnter={() => setHovered("water")}
-                      onMouseLeave={() => setHovered(undefined)}
+                      onMouseLeave={() => setHovered(null)}
                       data-type="source"
                       data-id="1"
                       fill="url(#img-water)"
@@ -209,7 +215,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                         strokeOpacity={hovered === "farmlands" ? 1 : 0}
                         className="node transition-all duration-200"
                         onMouseEnter={() => setHovered("farmlands")}
-                        onMouseLeave={() => setHovered(undefined)}
+                        onMouseLeave={() => setHovered(null)}
                         data-type="source"
                         data-id="8"
                         d="M943.283 155.663C943.589 154.753 944.378 153.535 945.514 152.129C946.64 150.737 948.069 149.205 949.604 147.674C952.664 144.625 956.121 141.607 958.379 139.754C960.315 138.527 962.611 137.271 966.308 136.976C970.04 136.678 975.24 137.358 982.967 140.118C986.777 141.478 989.409 143.358 991.278 145.544C993.149 147.732 994.276 150.254 995.035 152.93C995.753 155.465 996.137 158.116 996.517 160.748C996.539 160.902 996.562 161.056 996.584 161.21C996.986 163.978 997.406 166.719 998.247 169.183C999.021 171.454 998.757 173.841 997.837 176.21C996.915 178.583 995.344 180.909 993.555 183.024C989.974 187.253 985.586 190.553 984.025 191.579C980.966 193.59 979.183 193.99 972.413 195.491L972.213 195.535L972.321 196.024L972.213 195.535C968.863 196.278 966.155 195.921 963.081 194.752C960.736 193.861 958.203 192.509 955.017 190.809C953.976 190.253 952.865 189.66 951.668 189.034C947.002 186.592 944.368 182.081 942.821 177.744C941.631 174.411 941.106 171.261 940.773 169.267C940.671 168.657 940.587 168.156 940.508 167.79C940.212 166.421 940.46 164.673 941.025 162.586C941.443 161.044 942.017 159.368 942.631 157.578C942.845 156.953 943.064 156.315 943.283 155.663Z"
@@ -222,7 +228,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                         strokeOpacity={hovered === "wetlands" ? 1 : 0}
                         className="node transition-all duration-200"
                         onMouseEnter={() => setHovered("wetlands")}
-                        onMouseLeave={() => setHovered(undefined)}
+                        onMouseLeave={() => setHovered(null)}
                         data-type="source"
                         data-id="7"
                         fill="url(#img-wetlands)"
@@ -237,7 +243,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                         strokeOpacity={hovered === "mangroves" ? 1 : 0}
                         className="node transition-all duration-200"
                         onMouseEnter={() => setHovered("mangroves")}
-                        onMouseLeave={() => setHovered(undefined)}
+                        onMouseLeave={() => setHovered(null)}
                         data-type="source"
                         data-id="6"
                         d="M792.097 156.372C792.403 155.463 793.192 154.244 794.328 152.838C795.454 151.446 796.882 149.914 798.418 148.383C801.478 145.334 804.935 142.316 807.193 140.463C809.129 139.236 811.425 137.98 815.122 137.685C818.854 137.387 824.054 138.067 831.781 140.827C835.591 142.188 838.223 144.067 840.092 146.253C841.963 148.441 843.09 150.963 843.848 153.639C844.567 156.174 844.951 158.825 845.331 161.457C845.353 161.611 845.376 161.765 845.398 161.92C845.799 164.687 846.22 167.428 847.06 169.892C847.835 172.163 847.571 174.55 846.651 176.919C845.729 179.292 844.158 181.618 842.369 183.733C838.788 187.962 834.399 191.262 832.839 192.288C829.78 194.299 827.997 194.699 821.227 196.2L821.027 196.245L821.135 196.733L821.027 196.245C817.677 196.987 814.969 196.63 811.895 195.461C809.55 194.57 807.017 193.218 803.831 191.518C802.79 190.962 801.679 190.369 800.482 189.743C795.816 187.301 793.182 182.791 791.635 178.453C790.445 175.12 789.92 171.971 789.587 169.976C789.485 169.367 789.401 168.865 789.322 168.499C789.026 167.13 789.274 165.382 789.839 163.295C790.257 161.753 790.831 160.077 791.445 158.287C791.659 157.662 791.878 157.024 792.097 156.372Z"
@@ -250,7 +256,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                         strokeOpacity={hovered === "grasslands" ? 1 : 0}
                         className="node transition-all duration-200"
                         onMouseEnter={() => setHovered("grasslands")}
-                        onMouseLeave={() => setHovered(undefined)}
+                        onMouseLeave={() => setHovered(null)}
                         data-type="source"
                         data-id="5"
                         fill="url(#img-grasslands)"
@@ -283,7 +289,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                             strokeOpacity={hovered === "timber" ? 1 : 0}
                             className="node transition-all duration-200"
                             onMouseEnter={() => setHovered("timber")}
-                            onMouseLeave={() => setHovered(undefined)}
+                            onMouseLeave={() => setHovered(null)}
                             data-type="target"
                             data-id="2"
                             fill="url(#img-timber)"
@@ -297,7 +303,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                             strokeOpacity={hovered === "livestock-production" ? 1 : 0}
                             className="node transition-all duration-200"
                             onMouseEnter={() => setHovered("livestock-production")}
-                            onMouseLeave={() => setHovered(undefined)}
+                            onMouseLeave={() => setHovered(null)}
                             data-type="target"
                             data-id="1"
                             fill="url(#img-livestock-production)"
@@ -336,7 +342,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                             strokeOpacity={hovered === "recreation-sites" ? 1 : 0}
                             className="node transition-all duration-200"
                             onMouseEnter={() => setHovered("recreation-sites")}
-                            onMouseLeave={() => setHovered(undefined)}
+                            onMouseLeave={() => setHovered(null)}
                             data-type="target"
                             data-id="4"
                             d="M306.796 444.213C308.139 440.213 317.54 431.775 322.073 428.057C326.022 425.551 331.594 422.809 347.122 428.356C362.651 433.903 359.414 448.075 362.707 457.731C366 467.387 351.465 478.616 348.287 480.706C345.14 482.775 343.266 483.19 336.509 484.688L336.309 484.733C329.388 486.267 325.078 483.237 315.424 478.186C305.769 473.135 304.653 459.591 304.007 456.605C303.361 453.618 305.118 449.214 306.796 444.213Z"
@@ -350,7 +356,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                             strokeOpacity={hovered === "tourism" ? 1 : 0}
                             className="node transition-all duration-200"
                             onMouseEnter={() => setHovered("tourism")}
-                            onMouseLeave={() => setHovered(undefined)}
+                            onMouseLeave={() => setHovered(null)}
                             data-type="target"
                             data-id="3"
                             d="M231.61 444.213C232.953 440.213 242.354 431.775 246.886 428.057C250.836 425.551 256.408 422.809 271.936 428.356C287.465 433.903 284.228 448.075 287.521 457.731C290.814 467.387 276.279 478.616 273.101 480.706C269.954 482.775 268.08 483.19 261.323 484.688L261.122 484.733C254.202 486.267 249.892 483.237 240.238 478.186C230.583 473.135 229.467 459.591 228.821 456.605C228.175 453.618 229.932 449.214 231.61 444.213Z"
@@ -388,7 +394,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                             strokeOpacity={hovered === "soil-fertility" ? 1 : 0}
                             className="node transition-all duration-200"
                             onMouseEnter={() => setHovered("soil-fertility")}
-                            onMouseLeave={() => setHovered(undefined)}
+                            onMouseLeave={() => setHovered(null)}
                             data-type="target"
                             data-id="5"
                             d="M416.39 444.213C417.733 440.213 427.133 431.775 431.666 428.057C435.616 425.551 441.187 422.809 456.716 428.356C472.244 433.903 469.007 448.075 472.3 457.731C475.594 467.387 461.058 478.616 457.88 480.706C454.733 482.775 452.859 483.19 446.102 484.688L445.902 484.733C438.981 486.267 434.671 483.237 425.017 478.186C415.363 473.135 414.246 459.591 413.6 456.605C412.954 453.618 414.711 449.214 416.39 444.213Z"
@@ -402,7 +408,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                             strokeOpacity={hovered === "climate-regulation" ? 1 : 0}
                             className="node transition-all duration-200"
                             onMouseEnter={() => setHovered("climate-regulation")}
-                            onMouseLeave={() => setHovered(undefined)}
+                            onMouseLeave={() => setHovered(null)}
                             data-type="target"
                             data-id="6"
                             d="M490.652 443.663C490.957 442.753 491.747 441.535 492.883 440.129C494.008 438.737 495.437 437.205 496.973 435.674C500.033 432.625 503.49 429.607 505.747 427.754C507.683 426.527 509.98 425.271 513.677 424.976C517.409 424.678 522.609 425.358 530.336 428.118C534.145 429.478 536.778 431.358 538.647 433.544C540.518 435.732 541.644 438.254 542.403 440.93C543.122 443.465 543.505 446.116 543.886 448.748C543.908 448.902 543.93 449.056 543.953 449.21C544.354 451.978 544.775 454.719 545.615 457.183C546.39 459.454 546.126 461.841 545.205 464.21C544.284 466.583 542.713 468.909 540.923 471.024C537.343 475.253 532.954 478.553 531.393 479.579C528.335 481.59 526.552 481.99 519.782 483.491L519.582 483.535L519.69 484.024L519.582 483.535C516.232 484.278 513.524 483.921 510.45 482.752C508.104 481.861 505.571 480.509 502.386 478.809C501.345 478.253 500.234 477.66 499.037 477.034C494.37 474.592 491.737 470.081 490.189 465.744C489 462.411 488.474 459.261 488.141 457.267C488.04 456.657 487.956 456.156 487.877 455.79C487.581 454.421 487.829 452.673 488.394 450.586C488.811 449.044 489.386 447.368 490 445.578C490.214 444.953 490.433 444.315 490.652 443.663Z"
@@ -440,7 +446,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                             strokeOpacity={hovered === "habitat-provision" ? 1 : 0}
                             className="node transition-all duration-200"
                             onMouseEnter={() => setHovered("habitat-provision")}
-                            onMouseLeave={() => setHovered(undefined)}
+                            onMouseLeave={() => setHovered(null)}
                             data-type="target"
                             data-id="8"
                             d="M672.237 444.372C672.542 443.463 673.332 442.244 674.468 440.838C675.593 439.446 677.022 437.914 678.558 436.383C681.618 433.334 685.075 430.316 687.332 428.463C689.268 427.236 691.565 425.98 695.262 425.685C698.994 425.387 704.194 426.067 711.921 428.827C715.73 430.188 718.363 432.067 720.232 434.253C722.103 436.441 723.229 438.963 723.988 441.639C724.707 444.174 725.09 446.825 725.471 449.457C725.493 449.611 725.515 449.765 725.538 449.92C725.939 452.687 726.36 455.428 727.2 457.892C727.975 460.163 727.711 462.55 726.79 464.919C725.869 467.292 724.298 469.618 722.508 471.733C718.928 475.962 714.539 479.262 712.978 480.288C709.92 482.299 708.137 482.699 701.367 484.2L701.167 484.245L701.275 484.733L701.167 484.245C697.817 484.987 695.109 484.63 692.035 483.461C689.689 482.57 687.156 481.218 683.971 479.518C682.929 478.962 681.819 478.369 680.622 477.743C675.955 475.301 673.322 470.791 671.774 466.453C670.585 463.12 670.059 459.971 669.726 457.976C669.625 457.367 669.541 456.865 669.462 456.499C669.166 455.13 669.414 453.382 669.979 451.295C670.396 449.753 670.971 448.077 671.585 446.287C671.799 445.662 672.018 445.024 672.237 444.372Z"
@@ -453,7 +459,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                             strokeOpacity={hovered === "water-filtering" ? 1 : 0}
                             className="node transition-all duration-200"
                             onMouseEnter={() => setHovered("water-filtering")}
-                            onMouseLeave={() => setHovered(undefined)}
+                            onMouseLeave={() => setHovered(null)}
                             data-type="target"
                             data-id="7"
                             fill="url(#img-water-filtering)"
@@ -508,7 +514,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                         strokeOpacity={hovered === "energy-production" ? 1 : 0}
                         className="node transition-all duration-200"
                         onMouseEnter={() => setHovered("energy-production")}
-                        onMouseLeave={() => setHovered(undefined)}
+                        onMouseLeave={() => setHovered(null)}
                         data-type="target"
                         data-id="11"
                         fill="url(#img-energy-production)"
@@ -523,7 +529,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                         strokeOpacity={hovered === "fossil-fuels" ? 1 : 0}
                         className="node transition-all duration-200"
                         onMouseEnter={() => setHovered("fossil-fuels")}
-                        onMouseLeave={() => setHovered(undefined)}
+                        onMouseLeave={() => setHovered(null)}
                         data-type="target"
                         data-id="10"
                         d="M925.423 445.372C925.728 444.463 926.518 443.244 927.654 441.838C928.779 440.446 930.208 438.914 931.744 437.383C934.804 434.334 938.261 431.316 940.518 429.463C942.454 428.236 944.751 426.98 948.448 426.685C952.18 426.387 957.38 427.067 965.107 429.827C968.916 431.188 971.549 433.067 973.418 435.253C975.289 437.441 976.415 439.963 977.174 442.639C977.893 445.174 978.276 447.825 978.657 450.457C978.679 450.611 978.701 450.765 978.724 450.92C979.125 453.687 979.546 456.428 980.386 458.892C981.161 461.163 980.897 463.55 979.976 465.919C979.055 468.292 977.484 470.618 975.694 472.733C972.114 476.962 967.725 480.262 966.164 481.288C963.106 483.299 961.323 483.699 954.553 485.2L954.353 485.245L954.461 485.733L954.353 485.245C951.003 485.987 948.295 485.63 945.221 484.461C942.875 483.57 940.342 482.218 937.157 480.518C936.116 479.962 935.005 479.369 933.808 478.743C929.141 476.301 926.508 471.791 924.96 467.453C923.771 464.12 923.245 460.971 922.912 458.976C922.811 458.367 922.727 457.865 922.648 457.499C922.352 456.13 922.6 454.382 923.165 452.295C923.582 450.753 924.157 449.077 924.771 447.287C924.985 446.662 925.204 446.024 925.423 445.372Z"
@@ -537,7 +543,7 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
                         strokeOpacity={hovered === "mineral-extraction" ? 1 : 0}
                         className="node transition-all duration-200"
                         onMouseEnter={() => setHovered("mineral-extraction")}
-                        onMouseLeave={() => setHovered(undefined)}
+                        onMouseLeave={() => setHovered(null)}
                         data-type="target"
                         data-id="9"
                         d="M849.355 445.213C850.699 441.213 860.099 432.775 864.632 429.057C868.581 426.551 874.153 423.809 889.682 429.356C905.21 434.903 901.973 449.075 905.266 458.731C908.559 468.387 894.024 479.616 890.846 481.706C887.699 483.775 885.825 484.19 879.068 485.688L878.868 485.733C871.947 487.267 867.637 484.237 857.983 479.186C848.328 474.135 847.212 460.591 846.566 457.605C845.92 454.618 847.677 450.214 849.355 445.213Z"
@@ -572,8 +578,6 @@ const ChartSvg = ({ width = 1106 }: { width?: number }) => {
               </g>
             </g>
           </g>
-        </g>
-        <g id="links">
         </g>
       </g>
       <defs>

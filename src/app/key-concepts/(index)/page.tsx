@@ -315,7 +315,7 @@ const KeyConceptsPage: FC = () => {
       <div
         id="assets"
         className={cn(
-          "lg:bg-[length:100%,auto 100%] bg-green-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
+          "lg:bg-[length:100%,auto 100%] scroll-mt-[92px] bg-green-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
           {
             "lg:bg-[linear-gradient(to_right,theme(colors.green.500)_50%,transparent_50%),url(/assets/key-concepts-background.png)]":
               chapter1Tab === "environmental",
@@ -517,9 +517,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                      initial: { opacity: 0 },
-                      animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
-                    }
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
+                      }
                     : { style: sectionsStyle[0] })}
                 >
                   <p id="renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -566,9 +566,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                      initial: { opacity: 0 },
-                      animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
-                    }
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
+                      }
                     : { style: sectionsStyle[1] })}
                 >
                   <p id="cultivated" className="text-2xl text-green-500 lg:text-4xl">
@@ -595,9 +595,9 @@ const KeyConceptsPage: FC = () => {
                   transition={{ duration: 0.3, ease: "linear" }}
                   {...(isMobile
                     ? {
-                      initial: { opacity: 0 },
-                      animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
-                    }
+                        initial: { opacity: 0 },
+                        animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
+                      }
                     : { style: sectionsStyle[2] })}
                 >
                   <p id="non-renewable" className="text-2xl text-green-500 lg:text-4xl">
@@ -645,7 +645,7 @@ const KeyConceptsPage: FC = () => {
       <div
         id="flows-of-services"
         className={cn(
-          "lg:bg-[length:100%,auto 100%] bg-blue-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
+          "lg:bg-[length:100%,auto 100%] scroll-mt-[92px] bg-blue-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
           {
             "lg:bg-[linear-gradient(to_right,theme(colors.blue.500)_50%,transparent_50%),url(/assets/key-concepts-background-3.png)]":
               chapter2Tab === "abiotic",
@@ -871,10 +871,8 @@ const KeyConceptsPage: FC = () => {
         <SeaCoverImage />
       </Parallax>
       <div className="bg-black text-white">
-        <div className="mx-auto max-w-7xl px-6 lg:flex-row lg:px-20">
-          <p className="py-24 text-center lg:py-80">
-            <NaturalCapitalChart />
-          </p>
+        <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-20">
+          <NaturalCapitalChart />
         </div>
       </div>
       <div id="role" className="mx-auto max-w-7xl px-6 py-10 lg:px-20 lg:py-24">
@@ -940,7 +938,7 @@ const KeyConceptsPage: FC = () => {
       <div
         id="dependencies-and-impacts"
         className={cn(
-          "lg:bg-[length:100%,auto 100%] bg-orange-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
+          "lg:bg-[length:100%,auto 100%] scroll-mt-[92px] bg-orange-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
           {
             "lg:bg-[linear-gradient(to_right,theme(colors.orange.500)_50%,transparent_50%),url(/assets/key-concepts-background-5.png)]":
               chapter3Tab === "dependencies",

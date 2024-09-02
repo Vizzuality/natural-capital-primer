@@ -3,15 +3,18 @@ import InfoTooltip from "@/components/info-tooltip";
 import NaturalCapitalChartSvg from "./chart-svg";
 
 const NaturalCapitalChart = () => {
-  const [width, setWidth] = useState<number | undefined>();
+  const [width, setWidth] = useState<number>(1106);
   const chartContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const resizeHandler = () => {
       if (chartContainerRef.current) {
         setWidth(chartContainerRef.current.offsetWidth);
       }
     };
+
     resizeHandler();
+
     window.addEventListener("resize", resizeHandler);
     return () => window.removeEventListener("resize", resizeHandler);
   }, []);
