@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { select, selectAll } from "d3-selection";
 import { relationships } from "./data";
-import type { SourceNodes } from "./data";
 import { linkVertical, DefaultLinkObject } from "d3-shape";
 
 type Node = SVGGraphicsElement;
@@ -96,9 +95,7 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
 
       // Create new elements for the linked nodes
       const linkedNodes: string[] =
-        type === "source"
-          ? relationships[hovered as SourceNodes]
-          : invert(relationships)[hovered as SourceNodes];
+        type === "source" ? relationships[hovered] : invert(relationships)[hovered];
 
       if (!linkedNodes) {
         return;

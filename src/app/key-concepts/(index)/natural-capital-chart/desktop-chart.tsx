@@ -5,11 +5,11 @@ import { useRef } from "react";
 import { useInitLinks, useHovered, GREY } from "./chart-hooks";
 import InfoTooltip from "@/components/info-tooltip";
 
-export interface ChartSvgProps {
+export interface DesktopChartProps {
   width: number;
 }
 
-const ChartSvg = ({ width }: ChartSvgProps) => {
+const DesktopChart = ({ width }: DesktopChartProps) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useInitLinks(svgRef.current);
@@ -658,4 +658,4 @@ const ChartSvg = ({ width }: ChartSvgProps) => {
     </svg>
   );
 };
-export default ChartSvg;
+export default DesktopChart;

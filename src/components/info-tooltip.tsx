@@ -19,12 +19,19 @@ const InfoTooltip = ({
   className?: string;
   theme?: "light" | "dark";
 }) => {
-  const [tooltipOpen, setTooltipOpen] = useState(true);
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   return (
     <TooltipProvider>
       <Tooltip delayDuration={0} open={tooltipOpen} onOpenChange={setTooltipOpen}>
-        <TooltipTrigger className="group rounded-full ring-offset-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black focus-visible:ring-offset-1">
+        <TooltipTrigger
+          className="group rounded-full ring-offset-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black focus-visible:ring-offset-1"
+          onClick={(e) => {
+            // Allow touch users to open the tooltips
+            e.preventDefault();
+            setTooltipOpen(true);
+          }}
+        >
           <Info
             aria-label="Info"
             className={cn(className, {
