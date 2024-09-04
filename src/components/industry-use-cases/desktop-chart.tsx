@@ -71,8 +71,19 @@ const DesktopChart: FC<DesktopChartProps> = ({ width, data }) => {
      * Get all the nodes linked so a specific node
      * @param node Node to search with
      * @param ignoredGroups If specificied, ignore the nodes belonging to these groups
+     * @param visitedNodes List of nodes already visited and ignored to avoid duplicates
      */
-    const getLinkedNodes = (node: Node, ignoredGroups: Group[] = []): Node[] => {
+    const getLinkedNodes = (
+      node: Node,
+      ignoredGroups: Group[] = [],
+      visitedNodes = new Set<Node["id"]>(),
+    ): Node[] => {
+      if (visitedNodes.has(node.id)) {
+        return [];
+      }
+
+      visitedNodes.add(node.id);
+
       return data.reduce(
         (res, link) => {
           if (link.includes(node.id)) {
@@ -83,7 +94,9 @@ const DesktopChart: FC<DesktopChartProps> = ({ width, data }) => {
 
             return [
               ...res,
-              ...(isValidNode ? getLinkedNodes(linkedNode, [...ignoredGroups, node.group]) : []),
+              ...(isValidNode
+                ? getLinkedNodes(linkedNode, [...ignoredGroups, node.group], visitedNodes)
+                : []),
             ];
           }
 

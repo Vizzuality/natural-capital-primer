@@ -8,6 +8,7 @@ import RevealLines from "@/components/animations/reveal-lines";
 import { usePrevious } from "@uidotdev/usehooks";
 import useMediaQuery from "@/hooks/use-media-query";
 import DesktopChart from "../desktop-chart";
+import MobileChart from "../mobile-chart";
 
 export interface AccordionItemContentType {
   ecosystem: {
@@ -186,7 +187,7 @@ const DependenciesTabContent = ({
   const [width, setWidth] = useState<number>(836);
   const chartContainerRef = useRef<HTMLDivElement>(null);
 
-  const isDesktop = useMediaQuery("(min-width: 1024px)", true);
+  const isDesktop = useMediaQuery("(min-width: 768px)", true);
 
   useEffect(() => {
     const resizeHandler = () => {
@@ -215,7 +216,7 @@ const DependenciesTabContent = ({
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
       <div className="px-6 lg:px-0">
         <div ref={chartContainerRef} className="relative w-full">
-          {(chartData.length === 0 || !isDesktop) && (
+          {chartData.length === 0 && (
             <>
               <Image
                 className="mx-6 w-[calc(100%-48px)] max-lg:object-contain max-lg:pb-10 max-lg:pt-12 lg:mx-0 lg:min-h-[388px] lg:w-full"
@@ -230,6 +231,7 @@ const DependenciesTabContent = ({
             </>
           )}
           {chartData.length > 0 && isDesktop && <DesktopChart width={width} data={chartData} />}
+          {chartData.length > 0 && !isDesktop && <MobileChart data={chartData} />}
         </div>
       </div>
     </TabsContent>
