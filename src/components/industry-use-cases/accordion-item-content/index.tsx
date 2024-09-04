@@ -7,6 +7,7 @@ import InfoTooltip from "@/components/info-tooltip";
 import RevealLines from "@/components/animations/reveal-lines";
 import { usePrevious } from "@uidotdev/usehooks";
 import useMediaQuery from "@/hooks/use-media-query";
+import DesktopChart from "../desktop-chart";
 
 export interface AccordionItemContentType {
   ecosystem: {
@@ -40,7 +41,7 @@ export interface AccordionItemContentType {
     }[];
     insights: string[];
   };
-  dependencies: { content1: React.ReactElement };
+  dependencies: { content1: React.ReactElement; chartData: [number, number][] };
   impacts: {
     content1: React.ReactElement;
     image1: {
@@ -61,7 +62,12 @@ export interface AccordionItemsContentType {
   food: AccordionItemContentType;
 }
 
-const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosystem"] }) => {
+const EcosystemTabContent = ({
+  data,
+}: {
+  data: AccordionItemContentType["ecosystem"];
+  open: boolean;
+}) => {
   const {
     content1,
     image1,
@@ -168,8 +174,34 @@ const EcosystemTabContent = ({ data }: { data: AccordionItemContentType["ecosyst
   );
 };
 
-const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["dependencies"] }) => {
-  const { content1 } = data;
+const DependenciesTabContent = ({
+  data,
+  open,
+}: {
+  data: AccordionItemContentType["dependencies"];
+  open: boolean;
+}) => {
+  const { content1, chartData } = data;
+
+  const [width, setWidth] = useState<number>(836);
+  const chartContainerRef = useRef<HTMLDivElement>(null);
+
+  const isDesktop = useMediaQuery("(min-width: 1024px)", true);
+
+  useEffect(() => {
+    const resizeHandler = () => {
+      if (chartContainerRef.current) {
+        setWidth(chartContainerRef.current.offsetWidth);
+      }
+    };
+
+    if (open) {
+      resizeHandler();
+    }
+
+    window.addEventListener("resize", resizeHandler);
+    return () => window.removeEventListener("resize", resizeHandler);
+  }, [open]);
 
   return (
     <TabsContent
@@ -177,28 +209,39 @@ const DependenciesTabContent = ({ data }: { data: AccordionItemContentType["depe
       // `forceMount` and the class `data-[state=inactive]:hidden` are used together to make sure
       // there are not scroll jumps when switching from one tab to another so that we can
       // programmatically scroll to the top of the tab
-      className="flex flex-col text-black data-[state=inactive]:hidden lg:gap-y-10"
+      className="flex flex-col gap-y-10 pb-10 text-black data-[state=inactive]:hidden lg:pb-0"
       forceMount
     >
       <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
-      {/* WIP image and text. Replace with chart */}
-      <div className="relative w-full">
-        <Image
-          className="mx-6 w-[calc(100%-48px)] max-lg:object-contain max-lg:pb-10 max-lg:pt-12 lg:mx-0 lg:min-h-[388px] lg:w-full"
-          src="/assets/industry-cases-construction-dependencies-wip.png"
-          alt=""
-          width={830}
-          height={583}
-        />
-        <div className="absolute inset-0 left-12 top-1/2 h-fit w-full -rotate-12 text-3xl">
-          Interactive chart coming soon
+      <div className="px-6 lg:px-0">
+        <div ref={chartContainerRef} className="relative w-full">
+          {(chartData.length === 0 || !isDesktop) && (
+            <>
+              <Image
+                className="mx-6 w-[calc(100%-48px)] max-lg:object-contain max-lg:pb-10 max-lg:pt-12 lg:mx-0 lg:min-h-[388px] lg:w-full"
+                src="/assets/industry-cases-construction-dependencies-wip.png"
+                alt=""
+                width={830}
+                height={583}
+              />
+              <div className="absolute inset-0 left-12 top-1/2 h-fit w-full -rotate-12 text-3xl">
+                Interactive chart coming soon
+              </div>
+            </>
+          )}
+          {chartData.length > 0 && isDesktop && <DesktopChart width={width} data={chartData} />}
         </div>
       </div>
     </TabsContent>
   );
 };
 
-const ImpactsTabContent = ({ data }: { data: AccordionItemContentType["impacts"] }) => {
+const ImpactsTabContent = ({
+  data,
+}: {
+  data: AccordionItemContentType["impacts"];
+  open: boolean;
+}) => {
   const { content1, image1, list } = data;
   return (
     <TabsContent
@@ -299,9 +342,9 @@ const AccordionItemContent = ({
             </TabsTrigger>
           </TabsList>
         </div>
-        <EcosystemTabContent data={ecosystem} />
-        <DependenciesTabContent data={dependencies} />
-        <ImpactsTabContent data={impacts} />
+        <EcosystemTabContent data={ecosystem} open={tab === "ecosystem"} />
+        <DependenciesTabContent data={dependencies} open={tab === "dependencies"} />
+        <ImpactsTabContent data={impacts} open={tab === "impacts"} />
       </Tabs>
     </div>
   );

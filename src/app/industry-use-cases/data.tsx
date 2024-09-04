@@ -1,6 +1,7 @@
 import AccordionItemContent from "@/components/industry-use-cases/accordion-item-content";
 import type { AccordionItemsContentType } from "@/components/industry-use-cases/accordion-item-content";
 import type { AccordionContentType } from "./types";
+import { manufacturingLinks, foodLinks } from "./chart-data";
 
 const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
   constructions: {
@@ -137,6 +138,7 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           </p>
         </>
       ),
+      chartData: manufacturingLinks,
     },
     impacts: {
       content1: (
@@ -313,6 +315,7 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           </p>
         </>
       ),
+      chartData: [],
     },
     impacts: {
       content1: (
@@ -508,6 +511,7 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
           </p>
         </>
       ),
+      chartData: foodLinks,
     },
     impacts: {
       content1: (
