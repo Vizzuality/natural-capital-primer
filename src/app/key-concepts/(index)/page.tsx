@@ -22,6 +22,7 @@ import Parallax from "@/components/animations/parallax";
 import Quiz from "@/components/quiz";
 import type { QuizData } from "@/components/quiz";
 import NaturalCapitalChart from "./natural-capital-chart";
+import PDFFile from "@/icons/pdf-file.svg";
 
 // FadeInOnScroll and RevealLines components use window object, which is not available in SSR
 const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
@@ -1132,6 +1133,24 @@ const KeyConceptsPage: FC = () => {
           </div>
         </main>
         <Quiz data={QUIZ_DATA[2]} />
+      </div>
+      <div className="border-t border-t-black">
+        <main className="mx-auto flex max-w-7xl flex-col items-start gap-y-6 p-6 lg:gap-y-10 lg:p-20">
+          <h2 className="flex items-center gap-x-5 text-2xl xl:text-4xl">
+            <PDFFile />
+            Downloadable resource
+          </h2>
+          <p className="max-w-[830px]">
+            If you find it easier to learn about Natural Capital Key Concepts in a print form, you
+            can download the PDF below which contains all theoretical principles about Natural
+            Capital.
+          </p>
+          <Button asChild variant="outline">
+            <Link href="/assets/natural-capital-booklet.pdf" download>
+              Download Document
+            </Link>
+          </Button>
+        </main>
       </div>
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-10 p-6 text-center lg:gap-y-16">
