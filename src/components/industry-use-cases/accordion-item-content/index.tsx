@@ -60,6 +60,7 @@ export interface AccordionItemContentType {
 export interface AccordionItemsContentType {
   constructions: AccordionItemContentType;
   tourism: AccordionItemContentType;
+  retail: AccordionItemContentType;
   food: AccordionItemContentType;
 }
 

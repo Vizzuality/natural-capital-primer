@@ -1,7 +1,7 @@
 import AccordionItemContent from "@/components/industry-use-cases/accordion-item-content";
 import type { AccordionItemsContentType } from "@/components/industry-use-cases/accordion-item-content";
 import type { AccordionContentType } from "./types";
-import { manufacturingLinks, tourismLinks, foodLinks } from "./chart-data";
+import { manufacturingLinks, tourismLinks, foodLinks, retailLinks } from "./chart-data";
 
 const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
   constructions: {
@@ -365,6 +365,164 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
       },
     },
   },
+  retail: {
+    ecosystem: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">
+            Why are urban green spaces essential for businesses and society?
+          </h3>
+          <p className="max-w-[685px] tracking-tight">
+            With over half of the global population now living in cities, urbanisation presents a
+            significant challenge to the management of natural capital and ecosystem services.
+            Natural capital in urban areas is often restricted to relatively small green spaces like
+            parks, gardens, wetlands and habitat corridors. But even these have the potential to
+            mitigate some impacts of urbanisation and provide economic value for retail businesses
+            and other industries.
+          </p>
+        </>
+      ),
+      image1: {
+        src: "/assets/industry-cases-retail-ecosystem-1.png",
+        width: 685,
+        height: 388,
+      },
+      imageText:
+        "Urban green spaces are vital to the health, climate and economy of cities. Green spaces like parks, gardens, and recreation areas can have mental and physical health benefits and reduce the urban heat island effect (a build-up of heat due to the abundance of heat retaining surfaces), generating ‘urban cooling’ instead. ",
+      content2: (
+        <div className="flex flex-col gap-5">
+          <p>
+            Green spaces have also been shown to lead to greater employee retention and increased
+            productivity, fewer sick days and better overall employee satisfaction.
+          </p>
+          <p>
+            There is also a strong business case for urban green spaces with direct links between
+            tree canopy and retail, with increased consumer spending due to a positive perception of
+            the area and enhanced shopping experience. Moreover, ‘green leafy suburbs’ have higher
+            real estate value and lower power bills due to microclimate regulation.
+          </p>
+        </div>
+      ),
+      image2: {
+        src: "/assets/industry-cases-retail-ecosystem-2.png",
+        width: 373,
+        height: 375,
+      },
+      industriesRelyOnText: "green spaces",
+      directIndustries: [
+        {
+          title: "Retal",
+          tooltip:
+            "To attract more foot traffic, enhance the shopping experience and increase consumer spending.",
+        },
+        {
+          title: "Urban planning",
+          tooltip:
+            "To enhance livability, manage stormwater, reduce urban heat islands and preserve urban biodiversity.",
+        },
+        {
+          title: "Residential housing and real state",
+          tooltip:
+            "To increase property values, attract buyers, and enhance the appeal of neighbourhoods.",
+        },
+        {
+          title: "Landscaping",
+          tooltip:
+            "To design, create, and maintain attractive and functional outdoor environments that enhance liveability.",
+        },
+      ],
+      indirectIndustries: [
+        {
+          title: "Government services",
+          tooltip:
+            "For benefits to public health, reducing infrastructure costs (e.g., flood control, air quality) and community well-being.",
+        },
+        {
+          title: "Hospitality and office maintenance",
+          tooltip:
+            "For more appealing urban spaces that contribute to higher occupancy rates, employee productivity, and customer satisfaction.",
+        },
+        {
+          title: "Health and wellbeing",
+          tooltip:
+            "Recreational spaces provide areas for physical activity, stress relief, social interaction, and clean air, which improve mental and physical health, reduce healthcare costs, and enhance overall public health.",
+        },
+        {
+          title: "Insurance and financial sector",
+          tooltip:
+            "To mitigate risks such as flood control, climate regulation, and reduced pollution. All this lowers the risk of property damage, health issues, and other liabilities.",
+        },
+      ],
+      image3: {
+        src: "/assets/industry-cases-retail-ecosystem-3.png",
+        width: 871,
+        height: 300,
+      },
+      content3: (
+        <>
+          Retail businesses that depend on urban green spaces must help preserve them. By adopting
+          sustainable practices, such as supporting green infrastructure, reducing pollution, and
+          investing in the maintenance of parks and gardens, businesses can help protect the urban
+          natural capital they rely on. This will not only bring direct benefits to businesses but
+          will ensure beautiful, healthy urban environments for future generations.
+        </>
+      ),
+      insights: [
+        "Urban green spaces offer essential ecosystem services like climate regulation, air purification, and flood mitigation, alongside cultural services such as mental well-being and recreational opportunities, which are crucial for the health of city residents and businesses.",
+        "Urban green spaces directly benefit the retail and real estate industries. They enhance the attractiveness of city centres, boost foot traffic, and increase property values, supporting the success of local businesses and the economic growth of an area.",
+        "Pollution, urban expansion, and climate change threaten urban green spaces. Sustainable management and political prioritisation are vital to preserving and creating these areas and their economic benefits.",
+      ],
+    },
+    dependencies: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">How does retail depend on urban green spaces?</h3>
+          <p className="max-w-[685px] tracking-tight">
+            Urban green spaces are vital to the retail sector by enhancing the attractiveness of
+            city centres and encouraging foot traffic. These green areas offer residents and
+            visitors places to relax, socialise, and unwind, creating a more inviting environment
+            that draws people to nearby shops and cafes. Explore the diagram to see how natural
+            capital in urban green spaces supports and sustains the retail industry.
+          </p>
+        </>
+      ),
+      chartData: retailLinks,
+    },
+    impacts: {
+      content1: (
+        <>
+          <h3 className="text-xl tracking-tight">How does retail impact urban green spaces?</h3>
+          <p className="max-w-[685px] tracking-tight">
+            While the benefits of urban green spaces are compelling, the politics and economics are
+            more complex. Local or regional (e.g., state) governments are responsible for
+            establishing and maintaining urban green spaces. While there are good community health,
+            amenity, and service grounds for public funding of urban green areas, other public or
+            private urban development plans and businesses may clash with these spaces, draining
+            available resources and reducing benefits.
+          </p>
+        </>
+      ),
+      list: [
+        {
+          title: "Pollution and degradation",
+          text: "Urban development and maintenance activities contribute to air and noise pollution, litter, and runoff, which degrade air quality, water resources, and the overall health of green spaces. Additionally, high foot traffic from retail and tourism, as well as overuse by residents, can lead to soil compaction, vegetation damage, and reduced biodiversity.",
+        },
+        {
+          title: "Urban Expansion",
+          text: "Real estate and urban planning industries can reduce green spaces in favour of land conversion for housing, commercial developments, and infrastructure, leading to loss and fragmentation of green areas. Increased urban development may place additional demands on water and other natural resources, further stressing green spaces.",
+        },
+        {
+          title: "Climate Effects",
+          text: "Increased impervious surfaces and reduced vegetation from industrial activities exacerbate the urban heat island effect, impacting the cooling and climate regulation services provided by green spaces.",
+        },
+      ],
+      image1: {
+        src: "/assets/industry-cases-retail-impacts.png",
+        width: 831,
+        height: 403,
+      },
+    },
+  },
   food: {
     ecosystem: {
       content1: (
@@ -581,6 +739,7 @@ export const ACCORDION_ITEMS: AccordionContentType[] = [
     text2: "Urban Green Spaces.",
     imageSrc1: "/assets/industry-cases-accordion-5.png",
     imageSrc2: "/assets/industry-cases-accordion-6.png",
+    content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["retail"]} />,
   },
   {
     id: "Food Security",
