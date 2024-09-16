@@ -150,8 +150,8 @@ export default function NotFoundPage() {
   return (
     <>
       <Header logo="color" />
-      <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pt-10 lg:mt-14 lg:gap-y-16 lg:px-20 xl:mt-40">
-        <h1 className="text-4.2xl font-medium leading-9 lg:text-5xl">Resources</h1>
+      <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 xl:mt-40">
+        <h1 className="text-4.2xl font-medium lg:text-5xl">Resources</h1>
         <p className="max-w-[827px] lg:text-xl">
           Explore these resources to deepen your understanding of Natural Capital and its role in
           shaping our environment and society.

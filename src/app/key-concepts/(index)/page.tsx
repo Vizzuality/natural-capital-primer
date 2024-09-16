@@ -13,6 +13,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useMediaQuery from "@/hooks/use-media-query";
 import Lightbulb from "@/icons/lightbulb.svg";
 import ThinArrow from "@/icons/thin-arrow.svg";
+import PDFFile from "@/icons/pdf-file.svg";
+import ArrowSlide from "@/icons/arrow-slide.svg";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -22,15 +24,15 @@ import Parallax from "@/components/animations/parallax";
 import Quiz from "@/components/quiz";
 import type { QuizData } from "@/components/quiz";
 import NaturalCapitalChart from "./natural-capital-chart";
-import PDFFile from "@/icons/pdf-file.svg";
+import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
 
 // FadeInOnScroll and RevealLines components use window object, which is not available in SSR
 const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
   ssr: false,
 });
-const FadeInOnScroll = dynamic(() => import("@/components/animations/fade-in-on-scroll"), {
-  ssr: false,
-});
+// const FadeInOnScroll = dynamic(() => import("@/components/animations/fade-in-on-scroll"), {
+//   ssr: false,
+// });
 
 const LightBulbMessage = ({ children }: { children: React.ReactNode }) => (
   <motion.div
@@ -162,6 +164,7 @@ const QUIZ_DATA: QuizData[] = [
     ],
   },
 ];
+
 const KeyConceptsPage: FC = () => {
   const [chapter1Tab, setChapter1Tab] = useState("environmental");
   const [chapter2Tab, setChapter2Tab] = useState("abiotic");
@@ -253,64 +256,54 @@ const KeyConceptsPage: FC = () => {
     },
     [scrollSectionRef, isMobile],
   );
-  const [showReadMore, setShowReadMore] = useState(false);
 
   return (
     <>
       <Header
-        headerClassName="fixed inset-0 w-full h-[92px] bg-white z-40"
-        anchors={
-          <FadeInOnScroll>
-            <nav className="hidden gap-12 lg:flex">
-              <Link href="/key-concepts/#assets-and-resources">Assets and Resources</Link>
-              <Link href="/key-concepts/#flows-of-services">Flows of Services</Link>
-              <Link href="/key-concepts/#dependencies-and-impacts">Dependencies and Impacts</Link>
-            </nav>
-          </FadeInOnScroll>
-        }
+        logo="color"
+        // anchors={
+        //   <FadeInOnScroll>
+        //     <nav className="hidden gap-12 lg:flex">
+        //       <Link href="/key-concepts/#assets-and-resources">Assets and Resources</Link>
+        //       <Link href="/key-concepts/#flows-of-services">Flows of Services</Link>
+        //       <Link href="/key-concepts/#dependencies-and-impacts">Dependencies and Impacts</Link>
+        //     </nav>
+        //   </FadeInOnScroll>
+        // }
       />
-      <div className="mx-auto mt-[84px] flex max-w-7xl flex-col gap-x-10 gap-y-6 p-6 pb-10 pt-10 lg:mt-0 lg:gap-y-[60px] lg:px-20 lg:pb-20 lg:pt-36 xl:pt-64">
-        <h1 className="flex-shrink-0 text-[52px] font-medium leading-[52px] lg:max-w-[974px] lg:text-5xl lg:leading-none lg:tracking-tight">
-          What is <span className="xl:whitespace-nowrap">Natural Capital?</span>
-        </h1>
+      <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 lg:pb-16 xl:mt-40">
+        <h1 className="text-4.2xl font-medium lg:text-5xl">What is Natural Capital?</h1>
         <div className="flex max-w-[827px] flex-col gap-y-4">
-          <p>
+          <p className="max-w-[827px] lg:text-xl">
             Natural capital refers to all biotic (living) and abiotic (non-living) natural resources
             present in a defined area that produce flows of services that yield value to society.
             Natural capital is also sometimes referred to as natural capital assets or stocks.
           </p>
-          <AnimatePresence>
-            {showReadMore && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.15 }}
-              >
-                <p className="pb-4">
-                  <b>Biotic natural resources</b>
-                  <br />
-                  Biotic natural resources are those derived from living organisms, such as plants,
-                  animals, fungi, bacteria and viruses.
-                </p>
-                <p>
-                  <b>Abiotic natural resources</b>
-                  <br />
-                  Abiotic natural resources are those derived from non-living sources and include
-                  geological resources (minerals, soil, fossil fuels), water and physical processes
-                  such as solar radiation, wind and tides.
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <Button
-            variant="transparent"
-            className="justify-start p-0 text-xs font-bold uppercase underline"
-            onClick={() => setShowReadMore((prev) => !prev)}
-          >
-            {showReadMore ? "Close Detail" : "Read more"}
-            <span className="sr-only"> about Natural Capital</span>
-          </Button>
+          <div className="mt-6 flex max-w-[730px] flex-col gap-y-6 lg:mt-10 lg:grid lg:grid-cols-2 lg:gap-x-10">
+            <p>
+              <b>Biotic natural resources</b>
+              <br />
+              Biotic natural resources are those derived from living organisms, such as plants,
+              animals, fungi, bacteria and viruses.
+            </p>
+            <p>
+              <b>Abiotic natural resources</b>
+              <br />
+              Abiotic natural resources are those derived from non-living sources and include
+              geological resources (minerals, soil, fossil fuels), water and physical processes such
+              as solar radiation, wind and tides.
+            </p>
+          </div>
+          <div className="absolute bottom-16 right-20 hidden w-28 flex-col gap-y-5 xl:flex">
+            <div className="h-28 w-28 rounded-full border border-black/20">
+              <InfiniteSlideDownAnimation>
+                <div className="flex h-28 w-28 items-center justify-center">
+                  <ArrowSlide className="h-6 w-6" />
+                </div>
+              </InfiniteSlideDownAnimation>
+            </div>
+            <p className="text-center opacity-30">Scroll down to discover</p>
+          </div>
         </div>
       </div>
       <div
