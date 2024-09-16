@@ -176,8 +176,8 @@ const DesktopChart: FC<DesktopChartProps> = ({ width, data }) => {
               key={key}
               className={cn("flex flex-col justify-between", {
                 "items-start": index === 0,
-                "items-center": index > 0 && index + 1 < array.length,
-                "items-end": index + 1 === array.length,
+                "items-center text-center": index > 0 && index + 1 < array.length,
+                "items-end text-right": index + 1 === array.length,
               })}
               style={{ height: CHART_HEIGHT }}
             >
@@ -186,8 +186,9 @@ const DesktopChart: FC<DesktopChartProps> = ({ width, data }) => {
                 return (
                   <div
                     key={node.id}
+                    title={node.name}
                     className={cn(
-                      "cursor-pointer rounded-full border px-2.5 py-0.5 transition-colors",
+                      "max-w-60 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap rounded-full border px-2.5 py-0.5 transition-colors",
                       {
                         "border-black bg-black text-white": isHighlighted,
                         "border-black/50 bg-white": !isHighlighted,
