@@ -8,7 +8,7 @@ import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 const Intro: FC = () => (
   <header className="w-full bg-black lg:h-screen">
     <div className="relative z-10">
-      <Header menuVariant="white" logo="color-white" />
+      <Header menuVariant="white" logo="white" />
     </div>
     <div className="relative mt-10 flex w-full items-center justify-center lg:absolute lg:top-[23vh] lg:mt-0 lg:h-[30vh] lg:px-20">
       <DayInLifeMarquee />

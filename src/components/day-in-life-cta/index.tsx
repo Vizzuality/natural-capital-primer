@@ -38,7 +38,7 @@ const DayInLifeCTA: FC = () => {
           </div>
         </div>
         <Button size="lg" variant="white" className="px-6" asChild>
-          <Link href="/a-day-in-the-life">
+          <Link href="/natural-capital-in-daily-life">
             <HoverRepeatAnimation>Discover the Story</HoverRepeatAnimation>
           </Link>
         </Button>

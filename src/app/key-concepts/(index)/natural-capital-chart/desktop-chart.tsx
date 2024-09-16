@@ -281,7 +281,7 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                   <path
                     d="M24.3945 431C24.3945 414.431 37.826 401 54.3945 401H722.326C738.894 401 752.326 414.431 752.326 431V593C752.326 609.569 738.894 623 722.326 623H54.3945C37.826 623 24.3945 609.569 24.3945 593V431Z"
                     fill={GREY}
-                    fill-opacity="0.2"
+                    fillOpacity="0.2"
                   />
                   <g id="Frame 2341875">
                     <g id="Frame 2341874">
@@ -511,7 +511,7 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                   <path
                     d="M822.326 432C822.326 415.431 835.757 402 852.326 402H1051.1C1067.67 402 1081.1 415.431 1081.1 432V593C1081.1 609.569 1067.67 623 1051.1 623H852.326C835.757 623 822.326 609.569 822.326 593V432Z"
                     fill={GREY}
-                    fill-opacity="0.2"
+                    fillOpacity="0.2"
                   />
                   <g id="Frame 2341651_2">
                     <g id="nodes-abiotic">

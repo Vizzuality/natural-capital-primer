@@ -15,6 +15,13 @@ import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import ChevronBold from "@/icons/chevron-bold.svg";
 
 const DIALOG_ANIMATION_DURATION = 0.3;
 
@@ -23,7 +30,6 @@ const logoVariants = cva("", {
     logo: {
       default: "",
       color: "text-black",
-      "color-white": "text-white",
       white: "text-white",
       black: "text-black",
     },
@@ -48,8 +54,8 @@ const Header: FC<{
       return "About";
     }
 
-    if (pathname.startsWith("/a-day-in-the-life")) {
-      return "A Day in the Life";
+    if (pathname.startsWith("/natural-capital-in-daily-life")) {
+      return "Natural Capital in Daily Life";
     }
 
     if (pathname.startsWith("/key-concepts")) {
@@ -60,12 +66,16 @@ const Header: FC<{
       return "Industry Use Cases";
     }
 
+    if (pathname.startsWith("/climate-and-biodiversity")) {
+      return "Climate & Biodiversity";
+    }
+
     if (pathname.startsWith("/resources")) {
       return "Resources";
     }
 
-    if (pathname.startsWith("/privacy-policy")) {
-      return "Privacy Policy";
+    if (pathname.startsWith("/references")) {
+      return "References";
     }
 
     if (pathname.startsWith("/terms-and-conditions")) {
@@ -75,23 +85,27 @@ const Header: FC<{
     return "Menu";
   }, [pathname]);
 
-  const onClickKeyConceptsSection = useCallback(
+  const onClickSubSection = useCallback(
     (e: MouseEvent<HTMLAnchorElement>) => {
-      // This is a hacky solution for when the user is already on the Key Concepts page and clicks a
-      // link to a specific section on that page. By default, it seems that the dialog, somehow,
-      // scrolls back to the top when closed. In Radix UI's documentation, there seems to be a
-      // solution involving the `modal` prop but it would stop hiding what's outside the dialog from
-      // the accessibility tree. Instead, this is what we're doing:
+      const { href } = e.currentTarget as HTMLAnchorElement;
+      const url = new URL(href);
+      const targetPathname = url.pathname;
+
+      // This is a hacky solution for when the user is already on the page and clicks a link to a
+      // specific section on that page. By default, it seems that the dialog, somehow, scrolls back
+      // to the top when closed. In Radix UI's documentation, there seems to be a solution involving
+      // the `modal` prop but it would stop hiding what's outside the dialog from the accessibility
+      // tree. Instead, this is what we're doing:
       // 1. Stop Next.js from navigating
       // 2. Close the modal
       // 3. Wait for the animation to be done and the component to be unmounted (50ms buffer)
       // 4. Navigate to that section
-      if (pathname === "/key-concepts") {
+      if (pathname === targetPathname) {
         e.preventDefault();
         setOpen(false);
         setTimeout(
           () => {
-            router.push((e.target as HTMLAnchorElement).href);
+            router.push(href);
           },
           DIALOG_ANIMATION_DURATION * 1000 + 50,
         );
@@ -108,10 +122,10 @@ const Header: FC<{
       >
         <Button variant="link" size="auto" className={cn(logoVariants({ logo }))} asChild>
           <Link href="/" className="-m-1.5 p-1.5">
-            {(!logo || ["default", "color", "color-white"].includes(logo)) && (
+            {(!logo || ["default", "color", "white"].includes(logo)) && (
               <Logo className={cn(logoVariants({ logo }), "h-8")} aria-hidden="true" />
             )}
-            {logo && !["default", "color", "color-white"].includes(logo) && (
+            {logo && !["default", "color", "white"].includes(logo) && (
               <LogoMonochrome className="h-8" aria-hidden="true" />
             )}
             <span className="sr-only">Natural Capital Primer</span>
@@ -152,14 +166,14 @@ const Header: FC<{
               <DialogContent
                 forceMount
                 asChild
-                variant="fullscreen"
+                variant="sheet"
                 scheme="blue"
-                className="flex flex-col p-5 xl:p-10"
+                className="flex flex-col"
               >
                 <motion.div
-                  initial={{ x: "-50%", y: "-150%" }}
-                  animate={{ x: "-50%", y: "-50%" }}
-                  exit={{ x: "-50%", y: "-150%" }}
+                  initial={{ x: "100%", y: "-50%" }}
+                  animate={{ x: "0%", y: "-50%" }}
+                  exit={{ x: "100%", y: "-50%" }}
                   transition={{ duration: DIALOG_ANIMATION_DURATION }}
                 >
                   <div className="flex items-center justify-end">
@@ -182,7 +196,7 @@ const Header: FC<{
                       </Button>
                     </DialogClose>
                   </div>
-                  <ul className="flex flex-grow flex-col items-stretch justify-center gap-y-6 text-3xl font-medium xl:justify-end xl:text-5xl">
+                  <ul className="flex flex-col items-stretch justify-center gap-y-6 lg:text-2xl">
                     <li>
                       <Link href="/">
                         <HoverRepeatAnimation>Home</HoverRepeatAnimation>
@@ -194,72 +208,166 @@ const Header: FC<{
                       </Link>
                     </li>
                     <li>
-                      <ul className="flex flex-col gap-y-6 border-y border-y-black/20 pb-6 pt-5 xl:flex-row xl:gap-x-20 xl:gap-y-10 xl:pt-6">
-                        <li className="text-base font-normal xl:text-2xl">The Primer</li>
-                        <li>
-                          <ul className="flex flex-col items-start gap-y-10">
-                            <li className="flex flex-col gap-y-6 xl:gap-y-8">
-                              <Link href="/key-concepts">
-                                <HoverRepeatAnimation>Key Concepts</HoverRepeatAnimation>
-                              </Link>
-                              <ul className="flex flex-wrap gap-3 text-base font-normal">
-                                <li>
-                                  <Link
-                                    href="/key-concepts#assets"
-                                    className="underline"
-                                    onClick={onClickKeyConceptsSection}
-                                  >
-                                    Assets
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    href="/key-concepts#flows-of-services"
-                                    className="underline"
-                                    onClick={onClickKeyConceptsSection}
-                                  >
-                                    Flows of Services
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    href="/key-concepts#dependencies-and-impacts"
-                                    className="underline"
-                                    onClick={onClickKeyConceptsSection}
-                                  >
-                                    Dependencies and Impacts
-                                  </Link>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <Link href="/industry-use-cases">
-                                <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
-                              </Link>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <ul className="flex flex-col items-stretch gap-y-4 text-base font-normal sm:flex-row sm:gap-x-4">
-                        <li>
-                          <Link
-                            href="/a-day-in-the-life"
-                            className="block rounded-full border border-black px-6 py-2.5 text-center transition-colors duration-300 hover:bg-black hover:text-white xl:px-8 xl:py-4"
-                          >
-                            A Day in the Life
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/resources"
-                            className="block rounded-full border border-black px-6 py-2.5 text-center transition-colors duration-300 hover:bg-black hover:text-white xl:px-8 xl:py-4"
-                          >
-                            Resources
-                          </Link>
-                        </li>
-                      </ul>
+                      <Accordion type="single" collapsible>
+                        <ul className="flex flex-col gap-y-6 border-t-2 border-t-blue-800 pb-6 pt-5 xl:gap-y-10">
+                          <li className="text-base font-bold">The Primer</li>
+                          <li className="xl:-mt-4">
+                            <Link href="/natural-capital-in-daily-life">
+                              <HoverRepeatAnimation>
+                                Natural Capital in Daily Life
+                              </HoverRepeatAnimation>
+                            </Link>
+                          </li>
+                          <li>
+                            <AccordionItem value="key-concepts">
+                              <AccordionTrigger
+                                variant="naked"
+                                className="flex items-center justify-between"
+                              >
+                                Key Concepts <ChevronBold className="h-6 w-6" />
+                              </AccordionTrigger>
+                              <AccordionContent variant="naked" className="overflow-hidden pt-7">
+                                <ul className="flex flex-col gap-2 text-base font-normal">
+                                  <li>
+                                    <Link href="/key-concepts">
+                                      <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link href="/key-concepts#assets" onClick={onClickSubSection}>
+                                      <HoverRepeatAnimation>
+                                        <span className="sr-only">Chapter</span>
+                                        <span className="not-sr-only">Ch</span> 1 - Assets &
+                                        Resources
+                                      </HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      href="/key-concepts#flows-of-services"
+                                      onClick={onClickSubSection}
+                                    >
+                                      <HoverRepeatAnimation>
+                                        <span className="sr-only">Chapter</span>
+                                        <span className="not-sr-only">Ch</span> 2 - Flows of
+                                        Services
+                                      </HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      href="/key-concepts#dependencies-and-impacts"
+                                      onClick={onClickSubSection}
+                                    >
+                                      <HoverRepeatAnimation>
+                                        <span className="sr-only">Chapter</span>
+                                        <span className="not-sr-only">Ch</span> 3 - Dependencies and
+                                        Impacts
+                                      </HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                </ul>
+                              </AccordionContent>
+                            </AccordionItem>
+                          </li>
+                          <li>
+                            <AccordionItem value="industry-use-cases">
+                              <AccordionTrigger
+                                variant="naked"
+                                className="flex items-center justify-between"
+                              >
+                                Industry Use Cases <ChevronBold className="h-6 w-6" />
+                              </AccordionTrigger>
+                              <AccordionContent variant="naked" className="overflow-hidden pt-7">
+                                <ul className="flex flex-col gap-2 text-base font-normal">
+                                  <li>
+                                    <Link href="/industry-use-cases">
+                                      <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      href="/industry-use-cases#manufacturing"
+                                      onClick={onClickSubSection}
+                                    >
+                                      <HoverRepeatAnimation>Manufacturing</HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      href="/industry-use-cases#tourism"
+                                      onClick={onClickSubSection}
+                                    >
+                                      <HoverRepeatAnimation>Tourism</HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      href="/industry-use-cases#retail"
+                                      onClick={onClickSubSection}
+                                    >
+                                      <HoverRepeatAnimation>Retail</HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      href="/industry-use-cases#food-security"
+                                      onClick={onClickSubSection}
+                                    >
+                                      <HoverRepeatAnimation>Food Security</HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                </ul>
+                              </AccordionContent>
+                            </AccordionItem>
+                          </li>
+                          <li>
+                            <AccordionItem value="climate-and-biodiversity">
+                              <AccordionTrigger
+                                variant="naked"
+                                className="flex items-center justify-between"
+                              >
+                                Climate & Biodiversity <ChevronBold className="h-6 w-6" />
+                              </AccordionTrigger>
+                              <AccordionContent variant="naked" className="overflow-hidden pt-7">
+                                <ul className="flex flex-col gap-2 text-base font-normal">
+                                  <li>
+                                    <Link href="/industry-use-cases">
+                                      <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      href="/climate-and-biodiversity#climate"
+                                      onClick={onClickSubSection}
+                                    >
+                                      <HoverRepeatAnimation>Climate</HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      href="/climate-and-biodiversity#biodiversity"
+                                      onClick={onClickSubSection}
+                                    >
+                                      <HoverRepeatAnimation>Biodiversity</HoverRepeatAnimation>
+                                    </Link>
+                                  </li>
+                                </ul>
+                              </AccordionContent>
+                            </AccordionItem>
+                          </li>
+                          <li>
+                            <Link href="/resources">
+                              <HoverRepeatAnimation>Resources</HoverRepeatAnimation>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/references">
+                              <HoverRepeatAnimation>References</HoverRepeatAnimation>
+                            </Link>
+                          </li>
+                        </ul>
+                      </Accordion>
                     </li>
                   </ul>
                 </motion.div>

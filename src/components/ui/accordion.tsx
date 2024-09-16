@@ -16,12 +16,13 @@ const AccordionItem = React.forwardRef<
 ));
 AccordionItem.displayName = "AccordionItem";
 
-const accordionTriggerVariants = cva("group flex flex-1 items-center bg-white", {
+const accordionTriggerVariants = cva("group flex flex-1 items-center", {
   variants: {
     variant: {
       default:
-        "border-t py-10 font-medium transition-all lg:border-none lg:py-0 [&[data-state=open]>svg]:rotate-180 justify-between",
-      box: "justify-center py-2 data-[state=open]:py-5 border border-black rounded-3xl data-[state=open]:rounded-b-none data-[state=open]:font-bold",
+        "bg-white border-t py-10 font-medium transition-all lg:border-none lg:py-0 [&[data-state=open]>svg]:rotate-180 justify-between",
+      box: "bg-white justify-center py-2 data-[state=open]:py-5 border border-black rounded-3xl data-[state=open]:rounded-b-none data-[state=open]:font-bold",
+      naked: "[&[data-state=open]>svg]:rotate-180",
     },
   },
   defaultVariants: {
@@ -48,12 +49,13 @@ const AccordionTrigger = React.forwardRef<
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
 const accordionContentVariants = cva(
-  "text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down bg-white bg-white pt-0 lg:pt-10",
+  "text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
   {
     variants: {
       variant: {
-        default: "",
-        box: "border border-black border-t-0 rounded-b-3xl px-5",
+        default: "pt-0 lg:pt-10 bg-white",
+        box: "pt-0 lg:pt-10 bg-white border border-black border-t-0 rounded-b-3xl px-5",
+        naked: "",
       },
     },
     defaultVariants: {

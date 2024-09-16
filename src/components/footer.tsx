@@ -55,6 +55,23 @@ const Footer: FC = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/terms-and-conditions" className="inline-block py-2 underline">
+                    <ArrowSlideAnimation>Terms and Conditions</ArrowSlideAnimation>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul className="flex flex-col gap-y-2.5">
+                <li>
+                  <Link
+                    href="/natural-capital-in-daily-life"
+                    className="inline-block py-2 underline"
+                  >
+                    <ArrowSlideAnimation>Natural Capital in Daily Life</ArrowSlideAnimation>
+                  </Link>
+                </li>
+                <li>
                   <Link href="/key-concepts" className="inline-block py-2 underline">
                     <ArrowSlideAnimation>Key Concepts</ArrowSlideAnimation>
                   </Link>
@@ -65,22 +82,18 @@ const Footer: FC = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/climate-and-biodiversity" className="inline-block py-2 underline">
+                    <ArrowSlideAnimation>Climate & Biodiversity</ArrowSlideAnimation>
+                  </Link>
+                </li>
+                <li>
                   <Link href="/resources" className="inline-block py-2 underline">
                     <ArrowSlideAnimation>Resources</ArrowSlideAnimation>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/a-day-in-the-life" className="inline-block py-2 underline">
-                    <ArrowSlideAnimation>A Day in the Life</ArrowSlideAnimation>
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <ul className="flex flex-col gap-y-2.5">
-                <li>
-                  <Link href="/terms-and-conditions" className="inline-block py-2 underline">
-                    <ArrowSlideAnimation>Terms and Conditions</ArrowSlideAnimation>
+                  <Link href="/references" className="inline-block py-2 underline">
+                    <ArrowSlideAnimation>References</ArrowSlideAnimation>
                   </Link>
                 </li>
               </ul>
