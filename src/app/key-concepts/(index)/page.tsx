@@ -306,87 +306,54 @@ const KeyConceptsPage: FC = () => {
           </div>
         </div>
       </div>
-      <div
-        id="assets"
-        className={cn(
-          "lg:bg-[length:100%,auto 100%] scroll-mt-[92px] bg-green-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
-          {
-            "lg:bg-[linear-gradient(to_right,theme(colors.green.500)_50%,transparent_50%),url(/assets/key-concepts-background.png)]":
-              chapter1Tab === "environmental",
-            "lg:bg-[linear-gradient(to_right,theme(colors.green.500)_50%,transparent_50%),url(/assets/key-concepts-background-2.png)]":
-              chapter1Tab !== "environmental",
-          },
-        )}
-      >
-        <div className="mx-auto flex max-w-7xl flex-col px-6 lg:flex-row lg:px-20">
-          <div className="shrink-0 grow-0 py-10 lg:w-1/2 lg:py-14 lg:pr-14">
-            <div className="mb-6 flex flex-col gap-y-6 lg:mb-32 lg:gap-y-5">
-              <h2 className="flex items-center gap-x-4">
-                <span>Chapter 01</span>
-                <span className="h-px w-6 shrink-0 bg-black" />
-                <span>Assets and Resources</span>
-              </h2>
-              <p className="text-2xl lg:text-4xl">What are natural capital assets and resources?</p>
-              <p>
-                Abiotic factors like climate and geology interact with biotic factors such as
-                vegetation and animals to shape ecosystems, define their physical context, and
-                influence the quantity and quality of natural capital assets. There are two types of
-                natural capital assets: environmental assets and ecosystem assets.
-              </p>
-            </div>
-            <Tabs value={chapter1Tab} onValueChange={setChapter1Tab}>
-              <TabsList className="mb-6 lg:mb-5">
-                <TabsTrigger value="environmental">Environmental</TabsTrigger>
-                <TabsTrigger value="ecosystem">Ecosystem</TabsTrigger>
-              </TabsList>
-              <TabsContent
-                value="environmental"
-                className="flex flex-col gap-y-4 data-[state=active]:min-h-[140px]"
-              >
-                <p>
-                  Environmental assets are the components that make up the environment. This
-                  includes both biotic and abiotic natural resources, which contribute to an
-                  ecosystem&apos;s biological diversity and vitality (biotic) and provide the
-                  foundational physical and chemical components necessary for ecosystem functioning
-                  (abiotic).
-                </p>
-              </TabsContent>
-              <TabsContent
-                value="ecosystem"
-                className="flex flex-col gap-y-4 data-[state=active]:min-h-[140px]"
-              >
-                <p>
-                  Ecosystem assets are formed from the interaction of individual environmental
-                  assets (i.e., biotic and abiotic natural resources).
-                </p>
-                <p>
-                  They have properties (composition, functions, and form) that result from the
-                  interaction of environmental assets. This gives ecosystems unique characteristics
-                  and determines the flow of ecosystem services.
-                </p>
-              </TabsContent>
-            </Tabs>
+      <div id="assets" className="scroll-mt-[92px] bg-green-500">
+        <div className="mx-auto flex max-w-7xl flex-col px-6 lg:px-20">
+          <div className="flex flex-col items-center gap-y-4 pt-10 lg:pt-16">
+            Chapter 01
+            <h2 className="text-2xl lg:text-4.5xl">Assets and Resources</h2>
           </div>
-          <div
-            className={cn(
-              "-mx-6 flex aspect-[9/10] flex-col justify-end bg-cover bg-center bg-no-repeat px-6 pb-8 sm:aspect-[5/3] lg:-mx-0 lg:aspect-auto lg:bg-none lg:pl-8 lg:pr-0",
-              {
-                "bg-[url(/assets/key-concepts-background.png)]": chapter1Tab === "environmental",
-                "bg-[url(/assets/key-concepts-background-2.png)]": chapter1Tab !== "environmental",
-              },
-            )}
-          >
-            {chapter1Tab === "environmental" && (
-              <LightBulbMessage>
-                Example: Individual plant or animal species (biotic) and water, minerals, and soil
-                (abiotic)
-              </LightBulbMessage>
-            )}
-            {chapter1Tab !== "environmental" && (
-              <LightBulbMessage>
-                Example: grasslands, forests, woodlands, wetlands, mangroves, and peatlands
-              </LightBulbMessage>
-            )}
+          <Image
+            src="/assets/key-concepts-background.png"
+            alt=""
+            width={1180}
+            height={547}
+            className="relative top-12 -mt-4 h-auto w-[calc(100%_+_theme(spacing.6))] max-w-none lg:top-20 lg:w-[calc(100%_+_theme(spacing.20))]"
+          />
+        </div>
+      </div>
+      <div className="mx-auto mt-24 flex max-w-7xl flex-col gap-y-14 px-6 lg:mt-40 lg:gap-y-20 lg:px-20">
+        <div className="flex max-w-[860px] flex-col gap-y-6">
+          <h3 className="text-2xl lg:text-4xl">
+            What are <span className="text-green-500">natural capital assets and resources?</span>
+          </h3>
+          <p className="lg:text-xl">
+            Abiotic factors like climate and geology interact with biotic factors such as vegetation
+            and animals to shape ecosystems, define their physical context, and influence the
+            quantity and quality of natural capital assets. There are two types of natural capital
+            assets: environmental assets and ecosystem assets.
+          </p>
+        </div>
+        <div className="flex flex-col gap-y-10 lg:flex-row lg:justify-between lg:gap-x-10">
+          <div className="flex max-w-[475px] flex-1 flex-col gap-y-6 lg:gap-y-10">
+            <p className="text-xl">Environmental</p>
+            <p>
+              Environmental assets are the components that make up the environment. This includes
+              both biotic and abiotic natural resources, which contribute to an ecosystem&apos;s
+              biological diversity and vitality (biotic) and provide the foundational physical and
+              chemical components necessary for ecosystem functioning (abiotic).
+            </p>
+          </div>
+          <div className="flex max-w-[475px] flex-1 flex-col gap-y-6 lg:gap-y-10">
+            <p className="text-xl">Ecosystem</p>
+            <p>
+              Ecosystem assets are formed from the interaction of individual environmental assets
+              (i.e., biotic and abiotic natural resources).
+              <br />
+              <br />
+              They have properties (composition, functions, and form) that result from the
+              interaction of environmental assets. This gives ecosystems unique characteristics and
+              determines the flow of ecosystem services.
+            </p>
           </div>
         </div>
       </div>
@@ -636,84 +603,49 @@ const KeyConceptsPage: FC = () => {
         <Quiz data={QUIZ_DATA[0]} />
       </div>
 
-      <div
-        id="flows-of-services"
-        className={cn(
-          "lg:bg-[length:100%,auto 100%] scroll-mt-[92px] bg-blue-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
-          {
-            "lg:bg-[linear-gradient(to_right,theme(colors.blue.500)_50%,transparent_50%),url(/assets/key-concepts-background-3.png)]":
-              chapter2Tab === "abiotic",
-            "lg:bg-[linear-gradient(to_right,theme(colors.blue.500)_50%,transparent_50%),url(/assets/key-concepts-background-4.png)]":
-              chapter2Tab !== "abiotic",
-          },
-        )}
-      >
-        <div className="mx-auto flex max-w-7xl flex-col px-6 lg:flex-row lg:px-20">
-          <div className="shrink-0 grow-0 py-10 lg:w-1/2 lg:py-14 lg:pr-14">
-            <div className="mb-6 flex flex-col gap-y-6 lg:mb-32 lg:gap-y-5">
-              <h2 className="flex items-center gap-x-4">
-                <span>Chapter 02</span>
-                <span className="h-px w-6 shrink-0 bg-black" />
-                <span>Flows of Services</span>
-              </h2>
-              <p className="text-2xl lg:text-4xl">
-                What are the benefits that flow from natural capital assets?
-              </p>
-              <p>
-                Natural capital assets produce flows of services that have value to businesses and
-                society. These can be of two types:
-              </p>
-            </div>
-            <Tabs value={chapter2Tab} onValueChange={setChapter2Tab}>
-              <TabsList className="mb-6 lg:mb-5">
-                <TabsTrigger value="abiotic">Abiotic Services</TabsTrigger>
-                <TabsTrigger value="ecosystem-services">Ecosystem Services</TabsTrigger>
-              </TabsList>
-              <TabsContent
-                value="abiotic"
-                className="flex flex-col gap-y-4 data-[state=active]:min-h-[124px]"
-              >
-                <p>
-                  Abiotic services are benefits that arise from abiotic natural resources and
-                  physical processes, including fundamental geological processes, solar radiation
-                  and the Earth’s rotation and gravitational pull.
-                </p>
-              </TabsContent>
-              <TabsContent
-                value="ecosystem-services"
-                className="flex flex-col gap-y-4 data-[state=active]:min-h-[124px]"
-              >
-                <p>
-                  Ecosystem services are a key concept in natural capital. Ecosystem services are
-                  products or processes generated by ecosystems that have value to society. They can
-                  be raw materials or produce extracted directly from ecosystem assets, or the
-                  outcome of ecological processes that generate a resource or service.
-                </p>
-              </TabsContent>
-            </Tabs>
+      <div id="flows-of-services" className="scroll-mt-[92px] bg-blue-500">
+        <div className="mx-auto flex max-w-7xl flex-col px-6 lg:px-20">
+          <div className="flex flex-col items-center gap-y-4 pt-10 lg:pt-16">
+            Chapter 02
+            <h2 className="text-2xl lg:text-4.5xl">Flows of Services</h2>
           </div>
-          <div
-            className={cn(
-              "-mx-6 flex aspect-[9/10] flex-col justify-end bg-cover bg-center bg-no-repeat px-6 pb-8 sm:aspect-[5/3] lg:-mx-0 lg:aspect-auto lg:bg-none lg:pl-8 lg:pr-0",
-              {
-                "bg-[url(/assets/key-concepts-background-3.png)]": chapter2Tab === "abiotic",
-                "bg-[url(/assets/key-concepts-background-4.png)]": chapter2Tab !== "abiotic",
-              },
-            )}
-          >
-            {chapter2Tab === "abiotic" && (
-              <LightBulbMessage>
-                Example: the supply of minerals (including metals) and fossil fuels, as well as
-                geothermal heat, wind, tides, sunlight and hydro-power.
-              </LightBulbMessage>
-            )}
-            {chapter2Tab !== "abiotic" && (
-              <LightBulbMessage>
-                Example: timber production, food and fibre, pollination and pest control, water
-                regulation and clean air, climate regulation, and recreation and spiritual
-                fulfilment
-              </LightBulbMessage>
-            )}
+          <Image
+            src="/assets/key-concepts-background-2.png"
+            alt=""
+            width={1180}
+            height={547}
+            className="relative top-12 -mt-4 h-auto w-[calc(100%_+_theme(spacing.6))] max-w-none lg:top-20 lg:w-[calc(100%_+_theme(spacing.20))]"
+          />
+        </div>
+      </div>
+      <div className="mx-auto mt-24 flex max-w-7xl flex-col gap-y-14 px-6 lg:mt-40 lg:gap-y-20 lg:px-20">
+        <div className="flex max-w-[860px] flex-col gap-y-6">
+          <h3 className="text-2xl lg:text-4xl">
+            What are the{" "}
+            <span className="text-blue-500">benefits that flow from natural capital assets?</span>
+          </h3>
+          <p className="lg:text-xl">
+            Natural capital assets produce flows of services that have value to businesses and
+            society. These can be of two types:
+          </p>
+        </div>
+        <div className="flex flex-col gap-y-10 lg:flex-row lg:justify-between lg:gap-x-10">
+          <div className="flex max-w-[475px] flex-1 flex-col gap-y-6 lg:gap-y-10">
+            <p className="text-xl">Abiotic Services</p>
+            <p>
+              Abiotic services are benefits that arise from abiotic natural resources and physical
+              processes, including fundamental geological processes, solar radiation and the Earth’s
+              rotation and gravitational pull.
+            </p>
+          </div>
+          <div className="flex max-w-[475px] flex-1 flex-col gap-y-6 lg:gap-y-10">
+            <p className="text-xl">Ecosystem Services</p>
+            <p>
+              Ecosystem services are a key concept in natural capital. Ecosystem services are
+              products or processes generated by ecosystems that have value to society. They can be
+              raw materials or produce extracted directly from ecosystem assets, or the outcome of
+              ecological processes that generate a resource or service.
+            </p>
           </div>
         </div>
       </div>
@@ -929,80 +861,52 @@ const KeyConceptsPage: FC = () => {
           </motion.div>
         </div>
       </div>
-      <div
-        id="dependencies-and-impacts"
-        className={cn(
-          "lg:bg-[length:100%,auto 100%] scroll-mt-[92px] bg-orange-500 lg:bg-[100%] lg:bg-no-repeat xl:bg-[length:100%,50%]",
-          {
-            "lg:bg-[linear-gradient(to_right,theme(colors.orange.500)_50%,transparent_50%),url(/assets/key-concepts-background-5.png)]":
-              chapter3Tab === "dependencies",
-            "lg:bg-[linear-gradient(to_right,theme(colors.orange.500)_50%,transparent_50%),url(/assets/key-concepts-background-6.png)]":
-              chapter3Tab !== "dependencies",
-          },
-        )}
-      >
-        <div className="mx-auto flex max-w-7xl flex-col px-6 lg:flex-row lg:px-20">
-          <div className="shrink-0 grow-0 py-10 lg:w-1/2 lg:py-14 lg:pr-14">
-            <div className="mb-6 flex flex-col gap-y-6 lg:mb-32 lg:gap-y-5">
-              <h2 className="flex items-center gap-x-4">
-                <span>Chapter 03</span>
-                <span className="h-px w-6 shrink-0 bg-black" />
-                <span>Dependencies and Impacts</span>
-              </h2>
-              <p className="text-2xl lg:text-4xl">
-                How do businesses impact and depend on natural capital?
-              </p>
-              <p>All businesses have natural capital dependencies and impacts.</p>
-            </div>
-            <Tabs value={chapter3Tab} onValueChange={setChapter3Tab}>
-              <TabsList className="mb-6 lg:mb-5">
-                <TabsTrigger value="dependencies">Dependencies</TabsTrigger>
-                <TabsTrigger value="impacts">Impacts</TabsTrigger>
-              </TabsList>
-              <TabsContent
-                value="dependencies"
-                className="flex flex-col gap-y-4 data-[state=active]:min-h-[140px]"
-              >
-                <p>
-                  A dependency is a reliance on, or use of, a natural capital asset or ecosystem
-                  service to conduct the operations of the business.
-                </p>
-              </TabsContent>
-              <TabsContent
-                value="impacts"
-                className="flex flex-col gap-y-4 data-[state=active]:min-h-[140px]"
-              >
-                <p>
-                  Impacts are changes in the extent or condition of a natural capital asset or
-                  ecosystem service resulting from the activities of a business. Impacts may be:
-                </p>
-                <ul className="list-inside list-disc">
-                  <li>
-                    <b>Positive:</b> an improvement in condition and/or increase in amount
-                  </li>
-                  <li>
-                    <b>Negative:</b> a deterioration in condition and/or decrease in amount.
-                  </li>
-                </ul>
-              </TabsContent>
-            </Tabs>
+
+      <div id="dependencies-and-impacts" className="scroll-mt-[92px] bg-orange-500">
+        <div className="mx-auto flex max-w-7xl flex-col px-6 lg:px-20">
+          <div className="flex flex-col items-center gap-y-4 pt-10 lg:pt-16">
+            Chapter 03
+            <h2 className="text-2xl lg:text-4.5xl">Dependencies and Impacts</h2>
           </div>
-          <div
-            className={cn(
-              "-mx-6 flex aspect-[9/10] flex-col justify-end bg-cover bg-center bg-no-repeat px-6 pb-8 sm:aspect-[5/3] lg:-mx-0 lg:aspect-auto lg:bg-none lg:pl-8 lg:pr-0",
-              {
-                "bg-[url(/assets/key-concepts-background-5.png)]": chapter3Tab === "dependencies",
-                "bg-[url(/assets/key-concepts-background-6.png)]": chapter3Tab !== "dependencies",
-              },
-            )}
-          >
-            {chapter3Tab === "dependencies" && (
-              <LightBulbMessage>
-                Example: a company may be dependent on extracting a non-renewable resource (e.g.,
-                mining), harnessing a renewable resource (e.g., water flow to generate electricity),
-                or harvesting a biotic resource (e.g., fisheries) in order to generate income.
-              </LightBulbMessage>
-            )}
+          <Image
+            src="/assets/key-concepts-background-3.png"
+            alt=""
+            width={1180}
+            height={547}
+            className="relative top-12 -mt-4 h-auto w-[calc(100%_+_theme(spacing.6))] max-w-none lg:top-20 lg:w-[calc(100%_+_theme(spacing.20))]"
+          />
+        </div>
+      </div>
+      <div className="mx-auto mt-24 flex max-w-7xl flex-col gap-y-14 px-6 lg:mt-40 lg:gap-y-20 lg:px-20">
+        <div className="flex max-w-[860px] flex-col gap-y-6">
+          <h3 className="text-2xl lg:text-4xl">
+            How do businesses{" "}
+            <span className="text-orange-500">impact and depend on natural capital?</span>
+          </h3>
+          <p className="lg:text-xl">
+            All businesses have natural capital dependencies and impacts.
+          </p>
+        </div>
+        <div className="flex flex-col gap-y-10 lg:flex-row lg:justify-between lg:gap-x-10">
+          <div className="flex max-w-[475px] flex-1 flex-col gap-y-6 lg:gap-y-10">
+            <p className="text-xl">Dependencies</p>
+            <p>
+              A dependency is a reliance on, or use of, a natural capital asset or ecosystem service
+              to conduct the operations of the business.
+            </p>
+          </div>
+          <div className="flex max-w-[475px] flex-1 flex-col gap-y-6 lg:gap-y-10">
+            <p className="text-xl">Impacts</p>
+            <div className="flex flex-col gap-y-4">
+              <p>
+                Impacts are changes in the extent or condition of a natural capital asset or
+                ecosystem service resulting from the activities of a business. Impacts may be:
+              </p>
+              <ul className="list-inside list-disc">
+                <li>Positive: an improvement in condition and/or increase in amount</li>
+                <li>Negative: a deterioration in condition and/or decrease in amount.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
