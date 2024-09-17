@@ -1,28 +1,23 @@
 "use client";
 
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import Pebble from "@/components/key-concepts/pebble";
 import { Button } from "@/components/ui/button";
-import useMediaQuery from "@/hooks/use-media-query";
-import Lightbulb from "@/icons/lightbulb.svg";
 import ArrowSlide from "@/icons/arrow-slide.svg";
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import ThinArrow from "@/icons/thin-arrow.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { FC, Fragment, useCallback, useRef, useState } from "react";
+import { FC } from "react";
 import Quiz from "@/components/quiz";
 import type { QuizData } from "@/components/quiz";
 import NaturalCapitalChart from "./natural-capital-chart";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
 
-// FadeInOnScroll and RevealLines components use window object, which is not available in SSR
-const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
-  ssr: false,
-});
+// const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
+//   ssr: false,
+// });
 // const FadeInOnScroll = dynamic(() => import("@/components/animations/fade-in-on-scroll"), {
 //   ssr: false,
 // });
@@ -148,93 +143,6 @@ const QUIZ_DATA: QuizData[] = [
 ];
 
 const KeyConceptsPage: FC = () => {
-  const [activeSectionMobile, setActiveSectionMobile] = useState(0);
-
-  const isMobile = useMediaQuery("not (min-width: 1024px)", false);
-
-  const scrollSectionRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollSectionRef,
-  });
-
-  const sectionsLinkStyle = [
-    {
-      textDecoration: useTransform(scrollYProgress, (value) =>
-        (isMobile && activeSectionMobile === 0) || (!isMobile && value < 4 / 13)
-          ? "underline"
-          : "none",
-      ),
-      fontWeight: useTransform(scrollYProgress, (value) =>
-        (isMobile && activeSectionMobile === 0) || (!isMobile && value < 4 / 13) ? 700 : 450,
-      ),
-    },
-    {
-      textDecoration: useTransform(scrollYProgress, (value) =>
-        (isMobile && activeSectionMobile === 1) || (!isMobile && value >= 4 / 13 && value < 9 / 13)
-          ? "underline"
-          : "none",
-      ),
-      fontWeight: useTransform(scrollYProgress, (value) =>
-        (isMobile && activeSectionMobile === 1) || (!isMobile && value >= 4 / 13 && value < 9 / 13)
-          ? 700
-          : 450,
-      ),
-    },
-    {
-      textDecoration: useTransform(scrollYProgress, (value) =>
-        (isMobile && activeSectionMobile === 2) || (!isMobile && value >= 9 / 13)
-          ? "underline"
-          : "none",
-      ),
-      fontWeight: useTransform(scrollYProgress, (value) =>
-        (isMobile && activeSectionMobile === 2) || (!isMobile && value >= 9 / 13) ? 700 : 450,
-      ),
-    },
-  ];
-
-  const sectionsStyle = [
-    {
-      opacity: useTransform(scrollYProgress, [3 / 13, 4 / 13], [1, 0]),
-      display: useTransform(scrollYProgress, (value) => (value < 4 / 13 ? "flex" : "none")),
-    },
-    {
-      opacity: useTransform(scrollYProgress, [4 / 13, 5 / 13, 8 / 13, 9 / 13], [0, 1, 1, 0]),
-      display: useTransform(scrollYProgress, (value) =>
-        value >= 4 / 13 && value <= 9 / 13 ? "flex" : "none",
-      ),
-    },
-    {
-      opacity: useTransform(scrollYProgress, [9 / 13, 10 / 13, 13 / 13], [0, 1, 1]),
-      display: useTransform(scrollYProgress, (value) => (value >= 9 / 13 ? "flex" : "none")),
-    },
-  ];
-
-  const SectionsContainer = isMobile ? Fragment : AnimatePresence;
-
-  const setActiveSection = useCallback(
-    (index: number) => {
-      if (isMobile) {
-        setActiveSectionMobile(index);
-        return;
-      }
-
-      // If `top` is positive, the top of the container is below the top of the screen. If `top` is
-      // negative, the user has already entered the scrolling section.
-      const { top, height } = scrollSectionRef.current?.getBoundingClientRect() ?? {
-        top: 0,
-        height: 0,
-      };
-
-      const sectionsYStart = [0, 5 / 13, 10 / 13];
-
-      document.documentElement.scrollBy({
-        top: top + height * sectionsYStart[index],
-        behavior: "smooth",
-      });
-    },
-    [scrollSectionRef, isMobile],
-  );
-
   return (
     <>
       <Header
@@ -335,223 +243,53 @@ const KeyConceptsPage: FC = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto max-w-7xl px-6 py-6 lg:px-20 lg:py-20">
-        <div className="flex flex-col items-start gap-10 pb-10 lg:gap-20 lg:pb-20">
-          <div className="flex flex-col gap-6 self-start lg:max-w-[690px]">
-            <div className="text-lg text-green-500">Assets and Resources</div>
-            <div className="text-2xl lg:text-[62px] lg:leading-none">
-              The three categories of natural resources.
+      <div className="mx-auto max-w-7xl px-6 py-6 pt-20 lg:px-20 lg:py-28 lg:pt-28">
+        <div className="flex flex-col items-start gap-10 pb-10 lg:gap-14 lg:pb-28">
+          <h3 className="text-2xl lg:text-4xl">
+            The three categories of <span className="text-green-500">natural resources.</span>
+          </h3>
+          <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-green-500 lg:text-5xl">01</p>
+                <h4 className="lg:text-xl">Renewable</h4>
+              </div>
+              <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
+                Supporting services support all other ecosystem services. In practical terms,
+                supporting services are difficult to measure directly, so tend to be assessed by
+                using proxy measures such as the extent of ecosystems and the maintenance of genetic
+                diversity among populations and communities.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> solar radiation, wind, tidal energy, water flow, geothermal energy
+              </p>
             </div>
-            <p>
-              Natural capital assets and natural resources are related but distinct. Natural capital
-              assets encompass the broader elements of nature that provide value through ecosystem
-              services. These assets include natural resources such as water, minerals, and forests,
-              which humans utilize for economic gain or other purposes.
-            </p>
-          </div>
-          <div
-            className="relative flex w-full flex-col justify-start gap-y-6 lg:h-[450vh] lg:flex-row lg:items-start lg:justify-between lg:gap-x-16"
-            ref={scrollSectionRef}
-          >
-            <ul className="flex flex-shrink-0 flex-row gap-4 lg:sticky lg:top-24 lg:h-[calc(100vh_-_80px)] lg:w-[220px] lg:flex-col">
-              <motion.li style={{ ...sectionsLinkStyle[0] }}>
-                <Button
-                  type="button"
-                  variant="link"
-                  size="auto"
-                  className="[text-decoration:inherit]"
-                  onClick={() => setActiveSection(0)}
-                >
-                  Renewable
-                </Button>
-              </motion.li>
-              <motion.li style={{ ...sectionsLinkStyle[1] }}>
-                <Button
-                  type="button"
-                  variant="link"
-                  size="auto"
-                  className="[text-decoration:inherit]"
-                  onClick={() => setActiveSection(1)}
-                >
-                  Cultivated
-                </Button>
-              </motion.li>
-              <motion.li style={{ ...sectionsLinkStyle[2] }}>
-                <Button
-                  type="button"
-                  variant="link"
-                  size="auto"
-                  className="[text-decoration:inherit]"
-                  onClick={() => setActiveSection(2)}
-                >
-                  Non-renewable
-                </Button>
-              </motion.li>
-            </ul>
-            <div className="relative flex flex-grow flex-col gap-6 pt-36 lg:sticky lg:top-24 lg:h-[calc(100vh_-_80px)] lg:gap-20 lg:pt-0">
-              {!isMobile && (
-                <div className="absolute right-0 top-0 lg:-right-32">
-                  <Pebble index={1} scrollYProgress={scrollYProgress} />
-                  <Pebble index={2} scrollYProgress={scrollYProgress} />
-                  <Pebble index={3} scrollYProgress={scrollYProgress} />
-                  <Pebble index={4} scrollYProgress={scrollYProgress} />
-                </div>
-              )}
-              {isMobile && (
-                <div className="absolute -right-10 -top-3 sm:right-0 sm:top-0 sm:scale-125 md:right-10 md:scale-150">
-                  <motion.div
-                    className="absolute right-0 top-0"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: activeSectionMobile === 0 ? 1 : 0 }}
-                    transition={{ duration: 0.3, ease: "linear" }}
-                  >
-                    <Image
-                      src="/assets/key-concepts-pebbles-1.png"
-                      alt=""
-                      width={185}
-                      height={194}
-                      sizes="(max-width: 640) 185px, (max-width: 768px) 231px, (max-width: 1024px) 278px, 185px"
-                      className="max-w-none"
-                    />
-                  </motion.div>
-                  <motion.div
-                    className="absolute right-0 top-0"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: activeSectionMobile === 1 ? 1 : 0 }}
-                    transition={{ duration: 0.3, ease: "linear" }}
-                  >
-                    <Image
-                      src="/assets/key-concepts-pebbles-2.png"
-                      alt=""
-                      width={174}
-                      height={210}
-                      sizes="(max-width: 640) 174px, (max-width: 768px) 218px, (max-width: 1024px) 261px, 174px"
-                      className="max-w-none"
-                    />
-                  </motion.div>
-                  <motion.div
-                    className="absolute right-0 top-0"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: activeSectionMobile === 2 ? 1 : 0 }}
-                    transition={{ duration: 0.3, ease: "linear" }}
-                  >
-                    <Image
-                      src="/assets/key-concepts-pebbles-3.png"
-                      alt=""
-                      width={114}
-                      height={202}
-                      sizes="(max-width: 640) 114px, (max-width: 768px) 143px, (max-width: 1024px) 171px, 114px"
-                      className="max-w-none"
-                    />
-                  </motion.div>
-                </div>
-              )}
-              <SectionsContainer>
-                <motion.div
-                  key="renewable"
-                  className={cn("relative z-10 flex max-w-[390px] flex-col gap-y-6 lg:gap-y-5", {
-                    "pointer-events-none": isMobile && activeSectionMobile !== 0,
-                  })}
-                  aria-hidden={isMobile && activeSectionMobile !== 0}
-                  transition={{ duration: 0.3, ease: "linear" }}
-                  {...(isMobile
-                    ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 0 ? { opacity: 1 } : undefined,
-                      }
-                    : { style: sectionsStyle[0] })}
-                >
-                  <p id="renewable" className="text-2xl text-green-500 lg:text-4xl">
-                    Renewable
-                  </p>
-                  <p>
-                    <b>Inexhaustible</b>
-                    <br />
-                    Physical resources that are restored by natural processes at a rate equal to or
-                    faster than they are used.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: solar radiation, wind, tidal energy, water flow, geothermal energy
-                    </span>
-                  </p>
-                  <p>
-                    <b>Exhaustible</b>
-                    <br />
-                    Biological resources that, if harvested slower than or equal to the rate at
-                    which they are replenished by natural processes. If biotic resources are
-                    harvested faster than they are replaced by natural processes, they become
-                    exhaustible (unsustainable).
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">Example: Timber, kelp, fisheries</span>
-                  </p>
-                  <p>
-                    <b>Recoverable</b>
-                    <br />
-                    Renewable resources that are replenished by natural processes on longer time
-                    scales (decades to centuries).
-                  </p>
-                </motion.div>
-                <motion.div
-                  key="cultivated"
-                  className={cn("flex max-w-[390px] flex-col gap-y-6 lg:gap-y-5", {
-                    absolute: isMobile,
-                    "pointer-events-none": isMobile && activeSectionMobile !== 1,
-                  })}
-                  aria-hidden={isMobile && activeSectionMobile !== 1}
-                  transition={{ duration: 0.3, ease: "linear" }}
-                  {...(isMobile
-                    ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 1 ? { opacity: 1 } : undefined,
-                      }
-                    : { style: sectionsStyle[1] })}
-                >
-                  <p id="cultivated" className="text-2xl text-green-500 lg:text-4xl">
-                    Cultivated
-                  </p>
-                  <p>
-                    Ecosystems that are maintained by human intervention but depend on the
-                    underlying environmental assets.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: agricultural systems, plantations, urban green spaces
-                    </span>
-                  </p>
-                </motion.div>
-                <motion.div
-                  key="non-renewable"
-                  className={cn("flex max-w-[390px] flex-col gap-y-6 lg:gap-y-5", {
-                    absolute: isMobile,
-                    "pointer-events-none": isMobile && activeSectionMobile !== 2,
-                  })}
-                  aria-hidden={isMobile && activeSectionMobile !== 2}
-                  transition={{ duration: 0.3, ease: "linear" }}
-                  {...(isMobile
-                    ? {
-                        initial: { opacity: 0 },
-                        animate: activeSectionMobile === 2 ? { opacity: 1 } : undefined,
-                      }
-                    : { style: sectionsStyle[2] })}
-                >
-                  <p id="non-renewable" className="text-2xl text-green-500 lg:text-4xl">
-                    Non-renewable
-                  </p>
-                  <p>
-                    Non-renewable resources are finite and irreplaceable or those that can only be
-                    replaced over geological timescales.
-                  </p>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">Example: fossil fuels, minerals</span>
-                  </p>
-                </motion.div>
-              </SectionsContainer>
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-green-500 lg:text-5xl">02</p>
+                <h4 className="lg:text-xl">Non-renewable</h4>
+              </div>
+              <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
+                These are the services produced as a by-product of ecosystem processes. They do not
+                produce a tangible product directly but they facilitate many of the provisioning
+                services that do produce products, or moderate natural phenomena that support life.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> timber, kelp, fisheries
+              </p>
+            </div>
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-green-500 lg:text-5xl">03</p>
+                <h4 className="lg:text-xl">Cultivated</h4>
+              </div>
+              <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
+                These are ecosystem processes that produce any type of product that benefits people
+                and can be extracted from nature.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> solar radiation, wind, tidal energy, water flow, geothermal energy
+              </p>
             </div>
           </div>
         </div>
@@ -629,117 +367,96 @@ const KeyConceptsPage: FC = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto max-w-7xl px-6 py-6 lg:px-20 lg:py-20">
-        <div className="flex flex-col items-start gap-10 pb-10 lg:gap-20 lg:pb-20">
-          <div className="flex flex-col gap-6 self-start lg:max-w-[799px]">
-            <div className="text-lg text-blue-500">Flows of Services</div>
-            <div className="text-2xl lg:text-[62px] lg:leading-none">
-              The four categories of ecosystem services.
+      <div className="mx-auto max-w-7xl px-6 py-6 pt-20 lg:px-20 lg:py-28 lg:pt-28">
+        <div className="flex flex-col items-start gap-10 pb-10 lg:gap-14 lg:pb-28">
+          <h3 className="text-2xl lg:text-4xl">
+            The four categories of <span className="text-blue-500">ecosystem services</span>.
+          </h3>
+          <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-blue-500 lg:text-5xl">01</p>
+                <h4 className="lg:text-xl">Supporting services</h4>
+              </div>
+              <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
+                Supporting services support all other ecosystem services. In practical terms,
+                supporting services are difficult to measure directly, so tend to be assessed by
+                using proxy measures such as the extent of ecosystems and the maintenance of genetic
+                diversity among populations and communities.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> photosynthesis, nutrient cycling, soil formation, and water cycling
+              </p>
             </div>
-          </div>
-          <div className="flex flex-col justify-start gap-y-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16">
-            <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
-            <div className="flex flex-grow flex-col gap-6 lg:gap-20">
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars>
-                  <div className="text-4.2xl text-blue-500 lg:text-5xl">01</div>
-                </RevealLines>
-                <RevealLines>
-                  <div className="text-2xl lg:text-4xl">Supporting services</div>
-                </RevealLines>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <RevealLines>
-                    <p>
-                      Supporting services support all other ecosystem services. In practical terms,
-                      supporting services are difficult to measure directly, so tend to be assessed
-                      by using proxy measures such as the extent of ecosystems and the maintenance
-                      of genetic diversity among populations and communities.
-                    </p>
-                  </RevealLines>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: photosynthesis, nutrient cycling, soil formation, and water cycling
-                    </span>
-                  </p>
-                </div>
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-blue-500 lg:text-5xl">02</p>
+                <h4 className="lg:text-xl">Regulating</h4>
               </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars>
-                  <div className="text-4.2xl text-blue-500 lg:text-5xl">02</div>
-                </RevealLines>
-                <RevealLines>
-                  <div className="text-2xl lg:text-4xl">Regulating</div>
-                </RevealLines>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <RevealLines>
-                    <p>
-                      These are the services produced as a by-product of ecosystem processes. They
-                      do not produce a tangible product directly but they facilitate many of the
-                      provisioning services that do produce products, or moderate natural phenomena
-                      that support life.
-                    </p>
-                  </RevealLines>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: climate regulation, flood mitigation, erosion control, water
-                      purification and pollination.
-                    </span>
-                  </p>
-                </div>
+              <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
+                These are the services produced as a by-product of ecosystem processes. They do not
+                produce a tangible product directly but they facilitate many of the provisioning
+                services that do produce products, or moderate natural phenomena that support life.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> climate regulation, flood mitigation, erosion control, water
+                purification and pollination.
+              </p>
+            </div>
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-blue-500 lg:text-5xl">03</p>
+                <h4 className="lg:text-xl">Provisioning</h4>
               </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars>
-                  <div className="text-4.2xl text-blue-500 lg:text-5xl">03</div>
-                </RevealLines>
-                <RevealLines>
-                  <div className="text-2xl lg:text-4xl">Provisioning</div>
-                </RevealLines>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <RevealLines>
-                    <p>
-                      These are ecosystem processes that produce any type of product that benefits
-                      people and can be extracted from nature.
-                    </p>
-                  </RevealLines>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: all food, raw materials (timber, minerals, gas, oil), fibres,
-                      medicines, drinking water
-                    </span>
-                  </p>
-                </div>
+              <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
+                These are ecosystem processes that produce any type of product that benefits people
+                and can be extracted from nature.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> all food, raw materials (timber, minerals, gas, oil), fibres,
+                medicines, drinking water
+              </p>
+            </div>
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-blue-500 lg:text-5xl">04</p>
+                <h4 className="lg:text-xl">Cultural</h4>
               </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars>
-                  <div className="text-4.2xl text-blue-500 lg:text-5xl">04</div>
-                </RevealLines>
-                <RevealLines>
-                  <div className="text-2xl lg:text-4xl">Cultural</div>
-                </RevealLines>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <RevealLines>
-                    <p>
-                      These are non-material benefits that contribute to the cultural and spiritual
-                      advancement of people.
-                    </p>
-                  </RevealLines>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: recreational services and tourism, mental and physical health and
-                      well-being derived from connecting with nature, creative inspiration,
-                      aesthetic amenity, spiritual renewal
-                    </span>
-                  </p>
-                </div>
-              </div>
+              <p className="flex-grow lg:flex-grow-0">
+                These are non-material benefits that contribute to the cultural and spiritual
+                advancement of people.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> recreational services and tourism, mental and physical health and
+                well-being derived from connecting with nature, creative inspiration, aesthetic
+                amenity, spiritual renewal
+              </p>
+            </div>
+            <div className="flex flex-col justify-between gap-y-10 bg-black bg-[url(/assets/key-concepts-background-5.png)] bg-cover p-4 text-white md:col-span-2 lg:p-12">
+              <p className="lg:text-2xl">Insights</p>
+              <p className="text-2xl lg:text-4xl">Understanding the role of Natural Capital…</p>
+              <Button
+                variant="outline-white"
+                size="auto"
+                className="h-[76px] w-[76px] self-end rounded-full"
+                asChild
+              >
+                <Link href="/climate-and-biodiversity">
+                  <span className="sr-only">Climate & Biodiversity</span>
+                  <HoverRepeatAnimation>
+                    <ThinArrow aria-hidden />
+                  </HoverRepeatAnimation>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
-        <main className="flex flex-col justify-start gap-y-4 border-t-2 border-t-blue-500 pb-14 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:pb-28">
+        <div className="bg-black text-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-20">
+            <NaturalCapitalChart />
+          </div>
+        </div>
+        <main className="mt-10 flex flex-col justify-start gap-y-4 border-t-2 border-t-blue-500 pb-14 pt-6 lg:mt-28 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:pb-28">
           <h3 className="flex-shrink-0 text-blue-500 lg:w-[350px] lg:text-xl">
             Key insights about this chapter
           </h3>
@@ -769,11 +486,6 @@ const KeyConceptsPage: FC = () => {
           </ul>
         </main>
         <Quiz data={QUIZ_DATA[1]} />
-      </div>
-      <div className="bg-black text-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-20">
-          <NaturalCapitalChart />
-        </div>
       </div>
 
       <div id="dependencies-and-impacts" className="scroll-mt-[92px] bg-orange-500">
@@ -824,91 +536,57 @@ const KeyConceptsPage: FC = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto max-w-7xl px-6 py-6 lg:px-20 lg:py-20">
-        <div className="flex flex-col items-start gap-10 pb-10 lg:gap-20 lg:pb-20">
-          <div className="flex flex-col gap-6 self-start lg:max-w-[799px]">
-            <div className="text-lg text-orange-500">Dependencies and Impacts</div>
-            <div className="text-2xl lg:text-[62px] lg:leading-none">
-              There are three categories of impacts.
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-20 lg:py-28">
+        <div className="flex flex-col items-start gap-10 pb-10 lg:gap-14 lg:pb-28">
+          <h3 className="text-2xl lg:text-4xl">
+            There are <span className="text-orange-500">three categories of impacts</span>.
+          </h3>
+          <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-orange-500 lg:text-5xl">01</p>
+                <h4 className="lg:text-xl">Direct</h4>
+              </div>
+              <p className="flex-grow lg:min-h-[195px] lg:flex-grow-0">
+                This refers to the direct result of a company’s actions and operations, without
+                intermediaries or secondary pathways. Such as direct pollution, habitat destruction,
+                resource extraction and land use change.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> the release of waste into waterways negatively impacts water quality
+              </p>
             </div>
-          </div>
-          <div className="flex flex-col justify-start gap-y-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16">
-            <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
-            <div className="flex flex-grow flex-col gap-6 lg:gap-20">
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars>
-                  <div className="text-4.2xl text-orange-500 lg:text-5xl">01</div>
-                </RevealLines>
-                <RevealLines>
-                  <div className="text-2xl lg:text-4xl">Direct</div>
-                </RevealLines>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <RevealLines>
-                    <p>
-                      This refers to the direct result of a company’s actions and operations,
-                      without intermediaries or secondary pathways. Such as direct pollution,
-                      habitat destruction, resource extraction and land use change.
-                    </p>
-                  </RevealLines>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: the release of waste into waterways negatively impacts water quality
-                    </span>
-                  </p>
-                </div>
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-orange-500 lg:text-5xl">02</p>
+                <h4 className="lg:text-xl">Indirect</h4>
               </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars>
-                  <div className="text-4.2xl text-orange-500 lg:text-5xl">02</div>
-                </RevealLines>
-                <RevealLines>
-                  <div className="text-2xl lg:text-4xl">Indirect</div>
-                </RevealLines>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <RevealLines>
-                    <p>
-                      Indirect impacts from business on natural capital are unintended or secondary
-                      consequences arising through pathways such as financial support, supply
-                      chains, policy influences, and market dynamics, rather than direct actions.
-                    </p>
-                  </RevealLines>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: a company that provides financial credit to another company that is
-                      clearing forests for grazing land and/or residential development leading to
-                      changes in the condition of native vegetation
-                    </span>
-                  </p>
-                </div>
+              <p className="flex-grow lg:min-h-[195px] lg:flex-grow-0">
+                Indirect impacts from business on natural capital are unintended or secondary
+                consequences arising through pathways such as financial support, supply chains,
+                policy influences, and market dynamics, rather than direct actions.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> a company that provides financial credit to another company that is
+                clearing forests for grazing land and/or residential development leading to changes
+                in the condition of native vegetation
+              </p>
+            </div>
+            <div className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
+                <p className="text-4.2xl text-orange-500 lg:text-5xl">03</p>
+                <h4 className="lg:text-xl">Cumulative</h4>
               </div>
-              <div className="flex w-full flex-col gap-3 lg:gap-5">
-                <RevealLines splitChars>
-                  <div className="text-4.2xl text-orange-500 lg:text-5xl">03</div>
-                </RevealLines>
-                <RevealLines>
-                  <div className="text-2xl lg:text-4xl">Cumulative</div>
-                </RevealLines>
-                <div className="flex flex-col gap-3 lg:gap-y-10 lg:pt-5">
-                  <RevealLines>
-                    <p>
-                      The gradual, collective effects of multiple activities, operations, or
-                      decisions over time that alter natural capital assets and ecosystem services.
-                      Cumulative impacts include climate change, habitat fragmentation,
-                      unsustainable water use, and land degradation, resulting from ongoing
-                      contributions rather than isolated events.
-                    </p>
-                  </RevealLines>
-                  <p className="flex flex-row gap-x-4 rounded-[20px] bg-black/5 p-4 lg:py-3">
-                    <Lightbulb className="shrink-0" />
-                    <span className="relative top-0.5">
-                      Example: Corporations are contributing to carbon emissions that are driving
-                      climate change.
-                    </span>
-                  </p>
-                </div>
-              </div>
+              <p className="flex-grow lg:min-h-[195px] lg:flex-grow-0">
+                The gradual, collective effects of multiple activities, operations, or decisions
+                over time that alter natural capital assets and ecosystem services. Cumulative
+                impacts include climate change, habitat fragmentation, unsustainable water use, and
+                land degradation, resulting from ongoing contributions rather than isolated events.
+              </p>
+              <p className="bg-black/5 px-4 py-3">
+                <b>Example:</b> corporations are contributing to carbon emissions that are driving
+                climate change.
+              </p>
             </div>
           </div>
         </div>
