@@ -2,25 +2,18 @@
 
 import dynamic from "next/dynamic";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
-import HorizontalGroupHoverRepeatAnimation from "@/components/animations/horizontal-group-hover-repeat";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Pebble from "@/components/key-concepts/pebble";
-import MountainCoverImage from "@/components/mountain-cover-image";
-import SeaCoverImage from "@/components/sea-cover-image";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useMediaQuery from "@/hooks/use-media-query";
 import Lightbulb from "@/icons/lightbulb.svg";
-import ThinArrow from "@/icons/thin-arrow.svg";
-import PDFFile from "@/icons/pdf-file.svg";
 import ArrowSlide from "@/icons/arrow-slide.svg";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment, useCallback, useRef, useState } from "react";
-import Parallax from "@/components/animations/parallax";
 import Quiz from "@/components/quiz";
 import type { QuizData } from "@/components/quiz";
 import NaturalCapitalChart from "./natural-capital-chart";
@@ -33,17 +26,6 @@ const RevealLines = dynamic(() => import("@/components/animations/reveal-lines")
 // const FadeInOnScroll = dynamic(() => import("@/components/animations/fade-in-on-scroll"), {
 //   ssr: false,
 // });
-
-const LightBulbMessage = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial={{ y: 100 }}
-    animate={{ y: 0 }}
-    className="flex flex-row gap-x-4 rounded-[20px] bg-white/20 p-4 text-white backdrop-blur-[10px] lg:py-3"
-  >
-    <Lightbulb className="shrink-0" />
-    <span className="relative top-0.5">{children}</span>
-  </motion.div>
-);
 
 const QUIZ_DATA: QuizData[] = [
   {
@@ -790,75 +772,9 @@ const KeyConceptsPage: FC = () => {
         </main>
         <Quiz data={QUIZ_DATA[1]} />
       </div>
-      <Parallax
-        heightClasses="h-[400px] lg:h-[547px]"
-        className="sm:aspect-[5/3] sm:h-auto lg:aspect-auto"
-      >
-        <SeaCoverImage />
-      </Parallax>
       <div className="bg-black text-white">
         <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-20">
           <NaturalCapitalChart />
-        </div>
-      </div>
-      <div id="role" className="mx-auto max-w-7xl px-6 py-10 lg:px-20 lg:py-24">
-        <p className="mb-10 text-center text-2xl lg:mb-20 lg:text-[62px] lg:leading-none">
-          Understanding the role of <span className="whitespace-nowrap">Natural Capital...</span>
-        </p>
-        <div className="grid gap-6 lg:grid-cols-2 lg:grid-rows-none lg:gap-x-11">
-          <motion.div whileHover="animate">
-            <Link
-              href="/key-concepts/natural-capital-and-climate-change"
-              className="grid grid-rows-2 transition-transform duration-500 hover:-translate-y-6"
-            >
-              <div className="flex items-end gap-x-8 bg-turquoise p-6 lg:h-full lg:p-11 lg:pt-20">
-                <div className="h-full">
-                  <p>Insights</p>
-                  <p className="text-2xl lg:text-4xl">Natural Capital and Climate Change</p>
-                </div>
-                <div className="hidden h-[76px] w-[76px] shrink-0 rounded-full border border-black lg:flex lg:items-center lg:justify-center">
-                  <HorizontalGroupHoverRepeatAnimation>
-                    <ThinArrow className="h-6 w-6" />
-                  </HorizontalGroupHoverRepeatAnimation>
-                </div>
-              </div>
-              <div className="relative">
-                <Image
-                  src="/assets/key-concepts-illustration.png"
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </Link>
-          </motion.div>
-          <motion.div whileHover="animate">
-            <Link
-              href="/key-concepts/natural-capital-and-biodiversity"
-              className="grid grid-rows-2 transition-transform duration-500 hover:-translate-y-6"
-            >
-              <div className="flex items-end gap-x-8 bg-pink p-6 lg:h-full lg:min-h-[292px] lg:p-11 lg:pt-20">
-                <div className="h-full">
-                  <p>Insights</p>
-                  <p className="text-2xl lg:text-4xl">Natural Capital and Biodiversity</p>
-                </div>
-                <div className="hidden h-[76px] w-[76px] shrink-0 rounded-full border border-black lg:flex lg:items-center lg:justify-center">
-                  <HorizontalGroupHoverRepeatAnimation>
-                    <ThinArrow className="h-6 w-6" />
-                  </HorizontalGroupHoverRepeatAnimation>
-                </div>
-              </div>
-
-              <div className="relative">
-                <Image
-                  src="/assets/key-concepts-illustration-2.png"
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </Link>
-          </motion.div>
         </div>
       </div>
 
@@ -1031,13 +947,10 @@ const KeyConceptsPage: FC = () => {
         </main>
         <Quiz data={QUIZ_DATA[2]} />
       </div>
-      <div className="border-t border-t-black">
-        <main className="mx-auto flex max-w-7xl flex-col items-start gap-y-6 p-6 lg:gap-y-10 lg:p-20">
-          <h2 className="flex items-center gap-x-5 text-2xl xl:text-4xl">
-            <PDFFile />
-            Downloadable resource
-          </h2>
-          <p className="max-w-[830px]">
+      <div className="mx-auto max-w-7xl p-6 lg:p-20">
+        <main className="flex flex-col items-start gap-y-6 bg-[url(/assets/key-concepts-background-4.svg)] bg-right-bottom bg-no-repeat pb-48 md:pb-32 lg:gap-y-10 lg:pb-24 xl:pb-0">
+          <h2 className="flex items-center gap-x-5 text-2xl xl:text-4xl">Downloadable resource</h2>
+          <p className="max-w-[730px] lg:text-xl">
             If you find it easier to learn about Natural Capital Key Concepts in a print form, you
             can download the PDF below which contains all theoretical principles about Natural
             Capital.
@@ -1050,8 +963,8 @@ const KeyConceptsPage: FC = () => {
         </main>
       </div>
       <div className="bg-orange-500 py-10 lg:py-14">
-        <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-10 p-6 text-center lg:gap-y-16">
-          <h2 className="max-w-[1120px] text-2xl lg:text-[62px] lg:leading-[68px]">
+        <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-10 p-6 text-center">
+          <h2 className="max-w-[860px] text-2xl lg:text-4xl">
             Learn more about dependencies and impacts in the industry use cases chapter.
           </h2>
           <Button variant="outline" asChild>
@@ -1061,7 +974,6 @@ const KeyConceptsPage: FC = () => {
           </Button>
         </main>
       </div>
-      <MountainCoverImage />
       <Footer />
     </>
   );
