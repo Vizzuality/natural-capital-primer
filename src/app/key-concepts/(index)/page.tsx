@@ -148,10 +148,6 @@ const QUIZ_DATA: QuizData[] = [
 ];
 
 const KeyConceptsPage: FC = () => {
-  const [chapter1Tab, setChapter1Tab] = useState("environmental");
-  const [chapter2Tab, setChapter2Tab] = useState("abiotic");
-  const [chapter3Tab, setChapter3Tab] = useState("dependencies");
-
   const [activeSectionMobile, setActiveSectionMobile] = useState(0);
 
   const isMobile = useMediaQuery("not (min-width: 1024px)", false);
@@ -559,28 +555,30 @@ const KeyConceptsPage: FC = () => {
             </div>
           </div>
         </div>
-        <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:p-20">
-          <div className="hidden flex-shrink-0 lg:block lg:w-[220px]" />
-          <div className="flex flex-grow flex-col gap-10">
-            <div className="flex items-center gap-3">
-              <h2>Key insights about this chapter</h2>
-              <div className="grow border-t border-t-grey-500"></div>
-            </div>
-            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
-              <li>
+        <main className="flex flex-col justify-start gap-y-4 border-t-2 border-t-green-500 pb-14 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:pb-28">
+          <h3 className="flex-shrink-0 text-green-500 lg:w-[350px] lg:text-xl">
+            Key insights about this chapter
+          </h3>
+          <ul className="flex flex-grow flex-col gap-y-6 divide-y divide-dashed lg:gap-y-5">
+            <li className="pt-5">
+              <p className="max-w-[600px]">
                 Assets form the basis of natural capital and can be categorized as either
                 environmental (individual) or ecosystem (interaction of environmental) assets.
-              </li>
-              <li>
+              </p>
+            </li>
+            <li className="pt-5">
+              <p className="max-w-[600px]">
                 There are three different resource classes: renewable (inexhaustible, exhaustible
                 and recoverable), cultivated and non-renewable.
-              </li>
-              <li>
+              </p>
+            </li>
+            <li className="pt-5">
+              <p className="max-w-[600px]">
                 These classes are determined by the amount of time taken to replenish them and the
                 process in which they are created.
-              </li>
-            </ol>
-          </div>
+              </p>
+            </li>
+          </ul>
         </main>
         <Quiz data={QUIZ_DATA[0]} />
       </div>
@@ -741,34 +739,34 @@ const KeyConceptsPage: FC = () => {
             </div>
           </div>
         </div>
-        <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
-          <p className="hidden flex-shrink-0 text-blue-500 lg:block lg:w-[220px]">
-            Flows of Services
-          </p>
-          <div className="flex flex-grow flex-col gap-10">
-            <div className="flex items-center gap-3">
-              <h2>Key insights about this chapter</h2>
-              <div className="grow border-t border-t-grey-500"></div>
-            </div>
-            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
-              <li>
+        <main className="flex flex-col justify-start gap-y-4 border-t-2 border-t-blue-500 pb-14 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:pb-28">
+          <h3 className="flex-shrink-0 text-blue-500 lg:w-[350px] lg:text-xl">
+            Key insights about this chapter
+          </h3>
+          <ul className="flex flex-grow flex-col gap-y-6 divide-y divide-dashed lg:gap-y-5">
+            <li className="pt-5">
+              <p className="max-w-[600px]">
                 Natural capital assets produce two types of services: abiotic services (geological
                 and physical processes) and ecosystem services (ecological processes).
-              </li>
-              <li>
+              </p>
+            </li>
+            <li className="pt-5">
+              <p className="max-w-[600px]">
                 There are four categories of ecosystem services: supporting the production of all
                 other services and life on Earth, regulating the balance of natural processes,
                 provisioning products from nature, and cultural non-material benefits we get from
                 nature.
-              </li>
-              <li>
+              </p>
+            </li>
+            <li className="pt-5">
+              <p className="max-w-[600px]">
                 Humans directly benefit and exist thanks to all ecosystem services, be it nutrient
                 cycling (supporting) and pollination (regulation) enabling food to grow, to
                 freshwater for drinking (provisioning) and beautiful landscapes offering a place to
                 exercise, relax and be inspired by nature (cultural).
-              </li>
-            </ol>
-          </div>
+              </p>
+            </li>
+          </ul>
         </main>
         <Quiz data={QUIZ_DATA[1]} />
       </div>
@@ -914,36 +912,36 @@ const KeyConceptsPage: FC = () => {
             </div>
           </div>
         </div>
-        <main className="-mx-6 flex flex-col justify-start gap-y-6 border-t border-dashed border-t-black p-6 lg:-mx-20 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
-          <p className="hidden flex-shrink-0 text-orange-500 lg:block lg:w-[220px]">
-            Dependencies and Impacts
-          </p>
-          <div className="flex flex-grow flex-col gap-10">
-            <div className="flex items-center gap-3">
-              <h2>Key insights about this chapter</h2>
-              <div className="grow border-t border-t-grey-500"></div>
-            </div>
-            <ol className="flex max-w-[540px] list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
-              <li>
+        <main className="flex flex-col justify-start gap-y-4 border-t-2 border-t-orange-500 pb-14 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:pb-28">
+          <h3 className="flex-shrink-0 text-orange-500 lg:w-[350px] lg:text-xl">
+            Key insights about this chapter
+          </h3>
+          <ul className="flex flex-grow flex-col gap-y-6 divide-y divide-dashed lg:gap-y-5">
+            <li className="pt-5">
+              <p className="max-w-[600px]">
                 Businesses depend on natural capital assets and ecosystem services to operate
                 effectively, such as extracting non-renewable resources or utilizing renewable
                 resources like water for electricity generation.
-              </li>
-              <li>
+              </p>
+            </li>
+            <li className="pt-5">
+              <p className="max-w-[600px]">
                 Businesses influence natural capital assets and ecosystem services through their
                 activities, having positive and negative impacts. Impacts can be direct (e.g., waste
                 pollution from production), indirect (e.g., deforestation linked to scope 3 supply
                 chains), and cumulative (e.g., numerous industries and activities contributing to
                 global climate change over time).
-              </li>
-              <li>
+              </p>
+            </li>
+            <li className="pt-5">
+              <p className="max-w-[600px]">
                 Many businesses aim to reduce their negative impacts by achieving net-zero
                 emissions, avoiding deforestation, and eliminating plastic use. Others go further by
                 restoring habitats, practicing sustainable agriculture, and adopting circular
                 economy principles.
-              </li>
-            </ol>
-          </div>
+              </p>
+            </li>
+          </ul>
         </main>
         <Quiz data={QUIZ_DATA[2]} />
       </div>
