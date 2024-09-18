@@ -1,6 +1,6 @@
 "use client";
 
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
@@ -16,10 +16,11 @@ import NaturalCapitalChart from "./natural-capital-chart";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
 import StickyNav from "@/components/sticky-nav";
 import { useInView } from "framer-motion";
+import Parallax from "@/components/animations/parallax";
 
-// const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
-//   ssr: false,
-// });
+const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
+  ssr: false,
+});
 
 const QUIZ_DATA: QuizData[] = [
   {
@@ -221,13 +222,20 @@ const KeyConceptsPage: FC = () => {
               Chapter 01
               <h2 className="text-2xl lg:text-4.5xl">Assets and Resources</h2>
             </div>
-            <Image
-              src="/assets/key-concepts-background.png"
-              alt=""
-              width={1180}
-              height={547}
-              className="relative top-12 -mt-4 h-auto w-[calc(100%_+_theme(spacing.6))] max-w-none lg:top-20 lg:w-[calc(100%_+_theme(spacing.20))]"
-            />
+            <div className="relative top-12 -mt-4 lg:top-20 lg:w-[calc(100%_+_theme(spacing.20))]">
+              <Parallax
+                heightClasses="h-[200px] md:h-[300px] lg:h-[556px]"
+                containerHeightPercentageMobile={200}
+              >
+                <Image
+                  src="/assets/key-concepts-background.png"
+                  alt=""
+                  width={1180}
+                  height={547}
+                  className="h-auto w-full max-w-none"
+                />
+              </Parallax>
+            </div>
           </div>
         </div>
         <div className="mx-auto mt-24 flex max-w-7xl flex-col gap-y-14 px-6 lg:mt-40 lg:gap-y-20 lg:px-20">
@@ -274,7 +282,9 @@ const KeyConceptsPage: FC = () => {
             <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-green-500 lg:text-5xl">01</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-green-500 lg:text-5xl">01</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Renewable</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
@@ -289,7 +299,9 @@ const KeyConceptsPage: FC = () => {
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-green-500 lg:text-5xl">02</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-green-500 lg:text-5xl">02</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Non-renewable</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
@@ -304,7 +316,9 @@ const KeyConceptsPage: FC = () => {
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-green-500 lg:text-5xl">03</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-green-500 lg:text-5xl">03</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Cultivated</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
@@ -323,22 +337,28 @@ const KeyConceptsPage: FC = () => {
             </h3>
             <ul className="flex flex-grow flex-col gap-y-6 divide-y divide-dashed lg:gap-y-5">
               <li className="pt-5">
-                <p className="max-w-[600px]">
-                  Assets form the basis of natural capital and can be categorized as either
-                  environmental (individual) or ecosystem (interaction of environmental) assets.
-                </p>
+                <RevealLines>
+                  <p className="max-w-[600px]">
+                    Assets form the basis of natural capital and can be categorized as either
+                    environmental (individual) or ecosystem (interaction of environmental) assets.
+                  </p>
+                </RevealLines>
               </li>
               <li className="pt-5">
-                <p className="max-w-[600px]">
-                  There are three different resource classes: renewable (inexhaustible, exhaustible
-                  and recoverable), cultivated and non-renewable.
-                </p>
+                <RevealLines>
+                  <p className="max-w-[600px]">
+                    There are three different resource classes: renewable (inexhaustible,
+                    exhaustible and recoverable), cultivated and non-renewable.
+                  </p>
+                </RevealLines>
               </li>
               <li className="pt-5">
-                <p className="max-w-[600px]">
-                  These classes are determined by the amount of time taken to replenish them and the
-                  process in which they are created.
-                </p>
+                <RevealLines>
+                  <p className="max-w-[600px]">
+                    These classes are determined by the amount of time taken to replenish them and
+                    the process in which they are created.
+                  </p>
+                </RevealLines>
               </li>
             </ul>
           </main>
@@ -353,13 +373,20 @@ const KeyConceptsPage: FC = () => {
               Chapter 02
               <h2 className="text-2xl lg:text-4.5xl">Flows of Services</h2>
             </div>
-            <Image
-              src="/assets/key-concepts-background-2.png"
-              alt=""
-              width={1180}
-              height={547}
-              className="relative top-12 -mt-4 h-auto w-[calc(100%_+_theme(spacing.6))] max-w-none lg:top-20 lg:w-[calc(100%_+_theme(spacing.20))]"
-            />
+            <div className="relative top-12 -mt-4 lg:top-20 lg:w-[calc(100%_+_theme(spacing.20))]">
+              <Parallax
+                heightClasses="h-[200px] md:h-[300px] lg:h-[556px]"
+                containerHeightPercentageMobile={200}
+              >
+                <Image
+                  src="/assets/key-concepts-background-2.png"
+                  alt=""
+                  width={1180}
+                  height={547}
+                  className="h-auto w-full max-w-none"
+                />
+              </Parallax>
+            </div>
           </div>
         </div>
         <div className="mx-auto mt-24 flex max-w-7xl flex-col gap-y-14 px-6 lg:mt-40 lg:gap-y-20 lg:px-20">
@@ -401,7 +428,9 @@ const KeyConceptsPage: FC = () => {
             <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-blue-500 lg:text-5xl">01</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-blue-500 lg:text-5xl">01</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Supporting services</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
@@ -417,7 +446,9 @@ const KeyConceptsPage: FC = () => {
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-blue-500 lg:text-5xl">02</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-blue-500 lg:text-5xl">02</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Regulating</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
@@ -433,7 +464,9 @@ const KeyConceptsPage: FC = () => {
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-blue-500 lg:text-5xl">03</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-blue-500 lg:text-5xl">03</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Provisioning</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
@@ -447,7 +480,9 @@ const KeyConceptsPage: FC = () => {
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-blue-500 lg:text-5xl">04</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-blue-500 lg:text-5xl">04</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Cultural</h4>
                 </div>
                 <p className="flex-grow lg:flex-grow-0">
@@ -486,26 +521,33 @@ const KeyConceptsPage: FC = () => {
             </h3>
             <ul className="flex flex-grow flex-col gap-y-6 divide-y divide-dashed lg:gap-y-5">
               <li className="pt-5">
-                <p className="max-w-[600px]">
-                  Natural capital assets produce two types of services: abiotic services (geological
-                  and physical processes) and ecosystem services (ecological processes).
-                </p>
+                <RevealLines>
+                  <p className="max-w-[600px]">
+                    Natural capital assets produce two types of services: abiotic services
+                    (geological and physical processes) and ecosystem services (ecological
+                    processes).
+                  </p>
+                </RevealLines>
               </li>
               <li className="pt-5">
-                <p className="max-w-[600px]">
-                  There are four categories of ecosystem services: supporting the production of all
-                  other services and life on Earth, regulating the balance of natural processes,
-                  provisioning products from nature, and cultural non-material benefits we get from
-                  nature.
-                </p>
+                <RevealLines>
+                  <p className="max-w-[600px]">
+                    There are four categories of ecosystem services: supporting the production of
+                    all other services and life on Earth, regulating the balance of natural
+                    processes, provisioning products from nature, and cultural non-material benefits
+                    we get from nature.
+                  </p>
+                </RevealLines>
               </li>
               <li className="pt-5">
-                <p className="max-w-[600px]">
-                  Humans directly benefit and exist thanks to all ecosystem services, be it nutrient
-                  cycling (supporting) and pollination (regulation) enabling food to grow, to
-                  freshwater for drinking (provisioning) and beautiful landscapes offering a place
-                  to exercise, relax and be inspired by nature (cultural).
-                </p>
+                <RevealLines>
+                  <p className="max-w-[600px]">
+                    Humans directly benefit and exist thanks to all ecosystem services, be it
+                    nutrient cycling (supporting) and pollination (regulation) enabling food to
+                    grow, to freshwater for drinking (provisioning) and beautiful landscapes
+                    offering a place to exercise, relax and be inspired by nature (cultural).
+                  </p>
+                </RevealLines>
               </li>
             </ul>
           </main>
@@ -520,13 +562,20 @@ const KeyConceptsPage: FC = () => {
               Chapter 03
               <h2 className="text-2xl lg:text-4.5xl">Dependencies and Impacts</h2>
             </div>
-            <Image
-              src="/assets/key-concepts-background-3.png"
-              alt=""
-              width={1180}
-              height={547}
-              className="relative top-12 -mt-4 h-auto w-[calc(100%_+_theme(spacing.6))] max-w-none lg:top-20 lg:w-[calc(100%_+_theme(spacing.20))]"
-            />
+            <div className="relative top-12 -mt-4 lg:top-20 lg:w-[calc(100%_+_theme(spacing.20))]">
+              <Parallax
+                heightClasses="h-[200px] md:h-[300px] lg:h-[556px]"
+                containerHeightPercentageMobile={200}
+              >
+                <Image
+                  src="/assets/key-concepts-background-3.png"
+                  alt=""
+                  width={1180}
+                  height={547}
+                  className="h-auto w-full max-w-none"
+                />
+              </Parallax>
+            </div>
           </div>
         </div>
         <div className="mx-auto mt-24 flex max-w-7xl flex-col gap-y-14 px-6 lg:mt-40 lg:gap-y-20 lg:px-20">
@@ -570,7 +619,9 @@ const KeyConceptsPage: FC = () => {
             <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-orange-500 lg:text-5xl">01</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-orange-500 lg:text-5xl">01</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Direct</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[195px] lg:flex-grow-0">
@@ -585,7 +636,9 @@ const KeyConceptsPage: FC = () => {
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-orange-500 lg:text-5xl">02</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-orange-500 lg:text-5xl">02</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Indirect</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[195px] lg:flex-grow-0">
@@ -601,7 +654,9 @@ const KeyConceptsPage: FC = () => {
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
                 <div>
-                  <p className="text-4.2xl text-orange-500 lg:text-5xl">03</p>
+                  <RevealLines splitChars>
+                    <p className="text-4.2xl text-orange-500 lg:text-5xl">03</p>
+                  </RevealLines>
                   <h4 className="lg:text-xl">Cumulative</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[195px] lg:flex-grow-0">
@@ -624,28 +679,34 @@ const KeyConceptsPage: FC = () => {
             </h3>
             <ul className="flex flex-grow flex-col gap-y-6 divide-y divide-dashed lg:gap-y-5">
               <li className="pt-5">
-                <p className="max-w-[600px]">
-                  Businesses depend on natural capital assets and ecosystem services to operate
-                  effectively, such as extracting non-renewable resources or utilizing renewable
-                  resources like water for electricity generation.
-                </p>
+                <RevealLines>
+                  <p className="max-w-[600px]">
+                    Businesses depend on natural capital assets and ecosystem services to operate
+                    effectively, such as extracting non-renewable resources or utilizing renewable
+                    resources like water for electricity generation.
+                  </p>
+                </RevealLines>
               </li>
               <li className="pt-5">
-                <p className="max-w-[600px]">
-                  Businesses influence natural capital assets and ecosystem services through their
-                  activities, having positive and negative impacts. Impacts can be direct (e.g.,
-                  waste pollution from production), indirect (e.g., deforestation linked to scope 3
-                  supply chains), and cumulative (e.g., numerous industries and activities
-                  contributing to global climate change over time).
-                </p>
+                <RevealLines>
+                  <p className="max-w-[600px]">
+                    Businesses influence natural capital assets and ecosystem services through their
+                    activities, having positive and negative impacts. Impacts can be direct (e.g.,
+                    waste pollution from production), indirect (e.g., deforestation linked to scope
+                    3 supply chains), and cumulative (e.g., numerous industries and activities
+                    contributing to global climate change over time).
+                  </p>
+                </RevealLines>
               </li>
               <li className="pt-5">
-                <p className="max-w-[600px]">
-                  Many businesses aim to reduce their negative impacts by achieving net-zero
-                  emissions, avoiding deforestation, and eliminating plastic use. Others go further
-                  by restoring habitats, practicing sustainable agriculture, and adopting circular
-                  economy principles.
-                </p>
+                <RevealLines>
+                  <p className="max-w-[600px]">
+                    Many businesses aim to reduce their negative impacts by achieving net-zero
+                    emissions, avoiding deforestation, and eliminating plastic use. Others go
+                    further by restoring habitats, practicing sustainable agriculture, and adopting
+                    circular economy principles.
+                  </p>
+                </RevealLines>
               </li>
             </ul>
           </main>
