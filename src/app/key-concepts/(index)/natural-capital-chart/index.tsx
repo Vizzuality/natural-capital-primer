@@ -25,26 +25,25 @@ const NaturalCapitalChart = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-6 text-white lg:gap-10">
-      <div className="flex items-center justify-center gap-2.5">
-        <div className="text-2xl lg:text-4xl">
-          <span className="sr-only lg:not-sr-only">Natural Capital </span>Assets
+    <div className="flex flex-col gap-10 lg:gap-16">
+      <div className="mx-auto max-w-[730px] text-2xl text-blue-500 lg:text-center lg:text-4xl">
+        <span className="sr-only lg:not-sr-only">
+          Hover on the different elements and see how they are connected
+        </span>
+      </div>
+      <div className="flex flex-col gap-y-4">
+        <div className="flex items-center justify-center gap-2.5 md:relative md:left-[9.1%] md:justify-start">
+          <div className="text-xl">Natural Capital Assets</div>
+          <InfoTooltip content="Biotic and abiotic assets in an ecosystem that can be described in terms of their extant and condition." />
         </div>
-        <InfoTooltip
-          theme="dark"
-          content="Biotic and abiotic assets in an ecosystem that can be described in terms of their extant and condition."
-        />
-      </div>
-      <div ref={chartContainerRef}>
-        {isMd && <DesktopChart width={width} />}
-        {!isMd && <MobileChart width={width} />}
-      </div>
-      <div className="flex items-center justify-center gap-2.5">
-        <div className="text-2xl lg:text-4xl">Flow of services</div>
-        <InfoTooltip
-          theme="dark"
-          content="The products or processes arising from nature that are of benefit and value to human society."
-        />
+        <div ref={chartContainerRef}>
+          {isMd && <DesktopChart width={width} />}
+          {!isMd && <MobileChart width={width} />}
+        </div>
+        <div className="flex items-center justify-center gap-2.5 md:justify-start">
+          <div className="text-xl">Flow of services</div>
+          <InfoTooltip content="The products or processes arising from nature that are of benefit and value to human society." />
+        </div>
       </div>
     </div>
   );

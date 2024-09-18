@@ -451,11 +451,7 @@ const KeyConceptsPage: FC = () => {
             </div>
           </div>
         </div>
-        <div className="bg-black text-white">
-          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-20">
-            <NaturalCapitalChart />
-          </div>
-        </div>
+        <NaturalCapitalChart />
         <main className="mt-10 flex flex-col justify-start gap-y-4 border-t-2 border-t-blue-500 pb-14 pt-6 lg:mt-28 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:pb-28">
           <h3 className="flex-shrink-0 text-blue-500 lg:w-[350px] lg:text-xl">
             Key insights about this chapter

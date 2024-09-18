@@ -109,15 +109,15 @@ const MobileChart: FC<MobileChartProps> = ({ width }) => {
   return (
     <>
       <Tabs value={sourceTab} onValueChange={(value) => setSourceTab(value as SourceGroup)}>
-        <TabsList variant="white" className="mb-6">
+        <TabsList variant="default" className="mb-6">
           {Object.entries(SourceGroup).map(([name, key]) => (
-            <TabsTrigger key={key} value={key} variant="white">
+            <TabsTrigger key={key} value={key} variant="default">
               {name}
             </TabsTrigger>
           ))}
         </TabsList>
         {Object.entries(SourceGroup).map(([, key]) => (
-          <TabsContent key={key} value={key} variant="white" className="flex justify-between">
+          <TabsContent key={key} value={key} variant="default" className="flex justify-between">
             {sourceNodes
               .filter((node) => node.group === key)
               .map((node) => (
@@ -138,7 +138,7 @@ const MobileChart: FC<MobileChartProps> = ({ width }) => {
             <path
               key={`${link.source.id}-${link.target.id}`}
               d={linker(link) ?? ""}
-              className="fill-none stroke-grey-450 stroke-2"
+              className="fill-none stroke-black/15 stroke-2"
               strokeLinecap="round"
             />
           ))}
@@ -146,7 +146,7 @@ const MobileChart: FC<MobileChartProps> = ({ width }) => {
       </div>
       <Tabs value={targetTab} onValueChange={(value) => setTargetTab(value as TargetGroup)}>
         {Object.entries(TargetGroup).map(([, key]) => (
-          <TabsContent key={key} value={key} variant="white" className="flex justify-between">
+          <TabsContent key={key} value={key} variant="default" className="flex justify-between">
             {targetNodes
               .filter((node) => node.group === key)
               .reduce((res, node) => {
@@ -184,9 +184,9 @@ const MobileChart: FC<MobileChartProps> = ({ width }) => {
               })}
           </TabsContent>
         ))}
-        <TabsList variant="white" className="mt-6">
+        <TabsList variant="default" className="mt-6">
           {Object.entries(TargetGroup).map(([name, key]) => (
-            <TabsTrigger key={key} value={key} variant="white">
+            <TabsTrigger key={key} value={key} variant="default">
               {name}
             </TabsTrigger>
           ))}

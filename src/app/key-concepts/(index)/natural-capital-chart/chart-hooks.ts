@@ -15,7 +15,7 @@ interface Link extends DefaultLinkObject {
   targetName: string;
 }
 
-export const GREY = "#515679";
+export const GREY = "#d7d8d3";
 
 // Function to invert object keys and values
 const invert = (obj: { [key: string]: string[] }) =>
@@ -42,7 +42,10 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
 
     if (!hovered) {
       // Clear links
-      select(svgElement).select("#links").selectAll("path").attr("stroke", GREY);
+      select(svgElement)
+        .select("#links")
+        .selectAll("path")
+        .attr("class", "transition-all stroke-black/15");
 
       // Clear node name
       selectAll(".node-name").remove();
@@ -61,7 +64,7 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
         type === "source"
           ? linksElement.selectAll(`[data-source="${hovered}"]`)
           : linksElement.selectAll(`[data-target="${hovered}"]`);
-      highlightedLinks.attr("stroke", "white");
+      highlightedLinks.attr("class", "transition-all stroke-blue-500");
       highlightedLinks.raise();
 
       // Create new element for the hovered node name
@@ -80,7 +83,23 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
       nodeNameGroup
         .append("foreignObject")
         .classed("node-name", true)
-        .attr("x", (-1 * name.length * 12) / 2)
+        .attr("x", () => {
+          let offset = 0;
+
+          // Exceptions to avoid overlapping
+          const exceptions = [
+            { source: "livestock-production", dx: 15 },
+            { source: "energy-production", dx: -8 },
+          ];
+
+          const exception = exceptions.find(({ source }) => source === hovered);
+
+          if (exception) {
+            offset += exception.dx;
+          }
+
+          return (-1 * name.length * 12) / 2 + offset;
+        })
         .attr("y", type === "source" ? 40 : -90)
         .attr("width", name.length * 12)
         .attr("height", 50)
@@ -90,7 +109,10 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
           true,
         )
         .append("xhtml:div")
-        .classed("bg-white rounded-full text-black text-xs h-fit px-3 py-1", true)
+        .classed(
+          "bg-black rounded-full text-white border border-2 border-white text-xs h-fit px-3 py-1",
+          true,
+        )
         .html(name);
 
       // Create new elements for the linked nodes
@@ -130,6 +152,11 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
 
             // Exceptions to avoid overlapping
             const exceptions = [
+              { source: "water", target: "livestock-production", dx: 15 },
+              { source: "water", target: "energy-production", dx: -8 },
+              { source: "atmosphere", target: "energy-production", dx: -8 },
+              { source: "grasslands", target: "livestock-production", dx: 15 },
+              { source: "farmlands", target: "livestock-production", dx: 15 },
               { source: "soil", target: "mineral-extraction", dx: -17 },
               { source: "soil", target: "fossil-fuels", dx: 17 },
               { source: "wetlands", target: "tourism", dx: -10 },
@@ -164,7 +191,7 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
           )
           .append("xhtml:div")
           .classed(
-            "bg-gray-450/40 backdrop-blur border border-2 border-white rounded-full text-white text-xs w-fit h-fit px-[10px] py-1",
+            "bg-blue-500 border border-2 border-blue-500 rounded-full text-white text-xs w-fit h-fit px-[10px] py-1",
             true,
           )
           .html(linkedName);

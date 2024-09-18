@@ -4,6 +4,7 @@ import { useRef } from "react";
 
 import { useInitLinks, useHovered, GREY } from "./chart-hooks";
 import InfoTooltip from "@/components/info-tooltip";
+import { cn } from "@/lib/utils";
 
 export interface DesktopChartProps {
   width: number;
@@ -19,109 +20,89 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
     <svg
       ref={svgRef}
       width={width}
-      height="700"
-      viewBox="0 0 1106 700"
+      height={(width * 588) / 1120}
+      viewBox="22 95 1060 500"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
         <pattern id="img-water" width="1" height="1">
-          <image href="/assets/chart/water.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/water.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-soil" width="1" height="1">
-          <image href="/assets/chart/soil.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/soil.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-atmosphere" width="1" height="1">
-          <image href="/assets/chart/atmosphere.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/atmosphere.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-plants-and-animals" width="1" height="1">
-          <image href="/assets/chart/plants-and-animals.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/plants-and-animals.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-grasslands" width="1" height="1">
-          <image href="/assets/chart/grasslands.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/grasslands.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-mangroves" width="1" height="1">
-          <image href="/assets/chart/mangroves.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/mangroves.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-wetlands" width="1" height="1">
-          <image href="/assets/chart/wetlands.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/wetlands.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-farmlands" width="1" height="1">
-          <image href="/assets/chart/farmlands.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/farmlands.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-livestock-production" width="1" height="1">
-          <image href="/assets/chart/livestock-production.png" x="0" y="0" width="60" height="60" />
+          <image
+            href="/assets/chart/livestock-production.png"
+            x="-1"
+            y="0"
+            width="60"
+            height="60"
+          />
         </pattern>
         <pattern id="img-timber" width="1" height="1">
-          <image href="/assets/chart/timber.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/timber.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-tourism" width="1" height="1">
-          <image href="/assets/chart/tourism.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/tourism.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-recreation-sites" width="1" height="1">
-          <image href="/assets/chart/recreation-sites.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/recreation-sites.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-soil-fertility" width="1" height="1">
-          <image href="/assets/chart/soil-fertility.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/soil-fertility.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-climate-regulation" width="1" height="1">
-          <image href="/assets/chart/climate-regulation.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/climate-regulation.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-water-filtering" width="1" height="1">
-          <image href="/assets/chart/water-filtering.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/water-filtering.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-habitat-provision" width="1" height="1">
-          <image href="/assets/chart/habitat-provision.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/habitat-provision.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-fossil-fuels" width="1" height="1">
-          <image href="/assets/chart/fossil-fuels.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/fossil-fuels.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-mineral-extraction" width="1" height="1">
-          <image href="/assets/chart/mineral-extraction.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/mineral-extraction.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-energy-production" width="1" height="1">
-          <image href="/assets/chart/energy-production.png" x="0" y="0" width="60" height="60" />
+          <image href="/assets/chart/energy-production.png" x="-1" y="0" width="60" height="60" />
         </pattern>
       </defs>
       <g id="chart">
         <g id="links"></g>
         <g id="rest">
           <g id="Frame 2341884">
-            <g id="Group 1055">
-              <path
-                id="Vector 134"
-                d="M560.936 1V1C560.936 20.8823 544.818 37 524.936 37H210.436C192.763 37 178.436 51.3269 178.436 69V69"
-                stroke={GREY}
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                id="Vector 135"
-                d="M561.436 1V1C561.436 20.8823 577.554 37 597.436 37H911.936C929.609 37 943.936 51.3269 943.936 69V69"
-                stroke={GREY}
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </g>
             <g id="Frame 2341883">
               <g id="Frame 2341882">
                 <g id="Frame 2341670">
-                  <mask id="path-3-inside-1_884_1590" fill="white">
-                    <path d="M119 69H413.372V133H119V69Z" />
-                  </mask>
-                  <path
-                    d="M119 75H413.372V63H119V75Z"
-                    fill={GREY}
-                    mask="url(#path-3-inside-1_884_1590)"
-                  />
+                  <path d="M119 75H413.372V69H119V75Z" className="fill-blue-500" />
                   <g id="Frame 2341642">
                     <foreignObject x="120" y="90" width="293" height="36">
-                      <div className="flex h-full w-full items-center gap-[10px] text-white">
-                        <span>Environmental</span>
-                        <InfoTooltip
-                          content="Assets that make up the environment and contribute to the ecosystem's biological diversity and functioning."
-                          theme="dark"
-                        />
+                      <div className="flex h-full w-full items-center gap-[10px] text-black">
+                        <span className="font-bold">Environmental</span>
+                        <InfoTooltip content="Assets that make up the environment and contribute to the ecosystem's biological diversity and functioning." />
                       </div>
                     </foreignObject>
                   </g>
@@ -131,10 +112,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                     <path
                       id="plants-and-animals"
                       data-name="Plants and animals"
-                      stroke="white"
-                      strokeWidth="3"
-                      strokeOpacity={hovered === "plants-and-animals" ? 1 : 0}
-                      className="node transition-all duration-200"
+                      className={cn("node stroke-2 transition-all duration-200", {
+                        "stroke-blue-500/0": hovered !== "plants-and-animals",
+                        "stroke-blue-500": hovered === "plants-and-animals",
+                      })}
                       onMouseEnter={() => setHovered("plants-and-animals")}
                       onMouseLeave={() => setHovered(null)}
                       data-type="source"
@@ -145,10 +126,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                     <path
                       id="atmosphere"
                       data-name="Atmosphere"
-                      stroke="white"
-                      strokeWidth="3"
-                      strokeOpacity={hovered === "atmosphere" ? 1 : 0}
-                      className="node transition-all duration-200"
+                      className={cn("node stroke-2 transition-all duration-200", {
+                        "stroke-blue-500/0": hovered !== "atmosphere",
+                        "stroke-blue-500": hovered === "atmosphere",
+                      })}
                       onMouseEnter={() => setHovered("atmosphere")}
                       onMouseLeave={() => setHovered(null)}
                       data-type="source"
@@ -160,10 +141,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                       id="soil"
                       fill="url(#img-soil)"
                       data-name="Soil"
-                      stroke="white"
-                      strokeWidth="3"
-                      strokeOpacity={hovered === "soil" ? 1 : 0}
-                      className="node transition-all duration-200"
+                      className={cn("node stroke-2 transition-all duration-200", {
+                        "stroke-blue-500/0": hovered !== "soil",
+                        "stroke-blue-500": hovered === "soil",
+                      })}
                       onMouseEnter={() => setHovered("soil")}
                       onMouseLeave={() => setHovered(null)}
                       data-type="source"
@@ -173,10 +154,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                     <path
                       id="water"
                       data-name="Water"
-                      stroke="white"
-                      strokeWidth="3"
-                      strokeOpacity={hovered === "water" ? 1 : 0}
-                      className="node transition-all duration-200"
+                      className={cn("node stroke-2 transition-all duration-200", {
+                        "stroke-blue-500/0": hovered !== "water",
+                        "stroke-blue-500": hovered === "water",
+                      })}
                       onMouseEnter={() => setHovered("water")}
                       onMouseLeave={() => setHovered(null)}
                       data-type="source"
@@ -189,22 +170,12 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
               </g>
               <g id="Frame 2341881">
                 <g id="Frame 2341674">
-                  <mask id="path-11-inside-2_884_1590" fill="white">
-                    <path d="M709 69H1003.37V133H709V69Z" />
-                  </mask>
-                  <path
-                    d="M709 75H1003.37V63H709V75Z"
-                    fill={GREY}
-                    mask="url(#path-11-inside-2_884_1590)"
-                  />
+                  <path d="M709 75H1003.37V69H709V75Z" className="fill-blue-500" />
                   <g id="Frame 2341642_2">
                     <foreignObject x="710" y="83" width="293" height="36">
-                      <div className="flex h-full w-full items-center gap-[10px] text-white">
-                        <span>Ecosystem</span>
-                        <InfoTooltip
-                          content="Assets formed from the interaction of individual environmental assets and have unique characteristics."
-                          theme="dark"
-                        />
+                      <div className="flex h-full w-full items-center gap-[10px] text-black">
+                        <span className="font-bold">Ecosystem</span>
+                        <InfoTooltip content="Assets formed from the interaction of individual environmental assets and have unique characteristics." />
                       </div>
                     </foreignObject>
                   </g>
@@ -216,10 +187,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                         id="farmlands"
                         fill="url(#img-farmlands)"
                         data-name="Farmlands"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeOpacity={hovered === "farmlands" ? 1 : 0}
-                        className="node transition-all duration-200"
+                        className={cn("node stroke-2 transition-all duration-200", {
+                          "stroke-blue-500/0": hovered !== "farmlands",
+                          "stroke-blue-500": hovered === "farmlands",
+                        })}
                         onMouseEnter={() => setHovered("farmlands")}
                         onMouseLeave={() => setHovered(null)}
                         data-type="source"
@@ -229,10 +200,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                       <path
                         id="wetlands"
                         data-name="Wetlands"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeOpacity={hovered === "wetlands" ? 1 : 0}
-                        className="node transition-all duration-200"
+                        className={cn("node stroke-2 transition-all duration-200", {
+                          "stroke-blue-500/0": hovered !== "wetlands",
+                          "stroke-blue-500": hovered === "wetlands",
+                        })}
                         onMouseEnter={() => setHovered("wetlands")}
                         onMouseLeave={() => setHovered(null)}
                         data-type="source"
@@ -244,10 +215,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                         id="mangroves"
                         fill="url(#img-mangroves)"
                         data-name="Mangroves"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeOpacity={hovered === "mangroves" ? 1 : 0}
-                        className="node transition-all duration-200"
+                        className={cn("node stroke-2 transition-all duration-200", {
+                          "stroke-blue-500/0": hovered !== "mangroves",
+                          "stroke-blue-500": hovered === "mangroves",
+                        })}
                         onMouseEnter={() => setHovered("mangroves")}
                         onMouseLeave={() => setHovered(null)}
                         data-type="source"
@@ -257,10 +228,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                       <path
                         id="grasslands"
                         data-name="Grasslands"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeOpacity={hovered === "grasslands" ? 1 : 0}
-                        className="node transition-all duration-200"
+                        className={cn("node stroke-2 transition-all duration-200", {
+                          "stroke-blue-500/0": hovered !== "grasslands",
+                          "stroke-blue-500": hovered === "grasslands",
+                        })}
                         onMouseEnter={() => setHovered("grasslands")}
                         onMouseLeave={() => setHovered(null)}
                         data-type="source"
@@ -279,9 +250,8 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
               <g id="Frame 2341876">
                 <g id="Frame 2341668">
                   <path
-                    d="M24.3945 431C24.3945 414.431 37.826 401 54.3945 401H722.326C738.894 401 752.326 414.431 752.326 431V593C752.326 609.569 738.894 623 722.326 623H54.3945C37.826 623 24.3945 609.569 24.3945 593V431Z"
-                    fill={GREY}
-                    fillOpacity="0.2"
+                    d="M24.3945 401H54.3945H722.326H752.326V623H722.326H54.3945H24.3945V401Z"
+                    className="fill-black/5"
                   />
                   <g id="Frame 2341875">
                     <g id="Frame 2341874">
@@ -290,10 +260,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                           <path
                             id="timber"
                             data-name="Timber"
-                            stroke="white"
-                            strokeWidth="3"
-                            strokeOpacity={hovered === "timber" ? 1 : 0}
-                            className="node transition-all duration-200"
+                            className={cn("node stroke-2 transition-all duration-200", {
+                              "stroke-blue-500/0": hovered !== "timber",
+                              "stroke-blue-500": hovered === "timber",
+                            })}
                             onMouseEnter={() => setHovered("timber")}
                             onMouseLeave={() => setHovered(null)}
                             data-type="target"
@@ -304,10 +274,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                           <path
                             id="livestock-production"
                             data-name="Livestock Production"
-                            stroke="white"
-                            strokeWidth="3"
-                            strokeOpacity={hovered === "livestock-production" ? 1 : 0}
-                            className="node transition-all duration-200"
+                            className={cn("node stroke-2 transition-all duration-200", {
+                              "stroke-blue-500/0": hovered !== "livestock-production",
+                              "stroke-blue-500": hovered === "livestock-production",
+                            })}
                             onMouseEnter={() => setHovered("livestock-production")}
                             onMouseLeave={() => setHovered(null)}
                             data-type="target"
@@ -318,20 +288,11 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                         </g>
                       </g>
                       <g id="Frame 2341660">
-                        <g id="Group 1049">
-                          <path
-                            id="Vector 138"
-                            d="M48.4878 490.28V490.28C48.4878 498.012 54.7558 504.28 62.4878 504.28H169.488C177.22 504.28 183.488 498.012 183.488 490.28V490.28"
-                            stroke={GREY}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                        </g>
                         <g id="Frame 2341659">
                           <path
                             id="Provisioning"
-                            d="M75.0895 525.232H77.3615C78.0335 525.232 78.5669 525.061 78.9615 524.72C79.3562 524.368 79.5535 523.898 79.5535 523.312C79.5535 522.714 79.3562 522.24 78.9615 521.888C78.5669 521.525 78.0335 521.344 77.3615 521.344H75.0895V525.232ZM77.6495 526.64H75.0895V531.28H73.5215V519.936H77.6495C78.6842 519.936 79.5269 520.256 80.1775 520.896C80.8282 521.536 81.1535 522.336 81.1535 523.296C81.1535 524.266 80.8282 525.066 80.1775 525.696C79.5269 526.325 78.6842 526.64 77.6495 526.64ZM86.946 523.504V525.104C86.722 525.072 86.5034 525.056 86.29 525.056C84.882 525.056 84.178 525.845 84.178 527.424V531.28H82.674V523.584H84.146V524.928C84.6154 523.946 85.3834 523.456 86.45 523.456C86.6207 523.456 86.786 523.472 86.946 523.504ZM90.0549 529.456C90.5243 529.936 91.0949 530.176 91.7669 530.176C92.4389 530.176 93.0043 529.936 93.4629 529.456C93.9323 528.965 94.1669 528.288 94.1669 527.424C94.1669 526.57 93.9323 525.904 93.4629 525.424C93.0043 524.933 92.4389 524.688 91.7669 524.688C91.0949 524.688 90.5243 524.933 90.0549 525.424C89.5963 525.904 89.3669 526.57 89.3669 527.424C89.3669 528.288 89.5963 528.965 90.0549 529.456ZM88.9349 524.512C89.6816 523.733 90.6256 523.344 91.7669 523.344C92.9083 523.344 93.8469 523.733 94.5829 524.512C95.3296 525.28 95.7029 526.25 95.7029 527.424C95.7029 528.608 95.3349 529.589 94.5989 530.368C93.8629 531.136 92.9189 531.52 91.7669 531.52C90.6149 531.52 89.6709 531.136 88.9349 530.368C88.1989 529.589 87.8309 528.608 87.8309 527.424C87.8309 526.25 88.1989 525.28 88.9349 524.512ZM103.985 523.584L100.913 531.28H99.3928L96.2728 523.584H97.9688L100.161 529.52L102.369 523.584H103.985ZM106.912 531.28H105.424V523.584H106.912V531.28ZM105.392 521.44C105.189 521.226 105.088 520.97 105.088 520.672C105.088 520.373 105.189 520.117 105.392 519.904C105.605 519.69 105.861 519.584 106.16 519.584C106.459 519.584 106.715 519.69 106.928 519.904C107.141 520.106 107.248 520.362 107.248 520.672C107.248 520.97 107.141 521.226 106.928 521.44C106.715 521.642 106.459 521.744 106.16 521.744C105.861 521.744 105.605 521.642 105.392 521.44ZM108.751 529.28L110.111 528.8C110.164 529.216 110.346 529.562 110.655 529.84C110.964 530.106 111.38 530.24 111.903 530.24C112.308 530.24 112.628 530.144 112.863 529.952C113.098 529.749 113.215 529.504 113.215 529.216C113.215 528.704 112.884 528.373 112.223 528.224L110.911 527.936C110.314 527.808 109.844 527.552 109.503 527.168C109.162 526.784 108.991 526.32 108.991 525.776C108.991 525.114 109.258 524.544 109.791 524.064C110.335 523.584 110.98 523.344 111.727 523.344C112.218 523.344 112.655 523.418 113.039 523.568C113.423 523.706 113.722 523.893 113.935 524.128C114.148 524.362 114.308 524.581 114.415 524.784C114.522 524.986 114.602 525.194 114.655 525.408L113.327 525.904C113.306 525.776 113.268 525.653 113.215 525.536C113.162 525.408 113.076 525.269 112.959 525.12C112.852 524.97 112.692 524.853 112.479 524.768C112.266 524.672 112.015 524.624 111.727 524.624C111.354 524.624 111.044 524.725 110.799 524.928C110.564 525.13 110.447 525.37 110.447 525.648C110.447 526.138 110.74 526.448 111.327 526.576L112.575 526.848C113.258 526.997 113.78 527.274 114.143 527.68C114.516 528.074 114.703 528.56 114.703 529.136C114.703 529.744 114.452 530.293 113.951 530.784C113.46 531.274 112.772 531.52 111.887 531.52C110.938 531.52 110.196 531.285 109.663 530.816C109.13 530.336 108.826 529.824 108.751 529.28ZM118.193 531.28H116.705V523.584H118.193V531.28ZM116.673 521.44C116.471 521.226 116.369 520.97 116.369 520.672C116.369 520.373 116.471 520.117 116.673 519.904C116.887 519.69 117.143 519.584 117.441 519.584C117.74 519.584 117.996 519.69 118.209 519.904C118.423 520.106 118.529 520.362 118.529 520.672C118.529 520.97 118.423 521.226 118.209 521.44C117.996 521.642 117.74 521.744 117.441 521.744C117.143 521.744 116.887 521.642 116.673 521.44ZM122.336 529.456C122.806 529.936 123.376 530.176 124.048 530.176C124.72 530.176 125.286 529.936 125.744 529.456C126.214 528.965 126.448 528.288 126.448 527.424C126.448 526.57 126.214 525.904 125.744 525.424C125.286 524.933 124.72 524.688 124.048 524.688C123.376 524.688 122.806 524.933 122.336 525.424C121.878 525.904 121.648 526.57 121.648 527.424C121.648 528.288 121.878 528.965 122.336 529.456ZM121.216 524.512C121.963 523.733 122.907 523.344 124.048 523.344C125.19 523.344 126.128 523.733 126.864 524.512C127.611 525.28 127.984 526.25 127.984 527.424C127.984 528.608 127.616 529.589 126.88 530.368C126.144 531.136 125.2 531.52 124.048 531.52C122.896 531.52 121.952 531.136 121.216 530.368C120.48 529.589 120.112 528.608 120.112 527.424C120.112 526.25 120.48 525.28 121.216 524.512ZM131.412 526.832V531.28H129.908V523.584H131.38V524.688C131.892 523.802 132.682 523.36 133.748 523.36C134.634 523.36 135.311 523.642 135.78 524.208C136.26 524.773 136.5 525.504 136.5 526.4V531.28H134.996V526.656C134.996 525.365 134.399 524.72 133.204 524.72C132.639 524.72 132.196 524.922 131.876 525.328C131.567 525.722 131.412 526.224 131.412 526.832ZM140.381 531.28H138.893V523.584H140.381V531.28ZM138.861 521.44C138.658 521.226 138.557 520.97 138.557 520.672C138.557 520.373 138.658 520.117 138.861 519.904C139.074 519.69 139.33 519.584 139.629 519.584C139.927 519.584 140.183 519.69 140.397 519.904C140.61 520.106 140.717 520.362 140.717 520.672C140.717 520.97 140.61 521.226 140.397 521.44C140.183 521.642 139.927 521.744 139.629 521.744C139.33 521.744 139.074 521.642 138.861 521.44ZM144.444 526.832V531.28H142.94V523.584H144.412V524.688C144.924 523.802 145.713 523.36 146.78 523.36C147.665 523.36 148.342 523.642 148.812 524.208C149.292 524.773 149.532 525.504 149.532 526.4V531.28H148.028V526.656C148.028 525.365 147.43 524.72 146.236 524.72C145.67 524.72 145.228 524.922 144.908 525.328C144.598 525.722 144.444 526.224 144.444 526.832ZM151.364 531.696L152.82 531.36C152.873 531.904 153.092 532.352 153.476 532.704C153.86 533.066 154.34 533.248 154.916 533.248C156.484 533.248 157.268 532.416 157.268 530.752V529.648C157.076 530.021 156.772 530.325 156.356 530.56C155.951 530.794 155.471 530.912 154.916 530.912C153.892 530.912 153.044 530.565 152.372 529.872C151.711 529.168 151.38 528.272 151.38 527.184C151.38 526.128 151.711 525.242 152.372 524.528C153.033 523.802 153.881 523.44 154.916 523.44C156.089 523.44 156.879 523.845 157.284 524.656V523.584H158.772V530.704C158.772 531.216 158.703 531.69 158.564 532.128C158.436 532.576 158.228 532.986 157.94 533.36C157.652 533.733 157.247 534.026 156.724 534.24C156.212 534.453 155.609 534.56 154.916 534.56C153.967 534.56 153.161 534.288 152.5 533.744C151.839 533.21 151.46 532.528 151.364 531.696ZM155.14 529.648C155.791 529.648 156.319 529.424 156.724 528.976C157.129 528.517 157.332 527.92 157.332 527.184C157.332 526.448 157.129 525.856 156.724 525.408C156.319 524.949 155.791 524.72 155.14 524.72C154.479 524.72 153.94 524.944 153.524 525.392C153.119 525.84 152.916 526.437 152.916 527.184C152.916 527.941 153.113 528.544 153.508 528.992C153.913 529.429 154.457 529.648 155.14 529.648Z"
-                            fill="#F8F9EE"
+                            d="M75.0895 503.232H77.3615C78.0335 503.232 78.5669 503.061 78.9615 502.72C79.3562 502.368 79.5535 501.898 79.5535 501.312C79.5535 500.714 79.3562 500.24 78.9615 499.888C78.5669 499.525 78.0335 499.344 77.3615 499.344H75.0895V503.232ZM77.6495 504.64H75.0895V509.28H73.5215V497.936H77.6495C78.6842 497.936 79.5269 498.256 80.1775 498.896C80.8282 499.536 81.1535 500.336 81.1535 501.296C81.1535 502.266 80.8282 503.066 80.1775 503.696C79.5269 504.325 78.6842 504.64 77.6495 504.64ZM86.946 501.504V503.104C86.722 503.072 86.5034 503.056 86.29 503.056C84.882 503.056 84.178 503.845 84.178 505.424V509.28H82.674V501.584H84.146V502.928C84.6154 501.946 85.3834 501.456 86.45 501.456C86.6207 501.456 86.786 501.472 86.946 501.504ZM90.0549 507.456C90.5243 507.936 91.0949 508.176 91.7669 508.176C92.4389 508.176 93.0043 507.936 93.4629 507.456C93.9323 506.965 94.1669 506.288 94.1669 505.424C94.1669 504.57 93.9323 503.904 93.4629 503.424C93.0043 502.933 92.4389 502.688 91.7669 502.688C91.0949 502.688 90.5243 502.933 90.0549 503.424C89.5963 503.904 89.3669 504.57 89.3669 505.424C89.3669 506.288 89.5963 506.965 90.0549 507.456ZM88.9349 502.512C89.6816 501.733 90.6256 501.344 91.7669 501.344C92.9083 501.344 93.8469 501.733 94.5829 502.512C95.3296 503.28 95.7029 504.25 95.7029 505.424C95.7029 506.608 95.3349 507.589 94.5989 508.368C93.8629 509.136 92.9189 509.52 91.7669 509.52C90.6149 509.52 89.6709 509.136 88.9349 508.368C88.1989 507.589 87.8309 506.608 87.8309 505.424C87.8309 504.25 88.1989 503.28 88.9349 502.512ZM103.985 501.584L100.913 509.28H99.3928L96.2728 501.584H97.9688L100.161 507.52L102.369 501.584H103.985ZM106.912 509.28H105.424V501.584H106.912V509.28ZM105.392 499.44C105.189 499.226 105.088 498.97 105.088 498.672C105.088 498.373 105.189 498.117 105.392 497.904C105.605 497.69 105.861 497.584 106.16 497.584C106.459 497.584 106.715 497.69 106.928 497.904C107.141 498.106 107.248 498.362 107.248 498.672C107.248 498.97 107.141 499.226 106.928 499.44C106.715 499.642 106.459 499.744 106.16 499.744C105.861 499.744 105.605 499.642 105.392 499.44ZM108.751 507.28L110.111 506.8C110.164 507.216 110.346 507.562 110.655 507.84C110.964 508.106 111.38 508.24 111.903 508.24C112.308 508.24 112.628 508.144 112.863 507.952C113.098 507.749 113.215 507.504 113.215 507.216C113.215 506.704 112.884 506.373 112.223 506.224L110.911 505.936C110.314 505.808 109.844 505.552 109.503 505.168C109.162 504.784 108.991 504.32 108.991 503.776C108.991 503.114 109.258 502.544 109.791 502.064C110.335 501.584 110.98 501.344 111.727 501.344C112.218 501.344 112.655 501.418 113.039 501.568C113.423 501.706 113.722 501.893 113.935 502.128C114.148 502.362 114.308 502.581 114.415 502.784C114.522 502.986 114.602 503.194 114.655 503.408L113.327 503.904C113.306 503.776 113.268 503.653 113.215 503.536C113.162 503.408 113.076 503.269 112.959 503.12C112.852 502.97 112.692 502.853 112.479 502.768C112.266 502.672 112.015 502.624 111.727 502.624C111.354 502.624 111.044 502.725 110.799 502.928C110.564 503.13 110.447 503.37 110.447 503.648C110.447 504.138 110.74 504.448 111.327 504.576L112.575 504.848C113.258 504.997 113.78 505.274 114.143 505.68C114.516 506.074 114.703 506.56 114.703 507.136C114.703 507.744 114.452 508.293 113.951 508.784C113.46 509.274 112.772 509.52 111.887 509.52C110.938 509.52 110.196 509.285 109.663 508.816C109.13 508.336 108.826 507.824 108.751 507.28ZM118.193 509.28H116.705V501.584H118.193V509.28ZM116.673 499.44C116.471 499.226 116.369 498.97 116.369 498.672C116.369 498.373 116.471 498.117 116.673 497.904C116.887 497.69 117.143 497.584 117.441 497.584C117.74 497.584 117.996 497.69 118.209 497.904C118.423 498.106 118.529 498.362 118.529 498.672C118.529 498.97 118.423 499.226 118.209 499.44C117.996 499.642 117.74 499.744 117.441 499.744C117.143 499.744 116.887 499.642 116.673 499.44ZM122.336 507.456C122.806 507.936 123.376 508.176 124.048 508.176C124.72 508.176 125.286 507.936 125.744 507.456C126.214 506.965 126.448 506.288 126.448 505.424C126.448 504.57 126.214 503.904 125.744 503.424C125.286 502.933 124.72 502.688 124.048 502.688C123.376 502.688 122.806 502.933 122.336 503.424C121.878 503.904 121.648 504.57 121.648 505.424C121.648 506.288 121.878 506.965 122.336 507.456ZM121.216 502.512C121.963 501.733 122.907 501.344 124.048 501.344C125.19 501.344 126.128 501.733 126.864 502.512C127.611 503.28 127.984 504.25 127.984 505.424C127.984 506.608 127.616 507.589 126.88 508.368C126.144 509.136 125.2 509.52 124.048 509.52C122.896 509.52 121.952 509.136 121.216 508.368C120.48 507.589 120.112 506.608 120.112 505.424C120.112 504.25 120.48 503.28 121.216 502.512ZM131.412 504.832V509.28H129.908V501.584H131.38V502.688C131.892 501.802 132.682 501.36 133.748 501.36C134.634 501.36 135.311 501.642 135.78 502.208C136.26 502.773 136.5 503.504 136.5 504.4V509.28H134.996V504.656C134.996 503.365 134.399 502.72 133.204 502.72C132.639 502.72 132.196 502.922 131.876 503.328C131.567 503.722 131.412 504.224 131.412 504.832ZM140.381 509.28H138.893V501.584H140.381V509.28ZM138.861 499.44C138.658 499.226 138.557 498.97 138.557 498.672C138.557 498.373 138.658 498.117 138.861 497.904C139.074 497.69 139.33 497.584 139.629 497.584C139.927 497.584 140.183 497.69 140.397 497.904C140.61 498.106 140.717 498.362 140.717 498.672C140.717 498.97 140.61 499.226 140.397 499.44C140.183 499.642 139.927 499.744 139.629 499.744C139.33 499.744 139.074 499.642 138.861 499.44ZM144.444 504.832V509.28H142.94V501.584H144.412V502.688C144.924 501.802 145.713 501.36 146.78 501.36C147.665 501.36 148.342 501.642 148.812 502.208C149.292 502.773 149.532 503.504 149.532 504.4V509.28H148.028V504.656C148.028 503.365 147.43 502.72 146.236 502.72C145.67 502.72 145.228 502.922 144.908 503.328C144.598 503.722 144.444 504.224 144.444 504.832ZM151.364 509.696L152.82 509.36C152.873 509.904 153.092 510.352 153.476 510.704C153.86 511.066 154.34 511.248 154.916 511.248C156.484 511.248 157.268 510.416 157.268 508.752V507.648C157.076 508.021 156.772 508.325 156.356 508.56C155.951 508.794 155.471 508.912 154.916 508.912C153.892 508.912 153.044 508.565 152.372 507.872C151.711 507.168 151.38 506.272 151.38 505.184C151.38 504.128 151.711 503.242 152.372 502.528C153.033 501.802 153.881 501.44 154.916 501.44C156.089 501.44 156.879 501.845 157.284 502.656V501.584H158.772V508.704C158.772 509.216 158.703 509.69 158.564 510.128C158.436 510.576 158.228 510.986 157.94 511.36C157.652 511.733 157.247 512.026 156.724 512.24C156.212 512.453 155.609 512.56 154.916 512.56C153.967 512.56 153.161 512.288 152.5 511.744C151.839 511.21 151.46 510.528 151.364 509.696ZM155.14 507.648C155.791 507.648 156.319 507.424 156.724 506.976C157.129 506.517 157.332 505.92 157.332 505.184C157.332 504.448 157.129 503.856 156.724 503.408C156.319 502.949 155.791 502.72 155.14 502.72C154.479 502.72 153.94 502.944 153.524 503.392C153.119 503.84 152.916 504.437 152.916 505.184C152.916 505.941 153.113 506.544 153.508 506.992C153.913 507.429 154.457 507.648 155.14 507.648Z"
+                            className="fill-black"
                           />
                         </g>
                       </g>
@@ -343,10 +304,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                             id="recreation-sites"
                             fill="url(#img-recreation-sites)"
                             data-name="Recreation Sites"
-                            stroke="white"
-                            strokeWidth="3"
-                            strokeOpacity={hovered === "recreation-sites" ? 1 : 0}
-                            className="node transition-all duration-200"
+                            className={cn("node stroke-2 transition-all duration-200", {
+                              "stroke-blue-500/0": hovered !== "recreation-sites",
+                              "stroke-blue-500": hovered === "recreation-sites",
+                            })}
                             onMouseEnter={() => setHovered("recreation-sites")}
                             onMouseLeave={() => setHovered(null)}
                             data-type="target"
@@ -357,10 +318,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                             id="tourism"
                             fill="url(#img-tourism)"
                             data-name="Tourism"
-                            stroke="white"
-                            strokeWidth="3"
-                            strokeOpacity={hovered === "tourism" ? 1 : 0}
-                            className="node transition-all duration-200"
+                            className={cn("node stroke-2 transition-all duration-200", {
+                              "stroke-blue-500/0": hovered !== "tourism",
+                              "stroke-blue-500": hovered === "tourism",
+                            })}
                             onMouseEnter={() => setHovered("tourism")}
                             onMouseLeave={() => setHovered(null)}
                             data-type="target"
@@ -370,20 +331,11 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                         </g>
                       </g>
                       <g id="Frame 2341661">
-                        <g id="Group 1049_2">
-                          <path
-                            id="Vector 138_2"
-                            d="M230.767 490.28V490.28C230.767 498.012 237.035 504.28 244.767 504.28H351.767C359.499 504.28 365.767 498.012 365.767 490.28V490.28"
-                            stroke={GREY}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                        </g>
                         <g id="Frame 2341659_2">
                           <path
                             id="Cultural"
-                            d="M275.681 531.52C274.134 531.52 272.806 530.986 271.697 529.92C270.598 528.853 270.049 527.413 270.049 525.6C270.049 524.384 270.326 523.317 270.881 522.4C271.436 521.482 272.134 520.805 272.977 520.368C273.82 519.92 274.721 519.696 275.681 519.696C276.961 519.696 278.038 520.021 278.913 520.672C279.798 521.312 280.385 522.186 280.673 523.296L279.217 523.808C279.004 522.954 278.593 522.298 277.985 521.84C277.377 521.37 276.609 521.136 275.681 521.136C274.572 521.136 273.622 521.53 272.833 522.32C272.044 523.098 271.649 524.192 271.649 525.6C271.649 527.008 272.044 528.106 272.833 528.896C273.622 529.685 274.572 530.08 275.681 530.08C276.609 530.08 277.382 529.834 278.001 529.344C278.62 528.842 279.052 528.181 279.297 527.36L280.689 527.872C280.38 528.97 279.782 529.856 278.897 530.528C278.022 531.189 276.95 531.52 275.681 531.52ZM287.369 530.352C287.166 530.736 286.857 531.029 286.441 531.232C286.025 531.424 285.577 531.52 285.097 531.52C284.222 531.52 283.523 531.232 283.001 530.656C282.478 530.069 282.217 529.328 282.217 528.432V523.584H283.721V528.208C283.721 528.784 283.859 529.258 284.137 529.632C284.425 530.005 284.867 530.192 285.465 530.192C286.062 530.192 286.515 530.016 286.825 529.664C287.134 529.301 287.289 528.821 287.289 528.224V523.584H288.793V529.856C288.793 530.357 288.819 530.832 288.873 531.28H287.433C287.39 531.045 287.369 530.736 287.369 530.352ZM292.863 531.28H291.359V519.696H292.863V531.28ZM297.438 521.152V523.584H299.102V524.944H297.438V528.944C297.438 529.306 297.518 529.573 297.678 529.744C297.848 529.914 298.126 530 298.51 530C298.734 530 298.931 529.978 299.102 529.936V531.216C298.846 531.312 298.504 531.36 298.078 531.36C297.416 531.36 296.894 531.168 296.51 530.784C296.126 530.4 295.934 529.861 295.934 529.168V524.944H294.462V523.584H294.878C295.272 523.584 295.566 523.477 295.758 523.264C295.96 523.04 296.062 522.752 296.062 522.4V521.152H297.438ZM306.181 530.352C305.978 530.736 305.669 531.029 305.253 531.232C304.837 531.424 304.389 531.52 303.909 531.52C303.034 531.52 302.336 531.232 301.813 530.656C301.29 530.069 301.029 529.328 301.029 528.432V523.584H302.533V528.208C302.533 528.784 302.672 529.258 302.949 529.632C303.237 530.005 303.68 530.192 304.277 530.192C304.874 530.192 305.328 530.016 305.637 529.664C305.946 529.301 306.101 528.821 306.101 528.224V523.584H307.605V529.856C307.605 530.357 307.632 530.832 307.685 531.28H306.245C306.202 531.045 306.181 530.736 306.181 530.352ZM314.444 523.504V525.104C314.22 525.072 314.001 525.056 313.788 525.056C312.38 525.056 311.676 525.845 311.676 527.424V531.28H310.172V523.584H311.644V524.928C312.113 523.946 312.881 523.456 313.948 523.456C314.118 523.456 314.284 523.472 314.444 523.504ZM315.567 529.216C315.567 528.554 315.78 528.026 316.207 527.632C316.633 527.226 317.199 526.976 317.903 526.88L319.983 526.576C320.377 526.522 320.575 526.33 320.575 526C320.575 525.594 320.436 525.264 320.159 525.008C319.881 524.752 319.465 524.624 318.911 524.624C318.399 524.624 317.993 524.768 317.695 525.056C317.396 525.333 317.22 525.706 317.167 526.176L315.727 525.84C315.801 525.104 316.137 524.506 316.735 524.048C317.332 523.578 318.047 523.344 318.879 523.344C319.967 523.344 320.772 523.61 321.295 524.144C321.817 524.666 322.079 525.338 322.079 526.16V530.016C322.079 530.474 322.111 530.896 322.175 531.28H320.703C320.649 530.96 320.623 530.613 320.623 530.24C320.409 530.581 320.095 530.88 319.679 531.136C319.273 531.392 318.761 531.52 318.143 531.52C317.385 531.52 316.767 531.296 316.287 530.848C315.807 530.389 315.567 529.845 315.567 529.216ZM318.351 530.256C319.023 530.256 319.561 530.074 319.967 529.712C320.372 529.349 320.575 528.773 320.575 527.984V527.632L318.223 527.984C317.881 528.037 317.609 528.16 317.407 528.352C317.204 528.544 317.103 528.805 317.103 529.136C317.103 529.434 317.215 529.696 317.439 529.92C317.673 530.144 317.977 530.256 318.351 530.256ZM325.926 531.28H324.422V519.696H325.926V531.28Z"
-                            fill="#F8F9EE"
+                            d="M275.681 509.52C274.134 509.52 272.806 508.986 271.697 507.92C270.598 506.853 270.049 505.413 270.049 503.6C270.049 502.384 270.326 501.317 270.881 500.4C271.436 499.482 272.134 498.805 272.977 498.368C273.82 497.92 274.721 497.696 275.681 497.696C276.961 497.696 278.038 498.021 278.913 498.672C279.798 499.312 280.385 500.186 280.673 501.296L279.217 501.808C279.004 500.954 278.593 500.298 277.985 499.84C277.377 499.37 276.609 499.136 275.681 499.136C274.572 499.136 273.622 499.53 272.833 500.32C272.044 501.098 271.649 502.192 271.649 503.6C271.649 505.008 272.044 506.106 272.833 506.896C273.622 507.685 274.572 508.08 275.681 508.08C276.609 508.08 277.382 507.834 278.001 507.344C278.62 506.842 279.052 506.181 279.297 505.36L280.689 505.872C280.38 506.97 279.782 507.856 278.897 508.528C278.022 509.189 276.95 509.52 275.681 509.52ZM287.369 508.352C287.166 508.736 286.857 509.029 286.441 509.232C286.025 509.424 285.577 509.52 285.097 509.52C284.222 509.52 283.523 509.232 283.001 508.656C282.478 508.069 282.217 507.328 282.217 506.432V501.584H283.721V506.208C283.721 506.784 283.859 507.258 284.137 507.632C284.425 508.005 284.867 508.192 285.465 508.192C286.062 508.192 286.515 508.016 286.825 507.664C287.134 507.301 287.289 506.821 287.289 506.224V501.584H288.793V507.856C288.793 508.357 288.819 508.832 288.873 509.28H287.433C287.39 509.045 287.369 508.736 287.369 508.352ZM292.863 509.28H291.359V497.696H292.863V509.28ZM297.438 499.152V501.584H299.102V502.944H297.438V506.944C297.438 507.306 297.518 507.573 297.678 507.744C297.848 507.914 298.126 508 298.51 508C298.734 508 298.931 507.978 299.102 507.936V509.216C298.846 509.312 298.504 509.36 298.078 509.36C297.416 509.36 296.894 509.168 296.51 508.784C296.126 508.4 295.934 507.861 295.934 507.168V502.944H294.462V501.584H294.878C295.272 501.584 295.566 501.477 295.758 501.264C295.96 501.04 296.062 500.752 296.062 500.4V499.152H297.438ZM306.181 508.352C305.978 508.736 305.669 509.029 305.253 509.232C304.837 509.424 304.389 509.52 303.909 509.52C303.034 509.52 302.336 509.232 301.813 508.656C301.29 508.069 301.029 507.328 301.029 506.432V501.584H302.533V506.208C302.533 506.784 302.672 507.258 302.949 507.632C303.237 508.005 303.68 508.192 304.277 508.192C304.874 508.192 305.328 508.016 305.637 507.664C305.946 507.301 306.101 506.821 306.101 506.224V501.584H307.605V507.856C307.605 508.357 307.632 508.832 307.685 509.28H306.245C306.202 509.045 306.181 508.736 306.181 508.352ZM314.444 501.504V503.104C314.22 503.072 314.001 503.056 313.788 503.056C312.38 503.056 311.676 503.845 311.676 505.424V509.28H310.172V501.584H311.644V502.928C312.113 501.946 312.881 501.456 313.948 501.456C314.118 501.456 314.284 501.472 314.444 501.504ZM315.567 507.216C315.567 506.554 315.78 506.026 316.207 505.632C316.633 505.226 317.199 504.976 317.903 504.88L319.983 504.576C320.377 504.522 320.575 504.33 320.575 504C320.575 503.594 320.436 503.264 320.159 503.008C319.881 502.752 319.465 502.624 318.911 502.624C318.399 502.624 317.993 502.768 317.695 503.056C317.396 503.333 317.22 503.706 317.167 504.176L315.727 503.84C315.801 503.104 316.137 502.506 316.735 502.048C317.332 501.578 318.047 501.344 318.879 501.344C319.967 501.344 320.772 501.61 321.295 502.144C321.817 502.666 322.079 503.338 322.079 504.16V508.016C322.079 508.474 322.111 508.896 322.175 509.28H320.703C320.649 508.96 320.623 508.613 320.623 508.24C320.409 508.581 320.095 508.88 319.679 509.136C319.273 509.392 318.761 509.52 318.143 509.52C317.385 509.52 316.767 509.296 316.287 508.848C315.807 508.389 315.567 507.845 315.567 507.216ZM318.351 508.256C319.023 508.256 319.561 508.074 319.967 507.712C320.372 507.349 320.575 506.773 320.575 505.984V505.632L318.223 505.984C317.881 506.037 317.609 506.16 317.407 506.352C317.204 506.544 317.103 506.805 317.103 507.136C317.103 507.434 317.215 507.696 317.439 507.92C317.673 508.144 317.977 508.256 318.351 508.256ZM325.926 509.28H324.422V497.696H325.926V509.28Z"
+                            className="fill-black"
                           />
                         </g>
                       </g>
@@ -395,10 +347,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                             id="soil-fertility"
                             fill="url(#img-soil-fertility)"
                             data-name="Soil Fertility"
-                            stroke="white"
-                            strokeWidth="3"
-                            strokeOpacity={hovered === "soil-fertility" ? 1 : 0}
-                            className="node transition-all duration-200"
+                            className={cn("node stroke-2 transition-all duration-200", {
+                              "stroke-blue-500/0": hovered !== "soil-fertility",
+                              "stroke-blue-500": hovered === "soil-fertility",
+                            })}
                             onMouseEnter={() => setHovered("soil-fertility")}
                             onMouseLeave={() => setHovered(null)}
                             data-type="target"
@@ -409,10 +361,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                             id="climate-regulation"
                             fill="url(#img-climate-regulation)"
                             data-name="Climate Regulation"
-                            stroke="white"
-                            strokeWidth="3"
-                            strokeOpacity={hovered === "climate-regulation" ? 1 : 0}
-                            className="node transition-all duration-200"
+                            className={cn("node stroke-2 transition-all duration-200", {
+                              "stroke-blue-500/0": hovered !== "climate-regulation",
+                              "stroke-blue-500": hovered === "climate-regulation",
+                            })}
                             onMouseEnter={() => setHovered("climate-regulation")}
                             onMouseLeave={() => setHovered(null)}
                             data-type="target"
@@ -422,20 +374,11 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                         </g>
                       </g>
                       <g id="Frame 2341662">
-                        <g id="Group 1049_3">
-                          <path
-                            id="Vector 138_3"
-                            d="M413.046 490.28V490.28C413.046 498.012 419.314 504.28 427.046 504.28H534.046C541.778 504.28 548.046 498.012 548.046 490.28V490.28"
-                            stroke={GREY}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                        </g>
                         <g id="Frame 2341659_3">
                           <path
                             id="Regulating"
-                            d="M449.405 531.28L446.813 526.64H445.117V531.28H443.533V519.936H447.805C448.851 519.936 449.688 520.261 450.317 520.912C450.957 521.552 451.277 522.352 451.277 523.312C451.277 524.133 451.032 524.837 450.541 525.424C450.051 526 449.379 526.368 448.525 526.528L451.229 531.28H449.405ZM445.117 525.232H447.517C448.157 525.232 448.675 525.061 449.069 524.72C449.464 524.368 449.661 523.898 449.661 523.312C449.661 522.714 449.464 522.24 449.069 521.888C448.675 521.525 448.157 521.344 447.517 521.344H445.117V525.232ZM453.943 526.64H458.151C458.13 526.064 457.938 525.594 457.575 525.232C457.212 524.858 456.7 524.672 456.039 524.672C455.442 524.672 454.951 524.869 454.567 525.264C454.183 525.648 453.975 526.106 453.943 526.64ZM458.375 528.64L459.671 529.088C459.447 529.802 459.031 530.389 458.423 530.848C457.815 531.296 457.079 531.52 456.215 531.52C455.138 531.52 454.22 531.152 453.463 530.416C452.716 529.669 452.343 528.666 452.343 527.408C452.343 526.234 452.706 525.264 453.431 524.496C454.156 523.728 455.02 523.344 456.023 523.344C457.186 523.344 458.092 523.712 458.743 524.448C459.394 525.173 459.719 526.149 459.719 527.376C459.719 527.568 459.708 527.728 459.687 527.856H453.895C453.906 528.538 454.13 529.098 454.567 529.536C455.015 529.973 455.564 530.192 456.215 530.192C457.314 530.192 458.034 529.674 458.375 528.64ZM461.079 531.696L462.535 531.36C462.588 531.904 462.807 532.352 463.191 532.704C463.575 533.066 464.055 533.248 464.631 533.248C466.199 533.248 466.983 532.416 466.983 530.752V529.648C466.791 530.021 466.487 530.325 466.071 530.56C465.666 530.794 465.186 530.912 464.631 530.912C463.607 530.912 462.759 530.565 462.087 529.872C461.426 529.168 461.095 528.272 461.095 527.184C461.095 526.128 461.426 525.242 462.087 524.528C462.748 523.802 463.596 523.44 464.631 523.44C465.804 523.44 466.594 523.845 466.999 524.656V523.584H468.487V530.704C468.487 531.216 468.418 531.69 468.279 532.128C468.151 532.576 467.943 532.986 467.655 533.36C467.367 533.733 466.962 534.026 466.439 534.24C465.927 534.453 465.324 534.56 464.631 534.56C463.682 534.56 462.876 534.288 462.215 533.744C461.554 533.21 461.175 532.528 461.079 531.696ZM464.855 529.648C465.506 529.648 466.034 529.424 466.439 528.976C466.844 528.517 467.047 527.92 467.047 527.184C467.047 526.448 466.844 525.856 466.439 525.408C466.034 524.949 465.506 524.72 464.855 524.72C464.194 524.72 463.655 524.944 463.239 525.392C462.834 525.84 462.631 526.437 462.631 527.184C462.631 527.941 462.828 528.544 463.223 528.992C463.628 529.429 464.172 529.648 464.855 529.648ZM475.883 530.352C475.68 530.736 475.371 531.029 474.955 531.232C474.539 531.424 474.091 531.52 473.611 531.52C472.736 531.52 472.037 531.232 471.515 530.656C470.992 530.069 470.731 529.328 470.731 528.432V523.584H472.235V528.208C472.235 528.784 472.373 529.258 472.651 529.632C472.939 530.005 473.381 530.192 473.979 530.192C474.576 530.192 475.029 530.016 475.339 529.664C475.648 529.301 475.803 528.821 475.803 528.224V523.584H477.307V529.856C477.307 530.357 477.333 530.832 477.387 531.28H475.947C475.904 531.045 475.883 530.736 475.883 530.352ZM481.377 531.28H479.873V519.696H481.377V531.28ZM483.456 529.216C483.456 528.554 483.669 528.026 484.096 527.632C484.522 527.226 485.088 526.976 485.792 526.88L487.872 526.576C488.266 526.522 488.464 526.33 488.464 526C488.464 525.594 488.325 525.264 488.048 525.008C487.77 524.752 487.354 524.624 486.8 524.624C486.288 524.624 485.882 524.768 485.584 525.056C485.285 525.333 485.109 525.706 485.056 526.176L483.616 525.84C483.69 525.104 484.026 524.506 484.624 524.048C485.221 523.578 485.936 523.344 486.768 523.344C487.856 523.344 488.661 523.61 489.184 524.144C489.706 524.666 489.968 525.338 489.968 526.16V530.016C489.968 530.474 490 530.896 490.064 531.28H488.592C488.538 530.96 488.512 530.613 488.512 530.24C488.298 530.581 487.984 530.88 487.568 531.136C487.162 531.392 486.65 531.52 486.032 531.52C485.274 531.52 484.656 531.296 484.176 530.848C483.696 530.389 483.456 529.845 483.456 529.216ZM486.24 530.256C486.912 530.256 487.45 530.074 487.856 529.712C488.261 529.349 488.464 528.773 488.464 527.984V527.632L486.112 527.984C485.77 528.037 485.498 528.16 485.296 528.352C485.093 528.544 484.992 528.805 484.992 529.136C484.992 529.434 485.104 529.696 485.328 529.92C485.562 530.144 485.866 530.256 486.24 530.256ZM494.327 521.152V523.584H495.991V524.944H494.327V528.944C494.327 529.306 494.407 529.573 494.567 529.744C494.737 529.914 495.015 530 495.399 530C495.623 530 495.82 529.978 495.991 529.936V531.216C495.735 531.312 495.393 531.36 494.967 531.36C494.305 531.36 493.783 531.168 493.399 530.784C493.015 530.4 492.823 529.861 492.823 529.168V524.944H491.351V523.584H491.767C492.161 523.584 492.455 523.477 492.647 523.264C492.849 523.04 492.951 522.752 492.951 522.4V521.152H494.327ZM499.486 531.28H497.998V523.584H499.486V531.28ZM497.966 521.44C497.764 521.226 497.662 520.97 497.662 520.672C497.662 520.373 497.764 520.117 497.966 519.904C498.18 519.69 498.436 519.584 498.734 519.584C499.033 519.584 499.289 519.69 499.502 519.904C499.716 520.106 499.822 520.362 499.822 520.672C499.822 520.97 499.716 521.226 499.502 521.44C499.289 521.642 499.033 521.744 498.734 521.744C498.436 521.744 498.18 521.642 497.966 521.44ZM503.549 526.832V531.28H502.045V523.584H503.517V524.688C504.029 523.802 504.818 523.36 505.885 523.36C506.77 523.36 507.448 523.642 507.917 524.208C508.397 524.773 508.637 525.504 508.637 526.4V531.28H507.133V526.656C507.133 525.365 506.536 524.72 505.341 524.72C504.776 524.72 504.333 524.922 504.013 525.328C503.704 525.722 503.549 526.224 503.549 526.832ZM510.47 531.696L511.926 531.36C511.979 531.904 512.198 532.352 512.582 532.704C512.966 533.066 513.446 533.248 514.022 533.248C515.59 533.248 516.374 532.416 516.374 530.752V529.648C516.182 530.021 515.878 530.325 515.462 530.56C515.056 530.794 514.576 530.912 514.022 530.912C512.998 530.912 512.15 530.565 511.478 529.872C510.816 529.168 510.486 528.272 510.486 527.184C510.486 526.128 510.816 525.242 511.478 524.528C512.139 523.802 512.987 523.44 514.022 523.44C515.195 523.44 515.984 523.845 516.39 524.656V523.584H517.878V530.704C517.878 531.216 517.808 531.69 517.67 532.128C517.542 532.576 517.334 532.986 517.046 533.36C516.758 533.733 516.352 534.026 515.83 534.24C515.318 534.453 514.715 534.56 514.022 534.56C513.072 534.56 512.267 534.288 511.606 533.744C510.944 533.21 510.566 532.528 510.47 531.696ZM514.246 529.648C514.896 529.648 515.424 529.424 515.83 528.976C516.235 528.517 516.438 527.92 516.438 527.184C516.438 526.448 516.235 525.856 515.83 525.408C515.424 524.949 514.896 524.72 514.246 524.72C513.584 524.72 513.046 524.944 512.63 525.392C512.224 525.84 512.022 526.437 512.022 527.184C512.022 527.941 512.219 528.544 512.614 528.992C513.019 529.429 513.563 529.648 514.246 529.648Z"
-                            fill="#F8F9EE"
+                            d="M449.405 509.28 446.813 504.64H445.117V509.28H443.533V497.936H447.805C448.851 497.936 449.688 498.261 450.317 498.912 450.957 499.552 451.277 500.352 451.277 501.312 451.277 502.133 451.032 502.837 450.541 503.424 450.051 504 449.379 504.368 448.525 504.528L451.229 509.28H449.405ZM445.117 503.232H447.517C448.157 503.232 448.675 503.061 449.069 502.72 449.464 502.368 449.661 501.898 449.661 501.312 449.661 500.714 449.464 500.24 449.069 499.888 448.675 499.525 448.157 499.344 447.517 499.344H445.117V503.232ZM453.943 504.64H458.151C458.13 504.064 457.938 503.594 457.575 503.232 457.212 502.858 456.7 502.672 456.039 502.672 455.442 502.672 454.951 502.869 454.567 503.264 454.183 503.648 453.975 504.106 453.943 504.64ZM458.375 506.64 459.671 507.088C459.447 507.802 459.031 508.389 458.423 508.848 457.815 509.296 457.079 509.52 456.215 509.52 455.138 509.52 454.22 509.152 453.463 508.416 452.716 507.669 452.343 506.666 452.343 505.408 452.343 504.234 452.706 503.264 453.431 502.496 454.156 501.728 455.02 501.344 456.023 501.344 457.186 501.344 458.092 501.712 458.743 502.448 459.394 503.173 459.719 504.149 459.719 505.376 459.719 505.568 459.708 505.728 459.687 505.856H453.895C453.906 506.538 454.13 507.098 454.567 507.536 455.015 507.973 455.564 508.192 456.215 508.192 457.314 508.192 458.034 507.674 458.375 506.64ZM461.079 509.696 462.535 509.36C462.588 509.904 462.807 510.352 463.191 510.704 463.575 511.066 464.055 511.248 464.631 511.248 466.199 511.248 466.983 510.416 466.983 508.752V507.648C466.791 508.021 466.487 508.325 466.071 508.56 465.666 508.794 465.186 508.912 464.631 508.912 463.607 508.912 462.759 508.565 462.087 507.872 461.426 507.168 461.095 506.272 461.095 505.184 461.095 504.128 461.426 503.242 462.087 502.528 462.748 501.802 463.596 501.44 464.631 501.44 465.804 501.44 466.594 501.845 466.999 502.656V501.584H468.487V508.704C468.487 509.216 468.418 509.69 468.279 510.128 468.151 510.576 467.943 510.986 467.655 511.36 467.367 511.733 466.962 512.026 466.439 512.24 465.927 512.453 465.324 512.56 464.631 512.56 463.682 512.56 462.876 512.288 462.215 511.744 461.554 511.21 461.175 510.528 461.079 509.696ZM464.855 507.648C465.506 507.648 466.034 507.424 466.439 506.976 466.844 506.517 467.047 505.92 467.047 505.184 467.047 504.448 466.844 503.856 466.439 503.408 466.034 502.949 465.506 502.72 464.855 502.72 464.194 502.72 463.655 502.944 463.239 503.392 462.834 503.84 462.631 504.437 462.631 505.184 462.631 505.941 462.828 506.544 463.223 506.992 463.628 507.429 464.172 507.648 464.855 507.648ZM475.883 508.352C475.68 508.736 475.371 509.029 474.955 509.232 474.539 509.424 474.091 509.52 473.611 509.52 472.736 509.52 472.037 509.232 471.515 508.656 470.992 508.069 470.731 507.328 470.731 506.432V501.584H472.235V506.208C472.235 506.784 472.373 507.258 472.651 507.632 472.939 508.005 473.381 508.192 473.979 508.192 474.576 508.192 475.029 508.016 475.339 507.664 475.648 507.301 475.803 506.821 475.803 506.224V501.584H477.307V507.856C477.307 508.357 477.333 508.832 477.387 509.28H475.947C475.904 509.045 475.883 508.736 475.883 508.352ZM481.377 509.28H479.873V497.696H481.377V509.28ZM483.456 507.216C483.456 506.554 483.669 506.026 484.096 505.632 484.522 505.226 485.088 504.976 485.792 504.88L487.872 504.576C488.266 504.522 488.464 504.33 488.464 504 488.464 503.594 488.325 503.264 488.048 503.008 487.77 502.752 487.354 502.624 486.8 502.624 486.288 502.624 485.882 502.768 485.584 503.056 485.285 503.333 485.109 503.706 485.056 504.176L483.616 503.84C483.69 503.104 484.026 502.506 484.624 502.048 485.221 501.578 485.936 501.344 486.768 501.344 487.856 501.344 488.661 501.61 489.184 502.144 489.706 502.666 489.968 503.338 489.968 504.16V508.016C489.968 508.474 490 508.896 490.064 509.28H488.592C488.538 508.96 488.512 508.613 488.512 508.24 488.298 508.581 487.984 508.88 487.568 509.136 487.162 509.392 486.65 509.52 486.032 509.52 485.274 509.52 484.656 509.296 484.176 508.848 483.696 508.389 483.456 507.845 483.456 507.216ZM486.24 508.256C486.912 508.256 487.45 508.074 487.856 507.712 488.261 507.349 488.464 506.773 488.464 505.984V505.632L486.112 505.984C485.77 506.037 485.498 506.16 485.296 506.352 485.093 506.544 484.992 506.805 484.992 507.136 484.992 507.434 485.104 507.696 485.328 507.92 485.562 508.144 485.866 508.256 486.24 508.256ZM494.327 499.152V501.584H495.991V502.944H494.327V506.944C494.327 507.306 494.407 507.573 494.567 507.744 494.737 507.914 495.015 508 495.399 508 495.623 508 495.82 507.978 495.991 507.936V509.216C495.735 509.312 495.393 509.36 494.967 509.36 494.305 509.36 493.783 509.168 493.399 508.784 493.015 508.4 492.823 507.861 492.823 507.168V502.944H491.351V501.584H491.767C492.161 501.584 492.455 501.477 492.647 501.264 492.849 501.04 492.951 500.752 492.951 500.4V499.152H494.327ZM499.486 509.28H497.998V501.584H499.486V509.28ZM497.966 499.44C497.764 499.226 497.662 498.97 497.662 498.672 497.662 498.373 497.764 498.117 497.966 497.904 498.18 497.69 498.436 497.584 498.734 497.584 499.033 497.584 499.289 497.69 499.502 497.904 499.716 498.106 499.822 498.362 499.822 498.672 499.822 498.97 499.716 499.226 499.502 499.44 499.289 499.642 499.033 499.744 498.734 499.744 498.436 499.744 498.18 499.642 497.966 499.44ZM503.549 504.832V509.28H502.045V501.584H503.517V502.688C504.029 501.802 504.818 501.36 505.885 501.36 506.77 501.36 507.448 501.642 507.917 502.208 508.397 502.773 508.637 503.504 508.637 504.4V509.28H507.133V504.656C507.133 503.365 506.536 502.72 505.341 502.72 504.776 502.72 504.333 502.922 504.013 503.328 503.704 503.722 503.549 504.224 503.549 504.832ZM510.47 509.696 511.926 509.36C511.979 509.904 512.198 510.352 512.582 510.704 512.966 511.066 513.446 511.248 514.022 511.248 515.59 511.248 516.374 510.416 516.374 508.752V507.648C516.182 508.021 515.878 508.325 515.462 508.56 515.056 508.794 514.576 508.912 514.022 508.912 512.998 508.912 512.15 508.565 511.478 507.872 510.816 507.168 510.486 506.272 510.486 505.184 510.486 504.128 510.816 503.242 511.478 502.528 512.139 501.802 512.987 501.44 514.022 501.44 515.195 501.44 515.984 501.845 516.39 502.656V501.584H517.878V508.704C517.878 509.216 517.808 509.69 517.67 510.128 517.542 510.576 517.334 510.986 517.046 511.36 516.758 511.733 516.352 512.026 515.83 512.24 515.318 512.453 514.715 512.56 514.022 512.56 513.072 512.56 512.267 512.288 511.606 511.744 510.944 511.21 510.566 510.528 510.47 509.696ZM514.246 507.648C514.896 507.648 515.424 507.424 515.83 506.976 516.235 506.517 516.438 505.92 516.438 505.184 516.438 504.448 516.235 503.856 515.83 503.408 515.424 502.949 514.896 502.72 514.246 502.72 513.584 502.72 513.046 502.944 512.63 503.392 512.224 503.84 512.022 504.437 512.022 505.184 512.022 505.941 512.219 506.544 512.614 506.992 513.019 507.429 513.563 507.648 514.246 507.648Z"
+                            className="fill-black"
                           />
                         </g>
                       </g>
@@ -447,10 +390,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                             id="habitat-provision"
                             fill="url(#img-habitat-provision)"
                             data-name="Habitat Provision"
-                            stroke="white"
-                            strokeWidth="3"
-                            strokeOpacity={hovered === "habitat-provision" ? 1 : 0}
-                            className="node transition-all duration-200"
+                            className={cn("node stroke-2 transition-all duration-200", {
+                              "stroke-blue-500/0": hovered !== "habitat-provision",
+                              "stroke-blue-500": hovered === "habitat-provision",
+                            })}
                             onMouseEnter={() => setHovered("habitat-provision")}
                             onMouseLeave={() => setHovered(null)}
                             data-type="target"
@@ -460,10 +403,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                           <path
                             id="water-filtering"
                             data-name="Water Filtering"
-                            stroke="white"
-                            strokeWidth="3"
-                            strokeOpacity={hovered === "water-filtering" ? 1 : 0}
-                            className="node transition-all duration-200"
+                            className={cn("node stroke-2 transition-all duration-200", {
+                              "stroke-blue-500/0": hovered !== "water-filtering",
+                              "stroke-blue-500": hovered === "water-filtering",
+                            })}
                             onMouseEnter={() => setHovered("water-filtering")}
                             onMouseLeave={() => setHovered(null)}
                             data-type="target"
@@ -474,20 +417,11 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                         </g>
                       </g>
                       <g id="Frame 2341663">
-                        <g id="Group 1049_4">
-                          <path
-                            id="Vector 138_4"
-                            d="M593.233 490.28V490.28C593.233 498.012 599.501 504.28 607.233 504.28H714.233C721.965 504.28 728.233 498.012 728.233 490.28V490.28"
-                            stroke={GREY}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                        </g>
                         <g id="Frame 2341659_4">
                           <path
                             id="Supporting"
-                            d="M629.147 522.512L627.739 523.008C627.664 522.517 627.424 522.074 627.019 521.68C626.614 521.274 626.054 521.072 625.339 521.072C624.71 521.072 624.187 521.253 623.771 521.616C623.355 521.978 623.147 522.426 623.147 522.96C623.147 523.376 623.27 523.728 623.515 524.016C623.771 524.304 624.134 524.501 624.603 524.608L626.299 524.976C627.238 525.178 627.963 525.562 628.475 526.128C628.987 526.682 629.243 527.36 629.243 528.16C629.243 529.077 628.88 529.866 628.155 530.528C627.43 531.189 626.486 531.52 625.323 531.52C624.054 531.52 623.056 531.189 622.331 530.528C621.616 529.856 621.2 529.061 621.083 528.144L622.587 527.664C622.651 528.346 622.918 528.922 623.387 529.392C623.856 529.861 624.496 530.096 625.307 530.096C626.054 530.096 626.63 529.925 627.035 529.584C627.44 529.242 627.643 528.81 627.643 528.288C627.643 527.861 627.499 527.493 627.211 527.184C626.923 526.864 626.502 526.645 625.947 526.528L624.331 526.176C623.488 525.994 622.816 525.637 622.315 525.104C621.814 524.57 621.563 523.893 621.563 523.072C621.563 522.176 621.926 521.392 622.651 520.72C623.387 520.037 624.272 519.696 625.307 519.696C626.47 519.696 627.36 519.978 627.979 520.544C628.598 521.109 628.987 521.765 629.147 522.512ZM635.905 530.352C635.703 530.736 635.393 531.029 634.977 531.232C634.561 531.424 634.113 531.52 633.633 531.52C632.759 531.52 632.06 531.232 631.537 530.656C631.015 530.069 630.753 529.328 630.753 528.432V523.584H632.257V528.208C632.257 528.784 632.396 529.258 632.673 529.632C632.961 530.005 633.404 530.192 634.001 530.192C634.599 530.192 635.052 530.016 635.361 529.664C635.671 529.301 635.825 528.821 635.825 528.224V523.584H637.329V529.856C637.329 530.357 637.356 530.832 637.409 531.28H635.969C635.927 531.045 635.905 530.736 635.905 530.352ZM641.384 534.32H639.896V523.584H641.352V524.784C641.576 524.378 641.912 524.048 642.36 523.792C642.808 523.536 643.33 523.408 643.928 523.408C645.037 523.408 645.901 523.786 646.52 524.544C647.149 525.301 647.464 526.261 647.464 527.424C647.464 528.597 647.138 529.568 646.488 530.336C645.848 531.104 644.978 531.488 643.88 531.488C643.314 531.488 642.813 531.37 642.376 531.136C641.938 530.901 641.608 530.602 641.384 530.24V534.32ZM645.928 527.424C645.928 526.645 645.72 526.005 645.304 525.504C644.898 524.992 644.349 524.736 643.656 524.736C642.973 524.736 642.418 524.992 641.992 525.504C641.576 526.005 641.368 526.645 641.368 527.424C641.368 528.224 641.576 528.88 641.992 529.392C642.418 529.893 642.973 530.144 643.656 530.144C644.338 530.144 644.888 529.893 645.304 529.392C645.72 528.88 645.928 528.224 645.928 527.424ZM650.868 534.32H649.38V523.584H650.836V524.784C651.06 524.378 651.396 524.048 651.844 523.792C652.292 523.536 652.815 523.408 653.412 523.408C654.521 523.408 655.385 523.786 656.004 524.544C656.633 525.301 656.948 526.261 656.948 527.424C656.948 528.597 656.623 529.568 655.972 530.336C655.332 531.104 654.463 531.488 653.364 531.488C652.799 531.488 652.297 531.37 651.86 531.136C651.423 530.901 651.092 530.602 650.868 530.24V534.32ZM655.412 527.424C655.412 526.645 655.204 526.005 654.788 525.504C654.383 524.992 653.833 524.736 653.14 524.736C652.457 524.736 651.903 524.992 651.476 525.504C651.06 526.005 650.852 526.645 650.852 527.424C650.852 528.224 651.06 528.88 651.476 529.392C651.903 529.893 652.457 530.144 653.14 530.144C653.823 530.144 654.372 529.893 654.788 529.392C655.204 528.88 655.412 528.224 655.412 527.424ZM660.448 529.456C660.918 529.936 661.488 530.176 662.16 530.176C662.832 530.176 663.398 529.936 663.856 529.456C664.326 528.965 664.56 528.288 664.56 527.424C664.56 526.57 664.326 525.904 663.856 525.424C663.398 524.933 662.832 524.688 662.16 524.688C661.488 524.688 660.918 524.933 660.448 525.424C659.99 525.904 659.76 526.57 659.76 527.424C659.76 528.288 659.99 528.965 660.448 529.456ZM659.328 524.512C660.075 523.733 661.019 523.344 662.16 523.344C663.302 523.344 664.24 523.733 664.976 524.512C665.723 525.28 666.096 526.25 666.096 527.424C666.096 528.608 665.728 529.589 664.992 530.368C664.256 531.136 663.312 531.52 662.16 531.52C661.008 531.52 660.064 531.136 659.328 530.368C658.592 529.589 658.224 528.608 658.224 527.424C658.224 526.25 658.592 525.28 659.328 524.512ZM672.293 523.504V525.104C672.069 525.072 671.85 525.056 671.637 525.056C670.229 525.056 669.525 525.845 669.525 527.424V531.28H668.021V523.584H669.493V524.928C669.962 523.946 670.73 523.456 671.797 523.456C671.967 523.456 672.133 523.472 672.293 523.504ZM676.318 521.152V523.584H677.982V524.944H676.318V528.944C676.318 529.306 676.398 529.573 676.558 529.744C676.729 529.914 677.006 530 677.39 530C677.614 530 677.811 529.978 677.982 529.936V531.216C677.726 531.312 677.385 531.36 676.958 531.36C676.297 531.36 675.774 531.168 675.39 530.784C675.006 530.4 674.814 529.861 674.814 529.168V524.944H673.342V523.584H673.758C674.153 523.584 674.446 523.477 674.638 523.264C674.841 523.04 674.942 522.752 674.942 522.4V521.152H676.318ZM681.477 531.28H679.989V523.584H681.477V531.28ZM679.957 521.44C679.755 521.226 679.653 520.97 679.653 520.672C679.653 520.373 679.755 520.117 679.957 519.904C680.171 519.69 680.427 519.584 680.725 519.584C681.024 519.584 681.28 519.69 681.493 519.904C681.707 520.106 681.813 520.362 681.813 520.672C681.813 520.97 681.707 521.226 681.493 521.44C681.28 521.642 681.024 521.744 680.725 521.744C680.427 521.744 680.171 521.642 679.957 521.44ZM685.54 526.832V531.28H684.036V523.584H685.508V524.688C686.02 523.802 686.81 523.36 687.876 523.36C688.762 523.36 689.439 523.642 689.908 524.208C690.388 524.773 690.628 525.504 690.628 526.4V531.28H689.124V526.656C689.124 525.365 688.527 524.72 687.332 524.72C686.767 524.72 686.324 524.922 686.004 525.328C685.695 525.722 685.54 526.224 685.54 526.832ZM692.461 531.696L693.917 531.36C693.97 531.904 694.189 532.352 694.573 532.704C694.957 533.066 695.437 533.248 696.013 533.248C697.581 533.248 698.365 532.416 698.365 530.752V529.648C698.173 530.021 697.869 530.325 697.453 530.56C697.047 530.794 696.567 530.912 696.013 530.912C694.989 530.912 694.141 530.565 693.469 529.872C692.807 529.168 692.477 528.272 692.477 527.184C692.477 526.128 692.807 525.242 693.469 524.528C694.13 523.802 694.978 523.44 696.013 523.44C697.186 523.44 697.975 523.845 698.381 524.656V523.584H699.869V530.704C699.869 531.216 699.799 531.69 699.661 532.128C699.533 532.576 699.325 532.986 699.037 533.36C698.749 533.733 698.343 534.026 697.821 534.24C697.309 534.453 696.706 534.56 696.013 534.56C695.063 534.56 694.258 534.288 693.597 533.744C692.935 533.21 692.557 532.528 692.461 531.696ZM696.237 529.648C696.887 529.648 697.415 529.424 697.821 528.976C698.226 528.517 698.429 527.92 698.429 527.184C698.429 526.448 698.226 525.856 697.821 525.408C697.415 524.949 696.887 524.72 696.237 524.72C695.575 524.72 695.037 524.944 694.621 525.392C694.215 525.84 694.013 526.437 694.013 527.184C694.013 527.941 694.21 528.544 694.605 528.992C695.01 529.429 695.554 529.648 696.237 529.648Z"
-                            fill="#F8F9EE"
+                            d="M 629.147 500.512 L 627.739 501.008 C 627.664 500.517 627.424 500.074 627.019 499.68 C 626.614 499.274 626.054 499.072 625.339 499.072 C 624.71 499.072 624.187 499.253 623.771 499.616 C 623.355 499.978 623.147 500.426 623.147 500.96 C 623.147 501.376 623.27 501.728 623.515 502.016 C 623.771 502.304 624.134 502.501 624.603 502.608 L 626.299 502.976 C 627.238 503.178 627.963 503.562 628.475 504.128 C 628.987 504.682 629.243 505.36 629.243 506.16 C 629.243 507.077 628.88 507.866 628.155 508.528 C 627.43 509.189 626.486 509.52 625.323 509.52 C 624.054 509.52 623.056 509.189 622.331 508.528 C 621.616 507.856 621.2 507.061 621.083 506.144 L 622.587 505.664 C 622.651 506.346 622.918 506.922 623.387 507.392 C 623.856 507.861 624.496 508.096 625.307 508.096 C 626.054 508.096 626.63 507.925 627.035 507.584 C 627.44 507.242 627.643 506.81 627.643 506.288 C 627.643 505.861 627.499 505.493 627.211 505.184 C 626.923 504.864 626.502 504.645 625.947 504.528 L 624.331 504.176 C 623.488 503.994 622.816 503.637 622.315 503.104 C 621.814 502.57 621.563 501.893 621.563 501.072 C 621.563 500.176 621.926 499.392 622.651 498.72 C 623.387 498.037 624.272 497.696 625.307 497.696 C 626.47 497.696 627.36 497.978 627.979 498.544 C 628.598 499.109 628.987 499.765 629.147 500.512 Z M 635.905 508.352 C 635.703 508.736 635.393 509.029 634.977 509.232 C 634.561 509.424 634.113 509.52 633.633 509.52 C 632.759 509.52 632.06 509.232 631.537 508.656 C 631.015 508.069 630.753 507.328 630.753 506.432 V 501.584 H 632.257 V 506.208 C 632.257 506.784 632.396 507.258 632.673 507.632 C 632.961 508.005 633.404 508.192 634.001 508.192 C 634.599 508.192 635.052 508.016 635.361 507.664 C 635.671 507.301 635.825 506.821 635.825 506.224 V 501.584 H 637.329 V 507.856 C 637.329 508.357 637.356 508.832 637.409 509.28 H 635.969 C 635.927 509.045 635.905 508.736 635.905 508.352 Z M 641.384 512.32 H 639.896 V 501.584 H 641.352 V 502.784 C 641.576 502.378 641.912 502.048 642.36 501.792 C 642.808 501.536 643.33 501.408 643.928 501.408 C 645.037 501.408 645.901 501.786 646.52 502.544 C 647.149 503.301 647.464 504.261 647.464 505.424 C 647.464 506.597 647.138 507.568 646.488 508.336 C 645.848 509.104 644.978 509.488 643.88 509.488 C 643.314 509.488 642.813 509.37 642.376 509.136 C 641.938 508.901 641.608 508.602 641.384 508.24 V 512.32 Z M 645.928 505.424 C 645.928 504.645 645.72 504.005 645.304 503.504 C 644.898 502.992 644.349 502.736 643.656 502.736 C 642.973 502.736 642.418 502.992 641.992 503.504 C 641.576 504.005 641.368 504.645 641.368 505.424 C 641.368 506.224 641.576 506.88 641.992 507.392 C 642.418 507.893 642.973 508.144 643.656 508.144 C 644.338 508.144 644.888 507.893 645.304 507.392 C 645.72 506.88 645.928 506.224 645.928 505.424 Z M 650.868 512.32 H 649.38 V 501.584 H 650.836 V 502.784 C 651.06 502.378 651.396 502.048 651.844 501.792 C 652.292 501.536 652.815 501.408 653.412 501.408 C 654.521 501.408 655.385 501.786 656.004 502.544 C 656.633 503.301 656.948 504.261 656.948 505.424 C 656.948 506.597 656.623 507.568 655.972 508.336 C 655.332 509.104 654.463 509.488 653.364 509.488 C 652.799 509.488 652.297 509.37 651.86 509.136 C 651.423 508.901 651.092 508.602 650.868 508.24 V 512.32 Z M 655.412 505.424 C 655.412 504.645 655.204 504.005 654.788 503.504 C 654.383 502.992 653.833 502.736 653.14 502.736 C 652.457 502.736 651.903 502.992 651.476 503.504 C 651.06 504.005 650.852 504.645 650.852 505.424 C 650.852 506.224 651.06 506.88 651.476 507.392 C 651.903 507.893 652.457 508.144 653.14 508.144 C 653.823 508.144 654.372 507.893 654.788 507.392 C 655.204 506.88 655.412 506.224 655.412 505.424 Z M 660.448 507.456 C 660.918 507.936 661.488 508.176 662.16 508.176 C 662.832 508.176 663.398 507.936 663.856 507.456 C 664.326 506.965 664.56 506.288 664.56 505.424 C 664.56 504.57 664.326 503.904 663.856 503.424 C 663.398 502.933 662.832 502.688 662.16 502.688 C 661.488 502.688 660.918 502.933 660.448 503.424 C 659.99 503.904 659.76 504.57 659.76 505.424 C 659.76 506.288 659.99 506.965 660.448 507.456 Z M 659.328 502.512 C 660.075 501.733 661.019 501.344 662.16 501.344 C 663.302 501.344 664.24 501.733 664.976 502.512 C 665.723 503.28 666.096 504.25 666.096 505.424 C 666.096 506.608 665.728 507.589 664.992 508.368 C 664.256 509.136 663.312 509.52 662.16 509.52 C 661.008 509.52 660.064 509.136 659.328 508.368 C 658.592 507.589 658.224 506.608 658.224 505.424 C 658.224 504.25 658.592 503.28 659.328 502.512 Z M 672.293 501.504 V 503.104 C 672.069 503.072 671.85 503.056 671.637 503.056 C 670.229 503.056 669.525 503.845 669.525 505.424 V 509.28 H 668.021 V 501.584 H 669.493 V 502.928 C 669.962 501.946 670.73 501.456 671.797 501.456 C 671.967 501.456 672.133 501.472 672.293 501.504 Z M 676.318 499.152 V 501.584 H 677.982 V 502.944 H 676.318 V 506.944 C 676.318 507.306 676.398 507.573 676.558 507.744 C 676.729 507.914 677.006 508 677.39 508 C 677.614 508 677.811 507.978 677.982 507.936 V 509.216 C 677.726 509.312 677.385 509.36 676.958 509.36 C 676.297 509.36 675.774 509.168 675.39 508.784 C 675.006 508.4 674.814 507.861 674.814 507.168 V 502.944 H 673.342 V 501.584 H 673.758 C 674.153 501.584 674.446 501.477 674.638 501.264 C 674.841 501.04 674.942 500.752 674.942 500.4 V 499.152 H 676.318 Z M 681.477 509.28 H 679.989 V 501.584 H 681.477 V 509.28 Z M 679.957 499.44 C 679.755 499.226 679.653 498.97 679.653 498.672 C 679.653 498.373 679.755 498.117 679.957 497.904 C 680.171 497.69 680.427 497.584 680.725 497.584 C 681.024 497.584 681.28 497.69 681.493 497.904 C 681.707 498.106 681.813 498.362 681.813 498.672 C 681.813 498.97 681.707 499.226 681.493 499.44 C 681.28 499.642 681.024 499.744 680.725 499.744 C 680.427 499.744 680.171 499.642 679.957 499.44 Z M 685.54 504.832 V 509.28 H 684.036 V 501.584 H 685.508 V 502.688 C 686.02 501.802 686.81 501.36 687.876 501.36 C 688.762 501.36 689.439 501.642 689.908 502.208 C 690.388 502.773 690.628 503.504 690.628 504.4 V 509.28 H 689.124 V 504.656 C 689.124 503.365 688.527 502.72 687.332 502.72 C 686.767 502.72 686.324 502.922 686.004 503.328 C 685.695 503.722 685.54 504.224 685.54 504.832 Z M 692.461 509.696 L 693.917 509.36 C 693.97 509.904 694.189 510.352 694.573 510.704 C 694.957 511.066 695.437 511.248 696.013 511.248 C 697.581 511.248 698.365 510.416 698.365 508.752 V 507.648 C 698.173 508.021 697.869 508.325 697.453 508.56 C 697.047 508.794 696.567 508.912 696.013 508.912 C 694.989 508.912 694.141 508.565 693.469 507.872 C 692.807 507.168 692.477 506.272 692.477 505.184 C 692.477 504.128 692.807 503.242 693.469 502.528 C 694.13 501.802 694.978 501.44 696.013 501.44 C 697.186 501.44 697.975 501.845 698.381 502.656 V 501.584 H 699.869 V 508.704 C 699.869 509.216 699.799 509.69 699.661 510.128 C 699.533 510.576 699.325 510.986 699.037 511.36 C 698.749 511.733 698.343 512.026 697.821 512.24 C 697.309 512.453 696.706 512.56 696.013 512.56 C 695.063 512.56 694.258 512.288 693.597 511.744 C 692.935 511.21 692.557 510.528 692.461 509.696 Z M 696.237 507.648 C 696.887 507.648 697.415 507.424 697.821 506.976 C 698.226 506.517 698.429 505.92 698.429 505.184 C 698.429 504.448 698.226 503.856 697.821 503.408 C 697.415 502.949 696.887 502.72 696.237 502.72 C 695.575 502.72 695.037 502.944 694.621 503.392 C 694.215 503.84 694.013 504.437 694.013 505.184 C 694.013 505.941 694.21 506.544 694.605 506.992 C 695.01 507.429 695.554 507.648 696.237 507.648 ZM629.147 500.512 627.739 501.008C627.664 500.517 627.424 500.074 627.019 499.68 626.614 499.274 626.054 499.072 625.339 499.072 624.71 499.072 624.187 499.253 623.771 499.616 623.355 499.978 623.147 500.426 623.147 500.96 623.147 501.376 623.27 501.728 623.515 502.016 623.771 502.304 624.134 502.501 624.603 502.608L626.299 502.976C627.238 503.178 627.963 503.562 628.475 504.128 628.987 504.682 629.243 505.36 629.243 506.16 629.243 507.077 628.88 507.866 628.155 508.528 627.43 509.189 626.486 509.52 625.323 509.52 624.054 509.52 623.056 509.189 622.331 508.528 621.616 507.856 621.2 507.061 621.083 506.144L622.587 505.664C622.651 506.346 622.918 506.922 623.387 507.392 623.856 507.861 624.496 508.096 625.307 508.096 626.054 508.096 626.63 507.925 627.035 507.584 627.44 507.242 627.643 506.81 627.643 506.288 627.643 505.861 627.499 505.493 627.211 505.184 626.923 504.864 626.502 504.645 625.947 504.528L624.331 504.176C623.488 503.994 622.816 503.637 622.315 503.104 621.814 502.57 621.563 501.893 621.563 501.072 621.563 500.176 621.926 499.392 622.651 498.72 623.387 498.037 624.272 497.696 625.307 497.696 626.47 497.696 627.36 497.978 627.979 498.544 628.598 499.109 628.987 499.765 629.147 500.512ZM635.905 508.352C635.703 508.736 635.393 509.029 634.977 509.232 634.561 509.424 634.113 509.52 633.633 509.52 632.759 509.52 632.06 509.232 631.537 508.656 631.015 508.069 630.753 507.328 630.753 506.432V501.584H632.257V506.208C632.257 506.784 632.396 507.258 632.673 507.632 632.961 508.005 633.404 508.192 634.001 508.192 634.599 508.192 635.052 508.016 635.361 507.664 635.671 507.301 635.825 506.821 635.825 506.224V501.584H637.329V507.856C637.329 508.357 637.356 508.832 637.409 509.28H635.969C635.927 509.045 635.905 508.736 635.905 508.352ZM641.384 512.32H639.896V501.584H641.352V502.784C641.576 502.378 641.912 502.048 642.36 501.792 642.808 501.536 643.33 501.408 643.928 501.408 645.037 501.408 645.901 501.786 646.52 502.544 647.149 503.301 647.464 504.261 647.464 505.424 647.464 506.597 647.138 507.568 646.488 508.336 645.848 509.104 644.978 509.488 643.88 509.488 643.314 509.488 642.813 509.37 642.376 509.136 641.938 508.901 641.608 508.602 641.384 508.24V512.32ZM645.928 505.424C645.928 504.645 645.72 504.005 645.304 503.504 644.898 502.992 644.349 502.736 643.656 502.736 642.973 502.736 642.418 502.992 641.992 503.504 641.576 504.005 641.368 504.645 641.368 505.424 641.368 506.224 641.576 506.88 641.992 507.392 642.418 507.893 642.973 508.144 643.656 508.144 644.338 508.144 644.888 507.893 645.304 507.392 645.72 506.88 645.928 506.224 645.928 505.424ZM650.868 512.32H649.38V501.584H650.836V502.784C651.06 502.378 651.396 502.048 651.844 501.792 652.292 501.536 652.815 501.408 653.412 501.408 654.521 501.408 655.385 501.786 656.004 502.544 656.633 503.301 656.948 504.261 656.948 505.424 656.948 506.597 656.623 507.568 655.972 508.336 655.332 509.104 654.463 509.488 653.364 509.488 652.799 509.488 652.297 509.37 651.86 509.136 651.423 508.901 651.092 508.602 650.868 508.24V512.32ZM655.412 505.424C655.412 504.645 655.204 504.005 654.788 503.504 654.383 502.992 653.833 502.736 653.14 502.736 652.457 502.736 651.903 502.992 651.476 503.504 651.06 504.005 650.852 504.645 650.852 505.424 650.852 506.224 651.06 506.88 651.476 507.392 651.903 507.893 652.457 508.144 653.14 508.144 653.823 508.144 654.372 507.893 654.788 507.392 655.204 506.88 655.412 506.224 655.412 505.424ZM660.448 507.456C660.918 507.936 661.488 508.176 662.16 508.176 662.832 508.176 663.398 507.936 663.856 507.456 664.326 506.965 664.56 506.288 664.56 505.424 664.56 504.57 664.326 503.904 663.856 503.424 663.398 502.933 662.832 502.688 662.16 502.688 661.488 502.688 660.918 502.933 660.448 503.424 659.99 503.904 659.76 504.57 659.76 505.424 659.76 506.288 659.99 506.965 660.448 507.456ZM659.328 502.512C660.075 501.733 661.019 501.344 662.16 501.344 663.302 501.344 664.24 501.733 664.976 502.512 665.723 503.28 666.096 504.25 666.096 505.424 666.096 506.608 665.728 507.589 664.992 508.368 664.256 509.136 663.312 509.52 662.16 509.52 661.008 509.52 660.064 509.136 659.328 508.368 658.592 507.589 658.224 506.608 658.224 505.424 658.224 504.25 658.592 503.28 659.328 502.512ZM672.293 501.504V503.104C672.069 503.072 671.85 503.056 671.637 503.056 670.229 503.056 669.525 503.845 669.525 505.424V509.28H668.021V501.584H669.493V502.928C669.962 501.946 670.73 501.456 671.797 501.456 671.967 501.456 672.133 501.472 672.293 501.504ZM676.318 499.152V501.584H677.982V502.944H676.318V506.944C676.318 507.306 676.398 507.573 676.558 507.744 676.729 507.914 677.006 508 677.39 508 677.614 508 677.811 507.978 677.982 507.936V509.216C677.726 509.312 677.385 509.36 676.958 509.36 676.297 509.36 675.774 509.168 675.39 508.784 675.006 508.4 674.814 507.861 674.814 507.168V502.944H673.342V501.584H673.758C674.153 501.584 674.446 501.477 674.638 501.264 674.841 501.04 674.942 500.752 674.942 500.4V499.152H676.318ZM681.477 509.28H679.989V501.584H681.477V509.28ZM679.957 499.44C679.755 499.226 679.653 498.97 679.653 498.672 679.653 498.373 679.755 498.117 679.957 497.904 680.171 497.69 680.427 497.584 680.725 497.584 681.024 497.584 681.28 497.69 681.493 497.904 681.707 498.106 681.813 498.362 681.813 498.672 681.813 498.97 681.707 499.226 681.493 499.44 681.28 499.642 681.024 499.744 680.725 499.744 680.427 499.744 680.171 499.642 679.957 499.44ZM685.54 504.832V509.28H684.036V501.584H685.508V502.688C686.02 501.802 686.81 501.36 687.876 501.36 688.762 501.36 689.439 501.642 689.908 502.208 690.388 502.773 690.628 503.504 690.628 504.4V509.28H689.124V504.656C689.124 503.365 688.527 502.72 687.332 502.72 686.767 502.72 686.324 502.922 686.004 503.328 685.695 503.722 685.54 504.224 685.54 504.832ZM692.461 509.696 693.917 509.36C693.97 509.904 694.189 510.352 694.573 510.704 694.957 511.066 695.437 511.248 696.013 511.248 697.581 511.248 698.365 510.416 698.365 508.752V507.648C698.173 508.021 697.869 508.325 697.453 508.56 697.047 508.794 696.567 508.912 696.013 508.912 694.989 508.912 694.141 508.565 693.469 507.872 692.807 507.168 692.477 506.272 692.477 505.184 692.477 504.128 692.807 503.242 693.469 502.528 694.13 501.802 694.978 501.44 696.013 501.44 697.186 501.44 697.975 501.845 698.381 502.656V501.584H699.869V508.704C699.869 509.216 699.799 509.69 699.661 510.128 699.533 510.576 699.325 510.986 699.037 511.36 698.749 511.733 698.343 512.026 697.821 512.24 697.309 512.453 696.706 512.56 696.013 512.56 695.063 512.56 694.258 512.288 693.597 511.744 692.935 511.21 692.557 510.528 692.461 509.696ZM696.237 507.648C696.887 507.648 697.415 507.424 697.821 506.976 698.226 506.517 698.429 505.92 698.429 505.184 698.429 504.448 698.226 503.856 697.821 503.408 697.415 502.949 696.887 502.72 696.237 502.72 695.575 502.72 695.037 502.944 694.621 503.392 694.215 503.84 694.013 504.437 694.013 505.184 694.013 505.941 694.21 506.544 694.605 506.992 695.01 507.429 695.554 507.648 696.237 507.648Z"
+                            className="fill-black"
                           />
                         </g>
                       </g>
@@ -496,12 +430,9 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                   <g id="Frame 2341642_3">
                     <g id="Frame 2341642_2">
                       <foreignObject x="45" y="573" width="293" height="36">
-                        <div className="flex h-full w-full items-center gap-[10px] text-white">
-                          <span>Ecosystem</span>
-                          <InfoTooltip
-                            content="Products or processes generated by ecosystems that have value to society."
-                            theme="dark"
-                          />
+                        <div className="flex h-full w-full items-center gap-[10px] text-black">
+                          <span className="font-bold">Ecosystem</span>
+                          <InfoTooltip content="Products or processes generated by ecosystems that have value to society." />
                         </div>
                       </foreignObject>
                     </g>
@@ -509,19 +440,18 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                 </g>
                 <g id="Frame 2341669">
                   <path
-                    d="M822.326 432C822.326 415.431 835.757 402 852.326 402H1051.1C1067.67 402 1081.1 415.431 1081.1 432V593C1081.1 609.569 1067.67 623 1051.1 623H852.326C835.757 623 822.326 609.569 822.326 593V432Z"
-                    fill={GREY}
-                    fillOpacity="0.2"
+                    d="M822.326 402H852.326H1051.1H1081.1V623H1051.1H852.326H822.326V402Z"
+                    className="fill-black/5"
                   />
                   <g id="Frame 2341651_2">
                     <g id="nodes-abiotic">
                       <path
                         id="energy-production"
                         data-name="Energy Production"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeOpacity={hovered === "energy-production" ? 1 : 0}
-                        className="node transition-all duration-200"
+                        className={cn("node stroke-2 transition-all duration-200", {
+                          "stroke-blue-500/0": hovered !== "energy-production",
+                          "stroke-blue-500": hovered === "energy-production",
+                        })}
                         onMouseEnter={() => setHovered("energy-production")}
                         onMouseLeave={() => setHovered(null)}
                         data-type="target"
@@ -533,10 +463,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                         id="fossil-fuels"
                         fill="url(#img-fossil-fuels)"
                         data-name="Fossil Fuels"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeOpacity={hovered === "fossil-fuels" ? 1 : 0}
-                        className="node transition-all duration-200"
+                        className={cn("node stroke-2 transition-all duration-200", {
+                          "stroke-blue-500/0": hovered !== "fossil-fuels",
+                          "stroke-blue-500": hovered === "fossil-fuels",
+                        })}
                         onMouseEnter={() => setHovered("fossil-fuels")}
                         onMouseLeave={() => setHovered(null)}
                         data-type="target"
@@ -547,10 +477,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                         id="mineral-extraction"
                         fill="url(#img-mineral-extraction)"
                         data-name="Mineral Extraction"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeOpacity={hovered === "mineral-extraction" ? 1 : 0}
-                        className="node transition-all duration-200"
+                        className={cn("node stroke-2 transition-all duration-200", {
+                          "stroke-blue-500/0": hovered !== "mineral-extraction",
+                          "stroke-blue-500": hovered === "mineral-extraction",
+                        })}
                         onMouseEnter={() => setHovered("mineral-extraction")}
                         onMouseLeave={() => setHovered(null)}
                         data-type="target"
@@ -561,32 +491,13 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                   </g>
                   <g id="Frame 2341642_4">
                     <foreignObject x="843" y="573" width="293" height="36">
-                      <div className="flex h-full w-full items-center gap-[10px] text-white">
-                        <span>Abiotic</span>
-                        <InfoTooltip
-                          content="Benefits that arise from abiotic natural resources and physical processes."
-                          theme="dark"
-                        />
+                      <div className="flex h-full w-full items-center gap-[10px] text-black">
+                        <span className="font-bold">Abiotic</span>
+                        <InfoTooltip content="Benefits that arise from abiotic natural resources and physical processes." />
                       </div>
                     </foreignObject>
                   </g>
                 </g>
-              </g>
-              <g id="Group 1054">
-                <path
-                  id="Vector 136"
-                  d="M549.5 699V699C549.5 679.118 533.382 663 513.5 663H33C15.3269 663 1 648.673 1 631V631"
-                  stroke={GREY}
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-                <path
-                  id="Vector 137"
-                  d="M549.5 699V699C549.5 679.118 565.618 663 585.5 663H1072.5C1090.17 663 1104.5 648.673 1104.5 631V631"
-                  stroke={GREY}
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
               </g>
             </g>
           </g>
@@ -649,10 +560,10 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
           <stop offset="1" stopColor={GREY} />
         </linearGradient>
         <clipPath id="clip0_884_1590">
-          <rect width="20" height="20" fill="white" transform="translate(237 91)" />
+          <rect width="20" height="20" fill="black" transform="translate(237 91)" />
         </clipPath>
         <clipPath id="clip1_884_1590">
-          <rect width="20" height="20" fill="white" transform="translate(799 91)" />
+          <rect width="20" height="20" fill="black" transform="translate(799 91)" />
         </clipPath>
       </defs>
     </svg>
