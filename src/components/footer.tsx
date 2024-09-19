@@ -10,7 +10,7 @@ const Footer: FC = () => {
   return (
     <div className="bg-black text-white">
       <footer className="mx-auto grid max-w-7xl grid-cols-1 px-6 lg:grid-cols-2 lg:px-20">
-        <div className="border-b border-b-white/20 py-10 lg:border-b-0 lg:border-r lg:border-r-white/20 lg:py-20 lg:pr-14">
+        <div className="border-b border-b-white/20 py-10 lg:border-b-0 lg:py-20">
           <div className="flex max-w-[420px] flex-col gap-y-10">
             <Logo />
             <p>
@@ -37,10 +37,9 @@ const Footer: FC = () => {
                 />
               </Link>
             </div>
-            <p className="hidden opacity-50 lg:block">© Natural Capital Primer, 2024</p>
           </div>
         </div>
-        <nav className="py-10 lg:py-20 lg:pl-14" aria-label="Global">
+        <nav className="py-10 lg:py-20" aria-label="Global">
           <ul className="grid w-fit grid-cols-2 gap-x-6">
             <li>
               <ul className="flex flex-col gap-y-2.5">
@@ -100,9 +99,19 @@ const Footer: FC = () => {
             </li>
           </ul>
         </nav>
-        <p className="border-t border-t-white/20 py-10 opacity-50 lg:hidden">
-          © Natural Capital Primer, 2024
-        </p>
+        <div className="flex flex-col gap-y-3 border-t border-t-white/20 py-10 lg:col-span-2 lg:flex-row lg:gap-x-10">
+          <p className="text-white/50">© Natural Capital Primer, 2024</p>
+          <p className="text-white/50">
+            Designed and developed by{" "}
+            <Image
+              src="/assets/vizzuality.svg"
+              alt="Vizzuality"
+              width={74}
+              height={19}
+              className="relative -top-0.5 inline-block"
+            />
+          </p>
+        </div>
       </footer>
     </div>
   );
