@@ -1,0 +1,4 @@
+name: natural-capital-primer
+services:
+- name: web
+  dockerfile_path: Dockerfile.prod
