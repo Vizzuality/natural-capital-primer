@@ -19,6 +19,13 @@ export const env = createEnv({
       (value) => (!value || value === "true" ? true : false),
       z.boolean(),
     ),
+    // Domain of the application (without https://)
+    NEXT_PUBLIC_DOMAIN: z.string(),
+    // If `true`, send analytics about the visits
+    NEXT_PUBLIC_ENABLE_ANALYTICS: z.preprocess(
+      (value) => (!value || value === "true" ? true : false),
+      z.boolean(),
+    ),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -28,5 +35,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NEXT_USE_RESTRICTIVE_ROBOTS_TXT: process.env.NEXT_USE_RESTRICTIVE_ROBOTS_TXT,
+    NEXT_PUBLIC_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN,
+    NEXT_PUBLIC_ENABLE_ANALYTICS: process.env.NEXT_PUBLIC_ENABLE_ANALYTICS,
   },
 });
