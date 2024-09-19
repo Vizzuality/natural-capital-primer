@@ -38,8 +38,8 @@ pnpm run start
 
 This project includes 2 docker configuration files:
 
-- [Dockerfile](https://github.com/Vizzuality/natural-capital-primer/tree/develop/Dockerfile) aimed at development environments (may require tuning to work on different environments)
-- [Dockerfile.prod](https://github.com/Vizzuality/natural-capital-primer/tree/develop/Dockerfile.prod) aimed at production environments
+- [Dockerfile.dev](https://github.com/Vizzuality/natural-capital-primer/tree/develop/Dockerfile) aimed at development environments (may require tuning to work on different environments)
+- [Dockerfile](https://github.com/Vizzuality/natural-capital-primer/tree/develop/Dockerfile.prod) aimed at production environments
 
 You can use either file to build a Docker image for this application. Be sure to set the required environment variables when running the container.
 
