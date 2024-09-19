@@ -332,7 +332,7 @@ const Header: FC<{
                               <AccordionContent variant="naked" className="overflow-hidden pt-7">
                                 <ul className="flex flex-col gap-2 text-base font-normal">
                                   <li>
-                                    <Link href="/industry-use-cases">
+                                    <Link href="/climate-and-biodiversity">
                                       <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
                                     </Link>
                                   </li>
