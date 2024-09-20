@@ -1,210 +1,82 @@
 "use client";
-import { useState, ReactNode, useRef } from "react";
+
+import { useState, useCallback, useEffect } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import MountainCoverImage from "@/components/mountain-cover-image";
 import { FC } from "react";
-import { cn } from "@/lib/utils";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import Image from "next/image";
-import Plus from "@/svgs/plus.svg";
-import Minus from "@/svgs/minus.svg";
-import { Button } from "@/components/ui/button";
-import { AnimatePresence, motion } from "framer-motion";
+import { Accordion } from "@/components/ui/accordion";
 import { ACCORDION_ITEMS } from "./data";
-import { AccordionContentType, TriggerImagesAndText } from "./types";
-
-const MotionPlus = motion(Plus);
-const MotionMinus = motion(Minus);
-
-const addRef = (
-  accordionItemsRef: React.MutableRefObject<HTMLButtonElement[]>,
-  index: number,
-  el: HTMLButtonElement,
-) => {
-  if (!accordionItemsRef.current) {
-    accordionItemsRef.current = [];
-  }
-
-  if (accordionItemsRef.current.length <= index) {
-    accordionItemsRef.current.push(el);
-  } else {
-    accordionItemsRef.current[index] = el;
-  }
-};
-
-const Item = ({
-  triggerContent,
-  content,
-  active,
-  accordionItemsRef,
-  index,
-}: {
-  triggerContent: AccordionContentType;
-  content?: ReactNode;
-  active: boolean;
-  accordionItemsRef: React.MutableRefObject<HTMLButtonElement[]>;
-  index: number;
-}) => {
-  return (
-    <AccordionItem value={triggerContent.id}>
-      <AccordionTrigger
-        ref={(el) => addRef(accordionItemsRef, index, el as unknown as HTMLButtonElement)}
-        className="mx-6 w-full lg:mx-0"
-        headerClassName="lg:sticky lg:top-[90px] z-30 bg-white lg:min-h-[132px] xl:min-h-auto"
-      >
-        <TriggerContent content={triggerContent} open={active} />
-      </AccordionTrigger>
-      {content && <AccordionContent className="lg:pt-0">{content}</AccordionContent>}
-    </AccordionItem>
-  );
-};
-
-const TriggerContent = ({
-  open = false,
-  content,
-}: {
-  open?: boolean;
-  content: TriggerImagesAndText;
-}) => {
-  const { text1, imageSrc1, text2, imageSrc2 } = content;
-  return (
-    <span className="relative flex w-full items-start justify-between gap-3.5">
-      <span className="flex flex-col gap-5 text-2xl font-normal text-black lg:gap-4 xl:text-4xl">
-        {/* DESKTOP */}
-        <span className="hidden text-left leading-tight group-hover:underline xl:inline">
-          <Image
-            width={105}
-            height={44}
-            alt=""
-            src={imageSrc1}
-            className="relative -top-1 mr-3 inline-block"
-          />
-          <span>{text1}</span>
-          <br />
-          <Image
-            width={105}
-            height={44}
-            alt=""
-            src={imageSrc2}
-            className="relative -top-1 mr-3 inline-block"
-          />
-          {text2}
-        </span>
-        {/* MOBILE */}
-        <span className="flex h-11 gap-3 xl:hidden">
-          <Image width={105} height={44} alt="" src={imageSrc1} />
-          <Image width={105} height={44} alt="" src={imageSrc2} />
-        </span>
-        <span className="text-left xl:hidden">
-          {text1} {text2}
-        </span>
-      </span>
-      <span className="absolute right-0 top-0 flex shrink-0 items-center gap-x-3 lg:relative lg:top-1">
-        <span
-          className="sr-only font-normal text-grey-300 opacity-0 transition-opacity group-hover:opacity-100 lg:not-sr-only"
-          aria-hidden="true"
-        >
-          {!open && "Open detail"}
-          {open && "Close detail"}
-        </span>
-        <span className="h-11 w-11 rounded-full bg-black text-white transition-colors group-hover:bg-grey-300 lg:h-9 lg:w-9">
-          <AnimatePresence initial={false}>
-            {open && (
-              <MotionMinus
-                aria-hidden="true"
-                className="h-full w-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            )}
-            {!open && (
-              <MotionPlus
-                aria-hidden="true"
-                className="h-full w-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            )}
-          </AnimatePresence>
-        </span>
-      </span>
-    </span>
-  );
-};
+import { IndustryUseCasesAccordionItem, IndustryUseCasesTab } from "./types";
+import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
+import ArrowSlide from "@/icons/arrow-slide.svg";
+import { Tabs } from "@/components/ui/tabs";
+import AccordionItem from "./accordion-item";
 
 const IndustryUseCasesPage: FC = () => {
   const [activeItem, setActiveItem] = useState<string>("");
-  const accordionItemsRef = useRef<HTMLButtonElement[]>([]);
+  const [tab, setTab] = useState<IndustryUseCasesTab>("ecosystem");
+
+  const handleTabChange = useCallback((value: string) => {
+    setTab(value as IndustryUseCasesTab);
+  }, []);
+
+  // Reset the tab when the active item changes (i.e. another accordion is expanded or the current
+  // accordion is collapsed)
+  useEffect(() => {
+    setTab("ecosystem");
+  }, [activeItem]);
 
   return (
     <>
-      <Header logo="color" headerClassName="fixed inset-0 w-full h-[92px] bg-white z-40" />
-      <div className="mx-auto mt-[84px] flex max-w-7xl flex-col gap-x-10 gap-y-6 p-6 pb-10 pt-10 lg:mt-0 lg:gap-y-[60px] lg:px-20 lg:pb-20 lg:pt-36 xl:pt-64">
-        <div className="text-black lg:hidden">Industry Use Cases</div>
-        <h1 className="text-2xl leading-9 lg:max-w-[974px] lg:text-5xl lg:leading-none lg:tracking-tight">
-          How do different industries impact and are dependent on natural capital?
-        </h1>
-        <p className="max-w-[827px] lg:text-xl">
-          Explore the stocks of natural capital, the services that flow from it and the values for
-          businesses and society across a range of contexts.
-        </p>
-      </div>
-      <main className="mx-auto flex w-full max-w-7xl flex-col gap-y-6 border-t border-dashed border-t-white lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
-        <div className="top-24 z-10 hidden h-full flex-shrink-0 px-6 py-9 lg:sticky lg:block lg:w-[220px]">
-          {/* Accordion menu */}
-          <ul className="hidden flex-col gap-4 transition-opacity duration-200 lg:flex">
-            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType) => (
-              <li key={accordionItem.id}>
-                <Button
-                  type="button"
-                  variant="link"
-                  size="auto"
-                  className={cn("transition-all hover:font-bold", {
-                    "font-bold underline underline-offset-4": activeItem === accordionItem.id,
-                  })}
-                  aria-expanded={activeItem === accordionItem.id}
-                  onClick={() => {
-                    setActiveItem(activeItem === accordionItem.id ? "" : accordionItem.id);
-                  }}
-                >
-                  {accordionItem.id}
-                </Button>
-              </li>
-            ))}
-          </ul>
+      <div className="bg-[url(/assets/industry-use-cases-background.png)] bg-cover bg-center bg-no-repeat">
+        <Header logo="white" />
+        <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 text-white lg:mt-14 lg:gap-y-10 lg:px-20 lg:pb-16 xl:mt-40">
+          <h1 className="text-4.2xl font-medium lg:text-5xl">Industry Use Cases</h1>
+          <div className="flex max-w-[827px] flex-col gap-y-4">
+            <p className="max-w-[827px] lg:text-xl">
+              How do different industries impact and are dependent on natural capital?
+            </p>
+            <p className="mt-6 max-w-[730px] lg:mt-10">
+              Explore the stocks of natural capital, the services that flow from it and the values
+              for businesses and society across a range of contexts.
+            </p>
+            <div className="absolute bottom-16 right-20 hidden w-28 flex-col gap-y-5 xl:flex">
+              <div className="h-28 w-28 rounded-full border border-white/40">
+                <InfiniteSlideDownAnimation>
+                  <div className="flex h-28 w-28 items-center justify-center">
+                    <ArrowSlide className="h-6 w-6" />
+                  </div>
+                </InfiniteSlideDownAnimation>
+              </div>
+              <p className="text-center opacity-50">Scroll down to discover</p>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-grow flex-col gap-y-6 lg:pb-40">
-          <Accordion
-            type="single"
-            value={activeItem ?? undefined}
-            onValueChange={setActiveItem}
-            className="flex flex-col lg:gap-y-20"
-            collapsible
-          >
-            {ACCORDION_ITEMS.map((accordionItem: AccordionContentType, index) => (
-              <Item
-                key={accordionItem.id}
-                triggerContent={accordionItem}
-                active={activeItem === accordionItem.id}
-                content={accordionItem.content}
-                accordionItemsRef={accordionItemsRef}
-                index={index}
-              />
-            ))}
-          </Accordion>
+      </div>
+
+      <main className="mx-auto flex max-w-7xl flex-col px-6 pt-10 lg:px-20 lg:pt-16">
+        <p className="text-xs font-bold uppercase">Industry Use Cases examples</p>
+        <div className="mt-6 flex flex-col gap-y-6 pb-6 lg:pb-11">
+          <Tabs value={tab} onValueChange={handleTabChange} className="relative">
+            <Accordion
+              type="single"
+              value={activeItem ?? undefined}
+              onValueChange={setActiveItem}
+              className="flex flex-col"
+              collapsible
+            >
+              {ACCORDION_ITEMS.map((accordionItem: IndustryUseCasesAccordionItem) => (
+                <AccordionItem
+                  key={accordionItem.id}
+                  active={activeItem === accordionItem.id}
+                  tab={tab}
+                  data={accordionItem}
+                />
+              ))}
+            </Accordion>
+          </Tabs>
         </div>
       </main>
-      <MountainCoverImage />
       <Footer />
     </>
   );

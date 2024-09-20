@@ -1,9 +1,7 @@
-import AccordionItemContent from "@/components/industry-use-cases/accordion-item-content";
-import type { AccordionItemsContentType } from "@/components/industry-use-cases/accordion-item-content";
-import type { AccordionContentType } from "./types";
+import type { IndustryUseCasesAccordionItem, IndustryUseCasesTabContent } from "./types";
 import { manufacturingLinks, tourismLinks, foodLinks, retailLinks } from "./chart-data";
 
-const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
+const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
   constructions: {
     ecosystem: {
       content1: (
@@ -716,37 +714,25 @@ const ACCORDION_ITEMS_CONTENT: AccordionItemsContentType = {
   },
 };
 
-export const ACCORDION_ITEMS: AccordionContentType[] = [
+export const ACCORDION_ITEMS: IndustryUseCasesAccordionItem[] = [
   {
-    id: "Manufacturing",
-    text1: "Manufacturing depends on",
-    text2: "Forests.",
-    imageSrc1: "/assets/industry-cases-accordion-1.png",
-    imageSrc2: "/assets/industry-cases-accordion-2.png",
-    content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["constructions"]} />,
+    id: "manufacturing",
+    title: "Manufacturing depends heavily on Forests",
+    tabContent: ACCORDION_ITEMS_CONTENT["constructions"],
   },
   {
-    id: "Tourism",
-    text1: "Tourism depends on",
-    text2: "Wetlands & Mangroves.",
-    imageSrc1: "/assets/industry-cases-accordion-3.png",
-    imageSrc2: "/assets/industry-cases-accordion-4.png",
-    content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["tourism"]} />,
+    id: "tourism",
+    title: "Tourism depends heavily on Coastal Ecosystems",
+    tabContent: ACCORDION_ITEMS_CONTENT["tourism"],
   },
   {
-    id: "Retail",
-    text1: "Retail depends on",
-    text2: "Urban Green Spaces.",
-    imageSrc1: "/assets/industry-cases-accordion-5.png",
-    imageSrc2: "/assets/industry-cases-accordion-6.png",
-    content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["retail"]} />,
+    id: "retail",
+    title: "Retail depends heavily on Urban Green Spaces",
+    tabContent: ACCORDION_ITEMS_CONTENT["retail"],
   },
   {
-    id: "Food Security",
-    text1: "Food industry depends on",
-    text2: "Farmlands.",
-    imageSrc1: "/assets/industry-cases-accordion-7.png",
-    imageSrc2: "/assets/industry-cases-accordion-8.png",
-    content: <AccordionItemContent {...ACCORDION_ITEMS_CONTENT["food"]} />,
+    id: "food-security",
+    title: "Food Security depends heavily on Ecosystem Assets",
+    tabContent: ACCORDION_ITEMS_CONTENT["food"],
   },
 ];

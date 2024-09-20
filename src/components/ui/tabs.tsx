@@ -8,20 +8,18 @@ import { cva, VariantProps } from "class-variance-authority";
 
 const Tabs = TabsPrimitive.Root;
 
-const tabsListVariants = cva(
-  "flex items-center justify-evenly gap-x-2 rounded-[40px] border p-0.5",
-  {
-    variants: {
-      variant: {
-        default: "border-black",
-        white: "border-white",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
+const tabsListVariants = cva("flex items-center justify-evenly gap-x-2 rounded-[40px] p-0.5", {
+  variants: {
+    variant: {
+      default: "border border-black",
+      white: "border border-white",
+      fill: "bg-grey-75",
     },
   },
-);
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
@@ -44,6 +42,7 @@ const tabsTriggerVariants = cva(
           "hover:bg-grey-75 focus-visible:ring-black data-[state=active]:bg-black data-[state=active]:text-white",
         white:
           "hover:bg-grey-400 focus-visible:ring-white data-[state=active]:bg-white data-[state=active]:text-black",
+        fill: "hover:bg-grey-100 focus-visible:ring-black data-[state=active]:bg-black data-[state=active]:text-white",
       },
     },
     defaultVariants: {

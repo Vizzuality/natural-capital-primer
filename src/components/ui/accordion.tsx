@@ -32,29 +32,26 @@ const accordionTriggerVariants = cva("group flex flex-1 items-center", {
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & {
-    headerClassName?: string;
-  } & VariantProps<typeof accordionTriggerVariants>
->(({ className, variant, headerClassName, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className={cn("flex", headerClassName)}>
-    <AccordionPrimitive.Trigger
-      ref={ref}
-      className={cn(accordionTriggerVariants({ variant, className }))}
-      {...props}
-    >
-      {children}
-    </AccordionPrimitive.Trigger>
-  </AccordionPrimitive.Header>
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> &
+    VariantProps<typeof accordionTriggerVariants>
+>(({ className, variant, children, ...props }, ref) => (
+  <AccordionPrimitive.Trigger
+    ref={ref}
+    className={cn(accordionTriggerVariants({ variant, className }))}
+    {...props}
+  >
+    {children}
+  </AccordionPrimitive.Trigger>
 ));
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
 const accordionContentVariants = cva(
-  "text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+  "text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden",
   {
     variants: {
       variant: {
-        default: "pt-0 lg:pt-10 bg-white",
-        box: "pt-0 lg:pt-10 bg-white border border-black border-t-0 rounded-b-3xl px-5",
+        default: "bg-white",
+        box: "bg-white border border-black border-t-0 rounded-b-3xl px-5",
         naked: "",
       },
     },

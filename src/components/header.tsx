@@ -122,10 +122,10 @@ const Header: FC<{
       >
         <Button variant="link" size="auto" className={cn(logoVariants({ logo }))} asChild>
           <Link href="/" className="-m-1.5 p-1.5">
-            {(!logo || ["default", "color", "white"].includes(logo)) && (
+            {(!logo || ["default", "color"].includes(logo)) && (
               <Logo className={cn(logoVariants({ logo }), "h-8")} aria-hidden="true" />
             )}
-            {logo && !["default", "color", "white"].includes(logo) && (
+            {logo && !["default", "color"].includes(logo) && (
               <LogoMonochrome className="h-8" aria-hidden="true" />
             )}
             <span className="sr-only">Natural Capital Primer</span>
@@ -222,12 +222,12 @@ const Header: FC<{
                             <AccordionItem value="key-concepts">
                               <AccordionTrigger
                                 variant="naked"
-                                className="flex items-center justify-between"
+                                className="flex w-full items-center justify-between"
                               >
                                 Key Concepts <ChevronBold className="h-6 w-6" />
                               </AccordionTrigger>
-                              <AccordionContent variant="naked" className="overflow-hidden pt-7">
-                                <ul className="flex flex-col gap-2 text-base font-normal">
+                              <AccordionContent variant="naked">
+                                <ul className="flex flex-col gap-2 pt-7 text-base font-normal">
                                   <li>
                                     <Link href="/key-concepts">
                                       <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
@@ -274,12 +274,12 @@ const Header: FC<{
                             <AccordionItem value="industry-use-cases">
                               <AccordionTrigger
                                 variant="naked"
-                                className="flex items-center justify-between"
+                                className="flex w-full items-center justify-between"
                               >
                                 Industry Use Cases <ChevronBold className="h-6 w-6" />
                               </AccordionTrigger>
-                              <AccordionContent variant="naked" className="overflow-hidden pt-7">
-                                <ul className="flex flex-col gap-2 text-base font-normal">
+                              <AccordionContent variant="naked">
+                                <ul className="flex flex-col gap-2 pt-7 text-base font-normal">
                                   <li>
                                     <Link href="/industry-use-cases">
                                       <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
@@ -325,12 +325,12 @@ const Header: FC<{
                             <AccordionItem value="climate-and-biodiversity">
                               <AccordionTrigger
                                 variant="naked"
-                                className="flex items-center justify-between"
+                                className="flex w-full items-center justify-between"
                               >
                                 Climate & Biodiversity <ChevronBold className="h-6 w-6" />
                               </AccordionTrigger>
-                              <AccordionContent variant="naked" className="overflow-hidden pt-7">
-                                <ul className="flex flex-col gap-2 text-base font-normal">
+                              <AccordionContent variant="naked">
+                                <ul className="flex flex-col gap-2 pt-7 text-base font-normal">
                                   <li>
                                     <Link href="/climate-and-biodiversity">
                                       <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
