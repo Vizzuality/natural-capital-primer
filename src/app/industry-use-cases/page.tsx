@@ -11,14 +11,29 @@ import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-d
 import ArrowSlide from "@/icons/arrow-slide.svg";
 import { Tabs } from "@/components/ui/tabs";
 import AccordionItem from "./accordion-item";
+import { useParams } from "next/navigation";
 
 const IndustryUseCasesPage: FC = () => {
+  const params = useParams();
   const [activeItem, setActiveItem] = useState<string>("");
   const [tab, setTab] = useState<IndustryUseCasesTab>("ecosystem");
 
   const handleTabChange = useCallback((value: string) => {
     setTab(value as IndustryUseCasesTab);
   }, []);
+
+  // On mount, set the default active accordion and then listen to `params` change to set the active
+  // accordion
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        setActiveItem(hash);
+      }
+    };
+
+    handleHashChange();
+  }, [params]);
 
   // Reset the tab when the active item changes (i.e. another accordion is expanded or the current
   // accordion is collapsed)
