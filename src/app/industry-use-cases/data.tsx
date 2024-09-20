@@ -6,16 +6,16 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     ecosystem: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
             Why are forests essential for businesses and society?
           </h3>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Forests are indispensable to society&apos;s efforts to tackle climate change. They act
             as the Earth&apos;s lungs, absorbing enormous amounts of carbon dioxide and replenishing
             the oxygen in the atmosphere. Forests also provide vital raw materials like timber,
             paper, and biofuels, supporting key construction, manufacturing, and energy industries.
           </p>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Conservation of the world&apos;s biodiversity is inextricably tied to forests. Forests
             cover only 31% of the global land area but support 80% of the world&apos;s amphibian
             species, 75% of bird species, and 68% of mammals.
@@ -185,10 +185,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     ecosystem: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
             Why are coastal ecosystems essential for businesses and society?
           </h3>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Coastal ecosystems include sea-grass meadows, rocky platforms, coral reefs, mangroves,
             sand beaches and dunes, estuaries and coastal wetlands. Coastal areas comprise only 4%
             of Earth’s land, yet host &gt;30% of the world’s human population. They account for 90%
@@ -367,10 +367,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     ecosystem: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
             Why are urban green spaces essential for businesses and society?
           </h3>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             With over half of the global population now living in cities, urbanisation presents a
             significant challenge to the management of natural capital and ecosystem services.
             Natural capital in urban areas is often restricted to relatively small green spaces like
@@ -529,21 +529,21 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     ecosystem: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
             Why are farmlands essential for businesses and society?
           </h3>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Farmlands are the cornerstone of society. They provide essential food and fibre
             resources, support regional economies, and offer vital ecosystem services like soil
             fertility, biodiversity conservation and climate regulation. They hold cultural value by
             enriching communities, connecting people with their heritage, and offer rural landscapes
             to enjoy, overall benefitting mental health.
           </p>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             In an agricultural context, natural capital includes naturally occurring ecosystems and
             those established and maintained by humans (cultivated resources).
           </p>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Examples of ecosystem assets on a farm include native woody vegetation (remnant and
             replanted), grasslands (native and exotic pastures), crops and wetlands. Environmental
             assets include soil, minerals and water (surface, soil and groundwater).
