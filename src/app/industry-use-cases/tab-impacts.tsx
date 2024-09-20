@@ -2,38 +2,41 @@ import { FC } from "react";
 import Image from "next/image";
 import RevealLines from "@/components/animations/reveal-lines";
 import { IndustryUseCasesTabContent } from "./types";
+import { cn } from "@/lib/utils";
 
 const ImpactsTab: FC<IndustryUseCasesTabContent["impacts"]> = ({ content1, image1, list }) => {
   return (
     <>
-      <div className="mt-5 flex flex-col gap-6 px-6 lg:gap-5 lg:px-0">{content1}</div>
-      <div className="mx-6 lg:mx-0">
-        <ul className="flex flex-col gap-6 bg-orange px-6 py-[40px] lg:gap-20 lg:p-[50px]">
+      <div className="mt-5 flex flex-col gap-6 lg:items-center lg:gap-5">{content1}</div>
+      <div className="mt-10 lg:mt-20">
+        <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {list.map(({ title, text }, index) => (
-            <li key={title} className="flex flex-col gap-3 lg:gap-10">
-              <div className="flex flex-col gap-3 lg:gap-2">
+            <div key={title} className="flex flex-col gap-y-6 lg:gap-y-10">
+              <div>
                 <RevealLines splitChars>
-                  <div className="text-[52px] leading-9 lg:text-5xl">
+                  <p className="text-4.2xl text-green-500 lg:text-5xl">
                     {(index + 1).toString().padStart(2, "0")}
-                  </div>
+                  </p>
                 </RevealLines>
-                <RevealLines>
-                  <h3 className="max-w-[642px] text-2xl lg:text-4xl">{title}</h3>
-                </RevealLines>
+                <h4 className="lg:text-xl">{title}</h4>
               </div>
-              <RevealLines>
-                <div className="max-w-[642px]">{text}</div>
-              </RevealLines>
-            </li>
+              <p className="max-w-[475px] flex-grow lg:min-h-[170px] lg:flex-grow-0">{text}</p>
+            </div>
           ))}
-        </ul>
-        <Image
-          className="min-h-[403px] w-full object-cover"
-          src={image1.src}
-          alt=""
-          width={image1.width}
-          height={image1.height}
-        />
+          <div
+            className={cn({
+              "lg:col-span-2": list.length % 3 === 0 || list.length % 3 === 1,
+            })}
+          >
+            <Image
+              className="min-h-[403px] w-full object-cover object-center lg:h-full"
+              src={image1.src}
+              alt=""
+              width={image1.width}
+              height={image1.height}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

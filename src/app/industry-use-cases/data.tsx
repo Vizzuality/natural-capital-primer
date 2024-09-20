@@ -141,10 +141,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     impacts: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
             How does manufacturing and construction impact forests?
           </h3>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Forests provide raw materials for manufacturing and construction. Sustainable
             harvesting, best-practice waste management and post-mining rehabilitation can minimise
             impacts on natural capital. However, poor management practices pose a significant threat
@@ -318,10 +318,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     impacts: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
             How does tourism and hospitality impact coastal ecosystems?
           </h3>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Tourism and hospitality have a unique opportunity to protect and preserve the coastal
             ecosystems they rely on. This stunning natural capital draws visitors from around the
             world, and with committed management, we can ensure it remains vibrant and healthy for
@@ -491,8 +491,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     impacts: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">How does retail impact urban green spaces?</h3>
-          <p className="max-w-[685px] tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+            How does retail impact urban green spaces?
+          </h3>
+          <p className="max-w-[860px] lg:text-center">
             While the benefits of urban green spaces are compelling, the politics and economics are
             more complex. Local or regional (e.g., state) governments are responsible for
             establishing and maintaining urban green spaces. While there are good community health,
@@ -674,8 +676,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     impacts: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">How does the food industry impact farmlands?</h3>
-          <p className="max-w-[685px] tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+            How does the food industry impact farmlands?
+          </h3>
+          <p className="max-w-[860px] lg:text-center">
             The natural capital leveraged for agricultural production contributes to global food
             security and financial returns for farmers and the entire agricultural supply chain.
             This is why big food companies, and the financial institutions that support them, need
