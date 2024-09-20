@@ -123,10 +123,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     dependencies: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
             How does manufacturing and construction depend on forests?
           </h3>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Forests are fundamental for manufacturing and construction because they provide
             essential raw materials. Companies that extract raw materials from forests (e.g., timber
             for construction and furniture, minerals that support digital technology and renewable
@@ -301,10 +301,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     dependencies: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
             How does tourism and hospitality depend on coastal ecosystems?
           </h3>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Coastal ecosystems buffer built infrastructure from floods, inundation, coastal erosion
             and storm surges. Coastal ecosystems attract tourists to explore, relax and adventure in
             seaside localities. Tourists support hotels, cafes, restaurants and retail outlets.
@@ -474,8 +474,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     dependencies: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">How does retail depend on urban green spaces?</h3>
-          <p className="max-w-[685px] tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+            How does retail depend on urban green spaces?
+          </h3>
+          <p className="max-w-[860px] lg:text-center">
             Urban green spaces are vital to the retail sector by enhancing the attractiveness of
             city centres and encouraging foot traffic. These green areas offer residents and
             visitors places to relax, socialise, and unwind, creating a more inviting environment
@@ -657,10 +659,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     dependencies: {
       content1: (
         <>
-          <h3 className="text-xl tracking-tight">
+          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
             How does the food industry depend on farmlands?
           </h3>
-          <p className="max-w-[685px] tracking-tight">
+          <p className="max-w-[860px] lg:text-center">
             Farmlands are fundamental to the food industry because they provide essential resources
             and ecosystem services. Explore the diagram to see how natural capital benefits the food
             industry.

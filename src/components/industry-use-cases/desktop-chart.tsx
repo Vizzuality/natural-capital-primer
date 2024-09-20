@@ -119,13 +119,13 @@ const DesktopChart: FC<DesktopChartProps> = ({ width, data }) => {
         {Object.entries(Group).map(([name, key], index, array) => (
           <div
             key={key}
-            className={cn("flex flex-col", {
+            className={cn("flex flex-col px-5", {
               "items-start": index === 0,
               "items-center": index > 0 && index + 1 < array.length,
               "items-end": index + 1 === array.length,
             })}
           >
-            <div>{name}</div>
+            <div className="text-xl">{name}</div>
           </div>
         ))}
       </div>
@@ -188,10 +188,10 @@ const DesktopChart: FC<DesktopChartProps> = ({ width, data }) => {
                     key={node.id}
                     title={node.name}
                     className={cn(
-                      "max-w-60 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap rounded-full border px-2.5 py-0.5 transition-colors",
+                      "max-w-60 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap rounded-full border-2 px-2.5 py-0.5 transition-colors xl:max-w-72",
                       {
                         "border-black bg-black text-white": isHighlighted,
-                        "border-black/50 bg-white": !isHighlighted,
+                        "border-white bg-grey-75": !isHighlighted,
                       },
                     )}
                     onMouseEnter={() => setHoveredNode(node)}

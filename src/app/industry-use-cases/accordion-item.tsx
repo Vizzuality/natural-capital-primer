@@ -49,11 +49,7 @@ const AccordionItemComp = ({
         </AccordionTrigger>
         <AnimatePresence initial={false}>
           {active && (
-            <TabsList
-              variant="fill"
-              className="mx-6 flex-col rounded-[26px] md:flex-row lg:mx-0"
-              asChild
-            >
+            <TabsList variant="fill" className="flex-col rounded-[26px] md:flex-row" asChild>
               <motion.div
                 key={data.id}
                 initial={{ opacity: 0 }}
@@ -97,7 +93,7 @@ const AccordionItemComp = ({
             // `forceMount` and the class `data-[state=inactive]:hidden` are used together to make sure
             // there are not scroll jumps when switching from one tab to another so that we can
             // programmatically scroll to the top of the tab
-            className="flex flex-col gap-y-10 border-b-2 border-b-black pb-10 text-black data-[state=inactive]:hidden lg:pb-16"
+            className="flex flex-col gap-y-10 border-b-2 border-b-black pb-10 text-black data-[state=inactive]:hidden lg:pb-16 lg:pt-10"
             forceMount
           >
             {tabKey === "ecosystem" && (

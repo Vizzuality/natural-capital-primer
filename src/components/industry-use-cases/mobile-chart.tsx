@@ -68,59 +68,60 @@ const MobileChart: FC<MobileChartProps> = ({ data }) => {
   );
 
   return (
-    <Accordion
-      type="single"
-      className="flex max-h-[calc(100vh_-_120px)] flex-col gap-y-6 overflow-hidden"
-    >
-      {Object.entries(Group).map(([name, key]) => (
-        <AccordionItem
-          key={key}
-          value={key}
-          className="flex flex-shrink-0 flex-col overflow-hidden data-[state=open]:flex-shrink"
-        >
-          <AccordionTrigger variant="box" className="shrink-0">
-            {name}
-          </AccordionTrigger>
-          <AccordionContent variant="box" className="overflow-y-auto">
-            <Accordion type="single">
-              {nodesByGroup[key].map((node, index) => (
-                <AccordionItem key={node.id} value={node.name}>
-                  <AccordionTrigger
-                    className={cn({
-                      "py-6 font-normal data-[state=open]:font-bold": true,
-                      "border-t-0": index === 0,
-                    })}
-                  >
-                    {node.name}
-                    <Chrevon />
-                  </AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-y-6 overflow-hidden data-[state=open]:pb-6">
-                    {Object.entries(Group)
-                      .filter(([, headingKey]) => headingKey !== key)
-                      .map(([headingName, headingKey], headingIndex) => (
-                        <div
-                          key={headingKey}
-                          className={cn({
-                            "border-t border-dashed border-t-black pt-6": headingIndex > 0,
-                          })}
-                        >
-                          <div className="text-xs font-bold uppercase">{headingName}</div>
-                          <ul className="mt-2 flex flex-col gap-y-2">
-                            {getLinkedNodes(node)
-                              .filter(({ group }) => group === headingKey)
-                              .map((linkedNode) => (
-                                <li key={linkedNode.id}>{linkedNode.name}</li>
-                              ))}
-                          </ul>
-                        </div>
-                      ))}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </AccordionContent>
-        </AccordionItem>
-      ))}
+    <Accordion type="single" collapsible>
+      <div className="flex flex-col gap-y-6">
+        {Object.entries(Group).map(([name, key]) => (
+          <AccordionItem
+            key={key}
+            value={key}
+            className="flex flex-shrink-0 flex-col data-[state=open]:flex-shrink"
+          >
+            <AccordionTrigger variant="box" className="shrink-0">
+              {name}
+            </AccordionTrigger>
+            <AccordionContent variant="box">
+              <Accordion type="single" collapsible>
+                {nodesByGroup[key].map((node, index) => (
+                  <AccordionItem key={node.id} value={node.name}>
+                    <AccordionTrigger
+                      className={cn({
+                        "w-full py-6 font-normal data-[state=open]:font-bold": true,
+                        "border-t-0": index === 0,
+                      })}
+                    >
+                      {node.name}
+                      <Chrevon />
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <div className="flex flex-col gap-y-6 pb-6">
+                        {Object.entries(Group)
+                          .filter(([, headingKey]) => headingKey !== key)
+                          .map(([headingName, headingKey], headingIndex) => (
+                            <div
+                              key={headingKey}
+                              className={cn({
+                                "border-t border-dashed border-t-black pt-6": headingIndex > 0,
+                              })}
+                            >
+                              <div className="text-xs font-bold uppercase">{headingName}</div>
+                              <ul className="mt-2 flex flex-col gap-y-2">
+                                {getLinkedNodes(node)
+                                  .filter(({ group }) => group === headingKey)
+                                  .map((linkedNode) => (
+                                    <li key={linkedNode.id}>{linkedNode.name}</li>
+                                  ))}
+                              </ul>
+                            </div>
+                          ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </div>
     </Accordion>
   );
 };
