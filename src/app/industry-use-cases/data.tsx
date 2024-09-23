@@ -23,9 +23,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         </>
       ),
       image1: {
-        src: "/assets/industry-cases-constructions-ecosystem-1.png",
-        width: 685,
-        height: 388,
+        src: "/assets/industry-cases-constructions-ecosystem-1.jpg",
+        width: 1120,
+        height: 746,
       },
       imageText:
         "Conservation of the world's biodiversity is inextricably tied to forests. Forests cover only 31% of the global land area but support 80% of the world's amphibian species, 75% of bird species, and 68% of mammals.",
@@ -103,9 +103,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         },
       ],
       image3: {
-        src: "/assets/industry-cases-constructions-ecosystem-3.png",
-        width: 871,
-        height: 300,
+        src: "/assets/industry-cases-constructions-ecosystem-3.jpg",
+        width: 1068,
+        height: 600,
       },
       content3: (
         <>
@@ -198,9 +198,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         </>
       ),
       image1: {
-        src: "/assets/industry-cases-tourism-ecosystem-1.png",
-        width: 685,
-        height: 388,
+        src: "/assets/industry-cases-tourism-ecosystem-1.jpg",
+        width: 1120,
+        height: 746,
       },
       imageText: (
         <>
@@ -279,9 +279,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         },
       ],
       image3: {
-        src: "/assets/industry-cases-tourism-ecosystem-3.png",
-        width: 871,
-        height: 300,
+        src: "/assets/industry-cases-tourism-ecosystem-3.jpg",
+        width: 1068,
+        height: 600,
       },
       content3: (
         <>
@@ -381,9 +381,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         </>
       ),
       image1: {
-        src: "/assets/industry-cases-retail-ecosystem-1.png",
-        width: 685,
-        height: 388,
+        src: "/assets/industry-cases-retail-ecosystem-1.jpg",
+        width: 1120,
+        height: 1677,
       },
       imageText:
         "Urban green spaces are vital to the health, climate and economy of cities. Green spaces like parks, gardens, and recreation areas can have mental and physical health benefits and reduce the urban heat island effect (a build-up of heat due to the abundance of heat retaining surfaces), generating ‘urban cooling’ instead. ",
@@ -452,9 +452,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         },
       ],
       image3: {
-        src: "/assets/industry-cases-retail-ecosystem-3.png",
-        width: 871,
-        height: 300,
+        src: "/assets/industry-cases-retail-ecosystem-3.jpg",
+        width: 800,
+        height: 600,
       },
       content3: (
         <>
@@ -551,9 +551,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         </>
       ),
       image1: {
-        src: "/assets/industry-cases-food-ecosystem-1.png",
-        width: 685,
-        height: 388,
+        src: "/assets/industry-cases-food-ecosystem-1.jpg",
+        width: 1120,
+        height: 630,
       },
       imageText:
         "Conservation of the world's biodiversity is inextricably tied to forests. Forests cover only 31% of the global land area but support 80% of the world's amphibian species, 75% of bird species, and 68% of mammals.",
@@ -640,9 +640,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         },
       ],
       image3: {
-        src: "/assets/industry-cases-food-ecosystem-3.png",
-        width: 871,
-        height: 300,
+        src: "/assets/industry-cases-food-ecosystem-3.jpg",
+        width: 709,
+        height: 600,
       },
       content3: (
         <>
