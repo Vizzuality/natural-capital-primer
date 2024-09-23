@@ -4,9 +4,6 @@ import Header from "@/components/header";
 import Link from "next/link";
 import Manual from "@/icons/manual.svg";
 import ArrowExternal from "@/icons/arrow-external.svg";
-import { Button } from "@/components/ui/button";
-import HoverRepeatAnimation from "@/components/animations/hover-repeat";
-import MountainCoverImage from "@/components/mountain-cover-image";
 import Footer from "@/components/footer";
 
 const RESOURCES_BY_CATEGORY = [
@@ -146,7 +143,7 @@ const RESOURCES_BY_CATEGORY = [
   },
 ];
 
-export default function NotFoundPage() {
+export default function ResourcesPage() {
   return (
     <>
       <Header logo="color" />
@@ -157,7 +154,7 @@ export default function NotFoundPage() {
           shaping our environment and society.
         </p>
       </div>
-      <main className="mx-auto mt-10 flex max-w-7xl flex-col gap-y-10 p-6 lg:mt-28 lg:gap-y-40 lg:px-20">
+      <main className="mx-auto my-10 flex max-w-7xl flex-col gap-y-10 p-6 lg:my-28 lg:gap-y-40 lg:px-20">
         {RESOURCES_BY_CATEGORY.map(({ category, resources }) => (
           <div key={category} className="flex flex-col gap-y-6 lg:gap-y-10">
             <h2 className="text-2xl lg:text-4xl">{category}</h2>
@@ -194,24 +191,6 @@ export default function NotFoundPage() {
           </div>
         ))}
       </main>
-      <div className="mt-9 bg-orange-500 py-10 lg:mt-36 lg:py-14">
-        <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-6 p-6 text-center lg:gap-y-5">
-          <h2 className="max-w-[820px] text-2xl lg:text-4.5xl">
-            Understanding and valuing natural capital is crucial
-          </h2>
-          <p className="max-w-[820px]">
-            We can make informed choices to use and conserve our planet&apos;s resources by
-            understanding and valuing natural capital, balancing what we take from nature with what
-            we give back.
-          </p>
-          <Button variant="outline" asChild>
-            <Link href="/key-concepts">
-              <HoverRepeatAnimation>Learn More</HoverRepeatAnimation>
-            </Link>
-          </Button>
-        </main>
-      </div>
-      <MountainCoverImage />
       <Footer />
     </>
   );
