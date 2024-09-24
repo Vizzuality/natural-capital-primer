@@ -60,7 +60,7 @@ export default function About() {
           <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 text-white lg:mt-14 lg:gap-y-10 lg:px-20 lg:pb-16 xl:mt-40">
             <h1 className="text-4.2xl font-medium lg:text-5xl">About the Natural Capital Primer</h1>
             <div className="flex max-w-[827px] flex-col gap-y-4">
-              <p className="max-w-[827px] lg:text-xl">
+              <p className="max-w-[827px] text-lg lg:text-xl">
                 The Natural Capital Primer is a collaborative project of the Macdoch Foundation, La
                 Trobe University and Vizzuality. Our team comprises experts in environmental
                 science, sustainability, and communication, all dedicated to making natural capital
@@ -156,7 +156,7 @@ export default function About() {
       <div className="mx-auto grid max-w-7xl flex-col gap-x-6 gap-y-10 p-6 py-10 md:grid-cols-2 md:gap-y-6 md:py-20 lg:px-20">
         <div className="flex max-w-[480px] flex-col gap-y-6">
           <h2 className="text-2xl lg:text-4xl">Why do we need the Natural Capital Primer?</h2>
-          <p className="lg:text-xl">
+          <p className="text-lg lg:text-xl">
             ‘Natural capital’ is the buzzword of the moment. Natural capital is prominent in global
             initiatives, government policies, marketing slogans, and sustainability frameworks
             worldwide. However, navigating different definitions and applications of natural capital
@@ -221,7 +221,9 @@ export default function About() {
       <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-0 pb-10 lg:px-20 lg:pb-11">
         <div className="flex flex-col justify-start gap-y-4 border-t-2 border-t-orange-500 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10">
           <div className="flex-shrink-0 lg:w-[350px]">
-            <h2 className="text-orange-500 lg:text-xl">Who is the Natural Capital Primer for?</h2>
+            <h2 className="text-lg text-orange-500 lg:text-xl">
+              Who is the Natural Capital Primer for?
+            </h2>
             <p className="mt-4 lg:mt-11">
               As natural capital affects every person on earth, we designed the Primer to be used by
               all. To help create a foundational knowledge of what natural capital is, how we depend
@@ -234,27 +236,27 @@ export default function About() {
           <ul className="flex flex-grow flex-col gap-y-6 divide-y divide-dashed lg:gap-y-5">
             <li className="pt-5">
               <RevealLines>
-                <p className="max-w-[600px] lg:text-xl">Educators</p>
+                <p className="max-w-[600px] text-lg lg:text-xl">Educators</p>
               </RevealLines>
             </li>
             <li className="pt-5">
               <RevealLines>
-                <p className="max-w-[600px] lg:text-xl">Businesses</p>
+                <p className="max-w-[600px] text-lg lg:text-xl">Businesses</p>
               </RevealLines>
             </li>
             <li className="pt-5">
               <RevealLines>
-                <p className="max-w-[600px] lg:text-xl">Governments</p>
+                <p className="max-w-[600px] text-lg lg:text-xl">Governments</p>
               </RevealLines>
             </li>
             <li className="pt-5">
               <RevealLines>
-                <p className="max-w-[600px] lg:text-xl">Non-government Organisations</p>
+                <p className="max-w-[600px]text-lg lg:text-xl">Non-government Organisations</p>
               </RevealLines>
             </li>
             <li className="pt-5">
               <RevealLines>
-                <p className="max-w-[600px] lg:text-xl">Individuals</p>
+                <p className="max-w-[600px] text-lg lg:text-xl">Individuals</p>
               </RevealLines>
             </li>
           </ul>
