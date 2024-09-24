@@ -11,9 +11,8 @@ import { Button } from "@/components/ui/button";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import { useRef } from "react";
 import Pebble from "@/components/home/pebble";
-import PrimerExtractPopover from "@/components/home/primer-extract-popover";
-import MountainCoverImage from "@/components/mountain-cover-image";
 import dynamic from "next/dynamic";
+import DayInLifeCTA from "@/components/day-in-life-cta";
 
 const Parallax = dynamic(() => import("@/components/animations/parallax"), {
   ssr: false,
@@ -24,6 +23,41 @@ export default function Home() {
   const { scrollYProgress } = useScroll({
     target: scrollSectionRef,
   });
+
+  const progress = [
+    {
+      width: useTransform(scrollYProgress, [1 / 15, 2 / 15], [34, 10]),
+      backgroundColor: useTransform(scrollYProgress, [1 / 15, 2 / 15], ["#37A24C", "#cbcdc8"]),
+    },
+    {
+      width: useTransform(scrollYProgress, [1 / 15, 2 / 15, 3 / 15, 4 / 15], [10, 34, 34, 10]),
+      backgroundColor: useTransform(
+        scrollYProgress,
+        [1 / 15, 2 / 15, 3 / 15, 4 / 15],
+        ["#cbcdc8", "#37A24C", "#37A24C", "#cbcdc8"],
+      ),
+    },
+    {
+      width: useTransform(scrollYProgress, [3 / 15, 4 / 15, 5 / 15, 6 / 15], [10, 34, 34, 10]),
+      backgroundColor: useTransform(
+        scrollYProgress,
+        [3 / 15, 4 / 15, 5 / 15, 6 / 15],
+        ["#cbcdc8", "#37A24C", "#37A24C", "#cbcdc8"],
+      ),
+    },
+    {
+      width: useTransform(scrollYProgress, [5 / 15, 6 / 15, 11 / 15, 12 / 15], [10, 34, 34, 10]),
+      backgroundColor: useTransform(
+        scrollYProgress,
+        [5 / 15, 6 / 15, 11 / 15, 12 / 15],
+        ["#cbcdc8", "#37A24C", "#37A24C", "#cbcdc8"],
+      ),
+    },
+    {
+      width: useTransform(scrollYProgress, [11 / 15, 12 / 15], [10, 34]),
+      backgroundColor: useTransform(scrollYProgress, [11 / 15, 12 / 15], ["#cbcdc8", "#37A24C"]),
+    },
+  ];
 
   const resources = {
     opacity: useTransform(scrollYProgress, [5 / 15, 6 / 15], [1, 0]),
@@ -66,16 +100,9 @@ export default function Home() {
     display: useTransform(scrollYProgress, (value) => (value > 13 / 15 ? "flex" : "none")),
   };
 
-  const explore = {
-    opacity: useTransform(scrollYProgress, [13 / 15, 14 / 15], [0, 1]),
-    display: useTransform(scrollYProgress, (value) =>
-      value > 12 / 15 + 1 / 15 ? "block" : "none",
-    ),
-  };
-
   return (
     <>
-      <div className="bg-[url(/assets/home-background-mobile.png)] bg-[length:auto_50%] bg-[right_bottom_40px] bg-no-repeat pb-10 md:bg-[length:auto_70%] lg:bg-[url(/assets/404-background.png)] lg:bg-right-bottom lg:pb-20 xl:bg-[length:auto_80%]">
+      <div className="bg-[url(/assets/home-background-mobile.png)] bg-[length:auto_50%] bg-[right_bottom_140px] bg-no-repeat pb-10 md:bg-[length:auto_70%] md:bg-[right_bottom_40px] lg:bg-[url(/assets/404-background.png)] lg:bg-right-bottom lg:pb-20 xl:bg-[length:auto_80%]">
         <div className="absolute left-1/2 w-full max-w-7xl -translate-x-1/2">
           <motion.div
             initial={{ translateX: 0, translateY: 0 }}
@@ -107,119 +134,162 @@ export default function Home() {
         <div className="relative z-10">
           <Header logo="white" />
         </div>
-        <main className="relative z-10 mx-auto flex max-w-7xl flex-col items-start justify-between gap-y-10 p-6 pb-0 lg:gap-y-24 lg:px-20 lg:pt-36">
+        <main className="relative z-10 mx-auto flex max-w-7xl flex-col items-start justify-between gap-y-10 p-6 pb-0 lg:gap-y-14 lg:px-20 lg:pt-36">
           <div className="flex max-w-[540px] flex-col items-start gap-y-6 lg:max-w-[1030px] lg:gap-y-10">
             <h1 className="text-[52px] font-medium leading-none lg:text-6xl">
               Welcome to the Natural Capital Primer
             </h1>
-            <p className="lg:text-2xl">
-              A science-based resource that explains the concept of natural capital and how business
-              and society depend on it.
+            <p className="max-w-[730px] lg:text-xl">
+              A science-based resource that explains how our entire lives, our businesses and
+              economies depend on nature, and how we value it using a concept called Natural
+              Capital.
             </p>
           </div>
-          <div className="flex items-end gap-x-10">
-            <Link
-              href="https://www.latrobe.edu.au/"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="bg-white"
-            >
-              <Image
-                src="/assets/la-trobe-university.png"
-                alt="La Trobe University"
-                width={135}
-                height={36}
-                className="h-auto w-[111px] mix-blend-darken lg:w-[135px]"
-              />
-            </Link>
-            <Link href="https://macdochfoundation.org/" rel="noopener noreferrer" target="_blank">
-              <Image
-                src="/assets/macdoch-foundation.png"
-                alt="Macdoch Foundation"
-                width={116}
-                height={51}
-                className="h-auto w-[98px] lg:w-[116px]"
-              />
-            </Link>
+          <div className="flex flex-col gap-y-5">
+            <div className="flex items-end gap-x-10">
+              <Link
+                href="https://www.latrobe.edu.au/"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="bg-white"
+              >
+                <Image
+                  src="/assets/la-trobe-university.png"
+                  alt="La Trobe University"
+                  width={135}
+                  height={36}
+                  className="h-auto w-[111px] mix-blend-darken lg:w-[135px]"
+                />
+              </Link>
+              <Link href="https://macdochfoundation.org/" rel="noopener noreferrer" target="_blank">
+                <Image
+                  src="/assets/macdoch-foundation.png"
+                  alt="Macdoch Foundation"
+                  width={116}
+                  height={51}
+                  className="h-auto w-[98px] lg:w-[116px]"
+                />
+              </Link>
+            </div>
+            <p className="max-w-[540px] text-xs text-black/50 lg:max-w-[730px]">
+              In creating this resource on natural capital, we recognise the Indigenous peoples and
+              local communities whose wisdom and that of their ancestors, has stewarded nature for
+              millennia. We acknowledge their continuing connection to land, sea, culture and
+              community, and pay our respects to Elders past, present and future.
+            </p>
           </div>
         </main>
       </div>
-      <div className="bg-green-500 pb-48 pt-10 lg:pb-60 lg:pt-24">
-        <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
-          <h2 className="flex-shrink-0 lg:w-[220px]">What is natural capital?</h2>
+      <div className="bg-green-500 pt-10 lg:pt-24">
+        <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:px-20">
+          <h2 className="flex-shrink-0 lg:w-[254px] lg:text-xl">What is natural capital?</h2>
           <div className="grid flex-grow grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
             <p className="text-2xl lg:col-span-2 lg:text-4xl">
-              Natural capital refers to all living and non-living natural resources (assets) that
-              provide products and services that are of value to humans and society.
+              Natural capital refers to all living natural resources such as plants, microbes and
+              insects and non-living natural resources, such as water and soil (we call these
+              assets), that provide products and services that are of value to humans and society.
+            </p>
+            <p className="lg:col-span-2">
+              Natural capital generates the products and services that underpin our economic
+              wellbeing.
+              <br />
+              <br />
+              Understanding and valuing natural capital is crucial to ensure that we conserve
+              biodiversity, address climate change, live sustainable, healthier, happier lives and
+              ensure the well-being of future generations.
             </p>
             <div className="flex flex-col gap-y-3">
-              <h3 className="font-bold">Natural Capital Assets:</h3>
+              <h3 className="lg:text-xl">Natural Capital Assets:</h3>
               <p>
                 These are the physical entities (resources) that can be described in terms of their
                 extant and condition. Assets produce flows of ecosystem services.
               </p>
             </div>
             <div className="flex flex-col gap-y-3">
-              <h3 className="font-bold">Ecosystem Services:</h3>
+              <h3 className="lg:text-xl">Ecosystem Services:</h3>
               <p>
                 These are the products or processes arising from nature that are of benefit and
-                value to human society.
+                value to human society. They exist because of natural capital assets.
               </p>
             </div>
           </div>
         </main>
-      </div>
-      <div className="bg-black pb-10 text-white lg:pb-24">
         <Parallax
           heightClasses="h-[327px] lg:h-[547px]"
-          className="mx-6 aspect-[3/2] -translate-y-[117px] pb-10 sm:aspect-[2/1] lg:mx-20 lg:-translate-y-[145px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
+          className="mx-6 -mt-10 aspect-[3/2] w-full translate-y-[117px] sm:aspect-[2/1] lg:mx-20 lg:translate-y-[145px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
           src="/assets/home-illustration.png"
         />
+      </div>
+      <div className="bg-black pb-10 pt-44 text-white lg:pb-24 lg:pt-60">
         <div className="flex flex-col gap-y-6 lg:gap-y-20">
           <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
-            <h2 className="flex-shrink-0 lg:w-[220px]">Why is natural capital important to me?</h2>
+            <h2 className="flex-shrink-0 lg:w-[254px] lg:text-xl">
+              Why is natural capital important to me?
+            </h2>
             <div className="flex flex-grow flex-col gap-y-10 lg:gap-y-20">
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
                 <p className="text-2xl lg:text-4xl">
-                  Our very own existence depends on natural capital.
-                </p>
-                <p>
-                  Humans rely on natural capital for life-sustaining services like clean air, water,
-                  food and shelter.
+                  <span className="text-green-500">
+                    Our entire existence depends on natural capital.
+                  </span>{" "}
+                  We rely on it for life-sustaining services like clean air, water, food and
+                  shelter.
                 </p>
               </div>
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
                 <p className="text-2xl lg:text-4xl">
-                  55% of global GDP directly depends on natural assets and ecosystem services.
-                  <sup>1</sup>
+                  <span className="text-green-500">
+                    Natural Capital is not a new concept. Indigenous peoples and local communities
+                    have always understood the value of nature
+                  </span>{" "}
+                  for the many life-giving and life-sustaining services it provides.
                 </p>
                 <p>
-                  This includes products such as timber and food, raw materials for manufacturing,
-                  and services such as pollination, flood mitigation, and tourism.
+                  Their sustainable management of the land and seas has ensured its value has passed
+                  on from generation to generation, and spread well beyond to society as a whole.
                 </p>
+                <p>
+                  While representing less than 5 percent of the world&apos;s population, Indigenous
+                  Peoples steward more than a quarter of Earth&apos;s land and seas and protect 80
+                  per cent of global biodiversity. The existence of Indigenous peoples and their
+                  cultures goes hand in hand with a healthy environment, in fact studies show that
+                  tropical forest integrity is higher in protected Indigenous lands.
+                </p>
+                <p>
+                  We must recognise and apply the ancestral knowledge and expertise of Indigenous
+                  Peoples and local communities that will allow us to sustainably manage nature for
+                  society as a whole.
+                </p>
+
+                <Image
+                  src="/assets/home-illustration-2.png"
+                  alt=""
+                  width={802}
+                  height={376}
+                  className="h-auto w-full max-w-none"
+                />
+                <p>
+                  Read on to learn the basics of natural capital, or jump straight in for a more
+                  in-depth understanding and examples of natural capital in industry use cases.
+                </p>
+                <div className="mt-6 flex flex-col items-stretch gap-y-3 lg:mt-0 lg:flex-row lg:gap-x-8">
+                  <Button variant="outline-white" size="lg" asChild>
+                    <Link href="/about">
+                      <HoverRepeatAnimation>About the Project</HoverRepeatAnimation>
+                    </Link>
+                  </Button>
+                  <Button variant="outline-white" size="lg" asChild>
+                    <Link href="/key-concepts">
+                      <HoverRepeatAnimation>Key Concepts</HoverRepeatAnimation>
+                    </Link>
+                  </Button>
+                  <Button variant="outline-white" size="lg" asChild>
+                    <Link href="/industry-use-cases">
+                      <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
+                    </Link>
+                  </Button>
+                </div>
               </div>
-            </div>
-          </main>
-          <main className="mx-auto flex w-full max-w-7xl flex-col justify-start gap-y-6 border-t border-dashed border-t-white px-6 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 lg:pt-20">
-            <div className="flex-shrink-0 lg:w-[220px]" />
-            <div className="flex flex-grow flex-col gap-y-6 lg:gap-y-10">
-              <div className="flex items-center gap-x-3">
-                <p className="flex-shrink-0">Citations of this section</p>
-                <div className="h-px flex-grow bg-white" />
-              </div>
-              <ol className="list-inside list-decimal">
-                <li>
-                  Evison, W., Low, L.P & O&apos;Brien, D. (2023) Managing nature risks: From
-                  understanding to action. PwC.{" "}
-                  <Link
-                    href="https://www.pwc.com/gx/en/strategy-and-business/content/sbpwc-2023-04-19-Managing-nature-risks-v2.pdf"
-                    className="underline"
-                    rel="noopener noreferrer"
-                  >
-                    https://www.pwc.com/gx/en/strategy-and-business/content/sbpwc-2023-04-19-Managing-nature-risks-v2.pdf
-                  </Link>
-                </li>
-              </ol>
             </div>
           </main>
         </div>
@@ -232,11 +302,15 @@ export default function Home() {
             <Pebble index={3} scrollYProgress={scrollYProgress} />
             <Pebble index={4} scrollYProgress={scrollYProgress} />
           </div>
-          <div className="pointer-events-none absolute bottom-20 left-0 z-20 flex w-full justify-start px-6 lg:bottom-12 lg:justify-end">
-            <PrimerExtractPopover />
+          <div className="flex gap-x-2.5">
+            <motion.div className="h-2.5 rounded-full" style={progress[0]} />
+            <motion.div className="h-2.5 rounded-full" style={progress[1]} />
+            <motion.div className="h-2.5 rounded-full" style={progress[2]} />
+            <motion.div className="h-2.5 rounded-full" style={progress[3]} />
+            <motion.div className="h-2.5 rounded-full" style={progress[4]} />
           </div>
-          <p>Let&apos;s look at a specific example...</p>
-          <div className="relative z-10 mt-6 max-w-[730px] text-xl sm:text-2xl lg:mt-7 lg:text-4xl">
+          <p className="mt-6 lg:mt-10 lg:text-xl">Let&apos;s look at a specific example...</p>
+          <div className="relative z-10 mt-6 max-w-[730px] text-xl sm:text-2xl lg:mt-10 lg:text-4xl">
             <motion.p
               style={{
                 ...firstParagraph,
@@ -272,95 +346,60 @@ export default function Home() {
             </motion.span>
           </motion.div>
           <motion.div
-            className="relative z-10 mt-6 flex flex-col gap-y-4 text-xl sm:text-2xl lg:mt-10 lg:text-4xl"
+            className="relative z-10 mt-6 flex flex-col gap-y-6 text-xl lg:mt-10"
             style={{ ...services }}
           >
-            <div className="flex items-center gap-x-2.5">
+            <div className="flex items-start gap-x-2.5 lg:gap-x-7">
               <Image
                 src="/assets/home-pollination.png"
-                width={105}
-                height={44}
+                width={108}
+                height={108}
                 alt=""
-                className="w-[60px] sm:w-[105px]"
+                className="w-[96px] sm:w-[108px]"
               />
-              Pollination
+              <p className="min-w-[210px] border-t-[6px] border-t-orange pt-4">Pollination</p>
             </div>
-            <div className="flex items-center gap-x-2.5">
+            <div className="flex items-start gap-x-2.5 lg:gap-x-7">
               <Image
                 src="/assets/home-crop-yields.png"
-                width={105}
-                height={44}
+                width={108}
+                height={108}
                 alt=""
-                className="w-[60px] sm:w-[105px]"
+                className="w-[96px] sm:w-[108px]"
               />
-              Crop yields
+              <p className="min-w-[210px] border-t-[6px] border-t-green-500 pt-4">Crop yields</p>
             </div>
           </motion.div>
           <motion.div
-            className="relative z-10 mt-6 flex flex-col gap-y-4 text-xl sm:text-2xl lg:mt-10 lg:text-4xl"
+            className="relative z-10 mt-6 flex flex-col gap-y-6 text-xl lg:mt-10"
             style={{ ...values }}
           >
-            <div className="flex items-center gap-x-2.5">
+            <div className="flex items-start gap-x-2.5 lg:gap-x-7">
               <Image
                 src="/assets/home-food-security.png"
-                width={105}
-                height={44}
+                width={108}
+                height={108}
                 alt=""
-                className="w-[60px] sm:w-[105px]"
+                className="w-[96px] sm:w-[108px]"
               />
-              Food security
+              <p className="min-w-[210px] border-t-[6px] border-t-orange-500 pt-4">Food security</p>
             </div>
-            <div className="flex items-center gap-x-2.5">
+            <div className="flex items-start gap-x-2.5 lg:gap-x-7">
               <Image
                 src="/assets/home-income-generation.png"
-                width={105}
-                height={44}
+                width={108}
+                height={108}
                 alt=""
-                className="w-[60px] sm:w-[105px]"
+                className="w-[96px] sm:w-[108px]"
               />
-              Income generation
-            </div>
-          </motion.div>
-          <motion.div className="relative z-10 mt-6 sm:mt-20 lg:mt-40" style={{ ...explore }}>
-            <p>Explore Natural Capital Primer:</p>
-            <div className="mt-3 flex flex-col gap-y-3 sm:flex-row sm:items-start sm:gap-x-3">
-              <Button variant="outline" asChild>
-                <Link href="/about">
-                  <HoverRepeatAnimation>About the Project</HoverRepeatAnimation>
-                </Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/key-concepts">
-                  <HoverRepeatAnimation>Key Concepts</HoverRepeatAnimation>
-                </Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/industry-use-cases">
-                  <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
-                </Link>
-              </Button>
+              <p className="min-w-[210px] border-t-[6px] border-t-turquoise pt-4">
+                Income generation
+              </p>
             </div>
           </motion.div>
         </main>
       </div>
-      <div className="bg-orange-500 py-10 lg:py-14">
-        <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-6 p-6 text-center lg:gap-y-5">
-          <h2 className="max-w-[820px] text-2xl lg:text-4.5xl">
-            Understanding and valuing natural capital is crucial
-          </h2>
-          <p className="max-w-[820px]">
-            We can make informed choices to use and conserve our planet&apos;s resources by
-            understanding and valuing natural capital, balancing what we take from nature with what
-            we give back.
-          </p>
-          <Button variant="outline" asChild>
-            <Link href="/key-concepts">
-              <HoverRepeatAnimation>Learn More</HoverRepeatAnimation>
-            </Link>
-          </Button>
-        </main>
-      </div>
-      <MountainCoverImage />
+      <DayInLifeCTA />
       <Footer />
     </>
   );

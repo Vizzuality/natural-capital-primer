@@ -1,47 +1,64 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
-import ImageCarousel from "@/components/image-carousel";
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+const IMAGES = [
+  "/assets/day-in-life-cta-illustration-5.png",
+  "/assets/day-in-life-cta-illustration-6.png",
+  "/assets/day-in-life-cta-illustration-7.png",
+  "/assets/day-in-life-cta-illustration-8.png",
+];
+
+const MotionImage = motion.create(Image);
 
 const DayInLifeCTA: FC = () => {
+  const [currentFrame, setCurrentFrame] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentFrame((prevFrame) => (prevFrame + 1) % IMAGES.length);
+    }, 4000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <div className="relative mx-6 mb-10 flex h-[520px] w-full max-w-7xl items-start justify-start overflow-hidden bg-black p-6 lg:mb-20 lg:h-[545px] lg:items-center lg:px-[60px]">
-      <ImageCarousel
-        images={[
-          {
-            src: "/assets/day-in-life-cta-illustration.png",
-          },
-          {
-            src: "/assets/day-in-life-cta-illustration-2.png",
-          },
-          {
-            src: "/assets/day-in-life-cta-illustration-3.png",
-          },
-          {
-            src: "/assets/day-in-life-cta-illustration-4.png",
-          },
-        ]}
-        alt=""
-        className="absolute -bottom-20 -right-12 h-[279px] w-[276px] lg:-right-[200px] lg:top-1/2 lg:h-[602px] lg:w-[597px] lg:-translate-y-1/2"
-      />
-      <div className="z-10 flex max-w-[801px] flex-col items-start gap-16">
-        <div className="flex flex-col gap-10 text-white">
-          <div className="text-[52px] leading-[52px] lg:text-[100px] lg:leading-[92px]">
-            A Day in the Life
+    <div className="relative bg-black py-6 md:py-14 lg:py-20">
+      {IMAGES.map((image, index) => (
+        <MotionImage
+          key={image}
+          src={image}
+          alt=""
+          fill
+          className="absolute object-cover"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: currentFrame === index ? 1 : 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+        />
+      ))}
+      <div className="relative z-10 mx-auto flex max-w-7xl items-center justify-center px-6 lg:px-20">
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-6 text-white lg:max-w-[713px]">
+            <h2 className="text-center text-4.2xl text-white lg:text-5xl">
+              Natural Capital in Daily Life
+            </h2>
+            <div className="text-center text-xl lg:text-2xl">
+              A short story which highlights the everyday reliance on natural capital through the
+              products we use.
+            </div>
           </div>
-          <div className="text-base leading-normal lg:max-w-[703px] lg:text-[44px] lg:leading-[48px]">
-            A short story which highlights the everyday reliance on natural capital through the
-            products we use.
-          </div>
+          <Button size="lg" variant="yellow" asChild>
+            <Link href="/natural-capital-in-daily-life">
+              <HoverRepeatAnimation>Discover the Story</HoverRepeatAnimation>
+            </Link>
+          </Button>
         </div>
-        <Button size="lg" variant="white" className="px-6" asChild>
-          <Link href="/natural-capital-in-daily-life">
-            <HoverRepeatAnimation>Discover the Story</HoverRepeatAnimation>
-          </Link>
-        </Button>
       </div>
     </div>
   );
