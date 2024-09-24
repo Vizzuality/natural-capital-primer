@@ -1,384 +1,283 @@
 "use client";
 
-import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { useCallback, useMemo, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import useMediaQuery from "@/hooks/use-media-query";
-import DayInLifeCTA from "@/components/day-in-life-cta";
-import Parallax from "@/components/animations/parallax";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import dynamic from "next/dynamic";
+import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
+import ArrowSlide from "@/icons/arrow-slide.svg";
+import Vizzuality from "@/svgs/vizzuality.svg";
+import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
+import BackgroundVideo from "@/components/bg-video";
 
 const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), { ssr: false });
 
+const BACKGROUNDS = [
+  "/assets/about-background.png",
+  "/assets/about-background-2.png",
+  "/assets/about-background-3.png",
+  "/assets/about-background-4.png",
+  "/assets/about-background-5.png",
+];
+
+const MotionImage = motion.create(Image);
+
 export default function About() {
-  const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const illustration2Ref = useRef<HTMLDivElement | null>(null);
-  const illustration3Ref = useRef<HTMLDivElement | null>(null);
-  const isXl = useMediaQuery("(min-width: 1280px)", false);
+  const [currentFrame, setCurrentFrame] = useState(0);
 
-  const isIllustration2InView = useInView(illustration2Ref, {
-    amount: 0.5,
-    once: true,
-  });
-  const isIllustration3InView = useInView(illustration3Ref, {
-    amount: 0.5,
-    once: true,
-  });
+  const videoSectionRef = useRef<HTMLDivElement | null>(null);
+  const videoSectionInView = useInView(videoSectionRef);
 
-  const backgrounds = useMemo(
-    () => [
-      "/assets/about-illustration-4.png",
-      "/assets/about-illustration-5.png",
-      "/assets/about-illustration-6.png",
-      "/assets/about-illustration-7.png",
-      "/assets/about-illustration-8.png",
-    ],
-    [],
-  );
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentFrame((prevFrame) => (prevFrame + 1) % BACKGROUNDS.length);
+    }, 4000);
 
-  const onAnimationComplete = useCallback(() => {
-    setIsAnimating(false);
-    setActiveBackgroundIndex((prev) => (prev + 1) % backgrounds.length);
-  }, [backgrounds]);
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <>
-      <div>
-        <Parallax
-          heightClasses="h-[352px] lg:h-[645px]"
-          className=""
-          containerHeightPercentageMobile={142}
-        >
-          <div className="relative">
-            {/* All the backgrounds */}
-            {backgrounds.map((url, index) => (
-              <Image
-                key={url}
-                src={url}
-                alt=""
-                fill
-                className={cn("object-cover object-bottom", {
-                  "opacity-0": activeBackgroundIndex !== index,
-                })}
-              />
-            ))}
-            {/* Clip background for the button */}
-            <AnimatePresence mode="wait">
-              {isAnimating ? (
-                <motion.div
-                  key="animated"
-                  className="absolute inset-0 hidden lg:block"
-                  initial={{
-                    clipPath: isXl
-                      ? "circle(22px at calc(100% - 188px - (100% - 1280px) / 2) 384px)"
-                      : `circle(22px at calc(100% - 188px) 230px)`,
-                  }}
-                  animate={{
-                    clipPath: isXl
-                      ? "circle(100% at calc(100% - 188px - (100% - 1280px) / 2) 394px)"
-                      : `circle(100% at calc(100% - 188px) 168px)`,
-                  }}
-                  transition={{ duration: 1, ease: "linear" }}
-                  onAnimationComplete={onAnimationComplete}
-                >
-                  <Image
-                    src={backgrounds[(activeBackgroundIndex + 1) % backgrounds.length]}
-                    alt=""
-                    fill
-                    className="object-cover object-bottom"
-                  />
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
-          </div>
-        </Parallax>
-        {!isAnimating && (
-          <motion.div
-            key="initial"
-            className="absolute inset-0 hidden lg:block"
+      <div className="relative bg-black">
+        {BACKGROUNDS.map((background, index) => (
+          <MotionImage
+            key={background}
+            src={background}
+            alt=""
+            fill
+            className="absolute object-cover"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Image
-              src={backgrounds[(activeBackgroundIndex + 1) % backgrounds.length]}
-              alt=""
-              fill
-              className="h-[130%] object-cover object-bottom lg:[clip-path:circle(22px_at_calc(100vw_-_203px)_168px)] xl:[clip-path:circle(22px_at_calc(100%_-_188px_-(100%_-_1280px)_/_2)_312px)]"
-            />
-          </motion.div>
-        )}
-        <div className="absolute inset-0 z-10">
-          <div className="relative z-10">
-            <Header logo="black" />
+            animate={{ opacity: currentFrame === index ? 1 : 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+          />
+        ))}
+        <div className="relative z-10">
+          <Header logo="white" />
+          <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 text-white lg:mt-14 lg:gap-y-10 lg:px-20 lg:pb-16 xl:mt-40">
+            <h1 className="text-4.2xl font-medium lg:text-5xl">About the Natural Capital Primer</h1>
+            <div className="flex max-w-[827px] flex-col gap-y-4">
+              <p className="max-w-[827px] lg:text-xl">
+                The Natural Capital Primer is a collaborative project of the Macdoch Foundation, La
+                Trobe University and Vizzuality. Our team comprises experts in environmental
+                science, sustainability, and communication, all dedicated to making natural capital
+                an integral part of public knowledge and business practices.
+              </p>
+              <div className="absolute bottom-16 right-20 hidden w-28 flex-col gap-y-5 xl:flex">
+                <div className="h-28 w-28 rounded-full border border-white/40">
+                  <InfiniteSlideDownAnimation>
+                    <div className="flex h-28 w-28 items-center justify-center">
+                      <ArrowSlide className="h-6 w-6" />
+                    </div>
+                  </InfiniteSlideDownAnimation>
+                </div>
+                <p className="text-center opacity-50">Scroll down to discover</p>
+              </div>
+            </div>
           </div>
-          <div className="relative z-10 mx-auto max-w-7xl p-6 pb-20 text-white lg:px-20 lg:pb-48 lg:pt-36 xl:pt-72">
-            <div
-              className={cn(
-                "absolute right-40 top-36 hidden h-[56px] w-[56px] -translate-y-24 rounded-full border border-dashed border-white transition-colors duration-1000 lg:flex lg:items-center lg:justify-center xl:top-72",
-                {
-                  "border-white": !isAnimating,
-                  "border-transparent": isAnimating,
-                },
-              )}
-            >
-              <Button
-                type="button"
-                className="min-h-[44px] min-w-[44px] rounded-full bg-transparent hover:bg-transparent"
-                onClick={() => setIsAnimating(true)}
+        </div>
+      </div>
+
+      <div className="bg-orange-500">
+        <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-10 lg:px-20 lg:py-16">
+          <h2 className="max-w-[600px] text-2xl lg:text-4xl">
+            The organisations behind the Natural Capital Primer
+          </h2>
+          <div className="grid gap-10 lg:grid-cols-3">
+            <div className="flex flex-col gap-y-6">
+              <Link
+                href="https://macdochfoundation.org/"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="flex min-h-[60px] items-center"
               >
-                <span className="sr-only">Change background</span>
-              </Button>
+                <Image
+                  src="/assets/macdoch-foundation.png"
+                  alt="Macdoch Foundation"
+                  width={137}
+                  height={71}
+                />
+              </Link>
+              <p>
+                The Macdoch Foundation is an Australian philanthropic foundation that is committed
+                to building a nature-positive, climate-friendly agriculture and food system that is
+                economically sustainable, nourishes people and strengthens communities.  Active in
+                Australia and the US, the Foundation funds in the areas of agriculture and natural
+                capital, public engagement and climate-related industry transitions, and the health
+                and wellbeing of farming communities in support of its purpose to build the
+                resilience of people and the planet.
+              </p>
             </div>
-            <h1 className="text-[52px] font-medium leading-none lg:text-[72px]">
-              About the Natural Capital Primer
-            </h1>
+            <div className="flex flex-col gap-y-6">
+              <Link
+                href="https://www.latrobe.edu.au/"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="flex min-h-[60px] items-center"
+              >
+                <LaTrobeUniversity
+                  className="h-[33px] w-[158px]"
+                  aria-label="La Trobe University"
+                />
+              </Link>
+              <p>
+                La Trobe University’s Research Centre for Future Landscapes creates knowledge and
+                solutions for healthy landscapes for people and nature. The Centre develops
+                next-generation tools and solutions to address the global challenge of sustaining
+                natural ecosystems in human-dominated landscapes. The Centre is multi-disciplinary,
+                comprised of academics, post-doctoral research fellows and research students.
+              </p>
+            </div>
+            <div className="flex flex-col gap-y-6">
+              <Link
+                href="https://www.vizzuality.com/"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="flex min-h-[60px] items-center"
+              >
+                <Vizzuality className="h-[34px] w-[147px]" aria-label="Vizzuality" />
+              </Link>
+              <p>
+                Vizzuality is an impact-driven design and technology agency that creates bespoke,
+                science-based data visualisations and digital tools that inspire learning, catalyse
+                decisions, and improve our world. We collaborate with proactive organisations to
+                create a sustainable future for our planet and society. We have over 15 years of
+                experience working with world-changing organisations, building platforms like Global
+                Forest Watch, Aqueduct, and Trase.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div className="pb-10 lg:pb-5">
-        <div className="left-0 mx-0 bg-black px-6 py-10 pr-6 text-white lg:relative lg:-top-16 lg:px-20 lg:py-24 lg:pr-20 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)] xl:pl-[calc((100vw_-_1280px)_/_2_+_80px)] xl:pr-36">
-          <main className="flex flex-col justify-start gap-y-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16">
-            <h2 className="flex-shrink-0 lg:w-[220px]">Introduction</h2>
-            <div className="flex flex-col gap-y-5">
-              <p className="text-2xl lg:text-4xl">
-                ‘Natural capital’ is the buzzword of the moment.
-              </p>
-              <p>
-                It’s prominent in global initiatives, government policies, marketing slogans and
-                sustainability frameworks around the world. But it can be confusing and overwhelming
-                for individuals and businesses to navigate different definitions and applications of
-                natural capital.
-              </p>
-            </div>
-          </main>
+
+      <div className="mx-auto grid max-w-7xl flex-col gap-x-6 gap-y-10 p-6 py-10 md:grid-cols-2 md:gap-y-6 md:py-20 lg:px-20">
+        <div className="flex max-w-[480px] flex-col gap-y-6">
+          <h2 className="text-2xl lg:text-4xl">Why do we need the Natural Capital Primer?</h2>
+          <p className="lg:text-xl">
+            ‘Natural capital’ is the buzzword of the moment. Natural capital is prominent in global
+            initiatives, government policies, marketing slogans, and sustainability frameworks
+            worldwide. However, navigating different definitions and applications of natural capital
+            can be confusing and overwhelming for individuals and businesses.
+          </p>
+        </div>
+        <div className="flex justify-center md:justify-start">
+          <Image
+            src="/assets/about-illustration.png"
+            width={840}
+            height={645}
+            alt=""
+            className="w-full max-w-[400px] flex-shrink-0 lg:w-auto lg:max-w-none"
+          />
+        </div>
+        <div className="order-3 flex items-start justify-center md:order-none md:justify-end">
+          <Image
+            src="/assets/about-illustration-2.png"
+            width={745}
+            height={672}
+            alt=""
+            className="w-full max-w-[400px] flex-shrink-0 lg:w-auto lg:max-w-none"
+          />
+        </div>
+        <div className="flex max-w-[480px] flex-col gap-y-6">
+          <h3 className="text-2xl lg:text-4xl">
+            The purpose of the Natural Capital Primer is to increase awareness and to improve
+            understanding of “natural capital” by:
+          </h3>
+          <ul>
+            <li className="py-2 lg:py-4">
+              Providing a ‘one-stop shop’ for resources and information to learn about natural
+              capital
+            </li>
+            <li className="py-2 lg:py-4">
+              Explaining key concepts about natural capital in easy-to-understand language
+            </li>
+            <li className="py-2 lg:py-4">
+              Improving literacy and knowledge about natural capital and why it matters
+            </li>
+            <li className="py-2 lg:py-4">
+              Revealing how different sectors of society depend on and impact natural capital
+            </li>
+            <li className="py-2 lg:py-4">
+              Helping businesses and individuals understand their relationship with natural capital
+            </li>
+            <li className="py-2 lg:py-4">
+              Encouraging a positive shift in how we view and manage natural capital
+            </li>
+          </ul>
         </div>
       </div>
-      <div className="pb-10 lg:pb-24">
-        <main className="mx-auto grid max-w-7xl grid-cols-1 gap-y-10 px-6 lg:mt-0 lg:grid-cols-[calc(100%_-_(55%_+_112px))_1fr_calc(100%_-_(55%_+_112px))] lg:gap-x-24 lg:gap-y-56 lg:px-20">
-          <div className="flex flex-col gap-y-6 lg:col-span-2 lg:gap-y-10">
-            <div className="flex flex-col gap-y-6 lg:gap-y-5">
-              <p>The purpose of the Natural Capital Primer</p>
-              <h2 className="text-2xl lg:text-4xl">
-                The purpose of the Primer is to increase awareness, improve understanding of natural
-                capital by:
-              </h2>
-            </div>
-            <ol className="flex list-decimal-leading-zero flex-col gap-y-6 pl-9 lg:gap-y-5">
-              <li>
-                Providing a ‘one-stop shop’ for resources and information for learning about natural
-                capital
-              </li>
-              <li>Explaining key concepts about natural capital in easy to understand language</li>
-              <li>Improving literacy and knowledge about natural capital and why it matters</li>
-              <li>
-                Revealing how different sectors of society depend on and impact natural capital
-              </li>
-              <li>
-                Helping businesses and individuals understand their relationship with natural
-                capital
-              </li>
-              <li>Encouraging a positive shift in how we view and manage natural capital</li>
-            </ol>
-            <Image
-              src="/assets/about-illustration-2-mobile.png"
-              alt=""
-              width={327}
-              height={221}
-              className="mx-auto lg:hidden"
-            />
-            <p className="border-l-[6px] border-l-green-500 pl-6">
-              Understanding and managing natural capital is crucial for achieving sustainability,
-              conserving biodiversity, addressing climate change, and ensuring the well-being of
-              future generations.
+
+      <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-10 lg:px-20 lg:py-16">
+        <p className="text-2xl text-orange-500 lg:text-4xl">
+          Understanding and managing natural capital is crucial for achieving sustainability,
+          conserving biodiversity, addressing climate change, and ensuring the well-being of future
+          generations.
+        </p>
+      </div>
+
+      <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-0 pb-10 lg:px-20 lg:pb-11">
+        <div className="flex flex-col justify-start gap-y-4 border-t-2 border-t-orange-500 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10">
+          <div className="flex-shrink-0 lg:w-[350px]">
+            <h2 className="text-orange-500 lg:text-xl">Who is the Natural Capital Primer for?</h2>
+            <p className="mt-4 lg:mt-11">
+              As natural capital affects every person on earth, we designed the Primer to be used by
+              all. To help create a foundational knowledge of what natural capital is, how we depend
+              on it, and how we impact it. You can use this knowledge to help inform policy-making
+              and business sustainability decisions, all through to everyday choices.
+              <br />
+              <b>The primer is handy for:</b>
             </p>
           </div>
-          <motion.div
-            ref={illustration2Ref}
-            className="relative hidden lg:block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isIllustration2InView ? 1 : 0 }}
-            transition={{ duration: 1 }}
-          >
-            <Image
-              src="/assets/about-illustration-2.png"
-              alt=""
-              width={736}
-              height={617}
-              className="absolute top-20 max-w-none"
-            />
-          </motion.div>
-          <motion.div
-            ref={illustration3Ref}
-            className="relative hidden lg:block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isIllustration3InView ? 1 : 0 }}
-            transition={{ duration: 1 }}
-          >
-            <Image
-              src="/assets/about-illustration-3.png"
-              alt=""
-              width={755}
-              height={566}
-              className="absolute right-0 top-6 max-w-none"
-            />
-          </motion.div>
-          <div className="flex flex-col gap-y-6 lg:col-span-2 lg:gap-y-16">
-            <h2 className="flex flex-col gap-y-6 text-2xl lg:gap-y-5 lg:text-4xl">
-              How can you use the Natural Capital Primer?
-            </h2>
-            <div className="flex flex-col gap-y-6 lg:gap-y-5">
-              <div className="flex flex-col lg:gap-y-3">
-                <p className="font-bold">Educators.</p>
-                <p>Find resources to educate stakeholders about natural capital.</p>
-              </div>
-              <div className="flex flex-col lg:gap-y-3">
-                <p className="font-bold">Businesses.</p>
-                <p>
-                  Learn more about natural capital to develop sustainability strategies, assess
-                  environmental impact and make informed ESG and CSR decisions.
-                </p>
-              </div>
-              <div className="flex flex-col lg:gap-y-3">
-                <p className="font-bold">Non-government Organisations.</p>
-                <p>Support policy advocacy positions and develop strategic directions.</p>
-              </div>
-              <div className="flex flex-col lg:gap-y-3">
-                <p className="font-bold">Individuals.</p>
-                <p>Learn about your dependency and impact on natural capital in everyday life.</p>
-              </div>
-              <div className="flex flex-col lg:gap-y-3">
-                <p className="font-bold">Governments.</p>
-                <p>
-                  Inform policy development, enhance sustainable resource management and educate the
-                  public.
-                </p>
-              </div>
-            </div>
-            <Image
-              src="/assets/about-illustration-3-mobile.png"
-              alt=""
-              width={327}
-              height={221}
-              className="mx-auto lg:hidden"
-            />
-          </div>
-        </main>
+          <ul className="flex flex-grow flex-col gap-y-6 divide-y divide-dashed lg:gap-y-5">
+            <li className="pt-5">
+              <RevealLines>
+                <p className="max-w-[600px] lg:text-xl">Educators</p>
+              </RevealLines>
+            </li>
+            <li className="pt-5">
+              <RevealLines>
+                <p className="max-w-[600px] lg:text-xl">Businesses</p>
+              </RevealLines>
+            </li>
+            <li className="pt-5">
+              <RevealLines>
+                <p className="max-w-[600px] lg:text-xl">Governments</p>
+              </RevealLines>
+            </li>
+            <li className="pt-5">
+              <RevealLines>
+                <p className="max-w-[600px] lg:text-xl">Non-government Organisations</p>
+              </RevealLines>
+            </li>
+            <li className="pt-5">
+              <RevealLines>
+                <p className="max-w-[600px] lg:text-xl">Individuals</p>
+              </RevealLines>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="flex w-full items-center justify-center">
-        <DayInLifeCTA />
-      </div>
-      <div className="bg-orange-500 pb-28 pt-10 lg:pb-52 lg:pt-24">
-        <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
-          <h2 className="flex-shrink-0 lg:w-[220px]">What can you find on The Primer?</h2>
-          <div className="flex flex-col gap-y-6 lg:gap-y-10">
-            <div className="flex flex-col gap-y-3">
-              <RevealLines>
-                <p className="text-2xl lg:text-4xl">Types of Natural Capital</p>
-              </RevealLines>
-              <RevealLines>
-                <p>
-                  Examine the natural capital present in different ecosystems and understand why it
-                  is important to individuals, businesses, and governments.
-                </p>
-              </RevealLines>
-            </div>
-            <div className="flex flex-col gap-y-3">
-              <RevealLines>
-                <p className="text-2xl lg:text-4xl">Interactive Content</p>
-              </RevealLines>
-              <RevealLines>
-                <p>
-                  Engage with videos, infographics, and interactive tools to make learning about
-                  natural capital enjoyable and relatable.
-                </p>
-              </RevealLines>
-            </div>
-            <div className="flex flex-col gap-y-3">
-              <RevealLines>
-                <p className="text-2xl lg:text-4xl">Business Dependencies and Impacts</p>
-              </RevealLines>
-              <RevealLines>
-                <p>
-                  Explore businesses&apos; dependencies and impacts on natural capital and why they
-                  must account for and manage it.
-                </p>
-              </RevealLines>
-            </div>
-            <div className="flex flex-col gap-y-3">
-              <RevealLines>
-                <p className="text-2xl lg:text-4xl">Case Studies and Examples</p>
-              </RevealLines>
-              <RevealLines>
-                <p>
-                  Discover real-world examples from various industries and ecosystems illustrating
-                  natural capital&apos;s practical applications and benefits.
-                </p>
-              </RevealLines>
-            </div>
-            <div className="flex flex-col gap-y-3">
-              <RevealLines>
-                <p className="text-2xl lg:text-4xl">Educational Resources</p>
-              </RevealLines>
-              <RevealLines>
-                <p>
-                  Access clear definitions, explanations, and examples to help you understand the
-                  elements of natural capital and its significance.
-                </p>
-              </RevealLines>
-            </div>
-            <div className="flex flex-col gap-y-3">
-              <RevealLines>
-                <p className="text-2xl lg:text-4xl">Guides and Frameworks</p>
-              </RevealLines>
-              <RevealLines>
-                <p>
-                  Utilize guides on natural capital accounting, assessment, and reporting to help
-                  businesses and policymakers integrate these practices into their operations.
-                </p>
-              </RevealLines>
-            </div>
-            <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-x-3">
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/key-concepts">
-                  <HoverRepeatAnimation>Key Concepts</HoverRepeatAnimation>
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/industry-use-cases">
-                  <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </main>
-      </div>
-      <div className="pb-10 lg:pb-24">
-        <Parallax
-          heightClasses="h-[327px] lg:h-[547px]"
-          className="-top-20 ml-6 aspect-[3/2] pb-10 sm:aspect-[2/1] lg:-top-24 lg:mx-20 lg:aspect-auto xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
-          src="/assets/about-illustration.png"
+
+      <div
+        ref={videoSectionRef}
+        className="relative h-[550px] bg-black after:absolute after:inset-0 after:z-10 after:block after:bg-[#000]/30"
+      >
+        <BackgroundVideo
+          src="/assets/about-video.mp4"
+          sectionInView={videoSectionInView}
+          className="object-bottom"
         />
-        <main className="mx-auto -mt-10 flex max-w-7xl flex-col-reverse justify-start gap-y-10 px-6 lg:mt-0 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20 xl:gap-x-44">
-          <p className="flex-shrink-0 border-l-[6px] border-l-orange-500 pl-6 lg:w-[400px]">
-            The Natural Capital Primer is a collaborative project by the Macdoch Foundation and La
-            Trobe University. Our team comprises experts in environmental science, sustainability,
-            and communication, all dedicated to making natural capital an integral part of public
-            knowledge and business practices.
-          </p>
-          <p className="text-2xl lg:text-4xl">
+        <div className="relative z-20 mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-10 lg:px-20 lg:py-14">
+          <p className="max-w-[860px] text-xl text-white lg:text-2xl">
             We must collectively value, measure, and manage nature in order to reverse its long-term
             decline and live within our planetary boundaries.
           </p>
-        </main>
+        </div>
       </div>
+
       <Footer />
     </>
   );

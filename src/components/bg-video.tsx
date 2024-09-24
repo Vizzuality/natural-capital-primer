@@ -1,16 +1,21 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
+
+export interface BackgroundVideoProps {
+  src: string;
+  soundOn?: boolean;
+  sectionInView?: boolean;
+  className?: string;
+}
 
 const BackgroundVideo = ({
   src,
   soundOn = false,
   sectionInView = false,
-}: {
-  src: string;
-  soundOn: boolean;
-  sectionInView: boolean;
-}) => {
+  className,
+}: BackgroundVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
@@ -45,7 +50,10 @@ const BackgroundVideo = ({
       loop
       muted={!soundOn}
       playsInline
-      className="pointer-events-none absolute inset-0 h-[800px] w-full object-cover opacity-20 mix-blend-luminosity motion-reduce:hidden"
+      className={cn(
+        "pointer-events-none absolute inset-0 h-full w-full object-cover object-center motion-reduce:hidden",
+        className,
+      )}
     />
   );
 };

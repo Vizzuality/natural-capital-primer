@@ -13,6 +13,7 @@ import { useRef } from "react";
 import Pebble from "@/components/home/pebble";
 import dynamic from "next/dynamic";
 import DayInLifeCTA from "@/components/day-in-life-cta";
+import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
 
 const Parallax = dynamic(() => import("@/components/animations/parallax"), {
   ssr: false,
@@ -147,18 +148,10 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-y-5">
             <div className="flex items-end gap-x-10">
-              <Link
-                href="https://www.latrobe.edu.au/"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="bg-white"
-              >
-                <Image
-                  src="/assets/la-trobe-university.png"
-                  alt="La Trobe University"
-                  width={135}
-                  height={36}
-                  className="h-auto w-[111px] mix-blend-darken lg:w-[135px]"
+              <Link href="https://www.latrobe.edu.au/" rel="noopener noreferrer" target="_blank">
+                <LaTrobeUniversity
+                  className="relative mb-1 h-auto w-[111px] lg:w-[135px]"
+                  aria-label="La Trobe University"
                 />
               </Link>
               <Link href="https://macdochfoundation.org/" rel="noopener noreferrer" target="_blank">

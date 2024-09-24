@@ -5,6 +5,8 @@ import Logo from "@/svgs/logo-normal.svg";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowSlideAnimation from "./animations/arrow-slide";
+import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
+import Vizzuality from "@/svgs/vizzuality.svg";
 
 const Footer: FC = () => {
   return (
@@ -21,11 +23,9 @@ const Footer: FC = () => {
             </p>
             <div className="flex items-end gap-x-8">
               <Link href="https://www.latrobe.edu.au/" rel="noopener noreferrer" target="_blank">
-                <Image
-                  src="/assets/la-trobe-university-white.png"
-                  alt="La Trobe University"
-                  width={122}
-                  height={31}
+                <LaTrobeUniversity
+                  className="relative h-auto w-[122px] lg:h-[31px]"
+                  aria-label="La Trobe University"
                 />
               </Link>
               <Link href="https://macdochfoundation.org/" rel="noopener noreferrer" target="_blank">
@@ -103,13 +103,12 @@ const Footer: FC = () => {
           <p className="text-white/50">© Natural Capital Primer, 2024</p>
           <p className="text-white/50">
             Designed and developed by{" "}
-            <Image
-              src="/assets/vizzuality.svg"
-              alt="Vizzuality"
-              width={74}
-              height={19}
-              className="relative -top-0.5 inline-block"
-            />
+            <Link href="https://www.vizzuality.com/" rel="noopener noreferrer" target="_blank">
+              <Vizzuality
+                className="inline-block h-[19px] w-[74px] text-white"
+                aria-label="Vizzuality"
+              />
+            </Link>
           </p>
         </div>
       </footer>
