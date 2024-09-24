@@ -18,15 +18,15 @@ export const REFERENCES = [
     Press, Washington, DC.
   </>,
   <>
-    Buis A. (2019) Examining the viability of planting trees to help mitigate climate change - NASA
-    Science. NASA Available from:{" "}
+    Evison, W., Low, L.P & O’Brien, D. (2023){" "}
+    <i>Managing nature risks: From understanding to action.</i> PwC.{" "}
     <Link
       className="text-blue-500 underline"
-      href="https://science.nasa.gov/earth/climate-change/examining-the-viability-of-planting-trees-to-help-mitigate-climate-change/"
+      href="https://www.pwc.com/gx/en/strategy-and-business/content/sbpwc-2023-04-19-Managing-nature-risks-v2.pdf"
       target="_blank"
       rel="noopener noreferrer"
     >
-      https://science.nasa.gov/earth/climate-change/examining-the-viability-of-planting-trees-to-help-mitigate-climate-change/
+      https://www.pwc.com/gx/en/strategy-and-business/content/sbpwc-2023-04-19-Managing-nature-risks-v2.pdf
     </Link>
   </>,
   <>
@@ -68,7 +68,15 @@ export const REFERENCES = [
     .
   </>,
   <>
-    Barbier, E.B. (2017) Marine ecosystem services. <i>Current Biology,</i> <b>27,</b> R507-R510.
+    Barbier, E.B. (2017) Marine ecosystem services. <i>Current Biology,</i> <b>27,</b> R507-R510.{" "}
+    <Link
+      className="text-blue-500 underline"
+      href="https://doi.org/10.1016/j.cub.2017.03.020"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      https://doi.org/10.1016/j.cub.2017.03.020
+    </Link>
   </>,
   <>
     Donato, D.C., Kauffman, J.B., Murdiyarso, D. <i>et al.</i> (2011) Mangroves among the most
@@ -109,6 +117,26 @@ export const REFERENCES = [
   </>,
   <>
     Wolf, K.L. (2005) Business district streetscapes, trees, and consumer response.{" "}
-    <i>Journal of Forestry,</i> <b>103,</b> 396-400.
+    <i>Journal of Forestry,</i> <b>103,</b> 396-400.{" "}
+    <Link
+      className="text-blue-500 underline"
+      href="https://doi.org/10.1093/jof/103.8.396"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      https://doi.org/10.1093/jof/103.8.396
+    </Link>
+  </>,
+  <>
+    Buis A. (2019) Examining the viability of planting trees to help mitigate climate change - NASA
+    Science. NASA Available from:{" "}
+    <Link
+      className="text-blue-500 underline"
+      href="https://science.nasa.gov/earth/climate-change/examining-the-viability-of-planting-trees-to-help-mitigate-climate-change/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      https://science.nasa.gov/earth/climate-change/examining-the-viability-of-planting-trees-to-help-mitigate-climate-change/
+    </Link>
   </>,
 ];

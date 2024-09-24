@@ -2,7 +2,7 @@
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Shape1 from "@/svgs/404-shape-1.svg";
 import Shape2 from "@/svgs/home-shape-2.svg";
 import Image from "next/image";
@@ -11,15 +11,15 @@ import { Button } from "@/components/ui/button";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import { useRef } from "react";
 import Pebble from "@/components/home/pebble";
-import dynamic from "next/dynamic";
 import DayInLifeCTA from "@/components/day-in-life-cta";
 import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
-
-const Parallax = dynamic(() => import("@/components/animations/parallax"), {
-  ssr: false,
-});
+import Reference from "@/components/reference";
+import BackgroundVideo from "@/components/bg-video";
 
 export default function Home() {
+  const videoSectionRef = useRef<HTMLDivElement | null>(null);
+  const videoSectionInView = useInView(videoSectionRef);
+
   const scrollSectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: scrollSectionRef,
@@ -140,10 +140,10 @@ export default function Home() {
             <h1 className="text-[52px] font-medium leading-none lg:text-6xl">
               Welcome to the Natural Capital Primer
             </h1>
-            <p className="max-w-[730px] lg:text-xl">
-              A science-based resource that explains how our entire lives, our businesses and
-              economies depend on nature, and how we value it using a concept called Natural
-              Capital.
+            <p className="max-w-[730px] text-lg lg:text-xl">
+              A science-based resource that explains how our entire lives, businesses and economies
+              depend on nature, and how we can understand the value of it using a concept called
+              natural capital.
             </p>
           </div>
           <div className="flex flex-col gap-y-5">
@@ -175,51 +175,62 @@ export default function Home() {
       </div>
       <div className="bg-green-500 pt-10 lg:pt-24">
         <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:px-20">
-          <h2 className="flex-shrink-0 lg:w-[254px] lg:text-xl">What is natural capital?</h2>
-          <div className="grid flex-grow grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
+          <h2 className="flex-shrink-0 text-lg lg:sticky lg:top-6 lg:w-[254px] lg:text-xl">
+            What is natural capital?
+          </h2>
+          <div className="relative grid flex-grow grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
             <p className="text-2xl lg:col-span-2 lg:text-4xl">
-              Natural capital refers to all living natural resources such as plants, microbes and
-              insects and non-living natural resources, such as water and soil (we call these
-              assets), that provide products and services that are of value to humans and society.
+              Natural capital refers to the natural resources, services and benefits that the
+              environment provides to humans, like clean water, fertile soil, plants, animals, and
+              even the air we breathe.
             </p>
             <p className="lg:col-span-2">
-              Natural capital generates the products and services that underpin our economic
-              wellbeing.
-              <br />
-              <br />
-              Understanding and valuing natural capital is crucial to ensure that we conserve
-              biodiversity, address climate change, live sustainable, healthier, happier lives and
-              ensure the well-being of future generations.
+              These resources, both living (like plants and animals) and non-living (like water and
+              soil), are essential because they support our economy and overall well-being by
+              providing goods and services that we rely on every day{" "}
+              <Reference id={0} className="text-white" />. It’s called “capital” because, just like
+              financial capital, nature plays a critical role in sustaining our society and economy.
             </p>
             <div className="flex flex-col gap-y-3">
-              <h3 className="lg:text-xl">Natural Capital Assets:</h3>
+              <h3 className="text-lg lg:text-xl">Natural Capital Assets:</h3>
               <p>
-                These are the physical entities (resources) that can be described in terms of their
-                extant and condition. Assets produce flows of ecosystem services.
+                The tangible things we use from nature, such as food, water, trees, and minerals.
+                These can be living (biotic) and non-living (abiotic). We depend on them to fuel our
+                bodies, shelter our homes and provide all the items we wear and use. Natural capital
+                assets produce flows of ecosystem services.{" "}
+                <Reference id={1} className="text-white" />
               </p>
             </div>
             <div className="flex flex-col gap-y-3">
-              <h3 className="lg:text-xl">Ecosystem Services:</h3>
+              <h3 className="text-lg lg:text-xl">Ecosystem Services:</h3>
               <p>
-                These are the products or processes arising from nature that are of benefit and
-                value to human society. They exist because of natural capital assets.
+                The life-sustaining functions nature performs, such as cleaning our air and water,
+                pollinating plants, and regulating the climate. We rely on these services daily to
+                keep our bodies and minds healthy, and on a larger scale to protect our communities
+                from worsening natural disasters due to climate breakdown.{" "}
+                <Reference id={2} className="text-white" />
               </p>
             </div>
           </div>
         </main>
-        <Parallax
-          heightClasses="h-[327px] lg:h-[547px]"
-          className="mx-6 -mt-10 aspect-[3/2] w-full translate-y-[117px] sm:aspect-[2/1] lg:mx-20 lg:translate-y-[145px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
-          src="/assets/home-illustration.png"
-        />
+        <div
+          ref={videoSectionRef}
+          className="relative mx-6 -mt-10 h-[327px] w-full translate-y-[117px] bg-black lg:mx-20 lg:h-[550px] lg:translate-y-[145px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
+        >
+          <BackgroundVideo
+            src="/assets/home-video.mp4"
+            sectionInView={videoSectionInView}
+            className="object-bottom"
+          />
+        </div>
       </div>
       <div className="bg-black pb-10 pt-44 text-white lg:pb-24 lg:pt-60">
         <div className="flex flex-col gap-y-6 lg:gap-y-20">
           <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
-            <h2 className="flex-shrink-0 lg:w-[254px] lg:text-xl">
+            <h2 className="flex-shrink-0 text-lg lg:sticky lg:top-6 lg:w-[254px] lg:text-xl">
               Why is natural capital important to me?
             </h2>
-            <div className="flex flex-grow flex-col gap-y-10 lg:gap-y-20">
+            <div className="flex flex-grow flex-col gap-y-20">
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
                 <p className="text-2xl lg:text-4xl">
                   <span className="text-green-500">
@@ -232,43 +243,44 @@ export default function Home() {
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
                 <p className="text-2xl lg:text-4xl">
                   <span className="text-green-500">
-                    Natural Capital is not a new concept. Indigenous peoples and local communities
-                    have always understood the value of nature
+                    Our businesses and economies depend on it too.
                   </span>{" "}
-                  for the many life-giving and life-sustaining services it provides.
+                  55% of global GDP directly depends on natural assets and ecosystem services.{" "}
+                  <Reference id={3} className="text-lg text-green-500" />
                 </p>
                 <p>
-                  Their sustainable management of the land and seas has ensured its value has passed
-                  on from generation to generation, and spread well beyond to society as a whole.
+                  This includes products such as timber and food, raw materials for manufacturing,
+                  and services such as pollination, flood mitigation, and tourism. By balancing what
+                  we extract from nature with what we restore, we can make informed choices about
+                  using and conserving our planet&apos;s resources wisely.
+                </p>
+                <p>
+                  Natural Capital is not a new concept. Indigenous peoples and local communities
+                  have always understood the value of nature for the many life-giving and
+                  life-sustaining services it provides. Their sustainable management of the land and
+                  seas has ensured its value has passed on from generation to generation, and spread
+                  well beyond to society as a whole.
                 </p>
                 <p>
                   While representing less than 5 percent of the world&apos;s population, Indigenous
-                  Peoples steward more than a quarter of Earth&apos;s land and seas and protect 80
-                  per cent of global biodiversity. The existence of Indigenous peoples and their
-                  cultures goes hand in hand with a healthy environment, in fact studies show that
-                  tropical forest integrity is higher in protected Indigenous lands.
+                  Peoples steward more than a quarter of Earth&apos;s land and seas. The existence
+                  of Indigenous peoples and their cultures goes hand in hand with a healthy
+                  environment, in fact studies show that tropical forest integrity is higher in
+                  protected Indigenous lands.
                 </p>
                 <p>
                   We must recognise and apply the ancestral knowledge and expertise of Indigenous
                   Peoples and local communities that will allow us to sustainably manage nature for
                   society as a whole.
                 </p>
-
-                <Image
-                  src="/assets/home-illustration-2.png"
-                  alt=""
-                  width={802}
-                  height={376}
-                  className="h-auto w-full max-w-none"
-                />
-                <p>
-                  Read on to learn the basics of natural capital, or jump straight in for a more
-                  in-depth understanding and examples of natural capital in industry use cases.
+                <p className="mt-6 text-lg lg:mt-14 lg:text-xl">
+                  Read on to learn the basics, or explore the Primer for an in-depth understanding
+                  of natural capital and examples of it in industry use cases.
                 </p>
                 <div className="mt-6 flex flex-col items-stretch gap-y-3 lg:mt-0 lg:flex-row lg:gap-x-8">
                   <Button variant="outline-white" size="lg" asChild>
                     <Link href="/about">
-                      <HoverRepeatAnimation>About the Project</HoverRepeatAnimation>
+                      <HoverRepeatAnimation>About the Primer</HoverRepeatAnimation>
                     </Link>
                   </Button>
                   <Button variant="outline-white" size="lg" asChild>
@@ -302,19 +314,19 @@ export default function Home() {
             <motion.div className="h-2.5 rounded-full" style={progress[3]} />
             <motion.div className="h-2.5 rounded-full" style={progress[4]} />
           </div>
-          <p className="mt-6 lg:mt-10 lg:text-xl">Let&apos;s look at a specific example...</p>
+          <p className="mt-6 text-lg lg:mt-10 lg:text-xl">
+            Scroll to see an example of natural capital...
+          </p>
           <div className="relative z-10 mt-6 max-w-[730px] text-xl sm:text-2xl lg:mt-10 lg:text-4xl">
             <motion.p
               style={{
                 ...firstParagraph,
               }}
             >
-              These resources and services provide value to people. Let&apos;s look at a short
-              example to show the concept of natural capital assets and flows of services in
-              practice.
+              Environmental and ecosystem assets are the foundation of natural capital.
             </motion.p>
             <motion.p style={{ ...secondParagraph }}>
-              When they combine, these resources transform into services such as...
+              When they combine, these assets transform into services such as...
             </motion.p>
             <motion.p style={{ ...thirdParagraph }}>
               These services benefit people and society by bringing them specific value like...
