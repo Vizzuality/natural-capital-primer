@@ -210,6 +210,12 @@ export default function Home() {
                 from worsening natural disasters due to climate breakdown.{" "}
                 <Reference id={2} className="text-white" />
               </p>
+              <Link
+                href="/key-concepts#flows-of-services"
+                className="mt-3 text-xs font-bold uppercase underline"
+              >
+                Definitions from the Primer
+              </Link>
             </div>
           </div>
         </main>
