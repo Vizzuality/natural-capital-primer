@@ -772,7 +772,7 @@ const KeyConceptsPage: FC = () => {
 
       <div className="bg-black bg-[url(/assets/key-concepts-background.png)] bg-cover bg-bottom bg-no-repeat text-white">
         <div className="mx-auto max-w-7xl p-6 py-10 lg:p-20">
-          <main className="flex flex-col items-start gap-y-6 lg:gap-y-10 lg:pb-24">
+          <main className="flex flex-col items-start gap-y-6 lg:gap-y-10">
             <h2 className="flex items-center gap-x-5 text-2xl xl:text-4xl">
               Downloadable resource
             </h2>

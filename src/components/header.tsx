@@ -79,7 +79,7 @@ const Header: FC<{
     }
 
     if (pathname.startsWith("/terms-and-conditions")) {
-      return "Terms and Conditions";
+      return "Terms & Conditions";
     }
 
     return "Menu";

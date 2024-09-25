@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions",
+  title: "Terms & Conditions",
 };
 
 export default function TermsAndConditionsLayout({ children }: { children: React.ReactNode }) {
