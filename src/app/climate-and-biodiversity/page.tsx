@@ -457,25 +457,6 @@ const ClimateAndBiodiversityPage: FC = () => {
         </div>
       </div>
 
-      <div className="bg-black bg-[url(/assets/key-concepts-background.png)] bg-cover bg-bottom bg-no-repeat text-white">
-        <div className="mx-auto max-w-7xl p-6 py-10 lg:p-20">
-          <main className="flex flex-col items-start gap-y-6 lg:gap-y-10">
-            <h2 className="flex items-center gap-x-5 text-2xl xl:text-4xl">
-              Downloadable resource
-            </h2>
-            <p className="max-w-[730px] text-lg lg:text-xl">
-              If you find it easier to learn about Natural Capital Key Concepts in a print form, you
-              can download the PDF below which contains all theoretical principles about Natural
-              Capital.
-            </p>
-            <Button asChild variant="outline-white" size="lg">
-              <Link href="/assets/natural-capital-booklet.pdf" download>
-                Download Document
-              </Link>
-            </Button>
-          </main>
-        </div>
-      </div>
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-10 p-6 text-center">
           <h2 className="max-w-[860px] text-2xl lg:text-4xl">

@@ -248,7 +248,9 @@ export default function About() {
             </li>
             <li className="pt-5">
               <RevealLines>
-                <p className="max-w-[600px]text-lg lg:text-xl">Non-government Organisations</p>
+                <p className="max-w-[600px]text-lg lg:text-xl">
+                  Non-Governmental Organisations (NGOs)
+                </p>
               </RevealLines>
             </li>
             <li className="pt-5">

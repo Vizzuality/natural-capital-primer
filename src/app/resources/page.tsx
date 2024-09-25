@@ -8,7 +8,7 @@ import Footer from "@/components/footer";
 
 const RESOURCES_BY_CATEGORY = [
   {
-    category: "Natural Capital concepts",
+    category: "Natural Capital Concepts",
     resources: [
       {
         name: "The Little Sustainable Landscapes Book",
@@ -65,7 +65,7 @@ const RESOURCES_BY_CATEGORY = [
     ].sort((resA, resB) => resA.name.localeCompare(resB.name)),
   },
   {
-    category: "Projects and interventions",
+    category: "Projects & Interventions",
     resources: [
       {
         name: "Natural Capital Coalition",
@@ -93,7 +93,7 @@ const RESOURCES_BY_CATEGORY = [
     ].sort((resA, resB) => resA.name.localeCompare(resB.name)),
   },
   {
-    category: "Natural Capital accounting & assessment",
+    category: "Natural Capital Accounting & Assessment",
     resources: [
       {
         name: "Taskforce for Nature Related Financial Disclosures",
@@ -148,7 +148,7 @@ export default function ResourcesPage() {
     <>
       <Header logo="color" />
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 xl:mt-40">
-        <h1 className="text-4.2xl font-medium lg:text-5xl">Resources</h1>
+        <h1 className="text-4.2xl font-medium lg:text-5xl">Resources on Natural Capital</h1>
         <p className="max-w-[827px] lg:text-xl">
           Explore these resources to deepen your understanding of Natural Capital and its role in
           shaping our environment and society.

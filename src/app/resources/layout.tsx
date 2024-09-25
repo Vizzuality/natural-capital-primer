@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Resources",
+  title: "Resources on Natural Capital",
   description:
     "Explore these resources to deepen your understanding of Natural Capital and its role in shaping our environment and society.",
 };

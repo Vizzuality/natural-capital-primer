@@ -16,10 +16,10 @@ const Footer: FC = () => {
           <div className="flex max-w-[420px] flex-col gap-y-10">
             <Logo />
             <p>
-              The Natural Capital Primer is a collaborative project by the Macdoch Foundation and La
-              Trobe University. Our team comprises experts in environmental science, sustainability,
-              and communication, all dedicated to making natural capital an integral part of public
-              knowledge and business practices.
+              The Natural Capital Primer is a collaborative project of the Macdoch Foundation, La
+              Trobe University and Vizzuality. Our team comprises experts in environmental science,
+              sustainability, and communication, all dedicated to making natural capital an integral
+              part of public knowledge and business practices.
             </p>
             <div className="flex items-end gap-x-8">
               <Link href="https://www.latrobe.edu.au/" rel="noopener noreferrer" target="_blank">

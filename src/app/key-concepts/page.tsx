@@ -194,15 +194,11 @@ const KeyConceptsPage: FC = () => {
           </p>
           <div className="mt-6 flex max-w-[730px] flex-col gap-y-6 lg:mt-10 lg:grid lg:grid-cols-2 lg:gap-x-10">
             <p>
-              <b>Biotic natural resources</b>
-              <br />
-              Biotic natural resources are those derived from living organisms, such as plants,
-              animals, fungi, bacteria and viruses.
+              <b>Biotic natural resources</b> are those derived from living organisms, such as
+              plants, animals, fungi, bacteria and viruses.
             </p>
             <p>
-              <b>Abiotic natural resources</b>
-              <br />
-              Abiotic natural resources are those derived from non-living sources and include
+              <b>Abiotic natural resources</b> are those derived from non-living sources and include
               geological resources (minerals, soil, fossil fuels), water and physical processes such
               as solar radiation, wind and tides.
             </p>
@@ -527,7 +523,7 @@ const KeyConceptsPage: FC = () => {
                 <p className="bg-black/5 px-4 py-3">
                   <b>Example:</b> recreational services and tourism, mental and physical health and
                   well-being that comes from connecting with nature, creative inspiration, enjoying
-                  beautiful scenary, spiritual renewal
+                  beautiful scenery, spiritual renewal
                 </p>
               </div>
               <div className="relative flex flex-col justify-between gap-y-10 bg-black bg-[url(/assets/key-concepts-background-2.png)] bg-cover p-4 text-white md:col-span-2 lg:p-12">
