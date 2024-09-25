@@ -49,11 +49,11 @@ const IndustryUseCasesPage: FC = () => {
           <h1 className="text-4.2xl font-medium lg:text-5xl">Industry Use Cases</h1>
           <div className="flex max-w-[827px] flex-col gap-y-4">
             <p className="max-w-[827px] lg:text-xl">
-              How do different industries impact and are dependent on natural capital?
+              How do different industries impact and depend on natural capital?
             </p>
             <p className="mt-6 max-w-[730px] lg:mt-10">
-              Explore the stocks of natural capital, the services that flow from it and the values
-              for businesses and society across a range of contexts.
+              Explore the natural capital assets, the services that flow from them and the value
+              they provide for businesses and society in different industries.
             </p>
             <div className="absolute bottom-16 right-20 hidden w-28 flex-col gap-y-5 xl:flex">
               <div className="h-28 w-28 rounded-full border border-white/40">
@@ -69,8 +69,7 @@ const IndustryUseCasesPage: FC = () => {
         </div>
       </div>
 
-      <main className="mx-auto flex max-w-7xl flex-col px-6 pt-10 lg:px-20 lg:pt-16">
-        <p className="text-xs font-bold uppercase">Industry Use Cases examples</p>
+      <main className="mx-auto max-w-7xl px-6 pt-10 lg:px-20 lg:pt-16">
         <div className="mt-6 flex flex-col gap-y-6 pb-6 lg:pb-11">
           <Tabs value={tab} onValueChange={handleTabChange} className="relative">
             <Accordion

@@ -38,7 +38,11 @@ export interface IndustryUseCasesTabContent {
     }[];
     insights: string[];
   };
-  dependencies: { content1: React.ReactElement; chartData: [number, number][] };
+  dependencies: {
+    content1: React.ReactElement;
+    content2: string;
+    chartData: [number, number][];
+  };
   impacts: {
     content1: React.ReactElement;
     image1: {

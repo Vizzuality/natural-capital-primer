@@ -3,6 +3,7 @@ import Image from "next/image";
 import RevealLines from "@/components/animations/reveal-lines";
 import { IndustryUseCasesTabContent } from "./types";
 import { cn } from "@/lib/utils";
+import Parallax from "@/components/animations/parallax";
 
 const ImpactsTab: FC<IndustryUseCasesTabContent["impacts"]> = ({ content1, image1, list }) => {
   return (
@@ -18,7 +19,7 @@ const ImpactsTab: FC<IndustryUseCasesTabContent["impacts"]> = ({ content1, image
                     {(index + 1).toString().padStart(2, "0")}
                   </p>
                 </RevealLines>
-                <h4 className="lg:text-xl">{title}</h4>
+                <h4 className="text-lg lg:text-xl">{title}</h4>
               </div>
               <p className="max-w-[475px] flex-grow lg:min-h-[170px] lg:flex-grow-0">{text}</p>
             </div>
@@ -28,13 +29,15 @@ const ImpactsTab: FC<IndustryUseCasesTabContent["impacts"]> = ({ content1, image
               "lg:col-span-2": list.length % 3 === 0 || list.length % 3 === 1,
             })}
           >
-            <Image
-              className="min-h-[403px] w-full object-cover object-center lg:h-full"
-              src={image1.src}
-              alt=""
-              width={image1.width}
-              height={image1.height}
-            />
+            <Parallax heightClasses="min-h-[403px] lg:h-full" containerHeightPercentageMobile={200}>
+              <Image
+                className="h-auto w-full max-w-none object-cover object-center"
+                src={image1.src}
+                alt=""
+                width={image1.width}
+                height={image1.height}
+              />
+            </Parallax>
           </div>
         </div>
       </div>

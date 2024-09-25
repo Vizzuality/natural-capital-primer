@@ -1,5 +1,6 @@
 import type { IndustryUseCasesAccordionItem, IndustryUseCasesTabContent } from "./types";
 import { manufacturingLinks, tourismLinks, foodLinks, retailLinks } from "./chart-data";
+import Reference from "@/components/reference";
 
 const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
   constructions: {
@@ -11,14 +12,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           </h3>
           <p className="max-w-[860px] lg:text-center">
             Forests are indispensable to society&apos;s efforts to tackle climate change. They act
-            as the Earth&apos;s lungs, absorbing enormous amounts of carbon dioxide and replenishing
-            the oxygen in the atmosphere. Forests also provide vital raw materials like timber,
-            paper, and biofuels, supporting key construction, manufacturing, and energy industries.
-          </p>
-          <p className="max-w-[860px] lg:text-center">
-            Conservation of the world&apos;s biodiversity is inextricably tied to forests. Forests
-            cover only 31% of the global land area but support 80% of the world&apos;s amphibian
-            species, 75% of bird species, and 68% of mammals.
+            as the Earth&apos;s lungs, absorbing 30% <Reference id={3} className="text-green-500" />{" "}
+            of global carbon dioxide and replenishing the oxygen in the atmosphere. Forests also
+            provide vital raw materials like timber, paper, and biofuels, supporting key
+            construction, manufacturing, and energy industries.
           </p>
         </>
       ),
@@ -27,8 +24,15 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         width: 1120,
         height: 746,
       },
-      imageText:
-        "Conservation of the world's biodiversity is inextricably tied to forests. Forests cover only 31% of the global land area but support 80% of the world's amphibian species, 75% of bird species, and 68% of mammals.",
+      imageText: (
+        <>
+          <p>Conservation of the world’s biodiversity is inextricably tied to forests.</p>
+          <p className="text-green-500">
+            Forests cover only 31% of the global land area but support 80% of the world’s amphibian
+            species, 75% of bird species, and 68% of mammals. <Reference id={4} />
+          </p>
+        </>
+      ),
       content2: (
         <>
           <h3 className="mb-5 text-xl">
@@ -109,15 +113,15 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       },
       content3: (
         <>
-          Companies in these industries must urgently recognize and address their reliance on
+          Companies in these industries must urgently recognise and address their reliance on
           natural resources to reduce financial, reputational, and legal risks. Taking action now
           will help secure a sustainable and successful business model for the future.
         </>
       ),
       insights: [
-        "Essential Raw Materials: Forests provide timber and minerals for construction, making sustainable forest management crucial for reliable material supply.",
-        "Vital Ecosystem Services: Forests support construction through climate regulation, carbon storage, and soil and water quality, which are critical for sustainable operations.",
-        "Deforestation Risks: Deforestation can cause biodiversity loss and degrade ecosystem services, leading to operational, financial, and reputational risks for the construction industry.",
+        "Forests provide timber and minerals for construction, making sustainable forest management crucial for reliable material supply.",
+        "Forests support construction through climate regulation, carbon storage, and soil and water quality, which are critical for sustainable operations.",
+        "Deforestation can cause biodiversity loss and degrade ecosystem services, leading to operational, financial, and reputational risks for the construction industry.",
       ],
     },
     dependencies: {
@@ -131,11 +135,12 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
             essential raw materials. Companies that extract raw materials from forests (e.g., timber
             for construction and furniture, minerals that support digital technology and renewable
             energy, metals for construction and wiring) or use those materials to build or
-            manufacture products depend on forests. Explore the diagram to see how natural capital
-            supports manufacturing and construction.
+            manufacture products depend on forests.
           </p>
         </>
       ),
+      content2:
+        "Explore the diagram to see how natural capital supports manufacturing and construction.",
       chartData: manufacturingLinks,
     },
     impacts: {
@@ -167,7 +172,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         },
         {
           title: "Operational issues",
-          text: "The nature-related risk to these businesses is currently limited to operational risk(e.g., reliable supply of raw materials), financial risk (e.g., costs of production, remediation, and supply), and reputational risk (e.g., ESG and morale corporate citizenship).",
+          text: "The nature-related risk to these businesses is currently limited to operational risk (e.g., reliable supply of raw materials), financial risk (e.g., costs of production, remediation, and supply), and ESG and reputational risk.",
         },
         {
           title: "Legal risk",
@@ -192,8 +197,8 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
             Coastal ecosystems include sea-grass meadows, rocky platforms, coral reefs, mangroves,
             sand beaches and dunes, estuaries and coastal wetlands. Coastal areas comprise only 4%
             of Earth’s land, yet host &gt;30% of the world’s human population. They account for 90%
-            of the marine fish catch and provide a multitude of ecosystem services that are
-            essential to human wellbeing.
+            of the marine fish catch <Reference id={7} className="text-green-500" /> and provide a
+            multitude of ecosystem services that are essential to human wellbeing.
           </p>
         </>
       ),
@@ -206,10 +211,15 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         <>
           <p>
             Ecosystem assets of coastal ecosystems, such as mangroves and estuarine marshes, store
-            up to five times as much carbon per hectare as tropical forests, reduce coastline
-            erosion and protect coastal communities in events such as cyclones and storm surges.
+            up to five times as much carbon per hectare as tropical forests{" "}
+            <Reference id={8} className="text-green-500" />, reduce coastline erosion and protect
+            coastal communities in events such as cyclones and storm{" "}
+            <span className="whitespace-nowrap">
+              surges <Reference id={9} className="text-green-500" />
+            </span>
+            .
           </p>
-          <p>
+          <p className="text-green-500">
             These ecosystem assets are also nurseries for many commercially important fish species
             and provide habitat for a wide range of birds, invertebrates and mammals, many of which
             are found only in these habitats.
@@ -219,14 +229,15 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       content2: (
         <div className="flex flex-col gap-5 xl:pb-10">
           <p>
-            Ecosystem assets of coastal ecosystems, such as mangroves and estuarine marshes, store
-            up to five times as much carbon per hectare as tropical forests, reduce coastline
-            erosion and protect coastal communities in events such as cyclones and storm surges.
+            Coastal ecosystems also produce value for businesses involved in tourism (e.g.,
+            recreational fishing, scuba diving and snorkelling, surfing, accommodation and dining)
+            and coastal residential communities (e.g., real estate, health and education services,
+            construction and landscaping).
           </p>
           <p>
-            These ecosystem assets are also nurseries for many commercially important fish species
-            and provide habitat for a wide range of birds, invertebrates and mammals, many of which
-            are found only in these habitats.
+            These businesses all benefit from the ecosystem services provided by coastal ecosystems;
+            it is in their business interests to avoid damage or over-exploitation of these natural
+            capital assets to maintain the level and quality of the services they provide.
           </p>
         </div>
       ),
@@ -285,8 +296,8 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       },
       content3: (
         <>
-          Businesses depending on coastal ecosystems must recognize their role in sustaining these
-          environments and take proactive steps to minimize their impact. By embracing sustainable
+          Businesses depending on coastal ecosystems must recognise their role in sustaining these
+          environments and take proactive steps to minimise their impact. By embracing sustainable
           practices to support ecosystem conservation, such as ecotourism, responsible fisheries,
           and green buildings, businesses can protect the natural resources they rely on and ensure
           their long-term success and resilience.
@@ -313,6 +324,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           </p>
         </>
       ),
+      content2: "Explore the diagram to see how natural capital supports tourism.",
       chartData: tourismLinks,
     },
     impacts: {
@@ -385,19 +397,34 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         width: 1120,
         height: 1677,
       },
-      imageText:
-        "Urban green spaces are vital to the health, climate and economy of cities. Green spaces like parks, gardens, and recreation areas can have mental and physical health benefits and reduce the urban heat island effect (a build-up of heat due to the abundance of heat retaining surfaces), generating ‘urban cooling’ instead. ",
+      imageText: (
+        <p>
+          Urban green spaces are vital to cities&apos; health, climate, and economy. Green spaces
+          like parks, gardens, and recreation areas can have mental and physical health benefits and
+          reduce the urban heat island effect (a build-up of heat due to the abundance of
+          heat-retaining surfaces), generating ‘urban cooling’ instead{" "}
+          <Reference id={10} className="text-green-500" />.
+        </p>
+      ),
       content2: (
         <div className="flex flex-col gap-5">
           <p>
-            Green spaces have also been shown to lead to greater employee retention and increased
-            productivity, fewer sick days and better overall employee satisfaction.
+            By incorporating Biodiversity Sensitive Urban Design (BSUD) principles, these spaces can
+            further contribute to both human well-being and the conservation of native species,
+            ensuring that urban development benefits both people and the natural ecosystems they
+            depend on.
           </p>
           <p>
             There is also a strong business case for urban green spaces with direct links between
-            tree canopy and retail, with increased consumer spending due to a positive perception of
-            the area and enhanced shopping experience. Moreover, ‘green leafy suburbs’ have higher
-            real estate value and lower power bills due to microclimate regulation.
+            tree canopy and retail. Increased consumer spending in retail areas with more green
+            spaces is due to a positive perception of the area and enhanced shopping experience{" "}
+            <Reference id={11} className="text-green-500" />.
+          </p>
+          <p>
+            Green spaces have also been shown to lead to greater employee retention and increased
+            productivity, fewer sick days, and better overall employee satisfaction. Moreover,
+            ‘green leafy suburbs’ have higher real estate value and lower power bills due to
+            microclimate regulation.
           </p>
         </div>
       ),
@@ -458,7 +485,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       },
       content3: (
         <>
-          Retail businesses that depend on urban green spaces must help preserve them. By adopting
+          Businesses that depend on urban green spaces must help preserve them. By adopting
           sustainable practices, such as supporting green infrastructure, reducing pollution, and
           investing in the maintenance of parks and gardens, businesses can help protect the urban
           natural capital they rely on. This will not only bring direct benefits to businesses but
@@ -466,7 +493,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         </>
       ),
       insights: [
-        "Urban green spaces offer essential ecosystem services like climate regulation, air purification, and flood mitigation, alongside cultural services such as mental well-being and recreational opportunities, which are crucial for the health of city residents and businesses.",
+        "Urban green spaces offer essential ecosystem services like climate regulation, air purification, and flood mitigation, alongside cultural services such as mental well-being and recreational opportunities, which are crucial for the health of city residents and businesses. There is demand for Biodiversity Sensitive Urban Design (BSUD).",
         "Urban green spaces directly benefit the retail and real estate industries. They enhance the attractiveness of city centres, boost foot traffic, and increase property values, supporting the success of local businesses and the economic growth of an area.",
         "Pollution, urban expansion, and climate change threaten urban green spaces. Sustainable management and political prioritisation are vital to preserving and creating these areas and their economic benefits.",
       ],
@@ -486,6 +513,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           </p>
         </>
       ),
+      content2: "Explore the diagram to see how natural capital supports retails.",
       chartData: retailLinks,
     },
     impacts: {
@@ -500,7 +528,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
             establishing and maintaining urban green spaces. While there are good community health,
             amenity, and service grounds for public funding of urban green areas, other public or
             private urban development plans and businesses may clash with these spaces, draining
-            available resources and reducing benefits.
+            available resources and reducing benefits. Biodiversity Sensitive Urban Design (BSUD)
+            helps resolve these conflicts by aligning urban development with nature conservation,
+            benefiting both people and ecosystems.
           </p>
         </>
       ),
@@ -530,23 +560,18 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       content1: (
         <>
           <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
-            Why are farmlands essential for businesses and society?
+            Why are ecosystem assets in farmlands essential for businesses and society?
           </h3>
           <p className="max-w-[860px] lg:text-center">
             Farmlands are the cornerstone of society. They provide essential food and fibre
             resources, support regional economies, and offer vital ecosystem services like soil
-            fertility, biodiversity conservation and climate regulation. They hold cultural value by
-            enriching communities, connecting people with their heritage, and offer rural landscapes
-            to enjoy, overall benefitting mental health.
+            fertility, biodiversity conservation, and climate regulation. They hold cultural value
+            by enriching communities, connecting people with their heritage, and offering rural
+            landscapes to enjoy, which in turn benefits mental health.
           </p>
           <p className="max-w-[860px] lg:text-center">
             In an agricultural context, natural capital includes naturally occurring ecosystems and
             those established and maintained by humans (cultivated resources).
-          </p>
-          <p className="max-w-[860px] lg:text-center">
-            Examples of ecosystem assets on a farm include native woody vegetation (remnant and
-            replanted), grasslands (native and exotic pastures), crops and wetlands. Environmental
-            assets include soil, minerals and water (surface, soil and groundwater).
           </p>
         </>
       ),
@@ -556,7 +581,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         height: 630,
       },
       imageText:
-        "Conservation of the world's biodiversity is inextricably tied to forests. Forests cover only 31% of the global land area but support 80% of the world's amphibian species, 75% of bird species, and 68% of mammals.",
+        "Examples of ecosystem assets on a farm include native woody vegetation (remnant and replanted), grasslands (native and exotic pastures), crops and wetlands. Environmental assets include soil, minerals and water (surface, soil and groundwater).",
       content2: (
         <div className="flex flex-col gap-10">
           <div>
@@ -569,7 +594,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
               <p>
                 Areas of remnant and planted vegetation, such as shelterbelts and windbreaks, offer
                 regulating services by providing shade and shelter for livestock, and habitat for
-                pollinators, pest controllers, and decomposers. These services help agribusinesses
+                pollinators, pest controllers, and decomposers{" "}
+                <Reference id={5} className="text-green-500" />
+                <Reference id={6} className="text-green-500" />. These services help agribusinesses
                 reduce input costs and enhance production efficiency.
               </p>
             </div>
@@ -604,7 +631,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         {
           title: "Farm consultants / advisors",
           tooltip:
-            "To offer their expertise in optimisng agricultural practices and improving farm productivity.",
+            "To offer their expertise in optimising agricultural practices and improving farm productivity.",
         },
         {
           title: "Food and beverage manufacturers",
@@ -662,22 +689,23 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       content1: (
         <>
           <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
-            How does the food industry depend on farmlands?
+            How does the food industry depend on ecosystem assets in farmlands?
           </h3>
           <p className="max-w-[860px] lg:text-center">
-            Farmlands are fundamental to the food industry because they provide essential resources
-            and ecosystem services. Explore the diagram to see how natural capital benefits the food
-            industry.
+            Ecosystem assets in farmlands are fundamental to the food industry because they provide
+            essential resources and ecosystem services. Explore the diagram to see how natural
+            capital benefits the food industry.
           </p>
         </>
       ),
+      content2: "Explore the diagram to see how natural capital supports food security.",
       chartData: foodLinks,
     },
     impacts: {
       content1: (
         <>
           <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
-            How does the food industry impact farmlands?
+            How does the food industry impact ecosystem assets in farmlands?
           </h3>
           <p className="max-w-[860px] lg:text-center">
             The natural capital leveraged for agricultural production contributes to global food

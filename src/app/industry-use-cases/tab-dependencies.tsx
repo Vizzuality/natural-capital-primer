@@ -6,6 +6,7 @@ import { IndustryUseCasesTabContent } from "./types";
 
 const DependenciesTab: FC<IndustryUseCasesTabContent["dependencies"] & { open: boolean }> = ({
   content1,
+  content2,
   chartData,
   open,
 }) => {
@@ -34,7 +35,8 @@ const DependenciesTab: FC<IndustryUseCasesTabContent["dependencies"] & { open: b
     <>
       <div className="mt-5 flex flex-col gap-6 lg:items-center">{content1}</div>
       <div className="lg:pt-5">
-        <div ref={chartContainerRef} className="relative w-full">
+        <p className="text-center text-lg text-green-500 lg:text-xl">{content2}</p>
+        <div ref={chartContainerRef} className="relative mt-9 w-full">
           {chartData.length > 0 && isDesktop && <DesktopChart width={width} data={chartData} />}
           {chartData.length > 0 && !isDesktop && <MobileChart data={chartData} />}
         </div>

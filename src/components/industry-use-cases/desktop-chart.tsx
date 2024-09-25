@@ -125,7 +125,7 @@ const DesktopChart: FC<DesktopChartProps> = ({ width, data }) => {
               "items-end": index + 1 === array.length,
             })}
           >
-            <div className="text-xl">{name}</div>
+            <div className="text-xl text-green-500">{name}</div>
           </div>
         ))}
       </div>

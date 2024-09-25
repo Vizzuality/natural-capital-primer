@@ -68,7 +68,7 @@ const MobileChart: FC<MobileChartProps> = ({ data }) => {
   );
 
   return (
-    <Accordion type="single" collapsible>
+    <Accordion type="single" collapsible defaultValue={Object.values(Group)[0]}>
       <div className="flex flex-col gap-y-6">
         {Object.entries(Group).map(([name, key]) => (
           <AccordionItem
