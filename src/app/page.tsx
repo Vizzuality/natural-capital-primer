@@ -228,7 +228,7 @@ export default function Home() {
         <div className="flex flex-col gap-y-6 lg:gap-y-20">
           <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-16 lg:px-20">
             <h2 className="flex-shrink-0 text-lg lg:sticky lg:top-6 lg:w-[254px] lg:text-xl">
-              Why is natural capital important to me?
+              Why is natural capital important?
             </h2>
             <div className="flex flex-grow flex-col gap-y-20">
               <div className="flex flex-col gap-y-3 lg:gap-y-6">

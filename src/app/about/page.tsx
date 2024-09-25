@@ -225,11 +225,10 @@ export default function About() {
               Who is the Natural Capital Primer for?
             </h2>
             <p className="mt-4 lg:mt-11">
-              As natural capital affects every person on earth, we designed the Primer to be used by
-              all. To help create a foundational knowledge of what natural capital is, how we depend
-              on it, and how we impact it. You can use this knowledge to help inform policy-making
-              and business sustainability decisions, all through to everyday choices.
-              <br />
+              The Natural Capital Primer is intended to help build a foundational knowledge of what
+              natural capital is, how we depend on it, and how we impact it. By understanding and
+              managing natural capital, we can make informed decisions that help to create an
+              equitable future that is both financially prosperous and beneficial for the planet.{" "}
               <b>The primer is handy for:</b>
             </p>
           </div>
