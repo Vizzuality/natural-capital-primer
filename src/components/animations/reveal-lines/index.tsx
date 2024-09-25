@@ -48,7 +48,13 @@ const RevealLines: FC<RevealLinesProps> = ({
   // Get the className of the first child element
   const className = childElements?.[0].props.className;
 
-  const splittedChars = lines?.[0]?.length ? lines?.[0]?.split("") : lines;
+  let splittedChars = lines;
+  if (lines?.[0]?.length && typeof lines[0] === "string") {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    splittedChars = lines[0].split("");
+  }
+
   const splittedText = splitChars ? splittedChars : lines;
   const totalHeight = lineHeight * splittedText.length;
 

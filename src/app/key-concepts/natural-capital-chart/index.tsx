@@ -26,10 +26,12 @@ const NaturalCapitalChart = () => {
 
   return (
     <div className="flex flex-col gap-10 lg:gap-16">
-      <div className="mx-auto max-w-[730px] text-2xl text-blue-500 lg:text-center lg:text-4xl">
-        <span className="sr-only lg:not-sr-only">
-          Hover on the different elements and see how they are connected
-        </span>
+      <div className="mx-auto max-w-[730px] lg:text-center">
+        <p className="text-2xl text-blue-500 lg:text-4xl">Assets flow into services.</p>
+        <p className="mt-3">
+          Hover on the different elements to see how natural capital assets produce flows of
+          services.
+        </p>
       </div>
       <div className="flex flex-col gap-y-4">
         <div className="flex items-center justify-center gap-2.5 md:relative md:left-[9.1%] md:justify-start">
