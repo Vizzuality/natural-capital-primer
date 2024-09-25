@@ -6,14 +6,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import dynamic from "next/dynamic";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
 import ArrowSlide from "@/icons/arrow-slide.svg";
 import Vizzuality from "@/svgs/vizzuality.svg";
 import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
 import BackgroundVideo from "@/components/bg-video";
-
-const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), { ssr: false });
+import RevealLines from "@/components/animations/reveal-lines";
 
 const BACKGROUNDS = [
   "/assets/about-background.png",

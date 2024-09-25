@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
@@ -13,10 +12,7 @@ import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-d
 import StickyNav from "@/components/sticky-nav";
 import { useInView } from "framer-motion";
 import Parallax from "@/components/animations/parallax";
-
-const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
-  ssr: false,
-});
+import RevealLines from "@/components/animations/reveal-lines";
 
 const ClimateAndBiodiversityPage: FC = () => {
   const chapter1Ref = useRef<HTMLDivElement>(null);

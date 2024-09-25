@@ -21,11 +21,15 @@ const RevealLines: FC<RevealLinesProps> = ({
   delay = 0.1,
   duration = 0.4,
 }) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const childrenRef = useRef<HTMLDivElement[]>([]);
 
   const childElements = Children.toArray(children).filter(isReactElement);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
 
   useEffect(() => {
     function handleResize() {
@@ -59,63 +63,69 @@ const RevealLines: FC<RevealLinesProps> = ({
   const totalHeight = lineHeight * splittedText.length;
 
   return (
-    <AnimatePresence>
-      <motion.div
-        style={{ height: splitChars ? lineHeight : totalHeight }}
-        whileInView={splitChars ? "start" : undefined}
-        viewport={{ once: true }}
-        className={cn({
-          "overflow-hidden": splitChars,
-        })}
-        variants={splitChars ? item : undefined}
-        initial={splitChars ? { y: lineHeight } : undefined}
-        transition={
-          splitChars
-            ? {
-                delay,
-                duration,
-                ease: "easeInOut",
-              }
-            : undefined
-        }
-      >
-        {/* Div created just to get the refs to calculate the children lines and lineHeight */}
-        <div className="invisible h-0" aria-hidden="true">
-          {childElements.map((child, index) =>
-            cloneElement(child as React.ReactElement, {
-              ref: (ref: HTMLDivElement) => (childrenRef.current[index] = ref),
-            }),
-          )}
-        </div>
-        {splittedText.map((text, index) => (
-          <span
-            key={`text-${text}-${index}`}
-            className={cn("overflow-hidden", {
-              block: !splitChars,
-              "inline-block": splitChars,
-            })}
-            style={{ height: `${lineHeight}px` }}
-          >
-            <motion.div
-              key={index}
-              whileInView="start"
-              // Only show the effect once
-              viewport={{ once: true }}
-              initial={{ y: lineHeight }}
-              transition={{
-                delay: delay * index,
-                duration,
-                ease: "easeInOut",
-              }}
-              variants={item}
-              className={className}
+    <div className="relative">
+      <div className="invisible" aria-hidden>
+        {children}
+      </div>
+      <AnimatePresence>
+        <motion.div
+          style={{ height: splitChars ? lineHeight : totalHeight }}
+          whileInView={splitChars ? "start" : undefined}
+          viewport={{ once: true }}
+          className={cn({
+            "absolute inset-0": true,
+            "overflow-hidden": splitChars,
+          })}
+          variants={splitChars ? item : undefined}
+          initial={splitChars ? { y: lineHeight } : undefined}
+          transition={
+            splitChars
+              ? {
+                  delay,
+                  duration,
+                  ease: "easeInOut",
+                }
+              : undefined
+          }
+        >
+          {/* Div created just to get the refs to calculate the children lines and lineHeight */}
+          <div className="invisible h-0" aria-hidden="true">
+            {childElements.map((child, index) =>
+              cloneElement(child as React.ReactElement, {
+                ref: (ref: HTMLDivElement) => (childrenRef.current[index] = ref),
+              }),
+            )}
+          </div>
+          {splittedText.map((text, index) => (
+            <span
+              key={`text-${text}-${index}`}
+              className={cn("overflow-hidden", {
+                block: !splitChars,
+                "inline-block": splitChars,
+              })}
+              style={{ height: `${lineHeight}px` }}
             >
-              {text}
-            </motion.div>
-          </span>
-        ))}
-      </motion.div>
-    </AnimatePresence>
+              <motion.div
+                key={index}
+                whileInView="start"
+                // Only show the effect once
+                viewport={{ once: true }}
+                initial={{ y: lineHeight }}
+                transition={{
+                  delay: delay * index,
+                  duration,
+                  ease: "easeInOut",
+                }}
+                variants={item}
+                className={className}
+              >
+                {text}
+              </motion.div>
+            </span>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 };
 

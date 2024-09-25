@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
@@ -17,10 +16,7 @@ import StickyNav from "@/components/sticky-nav";
 import { useInView } from "framer-motion";
 import Reference from "@/components/reference";
 import BackgroundVideo from "@/components/bg-video";
-
-const RevealLines = dynamic(() => import("@/components/animations/reveal-lines"), {
-  ssr: false,
-});
+import RevealLines from "@/components/animations/reveal-lines";
 
 const QUIZ_DATA: QuizData[] = [
   {
