@@ -16,9 +16,9 @@ export default function ReferencesPage() {
           biodiversity, and the economic value of natural resources.
         </p>
       </div>
-      <ol className="mx-auto my-10 grid max-w-7xl list-decimal-leading-zero grid-cols-1 gap-y-4 p-6 pl-[60px] lg:my-28 lg:grid-cols-2 lg:gap-x-28 lg:gap-y-5 lg:px-20 lg:pl-[116px]">
+      <ol className="mx-auto my-10 max-w-7xl list-decimal-leading-zero space-y-4 p-6 pl-[60px] lg:my-28 lg:columns-2 lg:gap-x-28 lg:space-y-5 lg:px-20 lg:pl-[116px]">
         {REFERENCES.map((reference, index) => (
-          <li id={`${index + 1}`} key={index}>
+          <li id={`${index + 1}`} key={index} className="break-inside-avoid">
             {reference}
           </li>
         ))}

@@ -187,9 +187,10 @@ export default function Home() {
             <p className="lg:col-span-2">
               These resources, both living (like plants and animals) and non-living (like water and
               soil), are essential because they support our economy and overall well-being by
-              providing goods and services that we rely on every day{" "}
-              <Reference id={0} className="text-white" />. It’s called “capital” because, just like
-              financial capital, nature plays a critical role in sustaining our society and economy.
+              providing goods and services that we rely on every day.{" "}
+              <Reference id={0} color="green" className="text-white" /> It’s called “capital”
+              because, just like financial capital, nature plays a critical role in sustaining our
+              society and economy.
             </p>
             <div className="flex flex-col gap-y-3">
               <h3 className="text-lg lg:text-xl">Natural Capital Assets</h3>
@@ -198,7 +199,7 @@ export default function Home() {
                 These can be living (biotic) and non-living (abiotic). We depend on them to fuel our
                 bodies, shelter our homes and provide all the items we wear and use. Natural capital
                 assets produce flows of ecosystem services.{" "}
-                <Reference id={1} className="text-white" />
+                <Reference color="green" id={1} className="text-white" />
               </p>
             </div>
             <div className="flex flex-col gap-y-3">
@@ -208,7 +209,7 @@ export default function Home() {
                 pollinating plants, and regulating the climate. We rely on these services daily to
                 keep our bodies and minds healthy, and on a larger scale to protect our communities
                 from worsening natural disasters due to climate breakdown.{" "}
-                <Reference id={2} className="text-white" />
+                <Reference color="green" id={2} className="text-white" />
               </p>
               <Link
                 href="/key-concepts#flows-of-services"
@@ -252,7 +253,7 @@ export default function Home() {
                     Our businesses and economies depend on it too.
                   </span>{" "}
                   55% of global GDP directly depends on natural assets and ecosystem services.{" "}
-                  <Reference id={3} className="text-lg text-green-500" />
+                  <Reference color="green" id={3} className="text-lg text-green-500" />
                 </p>
                 <p>
                   This includes products such as timber and food, raw materials for manufacturing,
@@ -269,10 +270,12 @@ export default function Home() {
                 </p>
                 <p>
                   While representing less than 5 percent of the world&apos;s population, Indigenous
-                  Peoples steward more than a quarter of Earth&apos;s land and seas. The existence
-                  of Indigenous peoples and their cultures goes hand in hand with a healthy
+                  Peoples steward more than a quarter of Earth&apos;s land and seas.{" "}
+                  <Reference color="green" id={4} className="text-green-500" /> The existence of
+                  Indigenous peoples and their cultures goes hand in hand with a healthy
                   environment, in fact studies show that tropical forest integrity is higher in
-                  protected Indigenous lands.
+                  protected Indigenous lands.{" "}
+                  <Reference color="green" id={5} className="text-green-500" />
                 </p>
                 <p>
                   We must recognise and apply the ancestral knowledge and expertise of Indigenous

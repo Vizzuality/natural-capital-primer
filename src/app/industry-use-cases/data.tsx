@@ -12,10 +12,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           </h3>
           <p className="max-w-[860px] lg:text-center">
             Forests are indispensable to society&apos;s efforts to tackle climate change. They act
-            as the Earth&apos;s lungs, absorbing 30% <Reference id={3} className="text-green-500" />{" "}
-            of global carbon dioxide and replenishing the oxygen in the atmosphere. Forests also
-            provide vital raw materials like timber, paper, and biofuels, supporting key
-            construction, manufacturing, and energy industries.
+            as the Earth&apos;s lungs, absorbing 30% of global carbon dioxide and replenishing the
+            oxygen in the atmosphere. <Reference id={6} color="green" className="text-green-500" />{" "}
+            Forests also provide vital raw materials like timber, paper, and biofuels, supporting
+            key construction, manufacturing, and energy industries.
           </p>
         </>
       ),
@@ -29,7 +29,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           <p>Conservation of the world’s biodiversity is inextricably tied to forests.</p>
           <p className="text-green-500">
             Forests cover only 31% of the global land area but support 80% of the world’s amphibian
-            species, 75% of bird species, and 68% of mammals. <Reference id={4} />
+            species, 75% of bird species, and 68% of mammals. <Reference id={7} color="green" />
           </p>
         </>
       ),
@@ -200,8 +200,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
             Coastal ecosystems include sea-grass meadows, rocky platforms, coral reefs, mangroves,
             sand beaches and dunes, estuaries and coastal wetlands. Coastal areas comprise only 4%
             of Earth’s land, yet host &gt;30% of the world’s human population. They account for 90%
-            of the marine fish catch <Reference id={7} className="text-green-500" /> and provide a
-            multitude of ecosystem services that are essential to human wellbeing.
+            of the marine fish catch and provide a multitude of ecosystem services that are
+            essential to human wellbeing.{" "}
+            <Reference id={8} color="green" className="text-green-500" />
           </p>
         </>
       ),
@@ -214,13 +215,12 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         <>
           <p>
             Ecosystem assets of coastal ecosystems, such as mangroves and estuarine marshes, store
-            up to five times as much carbon per hectare as tropical forests{" "}
-            <Reference id={8} className="text-green-500" />, reduce coastline erosion and protect
-            coastal communities in events such as cyclones and storm{" "}
+            up to five times as much carbon per hectare as tropical forests,{" "}
+            <Reference id={9} color="green" className="text-green-500" /> reduce coastline erosion
+            and protect coastal communities in events such as cyclones and storm{" "}
             <span className="whitespace-nowrap">
-              surges <Reference id={9} className="text-green-500" />
+              surges. <Reference id={10} color="green" className="text-green-500" />
             </span>
-            .
           </p>
           <p className="text-green-500">
             These ecosystem assets are also nurseries for many commercially important fish species
@@ -407,8 +407,8 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           Urban green spaces are vital to cities&apos; health, climate, and economy. Green spaces
           like parks, gardens, and recreation areas can have mental and physical health benefits and
           reduce the urban heat island effect (a build-up of heat due to the abundance of
-          heat-retaining surfaces), generating ‘urban cooling’ instead{" "}
-          <Reference id={10} className="text-green-500" />.
+          heat-retaining surfaces), generating ‘urban cooling’ instead.{" "}
+          <Reference id={11} color="green" className="text-green-500" />
         </p>
       ),
       content2: (
@@ -417,13 +417,13 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
             By incorporating Biodiversity Sensitive Urban Design (BSUD) principles, these spaces can
             further contribute to both human well-being and the conservation of native species,
             ensuring that urban development benefits both people and the natural ecosystems they
-            depend on.
+            depend on. <Reference id={12} color="green" className="text-green-500" />
           </p>
           <p>
             There is also a strong business case for urban green spaces with direct links between
             tree canopy and retail. Increased consumer spending in retail areas with more green
-            spaces is due to a positive perception of the area and enhanced shopping experience{" "}
-            <Reference id={11} className="text-green-500" />.
+            spaces is due to a positive perception of the area and enhanced shopping experience.{" "}
+            <Reference id={13} color="green" className="text-green-500" />
           </p>
           <p>
             Green spaces have also been shown to lead to greater employee retention and increased
@@ -603,10 +603,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
               <p>
                 Areas of remnant and planted vegetation, such as shelterbelts and windbreaks, offer
                 regulating services by providing shade and shelter for livestock, and habitat for
-                pollinators, pest controllers, and decomposers{" "}
-                <Reference id={5} className="text-green-500" />
-                <Reference id={6} className="text-green-500" />. These services help agribusinesses
-                reduce input costs and enhance production efficiency.
+                pollinators, pest controllers, and decomposers.{" "}
+                <Reference id={14} color="green" className="text-green-500" />
+                <Reference id={15} color="green" className="text-green-500" /> These services help
+                agribusinesses reduce input costs and enhance production efficiency.
               </p>
             </div>
           </div>

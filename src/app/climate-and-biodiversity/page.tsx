@@ -14,6 +14,7 @@ import { useInView } from "framer-motion";
 import Parallax from "@/components/animations/parallax";
 import RevealLines from "@/components/animations/reveal-lines";
 import BackgroundVideo from "@/components/bg-video";
+import Reference from "@/components/reference";
 
 const ClimateAndBiodiversityPage: FC = () => {
   const chapter1Ref = useRef<HTMLDivElement>(null);
@@ -421,17 +422,18 @@ const ClimateAndBiodiversityPage: FC = () => {
               <p className="max-w-[600px] text-lg lg:text-xl">
                 <span className="text-pink">Biodiversity Loss:</span> Around 1 million species are
                 currently at risk of extinction, driven largely by habitat loss, climate change, and
-                pollution.
+                pollution. <Reference color="pink" id={16} className="text-pink" />
               </p>
               <p className="max-w-[600px] text-lg lg:mt-5 lg:text-xl">
                 <span className="text-pink">Pollinator Decline:</span> Over 75% of the global food
                 crops we grow depend on animal pollinators, which are experiencing rapid population
-                declines.
+                declines. <Reference color="pink" id={17} className="text-pink" />
               </p>
               <p className="max-w-[600px] text-lg lg:mt-5 lg:text-xl">
                 <span className="text-pink">Water Scarcity:</span> By 2025, it is projected that 1.8
                 billion people will be living in areas facing absolute water scarcity, underscoring
-                the pressing need for sustainable water management.
+                the pressing need for sustainable water management.{" "}
+                <Reference color="pink" id={18} className="text-pink" />
               </p>
               <p className="max-w-[600px] lg:mt-5">
                 These figures highlight the urgent need for integrated approaches that prioritise
