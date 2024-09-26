@@ -142,8 +142,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           </p>
         </>
       ),
-      content2:
-        "Explore the diagram to see how natural capital supports manufacturing and construction.",
+      chartTitle: "Natural capital supports manufacturing and construction.",
+      chartSubTitle:
+        "Hover over the different elements to see how natural capital assets produce flows of services that deliver value to the manufacturing industry.",
       chartData: manufacturingLinks,
     },
     impacts: {
@@ -329,7 +330,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           </p>
         </>
       ),
-      content2: "Explore the diagram to see how natural capital supports tourism.",
+      chartTitle: "Natural capital supports tourism.",
+      chartSubTitle:
+        "Hover over the different elements to see how natural capital assets produce flows of services that deliver value to the tourism industry.",
       chartData: tourismLinks,
     },
     impacts: {
@@ -521,7 +524,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           </p>
         </>
       ),
-      content2: "Explore the diagram to see how natural capital supports retails.",
+      chartTitle: "Natural capital supports retail.",
+      chartSubTitle:
+        "Hover over the different elements to see how natural capital assets produce flows of services that deliver value to the retail industry.",
       chartData: retailLinks,
     },
     impacts: {
@@ -709,7 +714,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           </p>
         </>
       ),
-      content2: "Explore the diagram to see how natural capital supports food security.",
+      chartTitle: "Natural capital supports food.",
+      chartSubTitle:
+        "Hover over the different elements to see how natural capital assets produce flows of services that deliver value to the food industry.",
       chartData: foodLinks,
     },
     impacts: {
