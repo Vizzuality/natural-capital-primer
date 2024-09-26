@@ -9,7 +9,7 @@ import ThinArrow from "@/icons/thin-arrow.svg";
 import Link from "next/link";
 import { FC, useMemo, useRef } from "react";
 import Quiz from "@/components/quiz";
-import type { QuizData } from "@/components/quiz";
+import type { QuizProps } from "@/components/quiz";
 import NaturalCapitalChart from "./natural-capital-chart";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
 import StickyNav from "@/components/sticky-nav";
@@ -18,119 +18,68 @@ import Reference from "@/components/reference";
 import BackgroundVideo from "@/components/bg-video";
 import RevealLines from "@/components/animations/reveal-lines";
 
-const QUIZ_DATA: QuizData[] = [
+const QUIZ_DATA: QuizProps[] = [
   {
-    key: "quiz-chapter-1",
-    colorClass: "lg:text-green-500",
+    name: "Chapter 1",
     color: "green",
-    chapterName: "Assets and Resources",
     questions: [
       {
-        title: (
-          <>
-            Which of the following is a{" "}
-            <span className="text-green-500">non-renewable resource?</span>
-          </>
-        ),
-        options: ["Fossil fuels", "Water", "Kelp"],
+        title: "Which of the following is a non-renewable asset?",
+        options: ["Fossil Fuels", "Water", "Kelp"],
         answer: 0,
       },
       {
-        title: (
-          <>
-            <span className="text-green-500">Ecosystem assets</span> are formed through the
-            interaction of:
-          </>
-        ),
-        options: ["Different Species", "Climate & Geology", "Environmental Assets"],
+        title:
+          "Complete the sentence to explain how ecosystem assets are different from environmental assets. “Ecosystems are…",
+        options: ["Single assets", "Always renewable", "Interactions of assets"],
         answer: 2,
       },
       {
-        title: (
-          <>
-            What are two main categories of{" "}
-            <span className="text-green-500">natural capital assets?</span>
-          </>
-        ),
-        options: ["Biotic & Abiotic", "Environmental & Ecosystem", "Cultivated & Recoverable"],
+        title: "Which resource category is maintained by human intervention?",
+        options: ["Renewable", "Cultivated", "Non-renewable"],
         answer: 1,
       },
     ],
   },
   {
-    key: "quiz-chapter-2",
-    colorClass: "lg:text-blue-450",
+    name: "Chapter 2",
     color: "blue",
-    chapterName: "Flows of services",
     questions: [
       {
-        title: (
-          <>
-            <span className="text-blue-450">Supporting and ecosystem services </span>
-            relationship is:
-          </>
-        ),
-        options: ["Independent", "Interdependent", "Comparative"],
+        title:
+          "The relationship between supporting services and other ecosystem services can be described as:",
+        options: ["Independent", "Interdependent", "Competitive"],
         answer: 1,
       },
       {
-        title: (
-          <>
-            Which <span className="text-blue-450">type of service </span> provides food, water, and
-            timber?
-          </>
-        ),
-        options: ["Regulating", "Ecosystem", "Abiotic"],
+        title: "Which type of service produces  food, water, and timber?",
+        options: ["Regulating", "Provisioning", "Abiotic"],
         answer: 1,
       },
       {
-        title: (
-          <>
-            <span className="text-blue-450">Minerals and fossil fuels</span> are benefits derived
-            from:
-          </>
-        ),
-        options: ["Abiotic Services", "Ecosystem Services", "Supporting Services"],
+        title: "Minerals and fossil fuels are examples of benefits derived from:",
+        options: ["Abiotic services", "Cultural services", "Supporting services"],
         answer: 0,
       },
     ],
   },
   {
-    key: "quiz-chapter-3",
-    colorClass: "lg:text-orange-500",
+    name: "Chapter 3",
     color: "orange",
-    chapterName: "Dependencies and Impacts",
     questions: [
       {
-        title: (
-          <>
-            An iron extracting company <span className="text-orange-500">has a dependency on:</span>
-          </>
-        ),
-        options: ["Renewable Resources", "Not-Renewable Resources", "Services"],
+        title:
+          "A company that extracts iron ore from the ground has a direct dependency on what type of resources?",
+        options: ["Renewable", "Non-renewable", "Manufactured"],
         answer: 1,
       },
       {
-        title: (
-          <>
-            How can business&apos;s actions{" "}
-            <span className="text-orange-500">affect the environment?</span>
-          </>
-        ),
-        options: [
-          "Directly through pollution",
-          "Indirectly through supply chains",
-          "Both directly and indirectly",
-        ],
+        title: "How can a business's actions in one place affect the environment somewhere else?",
+        options: ["Direct pollution", "Indirect supply chains", "Both"],
         answer: 2,
       },
       {
-        title: (
-          <>
-            Climate change is an example of{" "}
-            <span className="text-orange-500">which type of impact?</span>
-          </>
-        ),
+        title: "Extreme weather due to climate change is an example of which type of impact?",
         options: ["Direct", "Indirect", "Cumulative"],
         answer: 2,
       },
@@ -391,7 +340,7 @@ const KeyConceptsPage: FC = () => {
               </li>
             </ul>
           </main>
-          <Quiz data={QUIZ_DATA[0]} />
+          <Quiz {...QUIZ_DATA[0]} />
         </div>
       </div>
 
@@ -589,7 +538,7 @@ const KeyConceptsPage: FC = () => {
               </li>
             </ul>
           </main>
-          <Quiz data={QUIZ_DATA[1]} />
+          <Quiz {...QUIZ_DATA[1]} />
         </div>
       </div>
 
@@ -768,7 +717,7 @@ const KeyConceptsPage: FC = () => {
               </li>
             </ul>
           </main>
-          <Quiz data={QUIZ_DATA[2]} />
+          <Quiz {...QUIZ_DATA[2]} />
         </div>
       </div>
 
