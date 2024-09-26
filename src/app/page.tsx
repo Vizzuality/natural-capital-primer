@@ -261,7 +261,7 @@ export default function Home() {
                   using and conserving our planet&apos;s resources wisely.
                 </p>
                 <p>
-                  Natural Capital is not a new concept. Indigenous peoples and local communities
+                  Natural capital is not a new concept. Indigenous peoples and local communities
                   have always understood the value of nature for the many life-giving and
                   life-sustaining services it provides. Their sustainable management of the land and
                   seas has ensured its value has passed on from generation to generation, and spread
@@ -387,7 +387,7 @@ export default function Home() {
           >
             <div className="flex items-start gap-x-2.5 lg:gap-x-7">
               <Image
-                src="/assets/home-food-security.png"
+                src="/assets/home-food-system.png"
                 width={108}
                 height={108}
                 alt=""

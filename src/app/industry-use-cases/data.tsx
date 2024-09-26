@@ -113,9 +113,12 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       },
       content3: (
         <>
-          Companies in these industries must urgently recognise and address their reliance on
-          natural resources to reduce financial, reputational, and legal risks. Taking action now
-          will help secure a sustainable and successful business model for the future.
+          <span className="text-green-500">
+            Companies in these industries must urgently recognise and address their reliance on
+            natural resources
+          </span>{" "}
+          to reduce financial, reputational, and legal risks. Taking action now will help secure a
+          sustainable and successful business model for the future.
         </>
       ),
       insights: [
@@ -235,9 +238,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
             construction and landscaping).
           </p>
           <p>
-            These businesses all benefit from the ecosystem services provided by coastal ecosystems;
-            it is in their business interests to avoid damage or over-exploitation of these natural
-            capital assets to maintain the level and quality of the services they provide.
+            These businesses all benefit from the ecosystem services provided by coastal ecosystems
+            - so it is in their business interests to avoid damage or over-exploitation of these
+            natural capital assets to maintain the level and quality of the services they provide.
           </p>
         </div>
       ),
@@ -296,11 +299,13 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       },
       content3: (
         <>
-          Businesses depending on coastal ecosystems must recognise their role in sustaining these
-          environments and take proactive steps to minimise their impact. By embracing sustainable
-          practices to support ecosystem conservation, such as ecotourism, responsible fisheries,
-          and green buildings, businesses can protect the natural resources they rely on and ensure
-          their long-term success and resilience.
+          <span className="text-green-500">
+            Businesses depending on coastal ecosystems must recognise their role in sustaining these
+            environments and take proactive steps to minimise their impact.
+          </span>{" "}
+          By embracing sustainable practices to support ecosystem conservation, such as ecotourism,
+          responsible fisheries, and green buildings, businesses can protect the natural resources
+          they rely on and ensure their long-term success and resilience.
         </>
       ),
       insights: [
@@ -436,7 +441,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       industriesRelyOnText: "green spaces",
       directIndustries: [
         {
-          title: "Retal",
+          title: "Retail",
           tooltip:
             "To attract more foot traffic, enhance the shopping experience and increase consumer spending.",
         },
@@ -485,15 +490,18 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       },
       content3: (
         <>
-          Businesses that depend on urban green spaces must help preserve them. By adopting
-          sustainable practices, such as supporting green infrastructure, reducing pollution, and
-          investing in the maintenance of parks and gardens, businesses can help protect the urban
-          natural capital they rely on. This will not only bring direct benefits to businesses but
-          will ensure beautiful, healthy urban environments for future generations.
+          <span className="text-green-500">
+            Businesses that depend on urban green spaces must help preserve them.
+          </span>{" "}
+          By adopting sustainable practices, such as supporting green infrastructure, reducing
+          pollution, and investing in the maintenance of parks and gardens, businesses can help
+          protect the urban natural capital they rely on. This will not only bring direct benefits
+          to businesses, but will also ensure beautiful, healthy urban environments for future
+          generations.
         </>
       ),
       insights: [
-        "Urban green spaces offer essential ecosystem services like climate regulation, air purification, and flood mitigation, alongside cultural services such as mental well-being and recreational opportunities, which are crucial for the health of city residents and businesses. There is demand for Biodiversity Sensitive Urban Design (BSUD).",
+        "Urban green spaces offer essential ecosystem services like climate regulation, air purification, and flood mitigation, alongside cultural services such as mental well-being and recreational opportunities, which are crucial for the health of city residents and businesses. There is increasing demand for Biodiversity Sensitive Urban Design (BSUD).",
         "Urban green spaces directly benefit the retail and real estate industries. They enhance the attractiveness of city centres, boost foot traffic, and increase property values, supporting the success of local businesses and the economic growth of an area.",
         "Pollution, urban expansion, and climate change threaten urban green spaces. Sustainable management and political prioritisation are vital to preserving and creating these areas and their economic benefits.",
       ],
@@ -537,7 +545,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       list: [
         {
           title: "Pollution and degradation",
-          text: "Urban development and maintenance activities contribute to air and noise pollution, litter, and runoff, which degrade air quality, water resources, and the overall health of green spaces. Additionally, high foot traffic from retail and tourism, as well as overuse by residents, can lead to soil compaction, vegetation damage, and reduced biodiversity.",
+          text: "Urban development and maintenance activities contribute to air and noise pollution, litter and runoff which degrade air quality, water resources, and the overall health of green spaces. Additionally, high foot traffic from retail and tourism, as well as overuse by residents, can lead to soil compaction, vegetation damage, and reduced biodiversity.",
         },
         {
           title: "Urban Expansion",
@@ -560,14 +568,15 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       content1: (
         <>
           <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
-            Why are ecosystem assets in farmlands essential for businesses and society?
+            Why are agroecosystems essential for businesses and society?
           </h3>
           <p className="max-w-[860px] lg:text-center">
-            Farmlands are the cornerstone of society. They provide essential food and fibre
-            resources, support regional economies, and offer vital ecosystem services like soil
-            fertility, biodiversity conservation, and climate regulation. They hold cultural value
-            by enriching communities, connecting people with their heritage, and offering rural
-            landscapes to enjoy, which in turn benefits mental health.
+            Farmlands (also known as agroecosystems) are the cornerstone of society. They provide
+            essential food and fibre resources, support regional economies, and offer vital
+            ecosystem services like soil fertility, biodiversity conservation, and climate
+            regulation. They hold cultural value by enriching communities, connecting people with
+            their heritage, and offering rural landscapes to enjoy, which in turn benefits mental
+            health.
           </p>
           <p className="max-w-[860px] lg:text-center">
             In an agricultural context, natural capital includes naturally occurring ecosystems and
@@ -585,7 +594,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       content2: (
         <div className="flex flex-col gap-10">
           <div>
-            <h3 className="mb-5 text-xl">How does natural capital support farming businesses?</h3>
+            <h3 className="mb-5 text-xl">How does natural capital support farm production?</h3>
             <div className="flex flex-col gap-5">
               <p>
                 Agribusiness depends on farmlands that have healthy soils, waterways, and ecosystems
@@ -602,7 +611,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
             </div>
           </div>
           <div>
-            <h3 className="mb-5 text-xl">Farmlands benefit the whole of society.</h3>
+            <h3 className="mb-5 text-xl">Agrosystems benefit the whole of society.</h3>
             <div className="flex flex-col gap-5">
               <p>
                 Well-managed farmland can help fight climate change by sequestering and storing
@@ -621,7 +630,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         width: 373,
         height: 375,
       },
-      industriesRelyOnText: "farmlands",
+      industriesRelyOnText: "agroecosystems",
       directIndustries: [
         {
           title: "Agribusiness",
@@ -673,15 +682,17 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       },
       content3: (
         <>
-          Businesses that benefit from the agricultural supply chain (e.g., food and beverage
-          companies, clothing manufacturers, financial institutions, and retailers) must explicitly
-          recognise their dependency and impact on natural capital and adopt strategies that reward
-          nature-positive farming practices.
+          <span className="text-green-500">
+            Businesses that benefit from the agricultural supply chain (e.g., food and beverage
+            companies, clothing manufacturers, financial institutions, and retailers) must
+            explicitly recognise their dependency and impact on natural capital
+          </span>{" "}
+          and adopt strategies that reward nature-positive farming practices.
         </>
       ),
       insights: [
         "Farmlands are a combination of natural and human-maintained ecosystems.",
-        "Natural capital in farmland delivers a range of provisioning ecosystem services in the form of crops, forage and livestock, and key regulating services that increase productivity, such as micro-climate regulation, pollination, pest control and nutrient cycling.",
+        "Natural capital in farmlands deliver a range of provisioning ecosystem services in the form of crops, forage and livestock, and key regulating services that increase productivity, such as micro-climate regulation, pollination, pest control and nutrient cycling.",
         "Properly managed farmlands are important for protecting biodiversity and mitigating climate change.",
       ],
     },
@@ -689,12 +700,12 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       content1: (
         <>
           <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
-            How does the food industry depend on ecosystem assets in farmlands?
+            How does the food system depend on agrosystems?
           </h3>
           <p className="max-w-[860px] lg:text-center">
-            Ecosystem assets in farmlands are fundamental to the food industry because they provide
-            essential resources and ecosystem services. Explore the diagram to see how natural
-            capital benefits the food industry.
+            Agrosystems are fundamental to the food industry because they provide essential
+            resources and ecosystem services. Explore the diagram to see how natural capital
+            benefits the food industry.
           </p>
         </>
       ),
@@ -705,7 +716,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       content1: (
         <>
           <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
-            How does the food industry impact ecosystem assets in farmlands?
+            How does the food system impact agroecosystems?
           </h3>
           <p className="max-w-[860px] lg:text-center">
             The natural capital leveraged for agricultural production contributes to global food
@@ -720,7 +731,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       list: [
         {
           title: "Market pressure",
-          text: "Historically, farmers have been incentivised to manage land in a way that erodes natural capital due to government policies (or lack thereof) and market forces and terms of trade that lock in poor practices for short-term financial benefits.",
+          text: "Historically, farmers have been incentivised to manage land in a way that erodes natural capital due to government policies (or lack thereof), market forces and terms of trade that lock in poor practices for short-term financial benefits.",
         },
         {
           title: "Nature negative practices",
@@ -765,8 +776,8 @@ export const ACCORDION_ITEMS: IndustryUseCasesAccordionItem[] = [
     tabContent: ACCORDION_ITEMS_CONTENT["retail"],
   },
   {
-    id: "food-security",
-    title: "Food Security depends heavily on Ecosystem Assets",
+    id: "food-system",
+    title: "Food Systems depend heavily on Agroecosystems",
     tabContent: ACCORDION_ITEMS_CONTENT["food"],
   },
 ];

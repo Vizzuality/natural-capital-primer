@@ -127,7 +127,7 @@ const ClimateAndBiodiversityPage: FC = () => {
                   <RevealLines splitChars>
                     <p className="text-4.2xl text-turquoise lg:text-5xl">01</p>
                   </RevealLines>
-                  <h4 className="text-lg lg:text-xl">Reducing emissions</h4>
+                  <h4 className="text-lg text-turquoise lg:text-xl">Reducing emissions</h4>
                 </div>
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
@@ -135,7 +135,7 @@ const ClimateAndBiodiversityPage: FC = () => {
                   <RevealLines splitChars>
                     <p className="text-4.2xl text-turquoise lg:text-5xl">02</p>
                   </RevealLines>
-                  <h4 className="text-lg lg:text-xl">Sequestring carbon</h4>
+                  <h4 className="text-lg text-turquoise lg:text-xl">Sequestring carbon</h4>
                 </div>
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
@@ -143,7 +143,9 @@ const ClimateAndBiodiversityPage: FC = () => {
                   <RevealLines splitChars>
                     <p className="text-4.2xl text-turquoise lg:text-5xl">03</p>
                   </RevealLines>
-                  <h4 className="text-lg lg:text-xl">Growing our natural capital asset base</h4>
+                  <h4 className="text-lg text-turquoise lg:text-xl">
+                    Growing our natural capital asset base
+                  </h4>
                 </div>
               </div>
             </div>

@@ -150,7 +150,7 @@ export default function ResourcesPage() {
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 xl:mt-40">
         <h1 className="text-4.2xl font-medium lg:text-5xl">Resources on Natural Capital</h1>
         <p className="max-w-[827px] lg:text-xl">
-          Explore these resources to deepen your understanding of Natural Capital and its role in
+          Explore these resources to deepen your understanding of natural capital and its role in
           shaping our environment and society.
         </p>
       </div>

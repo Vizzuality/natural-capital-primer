@@ -227,7 +227,7 @@ export default function About() {
               natural capital is, how we depend on it, and how we impact it. By understanding and
               managing natural capital, we can make informed decisions that help to create an
               equitable future that is both financially prosperous and beneficial for the planet.{" "}
-              <b>The primer is handy for:</b>
+              <b>The Primer is handy for:</b>
             </p>
           </div>
           <ul className="flex flex-grow flex-col gap-y-6 divide-y divide-dashed lg:gap-y-5">

@@ -311,7 +311,7 @@ const Header: FC<{
                                   </li>
                                   <li>
                                     <Link
-                                      href="/industry-use-cases#food-security"
+                                      href="/industry-use-cases#food-system"
                                       onClick={onClickSubSection}
                                     >
                                       <HoverRepeatAnimation>Food Security</HoverRepeatAnimation>

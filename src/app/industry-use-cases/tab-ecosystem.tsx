@@ -51,7 +51,7 @@ const EcosystemTab: FC<IndustryUseCasesTabContent["ecosystem"]> = ({
             Many industries rely directly or indirectly on {industriesRelyOnText}.
           </p>
           <Parallax
-            heightClasses="flex-grow lg:h-[600px] hidden lg:block"
+            heightClasses="flex-grow lg:h-auto hidden lg:block"
             containerHeightPercentageMobile={200}
           >
             <Image
@@ -64,7 +64,7 @@ const EcosystemTab: FC<IndustryUseCasesTabContent["ecosystem"]> = ({
           </Parallax>
         </div>
         <div className="flex flex-grow flex-col gap-6 lg:gap-11">
-          <div className="flex flex-1 flex-col">
+          <div className="flex flex-col">
             <div className="mb-[10px] font-bold">
               Industry that directly relies on {industriesRelyOnText}
             </div>
@@ -77,7 +77,7 @@ const EcosystemTab: FC<IndustryUseCasesTabContent["ecosystem"]> = ({
               ))}
             </ul>
           </div>
-          <div className="flex flex-1 flex-col">
+          <div className="flex flex-col">
             <div className="mb-[10px] font-bold">
               Industry that indirectly relies on {industriesRelyOnText}
             </div>
@@ -90,9 +90,9 @@ const EcosystemTab: FC<IndustryUseCasesTabContent["ecosystem"]> = ({
               ))}
             </ul>
           </div>
-          <div className="border-l-[6px] border-l-green-500 pl-6">{content3}</div>
         </div>
       </div>
+      <div className="text-2xl lg:mt-11 lg:text-4xl">{content3}</div>
       <div className="mb-10 flex flex-col justify-start gap-y-4 border-t-2 border-t-green-500 pt-6 lg:mb-0 lg:mt-10 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10">
         <h3 className="flex-shrink-0 text-lg text-green-500 lg:w-[350px] lg:text-xl">
           Key insights

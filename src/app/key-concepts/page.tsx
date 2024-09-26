@@ -187,10 +187,10 @@ const KeyConceptsPage: FC = () => {
         <h1 className="text-4.2xl font-medium lg:text-5xl">What is Natural Capital?</h1>
         <div className="flex max-w-[827px] flex-col gap-y-4">
           <p className="max-w-[827px] text-lg lg:text-xl">
-            Natural capital refers to all biotic (living) andabiotic (non-living) natural resources,
-            or ‘assets’ that provide products and services that are of value to humans and society.
-            Natural capital is sometimes referred to as ‘stocks’ to describe the role of nature
-            within the economy. <Reference id={0} className="text-lg text-green-500" />
+            Natural capital refers to all biotic (living) and abiotic (non-living) natural
+            resources, or ‘assets’ that provide products and services that are of value to humans
+            and society. Natural capital is sometimes referred to as ‘stocks’ to describe the role
+            of nature within the economy. <Reference id={0} className="text-lg text-green-500" />
           </p>
           <div className="mt-6 flex max-w-[730px] flex-col gap-y-6 lg:mt-10 lg:grid lg:grid-cols-2 lg:gap-x-10">
             <p>
@@ -243,8 +243,11 @@ const KeyConceptsPage: FC = () => {
             <p className="text-lg lg:text-xl">
               Abiotic factors like climate and geology interact with biotic factors such as
               vegetation and animals to shape ecosystems and influence the quantity and quality of
-              natural capital assets. There are two types of natural capital assets: environmental
-              assets and ecosystem assets <Reference id={1} className="text-lg text-green-500" />.
+              natural capital assets.
+            </p>
+            <p className="text-lg lg:text-xl">
+              There are two types of natural capital assets: environmental assets and ecosystem
+              assets <Reference id={1} className="text-lg text-green-500" />.
             </p>
           </div>
           <div className="flex flex-col gap-y-10 lg:flex-row lg:justify-between lg:gap-x-10">
@@ -267,8 +270,8 @@ const KeyConceptsPage: FC = () => {
                 Ecosystem assets are formed when many individual environmental assets interact.
                 Their properties, such as composition, functions, and form, result from this
                 interaction. This gives ecosystems unique characteristics that determine the
-                ecosystem services that flow from them. Called “assets” because they are the source
-                for ecosystem services that support well‐being, health, and security.
+                ecosystem services that flow from them. They are called “assets” because they are
+                the source for ecosystem services that support well‐being, health, and security.
               </p>
               <p className="bg-black/5 px-4 py-3">
                 <b>Example:</b> grasslands, forests, woodlands, wetlands, mangroves, and peatlands
@@ -288,8 +291,8 @@ const KeyConceptsPage: FC = () => {
               services and resources.
             </p>
             <p className="max-w-[860px] text-lg lg:text-xl">
-              A subcategory of assets, natural resources such as water, minerals, and forests, are
-              defined by their usability for humans.
+              A subcategory of assets, called natural resources, are defined by their usability for
+              humans.
             </p>
             <div className="grid gap-14 md:grid-cols-2 md:grid-rows-[auto_auto] lg:mt-8 lg:grid-cols-[auto_350px] lg:gap-10">
               <div className="row-span-2 flex flex-col gap-y-6">
@@ -417,7 +420,7 @@ const KeyConceptsPage: FC = () => {
             </h3>
             <p className="text-lg lg:text-xl">
               Natural capital assets produce flows of services that have value to businesses and
-              society <Reference id={0} className="text-lg text-blue-500" />. These can be of two
+              society <Reference id={0} className="text-lg text-blue-500" />. There can be of two
               types:
             </p>
           </div>
@@ -466,7 +469,7 @@ const KeyConceptsPage: FC = () => {
                   <h4 className="text-lg lg:text-xl">Supporting services</h4>
                 </div>
                 <p className="lg:flex-grow-0">
-                  Supporting services support all other ecosystem services.They are the underlying
+                  Supporting services support all other ecosystem services. They are the underlying
                   natural processes that enable ecosystems to function, and to produce all other
                   ecosystem services. They are often long-term cycles.
                 </p>
@@ -575,7 +578,7 @@ const KeyConceptsPage: FC = () => {
               <li className="pt-5">
                 <RevealLines>
                   <p className="max-w-[600px]">
-                    Humans directly benefit and exist thanks to all ecosystem services, be it
+                    Humans directly benefit from and exist thanks to all ecosystem services, be it
                     nutrient cycling (supporting) and pollination (regulation), which enable food to
                     grow, freshwater for drinking (provisioning), and beautiful landscapes that
                     offer a place to exercise, relax, and be inspired by nature (cultural).
@@ -640,7 +643,7 @@ const KeyConceptsPage: FC = () => {
                   <Reference id={0} className="text-orange-500" />
                 </p>
                 <p>Impacts may be:</p>
-                <ul className="list-inside list-disc">
+                <ul className="list-outside list-disc pl-4">
                   <li>
                     <b>Positive:</b> an improvement in condition and/or increase in amount
                   </li>
@@ -770,16 +773,16 @@ const KeyConceptsPage: FC = () => {
         <div className="mx-auto max-w-7xl p-6 py-10 lg:p-20">
           <main className="flex flex-col items-start gap-y-6 lg:gap-y-10">
             <h2 className="flex items-center gap-x-5 text-2xl xl:text-4xl">
-              Downloadable resource
+              Download Key Concepts
             </h2>
             <p className="max-w-[730px] text-lg lg:text-xl">
-              If you find it easier to learn about Natural Capital Key Concepts in a print form, you
-              can download the PDF below which contains all theoretical principles about Natural
-              Capital.
+              If you prefer learning from PDF or print formats, where you can annotate and take
+              notes, you can download the PDF below. It includes all the theoretical principles of
+              natural capital.
             </p>
             <Button asChild variant="outline-white" size="lg">
               <Link href="/assets/natural-capital-booklet.pdf" download>
-                Download Document
+                Download PDF
               </Link>
             </Button>
           </main>
