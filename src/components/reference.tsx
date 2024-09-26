@@ -62,10 +62,10 @@ const Reference = ({ id, color, className }: ReferenceProps) => {
               >
                 {id + 1}
               </div>
-              <p>
+              <p className="overflow-hidden">
                 {addPropsToLink(REFERENCES[id], {
                   className: cn({
-                    underline: true,
+                    "underline break-words": true,
                     [TEXT_COLORS[color]]: true,
                   }),
                 })}
