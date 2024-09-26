@@ -47,9 +47,9 @@ const EcosystemTab: FC<IndustryUseCasesTabContent["ecosystem"]> = ({
       </div>
       <div className="mb-10 flex flex-col justify-start gap-y-8 border-t-2 border-t-green-500 pt-6 lg:mb-0 lg:mt-10 lg:flex-row lg:items-stretch lg:justify-between lg:gap-x-10 xl:gap-x-40">
         <div className="flex flex-shrink-0 flex-col gap-y-6 lg:w-[475px] xl:gap-y-20">
-          <p className="text-lg text-green-500 lg:text-xl">
+          <h3 className="text-lg text-green-500 lg:text-xl">
             Many industries rely directly or indirectly on {industriesRelyOnText}.
-          </p>
+          </h3>
           <Parallax
             heightClasses="flex-grow lg:h-auto hidden lg:block"
             containerHeightPercentageMobile={200}

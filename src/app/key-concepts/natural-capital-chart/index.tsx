@@ -27,7 +27,7 @@ const NaturalCapitalChart = () => {
   return (
     <div className="flex flex-col gap-10 lg:gap-16">
       <div className="mx-auto max-w-[730px] lg:text-center">
-        <p className="text-2xl text-blue-500 lg:text-4xl">Assets flow into services.</p>
+        <h3 className="text-2xl text-blue-500 lg:text-4xl">Assets flow into services.</h3>
         <p className="mt-3">
           Hover on the different elements to see how natural capital assets produce flows of
           services.

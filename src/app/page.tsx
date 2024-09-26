@@ -192,7 +192,7 @@ export default function Home() {
               financial capital, nature plays a critical role in sustaining our society and economy.
             </p>
             <div className="flex flex-col gap-y-3">
-              <h3 className="text-lg lg:text-xl">Natural Capital Assets:</h3>
+              <h3 className="text-lg lg:text-xl">Natural Capital Assets</h3>
               <p>
                 The tangible things we use from nature, such as food, water, trees, and minerals.
                 These can be living (biotic) and non-living (abiotic). We depend on them to fuel our
@@ -202,7 +202,7 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-y-3">
-              <h3 className="text-lg lg:text-xl">Ecosystem Services:</h3>
+              <h3 className="text-lg lg:text-xl">Ecosystem Services</h3>
               <p>
                 The life-sustaining functions nature performs, such as cleaning our air and water,
                 pollinating plants, and regulating the climate. We rely on these services daily to

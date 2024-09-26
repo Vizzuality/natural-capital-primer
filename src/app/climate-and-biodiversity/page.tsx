@@ -478,9 +478,9 @@ const ClimateAndBiodiversityPage: FC = () => {
 
       <div className="bg-orange-500 py-10 lg:py-14">
         <main className="mx-auto flex max-w-7xl flex-col items-center gap-y-10 p-6 text-center">
-          <h2 className="max-w-[860px] text-2xl lg:text-4xl">
+          <p className="max-w-[860px] text-2xl lg:text-4xl">
             Learn more about dependencies and impacts in the industry use cases chapter.
-          </h2>
+          </p>
           <Button variant="outline" size="lg" asChild>
             <Link href="/industry-use-cases">
               <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>

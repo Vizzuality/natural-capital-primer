@@ -180,10 +180,10 @@ export default function About() {
           />
         </div>
         <div className="flex max-w-[480px] flex-col gap-y-6">
-          <h3 className="text-2xl lg:text-4xl">
+          <p className="text-2xl lg:text-4xl">
             The purpose of the Natural Capital Primer is to increase awareness and to improve
             understanding of “natural capital” by:
-          </h3>
+          </p>
           <ul>
             <li className="py-2 lg:py-4">
               Providing a ‘one-stop shop’ for resources and information to learn about natural
