@@ -122,40 +122,56 @@ const ClimateAndBiodiversityPage: FC = () => {
                 the key to fighting both the climate and biodiversity extinction crises through:
               </span>
             </p>
-            <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-              <div className="flex flex-col gap-y-6 lg:gap-y-10">
-                <div>
-                  <RevealLines splitChars>
-                    <p className="text-4.2xl text-turquoise lg:text-5xl">01</p>
-                  </RevealLines>
-                  <h4 className="text-lg text-turquoise lg:text-xl">Reducing emissions</h4>
+            <div className="flex w-full flex-col gap-y-10 md:flex-row md:items-end md:justify-between md:gap-x-10 lg:gap-x-10">
+              <div className="flex max-w-[475px] flex-1 flex-col gap-y-10 lg:gap-y-16">
+                <div className="flex flex-col gap-14 lg:gap-10">
+                  <div className="flex flex-col gap-y-6 lg:gap-y-10">
+                    <div>
+                      <RevealLines splitChars>
+                        <p className="text-4.2xl text-turquoise lg:text-5xl">01</p>
+                      </RevealLines>
+                      <h4 className="text-lg lg:text-xl">Reducing emissions</h4>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-y-6 lg:gap-y-10">
+                    <div>
+                      <RevealLines splitChars>
+                        <p className="text-4.2xl text-turquoise lg:text-5xl">02</p>
+                      </RevealLines>
+                      <h4 className="text-lg lg:text-xl">Sequestring carbon</h4>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-y-6 lg:gap-y-10">
+                    <div>
+                      <RevealLines splitChars>
+                        <p className="text-4.2xl text-turquoise lg:text-5xl">03</p>
+                      </RevealLines>
+                      <h4 className="text-lg lg:text-xl">Growing our natural capital asset base</h4>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-y-6">
+                  <p className="text-lg lg:text-xl">
+                    Such actions are usually mutualistic—building natural capital increases carbon
+                    sequestration and vice versa— but care is needed to guard against perverse
+                    outcomes where this may not occur.
+                  </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-y-6 lg:gap-y-10">
-                <div>
-                  <RevealLines splitChars>
-                    <p className="text-4.2xl text-turquoise lg:text-5xl">02</p>
-                  </RevealLines>
-                  <h4 className="text-lg text-turquoise lg:text-xl">Sequestring carbon</h4>
-                </div>
+              <div className="flex max-w-[475px] flex-1 flex-col gap-y-6 lg:gap-y-10">
+                <Parallax
+                  heightClasses="h-[250px] md:h-[500px] lg:h-[618px]"
+                  containerHeightPercentageMobile={200}
+                >
+                  <Image
+                    src="/assets/climate-and-biodiversity-background-3.png"
+                    alt=""
+                    width={477}
+                    height={618}
+                    className="h-auto w-full max-w-none"
+                  />
+                </Parallax>
               </div>
-              <div className="flex flex-col gap-y-6 lg:gap-y-10">
-                <div>
-                  <RevealLines splitChars>
-                    <p className="text-4.2xl text-turquoise lg:text-5xl">03</p>
-                  </RevealLines>
-                  <h4 className="text-lg text-turquoise lg:text-xl">
-                    Growing our natural capital asset base
-                  </h4>
-                </div>
-              </div>
-            </div>
-            <div className="flex max-w-[860px] flex-col gap-y-6">
-              <p className="text-lg lg:text-xl">
-                Such actions are usually mutualistic—building natural capital increases carbon
-                sequestration and vice versa— but care is needed to guard against perverse outcomes
-                where this may not occur.
-              </p>
             </div>
             <div className="mt-14 flex max-w-[860px] flex-col gap-y-6 lg:mt-28">
               <h3 className="text-2xl lg:text-4xl">

@@ -7,7 +7,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     ecosystem: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             Why are forests essential for businesses and society?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -130,7 +130,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     dependencies: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             How does manufacturing and construction depend on forests?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -149,7 +149,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     impacts: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             How does manufacturing and construction impact forests?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -193,7 +193,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     ecosystem: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             Why are coastal ecosystems essential for businesses and society?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -317,7 +317,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     dependencies: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             How does tourism and hospitality depend on coastal ecosystems?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -335,7 +335,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     impacts: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             How does tourism and hospitality impact coastal ecosystems?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -384,7 +384,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     ecosystem: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             Why are urban green spaces essential for businesses and society?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -398,9 +398,9 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         </>
       ),
       image1: {
-        src: "/assets/industry-cases-retail-ecosystem-1.jpg",
-        width: 1120,
-        height: 1677,
+        src: "/assets/industry-cases-retail-ecosystem-1.png",
+        width: 1241,
+        height: 547,
       },
       imageText: (
         <p>
@@ -509,7 +509,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     dependencies: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             How does retail depend on urban green spaces?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -527,7 +527,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     impacts: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             How does retail impact urban green spaces?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -567,7 +567,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     ecosystem: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             Why are agroecosystems essential for businesses and society?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -699,7 +699,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     dependencies: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             How does the food system depend on agrosystems?
           </h3>
           <p className="max-w-[860px] lg:text-center">
@@ -715,7 +715,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
     impacts: {
       content1: (
         <>
-          <h3 className="max-w-[600px] text-xl lg:text-center lg:text-4xl">
+          <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
             How does the food system impact agroecosystems?
           </h3>
           <p className="max-w-[860px] lg:text-center">
