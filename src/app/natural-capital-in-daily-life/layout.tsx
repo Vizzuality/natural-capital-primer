@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "A day in the life",
+  title: "Natural Capital in Daily Life",
 };
 
 export default function ADayInTheLifeLayout({ children }: { children: React.ReactNode }) {
