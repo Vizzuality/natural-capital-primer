@@ -311,10 +311,10 @@ const Header: FC<{
                                   </li>
                                   <li>
                                     <Link
-                                      href="/industry-use-cases#food-system"
+                                      href="/industry-use-cases#food-systems"
                                       onClick={onClickSubSection}
                                     >
-                                      <HoverRepeatAnimation>Food Security</HoverRepeatAnimation>
+                                      <HoverRepeatAnimation>Food Systems</HoverRepeatAnimation>
                                     </Link>
                                   </li>
                                 </ul>

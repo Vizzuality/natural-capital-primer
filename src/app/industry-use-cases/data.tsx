@@ -776,7 +776,7 @@ export const ACCORDION_ITEMS: IndustryUseCasesAccordionItem[] = [
     tabContent: ACCORDION_ITEMS_CONTENT["retail"],
   },
   {
-    id: "food-system",
+    id: "food-systems",
     title: "Food Systems depend heavily on Agroecosystems",
     tabContent: ACCORDION_ITEMS_CONTENT["food"],
   },
