@@ -405,19 +405,36 @@ const ClimateAndBiodiversityPage: FC = () => {
             </h3>
             <div className="flex flex-grow flex-col gap-y-6 lg:gap-y-5">
               <p className="max-w-[600px]">
-                Protecting biodiversity is essential for maintaining natural capital and ensuring
-                the resilience of ecosystems to environmental changes.
+                Protecting biodiversity is crucial for maintaining natural capital and ensuring
+                ecosystems remain resilient to environmental changes. Sustainable management
+                practices must balance biodiversity conservation with the responsible use of natural
+                resources to support long-term environmental and economic sustainability.
+                Biodiversity is measured through attributes such as the number of species, genetic
+                variability within populations, and the diversity of species that perform similar
+                ecological functions—all of which serve as indicators of ecosystem resilience.
               </p>
-              <p className="max-w-[600px]">
-                Sustainable management practices should consider both the conservation of
-                biodiversity and the sustainable use of natural resources to promote long-term
-                environmental and economic sustainability.
+              <p className="max-w-[600px] font-bold lg:mt-5">
+                However, biodiversity is under severe threat:
               </p>
-              <p className="max-w-[600px]">
-                Biodiversity has well-defined and measurable attributes (e.g., the number of species
-                present, the amount of genetic variability in a population, or the diversity of
-                species that perform the same or similar functions) that are indicators of the
-                resilience of ecosystem assets.
+              <p className="max-w-[600px] text-lg lg:text-xl">
+                <span className="text-pink">Biodiversity Loss:</span> Around 1 million species are
+                currently at risk of extinction, driven largely by habitat loss, climate change, and
+                pollution.
+              </p>
+              <p className="max-w-[600px] text-lg lg:mt-5 lg:text-xl">
+                <span className="text-pink">Pollinator Decline:</span> Over 75% of the global food
+                crops we grow depend on animal pollinators, which are experiencing rapid population
+                declines.
+              </p>
+              <p className="max-w-[600px] text-lg lg:mt-5 lg:text-xl">
+                <span className="text-pink">Water Scarcity:</span> By 2025, it is projected that 1.8
+                billion people will be living in areas facing absolute water scarcity, underscoring
+                the pressing need for sustainable water management.
+              </p>
+              <p className="max-w-[600px] lg:mt-5">
+                These figures highlight the urgent need for integrated approaches that prioritise
+                biodiversity protection, sustainable resource use, and resilience to future
+                environmental challenges.
               </p>
             </div>
           </main>
