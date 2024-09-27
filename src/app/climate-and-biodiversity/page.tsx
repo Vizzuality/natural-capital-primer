@@ -100,11 +100,11 @@ const ClimateAndBiodiversityPage: FC = () => {
         </div>
         <div className="mx-auto mt-24 flex max-w-7xl flex-col gap-y-14 px-6 lg:mt-40 lg:gap-y-20 lg:px-20">
           <div className="flex max-w-[860px] flex-col gap-y-6">
-            <h3 className="text-2xl lg:text-4xl">
+            <p className="text-2xl lg:text-4xl">
               The link between{" "}
               <span className="text-turquoise">natural capital and climate change</span> is
               inextricable.
-            </h3>
+            </p>
             <p className="text-lg lg:text-xl">
               We will only achieve net zero emissions with actions that build natural capital (and
               biodiversity). We cannot build natural capital while consuming resources
@@ -116,12 +116,12 @@ const ClimateAndBiodiversityPage: FC = () => {
         </div>
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-20 lg:py-28 lg:pt-20">
           <div className="flex flex-col items-start gap-10 pb-10 lg:gap-14 lg:pb-28">
-            <p className="max-w-[860px] text-2xl lg:text-4xl">
+            <h3 className="max-w-[860px] text-2xl lg:text-4xl">
               Nature-based strategies are{" "}
               <span className="text-turquoise">
                 the key to fighting both the climate and biodiversity extinction crises through:
               </span>
-            </p>
+            </h3>
             <div className="flex w-full flex-col gap-y-10 md:flex-row md:items-end md:justify-between md:gap-x-10 lg:gap-x-10">
               <div className="flex max-w-[475px] flex-1 flex-col gap-y-10 lg:gap-y-16">
                 <div className="flex flex-col gap-14 lg:gap-10">
@@ -130,7 +130,7 @@ const ClimateAndBiodiversityPage: FC = () => {
                       <RevealLines splitChars>
                         <p className="text-4.2xl text-turquoise lg:text-5xl">01</p>
                       </RevealLines>
-                      <h4 className="text-lg lg:text-xl">Reducing emissions</h4>
+                      <p className="text-lg lg:text-xl">Reducing emissions</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-y-6 lg:gap-y-10">
@@ -138,7 +138,7 @@ const ClimateAndBiodiversityPage: FC = () => {
                       <RevealLines splitChars>
                         <p className="text-4.2xl text-turquoise lg:text-5xl">02</p>
                       </RevealLines>
-                      <h4 className="text-lg lg:text-xl">Sequestring carbon</h4>
+                      <p className="text-lg lg:text-xl">Sequestring carbon</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-y-6 lg:gap-y-10">
@@ -146,7 +146,7 @@ const ClimateAndBiodiversityPage: FC = () => {
                       <RevealLines splitChars>
                         <p className="text-4.2xl text-turquoise lg:text-5xl">03</p>
                       </RevealLines>
-                      <h4 className="text-lg lg:text-xl">Growing our natural capital asset base</h4>
+                      <p className="text-lg lg:text-xl">Growing our natural capital asset base</p>
                     </div>
                   </div>
                 </div>
@@ -175,9 +175,9 @@ const ClimateAndBiodiversityPage: FC = () => {
             </div>
             <div className="mt-14 flex max-w-[860px] flex-col gap-y-6 lg:mt-28">
               <h3 className="text-2xl lg:text-4xl">
-                It is imperative that{" "}
+                Businesses{" "}
                 <span className="text-turquoise">
-                  businesses recognise and respond to this inter-dependence.
+                  must recognise and respond to this inter-dependence.
                 </span>
               </h3>
               <p className="text-lg lg:text-xl">
@@ -275,10 +275,10 @@ const ClimateAndBiodiversityPage: FC = () => {
         </div>
         <div className="mx-auto mt-24 flex max-w-7xl flex-col gap-y-11 px-6 lg:mt-40 lg:px-20">
           <div className="flex max-w-[860px] flex-col gap-y-6">
-            <h3 className="text-2xl lg:text-4xl">
+            <p className="text-2xl lg:text-4xl">
               Biodiversity has a special{" "}
               <span className="text-pink">relationship with natural capital.</span>
-            </h3>
+            </p>
             <p className="text-lg lg:text-xl">
               Biodiversity is part of natural capital, benefits from other aspects of natural
               capital, and is fundamental to generating many of the ecosystem services that flow
@@ -305,10 +305,10 @@ const ClimateAndBiodiversityPage: FC = () => {
         </div>
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-20 lg:py-28">
           <div className="flex flex-col gap-y-6 pb-10 lg:gap-y-20 lg:pb-36">
-            <p className="max-w-[730px] text-2xl lg:text-4xl">
-              Biodiversity builds natural capital, through{" "}
+            <h3 className="max-w-[730px] text-2xl lg:text-4xl">
+              Biodiversity builds natural capital through{" "}
               <span className="text-pink">processes like:</span>
-            </p>
+            </h3>
             <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
               <div className="flex flex-col gap-y-4 lg:gap-y-9">
                 <div className="flex gap-x-7">
@@ -414,7 +414,7 @@ const ClimateAndBiodiversityPage: FC = () => {
           </div>
           <main className="mt-10 flex flex-col justify-start gap-y-4 border-t-2 border-t-pink pt-6 lg:mt-28 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10">
             <h3 className="flex-shrink-0 text-lg text-pink lg:w-[350px] lg:text-xl">
-              We need to protect both for sustainability
+              We need to protect both natural capital and biodiversity for sustainability
             </h3>
             <div className="flex flex-grow flex-col gap-y-6 lg:gap-y-5">
               <p className="max-w-[600px]">
