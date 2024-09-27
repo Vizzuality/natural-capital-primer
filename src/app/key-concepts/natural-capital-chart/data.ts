@@ -40,7 +40,7 @@ export const sourceNodes: SourceNode[] = [
   { id: "grasslands", group: SourceGroup.Ecosystem, image: "/assets/chart/grasslands.png" },
   { id: "mangroves", group: SourceGroup.Ecosystem, image: "/assets/chart/mangroves.png" },
   { id: "wetlands", group: SourceGroup.Ecosystem, image: "/assets/chart/wetlands.png" },
-  { id: "forests", group: SourceGroup.Ecosystem, image: "/assets/chart/farmlands.png" },
+  { id: "forests", group: SourceGroup.Ecosystem, image: "/assets/chart/forests.png" },
 ];
 
 export const targetNodes: TargetNode[] = [

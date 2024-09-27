@@ -48,7 +48,7 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
           <image href="/assets/chart/wetlands.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-forests" width="1" height="1">
-          <image href="/assets/chart/farmlands.png" x="-1" y="0" width="60" height="60" />
+          <image href="/assets/chart/forests.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-livestock-production" width="1" height="1">
           <image
