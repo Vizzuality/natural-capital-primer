@@ -1,6 +1,8 @@
 # Natural Capital Primer
 
-A science-based resource that explains the concept of natural capital and how business and society depend on it.
+A science-based resource that explains how our entire lives, businesses and economies depend on nature, and how we can understand the value of it using a concept called natural capital.
+
+Available at: [naturalcapitalprimer.com](https://naturalcapitalprimer.com/).
 
 ![Homepage: welcome to the Natural Capital Primer](./readme-cover.png)
 
