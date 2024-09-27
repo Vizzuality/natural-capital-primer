@@ -237,8 +237,8 @@ const Header: FC<{
                                     <Link href="/key-concepts#assets" onClick={onClickSubSection}>
                                       <HoverRepeatAnimation>
                                         <span className="sr-only">Chapter</span>
-                                        <span className="not-sr-only">Ch</span> 1 - Assets &
-                                        Resources
+                                        <span className="not-sr-only">Ch</span> 1 - Natural Capital
+                                        Assets
                                       </HoverRepeatAnimation>
                                     </Link>
                                   </li>
