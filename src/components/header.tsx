@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import LogoMonochrome from "@/svgs/logo-monochrome.svg";
 import Logo from "@/svgs/logo.svg";
+import LogoWhite from "@/svgs/logo-white.svg";
 import Menu from "@/icons/menu.svg";
 import MenuMobile from "@/icons/menu-mobile.svg";
 import Close from "@/icons/close.svg";
@@ -31,6 +32,7 @@ const logoVariants = cva("", {
       default: "",
       color: "text-black",
       white: "text-white",
+      "white-color": "text-white",
       black: "text-black",
     },
   },
@@ -125,9 +127,10 @@ const Header: FC<{
             {(!logo || ["default", "color"].includes(logo)) && (
               <Logo className={cn(logoVariants({ logo }), "h-8")} aria-hidden="true" />
             )}
-            {logo && !["default", "color"].includes(logo) && (
+            {logo && ["white", "black"].includes(logo) && (
               <LogoMonochrome className="h-8" aria-hidden="true" />
             )}
+            {logo && logo === "white-color" && <LogoWhite className="h-8" aria-hidden="true" />}
             <span className="sr-only">Natural Capital Primer</span>
           </Link>
         </Button>

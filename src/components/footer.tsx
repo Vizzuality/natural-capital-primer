@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import Logo from "@/svgs/logo-normal.svg";
+import Logo from "@/svgs/logo-white.svg";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowSlideAnimation from "./animations/arrow-slide";
