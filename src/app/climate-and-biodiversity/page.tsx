@@ -209,7 +209,7 @@ const ClimateAndBiodiversityPage: FC = () => {
                   practices are crucial to better incorporate natural capital into climate
                   strategies.
                 </p>
-                <p className="border-l-[6px] border-l-turquoise pl-6">
+                <p className="text-lg lg:text-xl">
                   Balancing economic growth with environmental sustainability and biodiversity
                   conservation is a pressing challenge that demands collaborative and proactive
                   solutions.
