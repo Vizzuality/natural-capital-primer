@@ -47,7 +47,7 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
         <pattern id="img-wetlands" width="1" height="1">
           <image href="/assets/chart/wetlands.png" x="-1" y="0" width="60" height="60" />
         </pattern>
-        <pattern id="img-farmlands" width="1" height="1">
+        <pattern id="img-forests" width="1" height="1">
           <image href="/assets/chart/farmlands.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-livestock-production" width="1" height="1">
@@ -74,7 +74,7 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
         <pattern id="img-climate-regulation" width="1" height="1">
           <image href="/assets/chart/climate-regulation.png" x="-1" y="0" width="60" height="60" />
         </pattern>
-        <pattern id="img-water-filtering" width="1" height="1">
+        <pattern id="img-water-filtration" width="1" height="1">
           <image href="/assets/chart/water-filtering.png" x="-1" y="0" width="60" height="60" />
         </pattern>
         <pattern id="img-habitat-provision" width="1" height="1">
@@ -86,7 +86,7 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
         <pattern id="img-mineral-extraction" width="1" height="1">
           <image href="/assets/chart/mineral-extraction.png" x="-1" y="0" width="60" height="60" />
         </pattern>
-        <pattern id="img-energy-production" width="1" height="1">
+        <pattern id="img-renewable-energy-production" width="1" height="1">
           <image href="/assets/chart/energy-production.png" x="-1" y="0" width="60" height="60" />
         </pattern>
       </defs>
@@ -184,14 +184,14 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                   <g id="Component 4">
                     <g id="nodes-ecosystem">
                       <path
-                        id="farmlands"
-                        fill="url(#img-farmlands)"
-                        data-name="Farmlands"
+                        id="forests"
+                        fill="url(#img-forests)"
+                        data-name="Forests"
                         className={cn("node stroke-2 transition-all duration-200", {
-                          "stroke-blue-500/0": hovered !== "farmlands",
-                          "stroke-blue-500": hovered === "farmlands",
+                          "stroke-blue-500/0": hovered !== "forests",
+                          "stroke-blue-500": hovered === "forests",
                         })}
-                        onMouseEnter={() => setHovered("farmlands")}
+                        onMouseEnter={() => setHovered("forests")}
                         onMouseLeave={() => setHovered(null)}
                         data-type="source"
                         data-id="8"
@@ -401,17 +401,17 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                             d="M672.237 444.372C672.542 443.463 673.332 442.244 674.468 440.838C675.593 439.446 677.022 437.914 678.558 436.383C681.618 433.334 685.075 430.316 687.332 428.463C689.268 427.236 691.565 425.98 695.262 425.685C698.994 425.387 704.194 426.067 711.921 428.827C715.73 430.188 718.363 432.067 720.232 434.253C722.103 436.441 723.229 438.963 723.988 441.639C724.707 444.174 725.09 446.825 725.471 449.457C725.493 449.611 725.515 449.765 725.538 449.92C725.939 452.687 726.36 455.428 727.2 457.892C727.975 460.163 727.711 462.55 726.79 464.919C725.869 467.292 724.298 469.618 722.508 471.733C718.928 475.962 714.539 479.262 712.978 480.288C709.92 482.299 708.137 482.699 701.367 484.2L701.167 484.245L701.275 484.733L701.167 484.245C697.817 484.987 695.109 484.63 692.035 483.461C689.689 482.57 687.156 481.218 683.971 479.518C682.929 478.962 681.819 478.369 680.622 477.743C675.955 475.301 673.322 470.791 671.774 466.453C670.585 463.12 670.059 459.971 669.726 457.976C669.625 457.367 669.541 456.865 669.462 456.499C669.166 455.13 669.414 453.382 669.979 451.295C670.396 449.753 670.971 448.077 671.585 446.287C671.799 445.662 672.018 445.024 672.237 444.372Z"
                           />
                           <path
-                            id="water-filtering"
-                            data-name="Water Filtering"
+                            id="water-filtration"
+                            data-name="Water Filtration"
                             className={cn("node stroke-2 transition-all duration-200", {
-                              "stroke-blue-500/0": hovered !== "water-filtering",
-                              "stroke-blue-500": hovered === "water-filtering",
+                              "stroke-blue-500/0": hovered !== "water-filtration",
+                              "stroke-blue-500": hovered === "water-filtration",
                             })}
-                            onMouseEnter={() => setHovered("water-filtering")}
+                            onMouseEnter={() => setHovered("water-filtration")}
                             onMouseLeave={() => setHovered(null)}
                             data-type="target"
                             data-id="7"
-                            fill="url(#img-water-filtering)"
+                            fill="url(#img-water-filtration)"
                             d="M596.169 444.213C597.512 440.213 606.913 431.775 611.446 428.057C615.395 425.551 620.967 422.809 636.495 428.356C652.024 433.903 648.787 448.075 652.08 457.731C655.373 467.387 640.838 478.616 637.66 480.706C634.513 482.775 632.639 483.19 625.882 484.688L625.682 484.733C618.761 486.267 614.451 483.237 604.797 478.186C595.142 473.135 594.026 459.591 593.38 456.605C592.734 453.618 594.491 449.214 596.169 444.213Z"
                           />
                         </g>
@@ -446,17 +446,17 @@ const DesktopChart = ({ width }: DesktopChartProps) => {
                   <g id="Frame 2341651_2">
                     <g id="nodes-abiotic">
                       <path
-                        id="energy-production"
-                        data-name="Energy Production"
+                        id="renewable-energy-production"
+                        data-name="Renewable Energy Production"
                         className={cn("node stroke-2 transition-all duration-200", {
-                          "stroke-blue-500/0": hovered !== "energy-production",
-                          "stroke-blue-500": hovered === "energy-production",
+                          "stroke-blue-500/0": hovered !== "renewable-energy-production",
+                          "stroke-blue-500": hovered === "renewable-energy-production",
                         })}
-                        onMouseEnter={() => setHovered("energy-production")}
+                        onMouseEnter={() => setHovered("renewable-energy-production")}
                         onMouseLeave={() => setHovered(null)}
                         data-type="target"
                         data-id="11"
-                        fill="url(#img-energy-production)"
+                        fill="url(#img-renewable-energy-production)"
                         d="M1000.54 445.213C1001.88 441.213 1011.29 432.775 1015.82 429.057C1019.77 426.551 1025.34 423.809 1040.87 429.356C1056.4 434.903 1053.16 449.075 1056.45 458.731C1059.75 468.387 1045.21 479.616 1042.03 481.706C1038.88 483.775 1037.01 484.19 1030.25 485.688L1030.05 485.733C1023.13 487.267 1018.82 484.237 1009.17 479.186C999.514 474.135 998.398 460.591 997.752 457.605C997.106 454.618 998.863 450.214 1000.54 445.213Z"
                       />
                       <path

@@ -71,7 +71,7 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         {
           title: "Building and furniture design",
           tooltip:
-            "Forests for timber, a fundamental material for creating structural components and furniture.",
+            "For timber, a fundamental material for creating structural components and furniture.",
         },
         {
           title: "Mining",
@@ -199,10 +199,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
           </h3>
           <p className="max-w-[860px] lg:text-center">
             Coastal ecosystems include sea-grass meadows, rocky platforms, coral reefs, mangroves,
-            sand beaches and dunes, estuaries and coastal wetlands. Coastal areas comprise only 4%
-            of Earth’s land, yet host &gt;30% of the world’s human population. They account for 90%
-            of the marine fish catch and provide a multitude of ecosystem services that are
-            essential to human wellbeing.{" "}
+            beaches and sand dunes, inshore waters, estuaries and coastal wetlands. Coastal areas
+            comprise only 4% of Earth’s land, yet host &gt;30% of the world’s human population. They
+            account for 90% of the marine fish catch and provide a multitude of ecosystem services
+            that are essential to human wellbeing.{" "}
             <Reference id={8} color="green" className="text-green-500" />
           </p>
         </>
@@ -349,8 +349,8 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
             small, must understand their impact on natural capital to take meaningful steps towards
             sustainability. The rise of ecotourism is a promising sign of this commitment, but these
             efforts must go beyond labels and marketing. True ecotourism is about taking real,
-            actionable steps backed by credible accreditation, ensuring that the environment is
-            genuinely cared for and protected.
+            actionable steps towards sustainability backed by robust accreditation, ensuring that
+            the environment is genuinely cared for and protected.
           </p>
         </>
       ),

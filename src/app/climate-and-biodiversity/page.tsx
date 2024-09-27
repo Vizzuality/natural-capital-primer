@@ -293,18 +293,12 @@ const ClimateAndBiodiversityPage: FC = () => {
                 Natural capital encompasses all Earth&apos;s natural resources and ecosystems,
                 including living (biotic) and non-living (abiotic) components.
               </p>
-              <p className="bg-black/5 px-4 py-3">
-                <b>Example:</b> forests, freshwater, soil
-              </p>
             </div>
             <div className="flex max-w-[475px] flex-1 flex-col gap-y-6 lg:gap-y-10">
               <p className="text-lg lg:text-xl">Biodiversity</p>
               <p>
-                Biodiversity is the variety of life forms within ecosystems, encompassing genetic
+                Biodiversity is the variety of all life forms on Earth, encompassing genetic
                 diversity, species diversity, and ecosystem diversity.
-              </p>
-              <p className="bg-black/5 px-4 py-3">
-                <b>Example:</b> tree species, coral reefs, pollinators
               </p>
             </div>
           </div>
@@ -331,9 +325,9 @@ const ClimateAndBiodiversityPage: FC = () => {
                   </div>
                 </div>
                 <p>
-                  The process by which green plants, algae, and certain bacteria convert light
-                  energy into chemical energy in the form of glucose, using carbon dioxide and
-                  water, and releasing oxygen as a byproduct.
+                  The process by which plants, algae, and certain bacteria convert light energy into
+                  chemical energy in the form of glucose, using carbon dioxide and water, and
+                  releasing oxygen as a byproduct.
                 </p>
               </div>
               <div className="flex flex-col gap-y-4 lg:gap-y-9">
@@ -351,9 +345,9 @@ const ClimateAndBiodiversityPage: FC = () => {
                   </div>
                 </div>
                 <p>
-                  The continuous movement of water on, above, and below the Earth&apos;s surface
-                  through processes such as evaporation, condensation, precipitation, infiltration,
-                  and runoff.
+                  The continuous movement of water on, above, and through the Earth&apos;s surface
+                  facilitated by plants and microbes through processes such as respiration,
+                  transpiration, evaporation, infiltration, and runoff.
                 </p>
               </div>
               <div className="flex flex-col gap-y-4 lg:gap-y-9">
@@ -385,8 +379,8 @@ const ClimateAndBiodiversityPage: FC = () => {
                 <span className="text-pink">natural capital is more than just biodiversity.</span>
               </p>
               <p className="text-lg lg:text-xl">
-                It includes the emergent properties that arise from the interaction of species and
-                the combination of ecosystem and abiotic resources.
+                Natural capital includes the emergent properties that arise from the interaction of
+                species and the combination of ecosystem and abiotic resources.
               </p>
               <p className="border-l-[6px] border-l-pink pl-6">
                 <span className="font-bold">
@@ -441,7 +435,7 @@ const ClimateAndBiodiversityPage: FC = () => {
                 pollution. <Reference color="pink" id={16} className="text-pink" />
               </p>
               <p className="max-w-[600px] text-lg lg:mt-5 lg:text-xl">
-                <span className="text-pink">Pollinator Decline:</span> Over 75% of the global food
+                <span className="text-pink">Pollinator Decline:</span> Over 75% of the types of food
                 crops we grow depend on animal pollinators, which are experiencing rapid population
                 declines. <Reference color="pink" id={17} className="text-pink" />
               </p>
@@ -466,8 +460,9 @@ const ClimateAndBiodiversityPage: FC = () => {
               <li className="pt-5">
                 <RevealLines>
                   <p className="max-w-[600px]">
-                    Biodiversity is essential within natural capital, playing a vital role in
-                    ecosystem services such as pollination and pest control.
+                    Biodiversity is an essential part of natural capital, representing the living
+                    components of natural capital, and playing a vital role in ecosystem services
+                    such as pollination, waste decomposition and pest control.
                   </p>
                 </RevealLines>
               </li>

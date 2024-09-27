@@ -40,7 +40,7 @@ export const sourceNodes: SourceNode[] = [
   { id: "grasslands", group: SourceGroup.Ecosystem, image: "/assets/chart/grasslands.png" },
   { id: "mangroves", group: SourceGroup.Ecosystem, image: "/assets/chart/mangroves.png" },
   { id: "wetlands", group: SourceGroup.Ecosystem, image: "/assets/chart/wetlands.png" },
-  { id: "farmlands", group: SourceGroup.Ecosystem, image: "/assets/chart/farmlands.png" },
+  { id: "forests", group: SourceGroup.Ecosystem, image: "/assets/chart/farmlands.png" },
 ];
 
 export const targetNodes: TargetNode[] = [
@@ -81,7 +81,7 @@ export const targetNodes: TargetNode[] = [
     image: "/assets/chart/climate-regulation.png",
   },
   {
-    id: "water-filtering",
+    id: "water-filtration",
     group: TargetGroup.Ecosystem,
     subGroup: TargetSubGroup.Supporting,
     image: "/assets/chart/water-filtering.png",
@@ -99,7 +99,7 @@ export const targetNodes: TargetNode[] = [
   },
   { id: "fossil-fuels", group: TargetGroup.Abiotic, image: "/assets/chart/fossil-fuels.png" },
   {
-    id: "energy-production",
+    id: "renewable-energy-production",
     group: TargetGroup.Abiotic,
     image: "/assets/chart/energy-production.png",
   },
@@ -121,14 +121,34 @@ export const relationships: Record<string, string[]> = {
     "livestock-production",
     "recreation-sites",
     "soil-fertility",
-    "water-filtering",
-    "energy-production",
+    "water-filtration",
+    "renewable-energy-production",
+    "timber",
   ],
-  soil: ["timber", "soil-fertility", "water-filtering", "mineral-extraction", "fossil-fuels"],
-  atmosphere: ["tourism", "climate-regulation", "habitat-provision", "energy-production"],
-  "plants-and-animals": ["timber", "climate-regulation", "habitat-provision", "recreation-sites"],
+  soil: ["timber", "soil-fertility", "water-filtration", "mineral-extraction", "fossil-fuels"],
+  atmosphere: [
+    "tourism",
+    "climate-regulation",
+    "habitat-provision",
+    "renewable-energy-production",
+    "timber",
+  ],
+  "plants-and-animals": [
+    "climate-regulation",
+    "recreation-sites",
+    "tourism",
+    "livestock-production",
+  ],
   grasslands: ["livestock-production", "soil-fertility", "habitat-provision"],
   mangroves: ["tourism", "climate-regulation", "habitat-provision"],
-  wetlands: ["tourism", "recreation-sites", "water-filtering"],
-  farmlands: ["livestock-production", "habitat-provision", "soil-fertility"],
+  wetlands: ["tourism", "recreation-sites", "water-filtration", "habitat-provision"],
+  forests: [
+    "habitat-provision",
+    "timber",
+    "tourism",
+    "recreation-sites",
+    "climate-regulation",
+    "water-filtration",
+    "mineral-extraction",
+  ],
 };

@@ -188,12 +188,13 @@ const KeyConceptsPage: FC = () => {
         <div className="mx-auto mt-24 flex max-w-7xl flex-col gap-y-14 px-6 lg:mt-40 lg:gap-y-20 lg:px-20">
           <div className="flex max-w-[860px] flex-col gap-y-6">
             <h3 className="text-2xl lg:text-4xl">
-              What are <span className="text-green-500">natural capital assets and resources?</span>
+              What are <span className="text-green-500">natural capital assets?</span>
             </h3>
             <p className="text-lg lg:text-xl">
-              Abiotic factors like climate and geology interact with biotic factors such as
-              vegetation and animals to shape ecosystems and influence the quantity and quality of
-              natural capital assets.
+              Natural capital assets are the tangible natural resources (both biotic and abiotic)
+              that provide products and generate ecosystem services that are of value to society.
+              Natural capital assets can be defined by their extent (e.g., area, volume, length) and
+              condition (e.g., quality, density, diversity).
             </p>
             <p className="text-lg lg:text-xl">
               There are two types of natural capital assets: environmental assets and ecosystem
@@ -217,12 +218,14 @@ const KeyConceptsPage: FC = () => {
             <div className="flex max-w-[475px] flex-1 flex-col gap-y-6 lg:gap-y-10">
               <h4 className="text-lg lg:text-xl">Ecosystem assets</h4>
               <p>
-                Ecosystem assets are formed when many individual environmental assets interact.
-                Their properties, such as composition, functions, and form, result from this
-                interaction. This gives ecosystems unique characteristics that determine the
-                ecosystem services that flow from them. They are called “assets” because they are
-                the source for ecosystem services that support well‐being, health, and security.{" "}
-                <Reference id={1} color="green" className="text-green-500" />
+                Ecosystem assets are formed through the combination of many individual environmental
+                assets. Abiotic factors like climate and geology interact with biotic factors such
+                as plants and animals to shape ecosystems and influence their extent and condition.
+                The properties of ecosystem assets, such as species composition, function and form,
+                result from these interactions, and give ecosystems their unique characteristics
+                that determine the services and products that flow from them. They are called
+                “assets” because they are the source for ecosystem services that support well‐being,
+                health, and security. <Reference id={1} color="green" className="text-green-500" />
               </p>
               <p className="bg-black/5 px-4 py-3">
                 <b>Example:</b> grasslands, forests, woodlands, wetlands, mangroves, and peatlands
@@ -234,16 +237,12 @@ const KeyConceptsPage: FC = () => {
           <div className="flex flex-col items-start gap-10 pb-10 lg:gap-14 lg:pb-28">
             <h3 className="max-w-[860px] text-2xl lg:text-4xl">
               There are{" "}
-              <span className="text-green-500">three categories of natural resources.</span>
+              <span className="text-green-500">three categories of natural capital assets.</span>
             </h3>
             <p className="max-w-[860px] text-lg lg:text-xl">
-              Natural capital assets and natural resources are related but distinct. Natural capital
-              assets encompass all elements of nature that provide value, including both ecosystem
-              services and resources.
-            </p>
-            <p className="max-w-[860px] text-lg lg:text-xl">
-              A subcategory of assets, called natural resources, are defined by their usability for
-              humans.
+              Natural capital assets encompass all elements of nature that provide value, including
+              both ecosystem services and resources. Natural capital assets can be defined by their
+              usability for humans.
             </p>
             <div className="grid gap-14 md:grid-cols-2 md:grid-rows-[auto_auto] lg:mt-8 lg:grid-cols-[auto_350px] lg:gap-10">
               <div className="row-span-2 flex flex-col gap-y-6">
@@ -274,7 +273,7 @@ const KeyConceptsPage: FC = () => {
                   on longer time scales (decades to centuries).
                 </p>
                 <p className="bg-black/5 px-4 py-3">
-                  <b>Example:</b> forest timber, groundwater, soil fertility
+                  <b>Example:</b> guano, groundwater, soil fertility
                 </p>
               </div>
               <div className="flex flex-col gap-y-6">
@@ -422,7 +421,7 @@ const KeyConceptsPage: FC = () => {
                 <p className="lg:flex-grow-0">
                   Supporting services support all other ecosystem services. They are the underlying
                   natural processes that enable ecosystems to function, and to produce all other
-                  ecosystem services. They are often long-term cycles.
+                  ecosystem services.
                 </p>
                 <p className="bg-black/5 px-4 py-3">
                   <b>Example:</b> photosynthesis, nutrient cycling, soil formation, and water
@@ -436,11 +435,10 @@ const KeyConceptsPage: FC = () => {
                   </RevealLines>
                   <h4 className="text-lg lg:text-xl">Regulating services</h4>
                 </div>
-                <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
+                <p className="flex-grow lg:flex-grow-0">
                   These are the services produced as a by-product of ecosystem processes. They do
-                  not produce a tangible product directly but they facilitate many of the
-                  provisioning services that do produce products or moderate natural phenomena that
-                  support life.
+                  not produce a tangible product directly but they moderate natural phenomena that
+                  support life or facilitate provisioning services that produce products.
                 </p>
                 <p className="bg-black/5 px-4 py-3">
                   <b>Example:</b> climate regulation, flood mitigation, erosion control, water
@@ -454,9 +452,9 @@ const KeyConceptsPage: FC = () => {
                   </RevealLines>
                   <h4 className="text-lg lg:text-xl">Provisioning services</h4>
                 </div>
-                <p className="flex-grow lg:min-h-[170px] lg:flex-grow-0">
-                  These are ecosystem processes that produce any type of product that benefits
-                  people and can be extracted from nature.
+                <p className="flex-grow lg:flex-grow-0">
+                  These are any type of tangible material or product extracted from natural capital
+                  that benefits people.
                 </p>
                 <p className="bg-black/5 px-4 py-3">
                   <b>Example:</b> all food, raw materials (timber, minerals, gas, oil), fibres
@@ -597,10 +595,12 @@ const KeyConceptsPage: FC = () => {
                 <p>Impacts may be:</p>
                 <ul className="list-outside list-disc pl-4">
                   <li>
-                    <b>Positive:</b> an improvement in condition and/or increase in amount
+                    <b>Positive:</b> an improvement in condition and/or increase in the extent of a
+                    natural capital asset
                   </li>
                   <li>
-                    <b>Negative:</b> a deterioration in condition and/or decrease in amount.
+                    <b>Negative:</b> a deterioration in condition and/or decrease in the extent of a
+                    natural capital asset
                   </li>
                 </ul>
               </div>
@@ -627,7 +627,7 @@ const KeyConceptsPage: FC = () => {
                 </p>
                 <p className="bg-black/5 px-4 py-3">
                   <b>Example:</b> the release of waste into waterways negatively impacts water
-                  quality
+                  quality, reforestation of land to generate carbon credits
                 </p>
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
@@ -639,9 +639,10 @@ const KeyConceptsPage: FC = () => {
                 </div>
                 <p className="flex-grow lg:min-h-[195px] lg:flex-grow-0">
                   Indirect impacts are the unintended or secondary consequences of business
-                  activities, such as financially supporting others that directly impact natural
-                  capital, down and upstream supply chain impacts, policy that targets something
-                  unrelated that negatively influences natural capital, and broader market dynamics.
+                  activities, such as: financially supporting others that directly impact natural
+                  capital; downstream and upstream supply chain impacts; perverse consequences of
+                  policy that influence natural capital; and investment and infrastructure decisions
+                  with natural capital implications.
                 </p>
                 <p className="bg-black/5 px-4 py-3">
                   <b>Example:</b>
@@ -650,6 +651,9 @@ const KeyConceptsPage: FC = () => {
                   <br />
                   <br /> Residential development that leads to changes in the condition of adjacent
                   native vegetation.
+                  <br />
+                  <br />
+                  Lower insurance premiums or higher land valuations for cleared farmlands.
                 </p>
               </div>
               <div className="flex flex-col gap-y-6 lg:gap-y-10">
@@ -660,22 +664,22 @@ const KeyConceptsPage: FC = () => {
                   <h4 className="text-lg lg:text-xl">Cumulative</h4>
                 </div>
                 <p className="flex-grow lg:min-h-[195px] lg:flex-grow-0">
-                  Cumulative impacts are the gradual, collective effects of multiple activities,
-                  operations, or decisions over time that alter natural capital assets and ecosystem
-                  services. Examples include climate change, habitat fragmentation, unsustainable
-                  water use, and land degradation, which result from ongoing contributions rather
-                  than isolated events.
+                  Cumulative impacts are the gradual, incremental effects of multiple organisations,
+                  activities, operations, or decisions over time that alter natural capital assets
+                  and ecosystem services. These often relate to climate change, habitat
+                  fragmentation, unsustainable water use, and land degradation, and result from
+                  ongoing contributions rather than isolated events.
                 </p>
                 <p className="bg-black/5 px-4 py-3">
                   <b>Example:</b>
                   <br />
-                  Corporations are contributing to carbon emissions that are cumulatively driving
-                  climate change.
+                  While the carbon emissions of an individual company may be small, the cumulative
+                  emissions of many companies are fueling climate change.
                   <br />
                   <br />
-                  Individual water pollution from industry, agriculture, and urban waste seems
-                  small, but together it degrades water quality, causing algal blooms and dead
-                  zones.
+                  The habitat loss from one residential development may be small, but the combined
+                  impacts of many such developments leads to significant land use change and habitat
+                  fragmentation.
                 </p>
               </div>
             </div>
@@ -699,9 +703,9 @@ const KeyConceptsPage: FC = () => {
                   <p className="max-w-[600px]">
                     Businesses influence natural capital assets and ecosystem services through their
                     activities, having <b>positive and negative impacts.</b> Impacts can be direct
-                    (e.g., waste pollution from production), indirect (e.g., deforestation linked to
-                    scope 3 supply chains), and cumulative (e.g., numerous industries and activities
-                    contributing to global climate change over time).
+                    (e.g., waste and pollution from production), indirect (e.g., deforestation
+                    linked to scope 3 supply chains), and cumulative (e.g., numerous industries and
+                    activities contributing to global climate change over time).
                   </p>
                 </RevealLines>
               </li>

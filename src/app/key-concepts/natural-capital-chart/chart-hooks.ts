@@ -89,7 +89,7 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
           // Exceptions to avoid overlapping
           const exceptions = [
             { source: "livestock-production", dx: 15 },
-            { source: "energy-production", dx: -8 },
+            { source: "renewable-energy-production", dx: -40 },
           ];
 
           const exception = exceptions.find(({ source }) => source === hovered);
@@ -153,22 +153,34 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
             // Exceptions to avoid overlapping
             const exceptions = [
               { source: "water", target: "livestock-production", dx: 15 },
-              { source: "water", target: "energy-production", dx: -8 },
-              { source: "atmosphere", target: "energy-production", dx: -8 },
+              { source: "water", target: "renewable-energy-production", dx: -40 },
+              { source: "atmosphere", target: "renewable-energy-production", dx: -40 },
               { source: "grasslands", target: "livestock-production", dx: 15 },
-              { source: "farmlands", target: "livestock-production", dx: 15 },
+              { source: "forests", target: "livestock-production", dx: 15 },
               { source: "soil", target: "mineral-extraction", dx: -17 },
               { source: "soil", target: "fossil-fuels", dx: 17 },
-              { source: "wetlands", target: "tourism", dx: -10 },
+              { source: "wetlands", target: "tourism", dx: -8 },
               { source: "wetlands", target: "recreation-sites", dx: 10 },
-              { source: "tourism", target: "mangroves", dx: -5 },
-              { source: "tourism", target: "wetlands", dx: 5 },
-              { source: "climate-regulation", target: "atmosphere", dx: -18 },
+              { source: "wetlands", target: "water-filtration", dx: -20 },
+              { source: "wetlands", target: "habitat-provision", dx: 20 },
+              { source: "forests", target: "tourism", dx: -8 },
+              { source: "forests", target: "recreation-sites", dx: 10 },
+              { source: "forests", target: "climate-regulation", dx: -31 },
+              { source: "forests", target: "water-filtration", dx: -15 },
+              { source: "forests", target: "habitat-provision", dx: 25 },
+              { source: "tourism", target: "mangroves", dx: -6 },
+              { source: "tourism", target: "wetlands", dx: 2 },
+              { source: "tourism", target: "atmosphere", dx: -18 },
+              { source: "tourism", target: "plants-and-animals", dx: 19 },
+              { source: "climate-regulation", target: "atmosphere", dx: -19 },
               { source: "climate-regulation", target: "plants-and-animals", dx: 18 },
-              { source: "habitat-provision", target: "atmosphere", dx: -18 },
-              { source: "habitat-provision", target: "plants-and-animals", dx: 18 },
-              { source: "habitat-provision", target: "grassland", dx: -13 },
-              { source: "habitat-provision", target: "mangroves", dx: 13 },
+              { source: "habitat-provision", target: "grasslands", dx: -20 },
+              { source: "habitat-provision", target: "mangroves", dx: -6 },
+              { source: "habitat-provision", target: "wetlands", dx: 4 },
+              { source: "habitat-provision", target: "forests", dx: 12 },
+              { source: "plants-and-animals", target: "livestock-production", dx: 15 },
+              { source: "plants-and-animals", target: "tourism", dx: -10 },
+              { source: "plants-and-animals", target: "recreation-sites", dx: 10 },
             ];
 
             const exception = exceptions.find(
@@ -181,7 +193,22 @@ export const useHovered = (svgElement: SVGSVGElement | null) => {
 
             return (-1 * width) / 2 + offset;
           })
-          .attr("y", type === "target" ? 40 : -90)
+          .attr("y", () => {
+            let offset = 0;
+
+            // Exceptions to avoid overlapping
+            const exceptions = [{ source: "water", target: "timber", dy: -45 }];
+
+            const exception = exceptions.find(
+              ({ source, target }) => source === hovered && nodeId === target,
+            );
+
+            if (exception) {
+              offset += exception.dy;
+            }
+
+            return (type === "target" ? 40 : -90) + offset;
+          })
           .attr("width", width)
           .attr("height", 52)
           .append("xhtml:div")

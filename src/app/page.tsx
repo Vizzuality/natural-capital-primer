@@ -180,9 +180,8 @@ export default function Home() {
           </h2>
           <div className="relative grid flex-grow grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-16">
             <p className="text-2xl lg:col-span-2 lg:text-4xl">
-              Natural capital refers to the natural resources, services and benefits that the
-              environment provides to humans, like clean water, fertile soil, plants, animals, and
-              even the air we breathe.
+              Natural capital refers to all natural resources that provide services and benefits to
+              humans, like clean water, fertile soil, raw materials, and even the air we breathe.
             </p>
             <p className="lg:col-span-2">
               These resources, both living (like plants and animals) and non-living (like water and
@@ -195,10 +194,11 @@ export default function Home() {
             <div className="flex flex-col gap-y-3">
               <h3 className="text-lg lg:text-xl">Natural Capital Assets</h3>
               <p>
-                The tangible things we use from nature, such as food, water, trees, and minerals.
-                These can be living (biotic) and non-living (abiotic). We depend on them to fuel our
-                bodies, shelter our homes and provide all the items we wear and use. Natural capital
-                assets produce flows of ecosystem services.{" "}
+                Natural capital assets are the tangible natural resources in nature that provide
+                products (like food, water and minerals) and ecosystem services (like climate
+                regulation, water filtration and pollination) that we use every day. Natural capital
+                assets can be living (biotic) or non-living (abiotic). Examples of assets are
+                forests, grasslands, wetlands, mineral reserves, soils and water sources.{" "}
                 <Reference color="green" id={1} className="text-white" />
               </p>
             </div>
