@@ -190,7 +190,7 @@ const DesktopChart: FC<DesktopChartProps> = ({ width, data }) => {
                     className={cn(
                       "max-w-60 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap rounded-full border-2 px-2.5 py-0.5 transition-colors xl:max-w-72",
                       {
-                        "border-black bg-black text-white": isHighlighted,
+                        "border-white bg-green-500 text-white": isHighlighted,
                         "border-white bg-grey-75": !isHighlighted,
                       },
                     )}
