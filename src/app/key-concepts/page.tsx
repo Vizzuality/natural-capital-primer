@@ -684,6 +684,17 @@ const KeyConceptsPage: FC = () => {
               </div>
             </div>
           </div>
+          <div className="flex flex-col gap-y-4 pb-14 lg:mb-28 lg:gap-y-6">
+            <p className="text-2xl lg:text-4xl">
+              <span className="text-orange-500">
+                A company can measure and track their dependency and impact on natural capital
+              </span>{" "}
+              by using natural capital assessment or natural capital accounting.
+            </p>
+            <Link href="/resources" className="text-xs font-bold uppercase underline">
+              See the resources section for more information on these tools.
+            </Link>
+          </div>
           <main className="flex flex-col justify-start gap-y-4 border-t-2 border-t-orange-500 pb-14 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:pb-28">
             <h3 className="flex-shrink-0 text-lg text-orange-500 lg:w-[350px] lg:text-xl">
               Key insights about dependencies and impacts
