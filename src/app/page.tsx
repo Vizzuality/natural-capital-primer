@@ -197,9 +197,9 @@ export default function Home() {
                 Natural capital assets are the tangible natural resources in nature that provide
                 products (like food, water and minerals) and ecosystem services (like climate
                 regulation, water filtration and pollination) that we use every day. Natural capital
-                assets can be living (biotic) or non-living (abiotic). Examples of assets are
-                forests, grasslands, wetlands, mineral reserves, soils and water sources.{" "}
-                <Reference color="green" id={1} className="text-white" />
+                assets can be living (biotic) or non-living (abiotic).{" "}
+                <Reference color="green" id={1} className="text-white" /> Examples of assets are
+                forests, grasslands, wetlands, mineral reserves, soils and water sources.
               </p>
             </div>
             <div className="flex flex-col gap-y-3">

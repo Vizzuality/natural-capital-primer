@@ -595,15 +595,15 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
         height: 630,
       },
       imageText:
-        "Examples of ecosystem assets on a farm include native woody vegetation (remnant and replanted), grasslands (native and exotic pastures), crops and wetlands. Environmental assets include soil, minerals and water (surface, soil and groundwater).",
+        "Examples of ecosystem assets in an agroecosystem include native woody vegetation (remnant and replanted), grasslands (native and exotic pastures), crops and wetlands. Environmental assets include soil, minerals and water (surface, soil and groundwater).",
       content2: (
         <div className="flex flex-col gap-10">
           <div>
             <h3 className="mb-5 text-xl">How does natural capital support farm production?</h3>
             <div className="flex flex-col gap-5">
               <p>
-                Agribusiness depends on farmlands that have healthy soils, waterways, and ecosystems
-                to support crops and pastures for livestock.
+                Agribusiness depends on agroecosystems that have healthy soils, waterways, and
+                ecosystems to support crops and pastures for livestock.
               </p>
               <p>
                 Areas of remnant and planted vegetation, such as shelterbelts and windbreaks, offer
@@ -619,10 +619,10 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
             <h3 className="mb-5 text-xl">Agrosystems benefit the whole of society.</h3>
             <div className="flex flex-col gap-5">
               <p>
-                Well-managed farmland can help fight climate change by sequestering and storing
-                carbon in woody vegetation and soils. Good soil and water management on farms
-                reduces soil erosion and nutrient loss, leading to better water quality and
-                healthier landscapes for farms and surrounding communities. Farmlands can also
+                Well-managed agroecosystems can help fight climate change by sequestering and
+                storing carbon in woody vegetation and soils. Good soil and water management on
+                farms reduces soil erosion and nutrient loss, leading to better water quality and
+                healthier landscapes for farms and surrounding communities. Agroecosystems can also
                 contain high-quality habitats for native wildlife and plants, supporting
                 biodiversity and combating the extinction crisis.
               </p>
@@ -705,18 +705,18 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
       content1: (
         <>
           <h3 className="max-w-[600px] text-xl text-green-500 lg:text-center lg:text-4xl">
-            How does the food system depend on agrosystems?
+            How does the food system depend on agroecosystems?
           </h3>
           <p className="max-w-[860px] lg:text-center">
-            Agrosystems are fundamental to the food industry because they provide essential
-            resources and ecosystem services. Explore the diagram to see how natural capital
-            benefits the food industry.
+            Agrosystems are fundamental to the food system because they provide essential resources
+            and ecosystem services. Explore the diagram to see how natural capital benefits the food
+            system and food security.
           </p>
         </>
       ),
       chartTitle: "Natural capital supports food.",
       chartSubTitle:
-        "Hover over the different elements to see how natural capital assets produce flows of services that deliver value to the food industry.",
+        "Hover over the different elements to see how natural capital assets produce flows of services that deliver value to the food system.",
       chartData: foodLinks,
     },
     impacts: {

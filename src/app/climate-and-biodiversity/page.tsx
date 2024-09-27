@@ -47,8 +47,8 @@ const ClimateAndBiodiversityPage: FC = () => {
       <StickyNav
         title="Natural Capital, Climate & Biodiversity"
         items={[
-          { key: "climate", value: "Climate Change" },
-          { key: "biodiversity", value: "Biodiversity" },
+          { key: "climate", value: "Natural Capital & Climate Change" },
+          { key: "biodiversity", value: "Natural Capital & Biodiversity" },
         ]}
         activeItem={activeChapter}
       />
@@ -234,7 +234,7 @@ const ClimateAndBiodiversityPage: FC = () => {
                 <RevealLines>
                   <p className="max-w-[600px]">
                     Nature-based strategies help combat climate change and support biodiversity.
-                    It’s crucial to ensure these actions benefit each other without unintended
+                    It’s crucial to ensure these actions benefit each other without negative
                     consequences.
                   </p>
                 </RevealLines>

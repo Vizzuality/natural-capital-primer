@@ -418,7 +418,7 @@ const KeyConceptsPage: FC = () => {
                   </RevealLines>
                   <h4 className="text-lg lg:text-xl">Supporting services</h4>
                 </div>
-                <p className="lg:flex-grow-0">
+                <p className="lg:min-h-[145px] lg:flex-grow-0">
                   Supporting services support all other ecosystem services. They are the underlying
                   natural processes that enable ecosystems to function, and to produce all other
                   ecosystem services.
@@ -435,7 +435,7 @@ const KeyConceptsPage: FC = () => {
                   </RevealLines>
                   <h4 className="text-lg lg:text-xl">Regulating services</h4>
                 </div>
-                <p className="flex-grow lg:flex-grow-0">
+                <p className="flex-grow lg:min-h-[145px] lg:flex-grow-0">
                   These are the services produced as a by-product of ecosystem processes. They do
                   not produce a tangible product directly but they moderate natural phenomena that
                   support life or facilitate provisioning services that produce products.
@@ -452,7 +452,7 @@ const KeyConceptsPage: FC = () => {
                   </RevealLines>
                   <h4 className="text-lg lg:text-xl">Provisioning services</h4>
                 </div>
-                <p className="flex-grow lg:flex-grow-0">
+                <p className="flex-grow lg:min-h-[145px] lg:flex-grow-0">
                   These are any type of tangible material or product extracted from natural capital
                   that benefits people.
                 </p>
