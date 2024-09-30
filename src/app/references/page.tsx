@@ -10,7 +10,7 @@ export default function ReferencesPage() {
       <Header logo="color" />
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 xl:mt-40">
         <h1 className="text-4.2xl font-medium lg:text-5xl">Natural Capital Primer References</h1>
-        <p className="max-w-[827px] lg:text-xl">
+        <p className="max-w-[827px] text-lg lg:text-xl">
           Explore the references that underpin the Natural Capital Primer, showcasing authoritative
           sources from international organisations and scientific journals on ecosystem services,
           biodiversity, and the economic value of natural resources.
