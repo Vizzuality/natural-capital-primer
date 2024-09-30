@@ -24,6 +24,7 @@ export interface QuizProps {
 const Quiz = ({ name, questions, color }: QuizProps) => {
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState<number>(-1);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const [userAnswers, setUserAnswers] = useState<boolean[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -53,6 +54,7 @@ const Quiz = ({ name, questions, color }: QuizProps) => {
 
   const onClickAnswer = useCallback(
     (index: number) => {
+      setSelectedAnswer(index);
       setShowAnswer(true);
       setUserAnswers((answers) => [...answers, index === question.answer]);
 
@@ -60,6 +62,7 @@ const Quiz = ({ name, questions, color }: QuizProps) => {
         if (questionIndex + 1 === questions.length) {
           setShowResults(true);
         } else {
+          setSelectedAnswer(-1);
           setShowAnswer(false);
           setQuestionIndex((index) => (index + 1 < questions.length ? index + 1 : index));
         }
@@ -74,16 +77,35 @@ const Quiz = ({ name, questions, color }: QuizProps) => {
 
   const onClickBack = useCallback(() => {
     stopTransition();
+    setSelectedAnswer(-1);
     setQuestionIndex((index) => (index > 0 ? index - 1 : index));
     setUserAnswers((answers) => answers.slice(0, -1));
   }, [stopTransition]);
 
   const onClickRestart = useCallback(() => {
     stopTransition();
+    setSelectedAnswer(-1);
     setQuestionIndex(0);
     setUserAnswers([]);
     setShowResults(false);
   }, [stopTransition]);
+
+  const getQuizButtonState = useCallback(
+    (index: number) => {
+      if (showAnswer) {
+        if (index === question.answer) {
+          return "highlighted-positive";
+        }
+
+        if (index === selectedAnswer) {
+          return "highlighted-negative";
+        }
+      }
+
+      return "default";
+    },
+    [question.answer, showAnswer, selectedAnswer],
+  );
 
   useEffect(() => {
     if (showResults) {
@@ -158,9 +180,7 @@ const Quiz = ({ name, questions, color }: QuizProps) => {
             {question.options.map((option, index) => (
               <QuizButton
                 key={`${questionIndex}-${index}`}
-                state={
-                  !showAnswer ? "default" : index === question.answer ? "highlighted" : "disabled"
-                }
+                state={getQuizButtonState(index)}
                 color={color}
                 onClick={() => onClickAnswer(index)}
               >
