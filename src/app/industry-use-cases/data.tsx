@@ -769,22 +769,22 @@ const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
 export const ACCORDION_ITEMS: IndustryUseCasesAccordionItem[] = [
   {
     id: "manufacturing",
-    title: "Manufacturing depends heavily on Forests",
+    title: "Manufacturing depends heavily on forests",
     tabContent: ACCORDION_ITEMS_CONTENT["constructions"],
   },
   {
     id: "tourism",
-    title: "Tourism depends heavily on Coastal Ecosystems",
+    title: "Tourism depends heavily on coastal ecosystems",
     tabContent: ACCORDION_ITEMS_CONTENT["tourism"],
   },
   {
     id: "retail",
-    title: "Retail depends heavily on Urban Green Spaces",
+    title: "Retail depends heavily on urban green spaces",
     tabContent: ACCORDION_ITEMS_CONTENT["retail"],
   },
   {
     id: "food-systems",
-    title: "Food Systems depend heavily on Agroecosystems",
+    title: "Food systems depend heavily on agroecosystems",
     tabContent: ACCORDION_ITEMS_CONTENT["food"],
   },
 ];
