@@ -226,8 +226,10 @@ export default function Home() {
         >
           <BackgroundVideo
             src="/assets/home-video.mp4"
+            fallbackImage="/assets/home-video-fallback.png"
             sectionInView={videoSectionInView}
             className="object-bottom"
+            fallbackClassName="bg-bottom"
           />
         </div>
       </div>

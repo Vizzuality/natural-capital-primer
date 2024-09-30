@@ -92,6 +92,7 @@ const ClimateAndBiodiversityPage: FC = () => {
             >
               <BackgroundVideo
                 src="/assets/climate-and-biodiversity-video.mp4"
+                fallbackImage="/assets/climate-and-biodiversity-video-fallback.png"
                 sectionInView={chapter1videoInView}
                 className="object-bottom"
               />
@@ -267,6 +268,7 @@ const ClimateAndBiodiversityPage: FC = () => {
             >
               <BackgroundVideo
                 src="/assets/climate-and-biodiversity-video-2.mp4"
+                fallbackImage="/assets/climate-and-biodiversity-video-2-fallback.png"
                 sectionInView={chapter2videoInView}
                 className="object-bottom"
               />

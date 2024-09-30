@@ -179,6 +179,7 @@ const KeyConceptsPage: FC = () => {
             >
               <BackgroundVideo
                 src="/assets/key-concepts-video.mp4"
+                fallbackImage="/assets/key-concepts-video-fallback.png"
                 sectionInView={chapter1videoInView}
                 className="object-bottom"
               />
@@ -356,6 +357,7 @@ const KeyConceptsPage: FC = () => {
             >
               <BackgroundVideo
                 src="/assets/key-concepts-video-2.mp4"
+                fallbackImage="/assets/key-concepts-video-2-fallback.png"
                 sectionInView={chapter2videoInView}
                 className="object-bottom"
               />
@@ -553,6 +555,7 @@ const KeyConceptsPage: FC = () => {
             >
               <BackgroundVideo
                 src="/assets/key-concepts-video-3.mp4"
+                fallbackImage="/assets/key-concepts-video-3-fallback.png"
                 sectionInView={chapter3videoInView}
                 className="object-bottom"
               />
