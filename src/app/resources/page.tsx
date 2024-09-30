@@ -5,9 +5,13 @@ import Link from "next/link";
 import Manual from "@/icons/manual.svg";
 import ArrowExternal from "@/icons/arrow-external.svg";
 import Footer from "@/components/footer";
+import StickyNav from "@/components/sticky-nav";
+import { useInView } from "framer-motion";
+import { useMemo, useRef } from "react";
 
 const RESOURCES_BY_CATEGORY = [
   {
+    id: "natural-capital-concepts",
     category: "Natural Capital Concepts",
     resources: [
       {
@@ -65,6 +69,7 @@ const RESOURCES_BY_CATEGORY = [
     ].sort((resA, resB) => resA.name.localeCompare(resB.name)),
   },
   {
+    id: "projects-and-interventions",
     category: "Projects & Interventions",
     resources: [
       {
@@ -93,6 +98,7 @@ const RESOURCES_BY_CATEGORY = [
     ].sort((resA, resB) => resA.name.localeCompare(resB.name)),
   },
   {
+    id: "natural-capital-accounting-and-assessment",
     category: "Natural Capital Accounting & Assessment",
     resources: [
       {
@@ -144,9 +150,39 @@ const RESOURCES_BY_CATEGORY = [
 ];
 
 export default function ResourcesPage() {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const categoryRefs = [
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+  ];
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const categoryInViews = [
+    useInView(categoryRefs[0], { margin: "0px 0px -90% 0px" }),
+    useInView(categoryRefs[1], { margin: "0px 0px -90% 0px" }),
+    useInView(categoryRefs[2], { margin: "0px 0px -90% 0px" }),
+  ];
+
+  const activecategory = useMemo(() => {
+    const activeIndex = [...categoryInViews].reverse().findIndex(Boolean);
+
+    if (activeIndex !== -1) {
+      return categoryRefs[categoryInViews.length - 1 - activeIndex].current?.id ?? null;
+    }
+
+    return null;
+  }, [categoryInViews, categoryRefs]);
+
   return (
     <>
       <Header logo="color" />
+      <StickyNav
+        title="Resources on Natural Capital"
+        items={RESOURCES_BY_CATEGORY.map(({ id, category }) => ({ key: id, value: category }))}
+        activeItem={activecategory}
+        variant="condensed"
+      />
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 xl:mt-40">
         <h1 className="text-4.2xl font-medium lg:text-5xl">Resources on Natural Capital</h1>
         <p className="max-w-[827px] text-lg lg:text-xl">
@@ -155,8 +191,13 @@ export default function ResourcesPage() {
         </p>
       </div>
       <main className="mx-auto my-10 flex max-w-7xl flex-col gap-y-10 p-6 lg:my-28 lg:gap-y-40 lg:px-20">
-        {RESOURCES_BY_CATEGORY.map(({ category, resources }) => (
-          <div key={category} className="flex flex-col gap-y-6 lg:gap-y-10">
+        {RESOURCES_BY_CATEGORY.map(({ id, category, resources }, index) => (
+          <div
+            key={category}
+            id={id}
+            ref={categoryRefs[index]}
+            className="flex scroll-mt-[46px] flex-col gap-y-6 lg:gap-y-10"
+          >
             <h2 className="text-2xl lg:text-4xl">{category}</h2>
             <ol className="grid gap-6 lg:grid-cols-2 lg:gap-10">
               {resources.map(({ name, description, url }) => (
