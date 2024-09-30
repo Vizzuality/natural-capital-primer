@@ -92,7 +92,7 @@ const EcosystemTab: FC<IndustryUseCasesTabContent["ecosystem"]> = ({
           </div>
         </div>
       </div>
-      <div className="text-2xl lg:mt-11 lg:text-4xl">{content3}</div>
+      <div className="text-xl lg:mt-11 lg:text-2xl">{content3}</div>
       <div className="mb-10 flex flex-col justify-start gap-y-4 border-t-2 border-t-green-500 pt-6 lg:mb-0 lg:mt-10 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10">
         <h3 className="flex-shrink-0 text-lg text-green-500 lg:w-[350px] lg:text-xl">
           Key insights
