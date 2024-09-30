@@ -8,10 +8,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const IMAGES = [
-  "/assets/day-in-life-cta-illustration-5.png",
-  "/assets/day-in-life-cta-illustration-6.png",
-  "/assets/day-in-life-cta-illustration-7.png",
-  "/assets/day-in-life-cta-illustration-8.png",
+  "/assets/natural-capital-in-daily-life-illustration-22.png",
+  "/assets/natural-capital-in-daily-life-illustration-23.png",
+  "/assets/natural-capital-in-daily-life-illustration-24.png",
+  "/assets/natural-capital-in-daily-life-illustration-25.png",
+  "/assets/natural-capital-in-daily-life-illustration-26.png",
+  "/assets/natural-capital-in-daily-life-illustration-27.png",
+  "/assets/natural-capital-in-daily-life-illustration-28.png",
 ];
 
 const MotionImage = motion.create(Image);

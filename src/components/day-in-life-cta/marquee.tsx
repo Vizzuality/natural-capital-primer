@@ -48,16 +48,25 @@ const DayInLifeMarquee: FC = () => {
       <ImageCarousel
         images={[
           {
-            src: "/assets/day-in-life-cta-illustration.png",
+            src: "/assets/natural-capital-in-daily-life-illustration-29.png",
           },
           {
-            src: "/assets/day-in-life-cta-illustration-2.png",
+            src: "/assets/natural-capital-in-daily-life-illustration-30.png",
           },
           {
-            src: "/assets/day-in-life-cta-illustration-3.png",
+            src: "/assets/natural-capital-in-daily-life-illustration-31.png",
           },
           {
-            src: "/assets/day-in-life-cta-illustration-4.png",
+            src: "/assets/natural-capital-in-daily-life-illustration-32.png",
+          },
+          {
+            src: "/assets/natural-capital-in-daily-life-illustration-33.png",
+          },
+          {
+            src: "/assets/natural-capital-in-daily-life-illustration-34.png",
+          },
+          {
+            src: "/assets/natural-capital-in-daily-life-illustration-35.png",
           },
         ]}
         alt=""

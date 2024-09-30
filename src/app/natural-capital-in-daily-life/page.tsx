@@ -1,63 +1,164 @@
 "use client";
-import { useState, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import Footer from "@/components/footer";
-import Menu from "./menu";
 import Outro from "./outro";
 import Intro from "./intro";
 import { SECTIONS } from "./data";
 import Section from "./section";
-import useScrollSpy from "@/hooks/use-scroll-spy";
-import MobileMenu from "./mobile-menu";
-import type { Link } from "./data";
+import StickyNav from "@/components/sticky-nav";
+import { useInView } from "framer-motion";
+import React from "react";
 
 export default function ADayInTheLife() {
   const [soundOn, setSoundOn] = useState(false);
 
-  const links: Link[] = [
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const navItems = [
     {
-      text: "Mobile Phone",
-      id: "mobile-phone",
-      href: "#mobile-phone",
-      ref: useRef<HTMLDivElement>(null),
-    },
-    { text: "Shower", id: "shower", href: "#shower", ref: useRef<HTMLDivElement>(null) },
-    { text: "Clothes", id: "clothes", href: "#clothes", ref: useRef<HTMLDivElement>(null) },
-    {
-      text: "Kettle & Coffee",
-      id: "kettle-and-coffee",
-      href: "#kettle-and-coffee",
-      ref: useRef<HTMLDivElement>(null),
+      key: "mobile-phone",
+      value: "Mobile Phone",
+      ref: useRef<HTMLDivElement | null>(null),
     },
     {
-      text: "Bread & Butter",
-      id: "bread-and-butter",
-      href: "#bread-and-butter",
-      ref: useRef<HTMLDivElement>(null),
+      key: "shower",
+      value: "Shower",
+      ref: useRef<HTMLDivElement | null>(null),
     },
-    { text: "Train", id: "train", href: "#train", ref: useRef<HTMLDivElement>(null) },
-    { text: "Laptop", id: "laptop", href: "#laptop", ref: useRef<HTMLDivElement>(null) },
+    {
+      key: "clothes",
+      value: "Clothes",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
+    {
+      key: "kettle-and-coffee",
+      value: "Kettle & Coffee",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
+    {
+      key: "bread-and-butter",
+      value: "Bread & Butter",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
+    {
+      key: "train",
+      value: "Train",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
+    {
+      key: "laptop",
+      value: "Laptop",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
   ];
 
-  const scrollActiveId = useScrollSpy(Object.values(links).map(({ id, ref }) => ({ id, ref })));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const inViews = [
+    useInView(navItems[0].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[1].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[2].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[3].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[4].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[5].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[6].ref, { margin: "0px 0px -90% 0px" }),
+  ];
+
+  const activeSection = useMemo(() => {
+    if (inViews[6]) {
+      return navItems[6].ref.current?.id ?? null;
+    }
+
+    if (inViews[5]) {
+      return navItems[5].ref.current?.id ?? null;
+    }
+
+    if (inViews[4]) {
+      return navItems[4].ref.current?.id ?? null;
+    }
+
+    if (inViews[3]) {
+      return navItems[3].ref.current?.id ?? null;
+    }
+
+    if (inViews[2]) {
+      return navItems[2].ref.current?.id ?? null;
+    }
+
+    if (inViews[1]) {
+      return navItems[1].ref.current?.id ?? null;
+    }
+
+    if (inViews[0]) {
+      return navItems[0].ref.current?.id ?? null;
+    }
+
+    return null;
+  }, [inViews, navItems]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const videoInViews = [
+    useInView(navItems[0].ref, { margin: "0px 0px -60% 0px" }),
+    useInView(navItems[1].ref, { margin: "0px 0px -60% 0px" }),
+    useInView(navItems[2].ref, { margin: "0px 0px -60% 0px" }),
+    useInView(navItems[3].ref, { margin: "0px 0px -60% 0px" }),
+    useInView(navItems[4].ref, { margin: "0px 0px -60% 0px" }),
+    useInView(navItems[5].ref, { margin: "0px 0px -60% 0px" }),
+    useInView(navItems[6].ref, { margin: "0px 0px -60% 0px" }),
+  ];
+
+  const activeVideoSection = useMemo(() => {
+    if (videoInViews[6]) {
+      return navItems[6].ref.current?.id ?? null;
+    }
+
+    if (videoInViews[5]) {
+      return navItems[5].ref.current?.id ?? null;
+    }
+
+    if (videoInViews[4]) {
+      return navItems[4].ref.current?.id ?? null;
+    }
+
+    if (videoInViews[3]) {
+      return navItems[3].ref.current?.id ?? null;
+    }
+
+    if (videoInViews[2]) {
+      return navItems[2].ref.current?.id ?? null;
+    }
+
+    if (videoInViews[1]) {
+      return navItems[1].ref.current?.id ?? null;
+    }
+
+    if (videoInViews[0]) {
+      return navItems[0].ref.current?.id ?? null;
+    }
+
+    return null;
+  }, [videoInViews, navItems]);
 
   return (
     <>
       <Intro />
-      <Menu links={links} activeId={scrollActiveId} />
-      {SECTIONS.map((section) => {
-        const sectionRef = links.find((link) => link.id === section.id)?.ref;
-        if (!sectionRef) return null;
-        return (
+      <StickyNav
+        title="Natural Capital in Daily Life"
+        items={navItems}
+        activeItem={activeSection}
+        variant="condensed"
+      />
+      <div className="mb-10 lg:mb-14">
+        {SECTIONS.map((section, index) => (
           <Section
-            sectionRef={sectionRef}
+            key={index}
+            id={navItems[index].key}
+            ref={navItems[index].ref}
+            data={section}
+            inView={navItems[index].key === activeVideoSection}
             soundOn={soundOn}
             setSoundOn={setSoundOn}
-            key={`section-${section.title} `}
-            section={section}
-            renderMobileMenu={({ id }) => <MobileMenu id={id} links={links} />}
           />
-        );
-      })}
+        ))}
+      </div>
       <Outro />
       <Footer />
     </>
