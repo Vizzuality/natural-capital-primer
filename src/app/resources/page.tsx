@@ -159,9 +159,10 @@ export default function ResourcesPage() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const categoryInViews = [
-    useInView(categoryRefs[0], { margin: "0px 0px -90% 0px" }),
-    useInView(categoryRefs[1], { margin: "0px 0px -90% 0px" }),
-    useInView(categoryRefs[2], { margin: "0px 0px -90% 0px" }),
+    // Using 80% instead of 90% (like the other pages) due to the gap between the categories
+    useInView(categoryRefs[0], { margin: "0px 0px -80% 0px" }),
+    useInView(categoryRefs[1], { margin: "0px 0px -80% 0px" }),
+    useInView(categoryRefs[2], { margin: "0px 0px -80% 0px" }),
   ];
 
   const activecategory = useMemo(() => {
