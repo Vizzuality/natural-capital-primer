@@ -43,7 +43,7 @@ const IndustryUseCasesPage: FC = () => {
 
   return (
     <>
-      <div className="bg-[url(/assets/industry-use-cases-background.png)] bg-cover bg-center bg-no-repeat">
+      <div className="bg-black bg-[url(/assets/industry-use-cases-background.png)] bg-cover bg-center bg-no-repeat">
         <Header logo="white" />
         <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 text-white lg:mt-14 lg:gap-y-10 lg:px-20 lg:pb-16 xl:mt-40">
           <h1 className="text-4.2xl font-medium lg:text-5xl">Industry Use Cases</h1>
