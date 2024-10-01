@@ -103,7 +103,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="bg-[url(/assets/home-background-mobile.png)] bg-[length:auto_50%] bg-[right_bottom_140px] bg-no-repeat pb-10 md:bg-[length:auto_70%] md:bg-[right_bottom_40px] lg:bg-[url(/assets/404-background.png)] lg:bg-right-bottom lg:pb-20 xl:bg-[length:auto_80%]">
+      <div className="bg-[length:auto_50%] bg-no-repeat pb-10 md:bg-[url(/assets/404-background.png)] md:bg-[length:auto_70%] md:bg-[right_bottom_0px] lg:bg-[length:auto_35vw] lg:pb-20 xl:bg-[length:auto_80%] xl:bg-right-bottom">
         <div className="absolute left-1/2 w-full max-w-7xl -translate-x-1/2">
           <motion.div
             initial={{ translateX: 0, translateY: 0 }}
