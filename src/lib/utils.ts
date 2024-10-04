@@ -4,6 +4,7 @@ import React from "react";
 import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { env } from "@/env.mjs";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -27,11 +28,9 @@ export const addPropsToLink = (element: ReactNode, props: object): ReactNode => 
 };
 
 export const sendAnalyticsEvent = (eventName: string) => {
-  if (env.NEXT_PUBLIC_ENABLE_ANALYTICS && "plausible" in window) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    window.plausible(eventName);
+  if (!!env.NEXT_PUBLIC_GA_TRACKING_ID) {
+    sendGAEvent("event", eventName);
   } else {
-    console.info(`Analytics event: "${eventName}". Plausible is not currently enabled.`);
+    console.info(`Analytics event: "${eventName}". Google Analytics is not currently enabled.`);
   }
 };

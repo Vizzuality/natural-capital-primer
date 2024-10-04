@@ -3,7 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import { env } from "@/env.mjs";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const circular = localFont({
   src: [
@@ -42,18 +42,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("overflow-x-clip scroll-smooth", circular.className)}>
       <body className="overflow-x-clip bg-white text-black">{children}</body>
-      {env.NEXT_PUBLIC_ENABLE_ANALYTICS && (
-        <>
-          <Script
-            id="plausible-1"
-            defer
-            data-domain={env.NEXT_PUBLIC_DOMAIN}
-            src="https://plausible.io/js/script.file-downloads.hash.outbound-links.tagged-events.js"
-          />
-          <Script id="plausible-2">
-            {`window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`}
-          </Script>
-        </>
+      {!!env.NEXT_PUBLIC_GA_TRACKING_ID && (
+        <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_TRACKING_ID} />
       )}
     </html>
   );

@@ -21,11 +21,8 @@ export const env = createEnv({
     ),
     // Domain of the application (without https://)
     NEXT_PUBLIC_DOMAIN: z.string(),
-    // If `true`, send analytics about the visits
-    NEXT_PUBLIC_ENABLE_ANALYTICS: z.preprocess(
-      (value) => (!value || value === "true" ? true : false),
-      z.boolean(),
-    ),
+    // The Google Analytics tracking id
+    NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional(),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -36,6 +33,6 @@ export const env = createEnv({
   runtimeEnv: {
     NEXT_USE_RESTRICTIVE_ROBOTS_TXT: process.env.NEXT_USE_RESTRICTIVE_ROBOTS_TXT,
     NEXT_PUBLIC_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN,
-    NEXT_PUBLIC_ENABLE_ANALYTICS: process.env.NEXT_PUBLIC_ENABLE_ANALYTICS,
+    NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
   },
 });
