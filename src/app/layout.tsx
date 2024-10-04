@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
-import { env } from "@/env.mjs";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { Providers } from "@/components/providers";
+import Analytics from "@/components/analytics";
+import PrivacyBanner from "@/components/privacy-banner";
 
 const circular = localFont({
   src: [
@@ -41,10 +42,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn("overflow-x-clip scroll-smooth", circular.className)}>
-      <body className="overflow-x-clip bg-white text-black">{children}</body>
-      {!!env.NEXT_PUBLIC_GA_TRACKING_ID && (
-        <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_TRACKING_ID} />
-      )}
+      <body className="overflow-x-clip bg-white text-black">
+        <Providers>
+          <PrivacyBanner />
+          {children}
+          <Analytics />
+        </Providers>
+      </body>
     </html>
   );
 }

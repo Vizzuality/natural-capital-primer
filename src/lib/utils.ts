@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { env } from "@/env.mjs";
 import { sendGAEvent } from "@next/third-parties/google";
+import { analyticsConsentAtom, store } from "@/lib/store";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -28,7 +29,9 @@ export const addPropsToLink = (element: ReactNode, props: object): ReactNode => 
 };
 
 export const sendAnalyticsEvent = (eventName: string) => {
-  if (!!env.NEXT_PUBLIC_GA_TRACKING_ID) {
+  const analyticsConsent = store.get(analyticsConsentAtom);
+
+  if (!!env.NEXT_PUBLIC_GA_TRACKING_ID && analyticsConsent === true) {
     sendGAEvent("event", eventName);
   } else {
     console.info(`Analytics event: "${eventName}". Google Analytics is not currently enabled.`);
