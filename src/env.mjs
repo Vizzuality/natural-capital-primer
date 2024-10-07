@@ -23,6 +23,8 @@ export const env = createEnv({
     NEXT_PUBLIC_DOMAIN: z.string(),
     // The Google Analytics tracking id
     NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional(),
+    // The Google Tag Manager tracking id
+    NEXT_PUBLIC_GTM_TRACKING_ID: z.string().optional(),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -34,5 +36,6 @@ export const env = createEnv({
     NEXT_USE_RESTRICTIVE_ROBOTS_TXT: process.env.NEXT_USE_RESTRICTIVE_ROBOTS_TXT,
     NEXT_PUBLIC_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN,
     NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
+    NEXT_PUBLIC_GTM_TRACKING_ID: process.env.NEXT_PUBLIC_GTM_TRACKING_ID,
   },
 });

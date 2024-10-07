@@ -12,7 +12,9 @@ const MotionAlert = motion.create(Alert);
 
 const PrivacyBanner = () => {
   const [analyticsConsent, setAnalyticsConsent] = useAtom(analyticsConsentAtom);
-  const isVisible = !!env.NEXT_PUBLIC_GA_TRACKING_ID && analyticsConsent === undefined;
+  const isVisible =
+    (!!env.NEXT_PUBLIC_GA_TRACKING_ID || !!env.NEXT_PUBLIC_GTM_TRACKING_ID) &&
+    analyticsConsent === undefined;
 
   return (
     <AnimatePresence>
