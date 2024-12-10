@@ -234,7 +234,7 @@ const KeyConceptsPage: FC = () => {
             </div>
           </div>
         </div>
-        <div className="mx-auto max-w-7xl px-6 py-6 pt-20 lg:px-20 lg:py-28 lg:pt-28">
+        <div className="mx-auto max-w-7xl px-6 py-6 pt-20 lg:px-20 lg:pb-[84px] lg:pt-28">
           <div className="flex flex-col items-start gap-10 pb-10 lg:gap-14 lg:pb-28">
             <h3 className="max-w-[860px] text-2xl lg:text-4xl">
               There are{" "}
@@ -341,6 +341,25 @@ const KeyConceptsPage: FC = () => {
             </ul>
           </main>
           <Quiz {...QUIZ_DATA[0]} />
+        </div>
+
+        <div className="bg-black bg-[url(/assets/industry-use-cases-background.png)] bg-cover bg-center bg-no-repeat text-white">
+          <div className="mx-auto max-w-7xl p-6 py-10 lg:p-20">
+            <main className="flex flex-col items-start gap-y-6 lg:gap-y-10">
+              <h2 className="flex max-w-[730px] items-center gap-x-5 text-2xl xl:text-4xl">
+                How do different industries impact and depend on natural capital?
+              </h2>
+              <p className="max-w-[730px] text-lg lg:text-xl">
+                Explore the natural capital assets, the services that flow from them and the value
+                they provide for businesses and society in different industries.
+              </p>
+              <Button asChild variant="white" size="lg">
+                <Link href="/industry-use-cases">
+                  <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
+                </Link>
+              </Button>
+            </main>
+          </div>
         </div>
       </div>
 
