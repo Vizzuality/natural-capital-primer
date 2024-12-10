@@ -12,6 +12,8 @@ import Vizzuality from "@/svgs/vizzuality.svg";
 import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
 import BackgroundVideo from "@/components/bg-video";
 import RevealLines from "@/components/animations/reveal-lines";
+import { Button } from "@/components/ui/button";
+import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 
 const BACKGROUNDS = [
   "/assets/about-background.png",
@@ -79,78 +81,6 @@ export default function About() {
         </div>
       </div>
 
-      <div className="bg-orange-500">
-        <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-10 lg:px-20 lg:py-16">
-          <h2 className="max-w-[600px] text-2xl lg:text-4xl">
-            The organisations behind the Natural Capital Primer
-          </h2>
-          <div className="grid gap-10 lg:grid-cols-3">
-            <div className="flex flex-col gap-y-6">
-              <Link
-                href="https://macdochfoundation.org/"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="flex min-h-[60px] items-center"
-              >
-                <Image
-                  src="/assets/macdoch-foundation.png"
-                  alt="Macdoch Foundation"
-                  width={137}
-                  height={71}
-                />
-              </Link>
-              <p>
-                The Macdoch Foundation is an Australian philanthropic foundation that is committed
-                to building a nature-positive, climate-friendly agriculture and food system that is
-                economically sustainable, nourishes people and strengthens communities.  Active in
-                Australia and the US, the Foundation funds in the areas of agriculture and natural
-                capital, public engagement and climate-related industry transitions, and the health
-                and wellbeing of farming communities in support of its purpose to build the
-                resilience of people and the planet.
-              </p>
-            </div>
-            <div className="flex flex-col gap-y-6">
-              <Link
-                href="https://www.latrobe.edu.au/"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="flex min-h-[60px] items-center"
-              >
-                <LaTrobeUniversity
-                  className="h-[33px] w-[158px]"
-                  aria-label="La Trobe University"
-                />
-              </Link>
-              <p>
-                La Trobe University’s Research Centre for Future Landscapes creates knowledge and
-                solutions for healthy landscapes for people and nature. The Centre develops
-                next-generation tools and solutions to address the global challenge of sustaining
-                natural ecosystems in human-dominated landscapes. The Centre is multi-disciplinary,
-                comprised of academics, post-doctoral research fellows and research students.
-              </p>
-            </div>
-            <div className="flex flex-col gap-y-6">
-              <Link
-                href="https://www.vizzuality.com/"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="flex min-h-[60px] items-center"
-              >
-                <Vizzuality className="h-[34px] w-[147px]" aria-label="Vizzuality" />
-              </Link>
-              <p>
-                Vizzuality is an impact-driven design and technology agency that creates bespoke,
-                science-based data visualisations and digital tools that inspire learning, catalyse
-                decisions, and improve our world. We collaborate with proactive organisations to
-                create a sustainable future for our planet and society. We have over 15 years of
-                experience working with world-changing organisations, building platforms like Global
-                Forest Watch, Aqueduct, and Trase.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="mx-auto grid max-w-7xl flex-col gap-x-6 gap-y-10 p-6 py-10 md:grid-cols-2 md:gap-y-6 md:py-20 lg:px-20">
         <div className="flex max-w-[480px] flex-col gap-y-6">
           <h2 className="text-2xl lg:text-4xl">Why do we need the Natural Capital Primer?</h2>
@@ -208,12 +138,29 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-10 lg:px-20 lg:py-16">
+      <div className="mx-auto flex max-w-7xl flex-col gap-y-8 p-6 py-10 lg:px-20 lg:py-16 lg:pb-20">
         <p className="text-2xl text-orange-500 lg:text-4xl">
           Understanding and managing natural capital is crucial for achieving sustainability,
           conserving biodiversity, addressing climate change, and ensuring the well-being of future
           generations.
         </p>
+        <div className="flex flex-col items-stretch gap-y-4 lg:mt-0 lg:flex-row lg:gap-x-4">
+          <Button variant="outline" size="lg" asChild>
+            <Link href="/key-concepts">
+              <HoverRepeatAnimation>Key Concepts</HoverRepeatAnimation>
+            </Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link href="/industry-use-cases">
+              <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
+            </Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link href="/climate-and-biodiversity">
+              <HoverRepeatAnimation>Climate & Biodiversity</HoverRepeatAnimation>
+            </Link>
+          </Button>
+        </div>
       </div>
 
       <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-0 pb-10 lg:px-20 lg:pb-11">
@@ -264,18 +211,94 @@ export default function About() {
 
       <div
         ref={videoSectionRef}
-        className="relative h-[550px] bg-black after:absolute after:inset-0 after:z-10 after:block after:bg-[#000]/30"
+        className="relative flex h-[550px] flex-col justify-center bg-black after:absolute after:inset-0 after:z-10 after:block after:bg-[#000]/30"
       >
         <BackgroundVideo
           src="/assets/about-video.mp4"
           sectionInView={videoSectionInView}
           className="object-bottom"
         />
-        <div className="relative z-20 mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-10 lg:px-20 lg:py-14">
-          <p className="max-w-[860px] text-xl text-white lg:text-2xl">
-            We must collectively value, measure, and manage nature in order to reverse its long-term
-            decline and live within our planetary boundaries.
+        <div className="relative z-20 mx-auto flex max-w-7xl flex-col items-center gap-y-14 p-6 py-10 lg:px-20 lg:py-14">
+          <p className="mx-auto text-center text-4xl text-white lg:text-4.5xl">
+            We must value, measure, and manage nature in order to reverse its decline.
           </p>
+          <Button variant="white" size="default" asChild>
+            <Link href="/natural-capital-in-daily-life">
+              <HoverRepeatAnimation>Learn about Natural Capital in Daily Life</HoverRepeatAnimation>
+            </Link>
+          </Button>
+        </div>
+      </div>
+
+      <div className="bg-orange-500">
+        <div className="mx-auto flex max-w-7xl flex-col gap-y-6 p-6 py-10 lg:px-20 lg:py-16">
+          <h2 className="max-w-[600px] text-2xl lg:text-4xl">
+            The organisations behind the Natural Capital Primer
+          </h2>
+          <div className="grid gap-10 lg:grid-cols-3">
+            <div className="flex flex-col gap-y-6">
+              <Link
+                href="https://macdochfoundation.org/"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="flex min-h-[60px] items-center"
+              >
+                <Image
+                  src="/assets/macdoch-foundation.png"
+                  alt="Macdoch Foundation"
+                  width={137}
+                  height={71}
+                />
+              </Link>
+              <p>
+                The Macdoch Foundation is an Australian philanthropic foundation that is committed
+                to building a nature-positive, climate-friendly agriculture and food system that is
+                economically sustainable, nourishes people and strengthens communities. Active in
+                Australia and the US, the Foundation funds in the areas of agriculture and natural
+                capital, public engagement and climate-related industry transitions, and the health
+                and wellbeing of farming communities in support of its purpose to build the
+                resilience of people and the planet.
+              </p>
+            </div>
+            <div className="flex flex-col gap-y-6">
+              <Link
+                href="https://www.latrobe.edu.au/"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="flex min-h-[60px] items-center"
+              >
+                <LaTrobeUniversity
+                  className="h-[33px] w-[158px]"
+                  aria-label="La Trobe University"
+                />
+              </Link>
+              <p>
+                La Trobe University’s Research Centre for Future Landscapes creates knowledge and
+                solutions for healthy landscapes for people and nature. The Centre develops
+                next-generation tools and solutions to address the global challenge of sustaining
+                natural ecosystems in human-dominated landscapes. The Centre is multi-disciplinary,
+                comprised of academics, post-doctoral research fellows and research students.
+              </p>
+            </div>
+            <div className="flex flex-col gap-y-6">
+              <Link
+                href="https://www.vizzuality.com/"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="flex min-h-[60px] items-center"
+              >
+                <Vizzuality className="h-[34px] w-[147px]" aria-label="Vizzuality" />
+              </Link>
+              <p>
+                Vizzuality is an impact-driven design and technology agency that creates bespoke,
+                science-based data visualisations and digital tools that inspire learning, catalyse
+                decisions, and improve our world. We collaborate with proactive organisations to
+                create a sustainable future for our planet and society. We have over 15 years of
+                experience working with world-changing organisations, building platforms like Global
+                Forest Watch, Aqueduct, and Trase.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
