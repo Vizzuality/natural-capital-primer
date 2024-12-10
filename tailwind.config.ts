@@ -75,6 +75,7 @@ const config = {
       lime: "#CFE44F",
       purple: "#B152EC",
       black: "#191C34",
+      "pure-black": "#000000",
       white: "#F8F9EE",
       transparent: "transparent",
     },

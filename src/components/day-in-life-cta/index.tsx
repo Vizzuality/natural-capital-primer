@@ -31,7 +31,7 @@ const DayInLifeCTA: FC = () => {
   }, []);
 
   return (
-    <div className="relative bg-black py-6 md:py-14 lg:py-20">
+    <div className="relative bg-black">
       {IMAGES.map((image, index) => (
         <MotionImage
           key={image}
@@ -45,22 +45,24 @@ const DayInLifeCTA: FC = () => {
           transition={{ duration: 1 }}
         />
       ))}
-      <div className="relative z-10 mx-auto flex max-w-7xl items-center justify-center px-6 lg:px-20">
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex flex-col items-center gap-6 text-white lg:max-w-[713px]">
-            <h2 className="text-center text-4.2xl text-white lg:text-5xl">
-              Natural Capital in Daily Life
-            </h2>
-            <div className="text-center text-xl lg:text-2xl">
-              A short story which highlights the everyday reliance on natural capital through the
-              products we use.
+      <div className="bg-pure-black/40 relative z-10 py-20 lg:py-[140px]">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-6 lg:px-20">
+          <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-col items-center gap-6 text-white lg:max-w-[830px]">
+              <h2 className="text-center text-4xl text-white lg:text-4.5xl">
+                Natural Capital in Daily Life
+              </h2>
+              <div className="text-center text-base lg:text-2xl">
+                A short story which highlights the everyday reliance on natural capital through the
+                products we use.
+              </div>
             </div>
+            <Button size="lg" variant="yellow" asChild>
+              <Link href="/natural-capital-in-daily-life">
+                <HoverRepeatAnimation>Discover the Story</HoverRepeatAnimation>
+              </Link>
+            </Button>
           </div>
-          <Button size="lg" variant="yellow" asChild>
-            <Link href="/natural-capital-in-daily-life">
-              <HoverRepeatAnimation>Discover the Story</HoverRepeatAnimation>
-            </Link>
-          </Button>
         </div>
       </div>
     </div>

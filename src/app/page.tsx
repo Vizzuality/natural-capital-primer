@@ -222,8 +222,18 @@ export default function Home() {
         </main>
         <div
           ref={videoSectionRef}
-          className="relative mx-6 -mt-10 h-[327px] w-full translate-y-[117px] bg-black lg:mx-20 lg:h-[550px] lg:translate-y-[145px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
+          className="relative -mt-10 h-[327px] w-full translate-y-[117px] bg-black sm:mx-6 lg:mx-20 lg:h-[550px] lg:translate-y-[145px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
         >
+          <div className="bg-pure-black/40 relative z-10 flex h-full w-full flex-col items-center justify-center gap-y-12 px-6">
+            <h2 className="max-w-[600px] text-center text-4xl text-white xl:text-4.5xl">
+              Learn more about the Key Concepts of Natural Capital.
+            </h2>
+            <Button asChild variant="white" size="lg">
+              <Link href="/key-concepts">
+                <HoverRepeatAnimation>Go to Key Concepts</HoverRepeatAnimation>
+              </Link>
+            </Button>
+          </div>
           <BackgroundVideo
             src="/assets/home-video.mp4"
             fallbackImage="/assets/home-video-fallback.png"
@@ -284,31 +294,35 @@ export default function Home() {
                   Peoples and local communities that will allow us to sustainably manage nature for
                   society as a whole.
                 </p>
-                <p className="mt-6 text-lg lg:mt-14 lg:text-xl">
-                  Read on to learn the basics, or explore the Primer for an in-depth understanding
-                  of natural capital and examples of it in industry use cases.
-                </p>
-                <div className="mt-6 flex flex-col items-stretch gap-y-3 lg:mt-0 lg:flex-row lg:gap-x-8">
-                  <Button variant="outline-white" size="lg" asChild>
-                    <Link href="/about">
-                      <HoverRepeatAnimation>About the Primer</HoverRepeatAnimation>
-                    </Link>
-                  </Button>
-                  <Button variant="outline-white" size="lg" asChild>
-                    <Link href="/key-concepts">
-                      <HoverRepeatAnimation>Key Concepts</HoverRepeatAnimation>
-                    </Link>
-                  </Button>
-                  <Button variant="outline-white" size="lg" asChild>
-                    <Link href="/industry-use-cases">
-                      <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
-                    </Link>
-                  </Button>
-                </div>
               </div>
             </div>
           </main>
         </div>
+      </div>
+      <div className="bg-orange-500 py-10 lg:py-14">
+        <main className="mx-auto flex max-w-7xl flex-col items-stretch gap-y-6 p-6 lg:items-center lg:gap-y-10 lg:text-center">
+          <p className="max-w-[920px] text-2xl lg:text-4xl">
+            Explore the Primer to better understand natural capital, its industry uses, and links to
+            climate and biodiversity.
+          </p>
+          <div className="flex flex-col items-stretch gap-y-6 lg:flex-row lg:gap-x-4">
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/key-concepts">
+                <HoverRepeatAnimation>Key Concepts</HoverRepeatAnimation>
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/industry-use-cases">
+                <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/climate-and-biodiversity">
+                <HoverRepeatAnimation>Climate & Biodiversity</HoverRepeatAnimation>
+              </Link>
+            </Button>
+          </div>
+        </main>
       </div>
       <div className="relative h-[600vh]" ref={scrollSectionRef}>
         <main className="sticky top-0 mx-auto min-h-[100vh] max-w-7xl overflow-hidden px-6 pb-20 pt-10 lg:pb-[280px] lg:pt-24 xl:overflow-visible">
