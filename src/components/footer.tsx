@@ -40,58 +40,73 @@ const Footer: FC = () => {
           </div>
         </div>
         <nav className="py-10 lg:py-20" aria-label="Global">
-          <ul className="grid w-fit grid-cols-2 gap-x-6">
-            <li>
+          <ul className="grid grid-cols-2 gap-x-6">
+            <li className="lg:pt-[60px]">
               <ul className="flex flex-col gap-y-2.5">
                 <li>
-                  <Link href="/" className="inline-block py-2 underline">
+                  <Link href="/" className="inline-block py-2 underline lg:no-underline">
                     <ArrowSlideAnimation>Home</ArrowSlideAnimation>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="inline-block py-2 underline">
+                  <Link href="/about" className="inline-block py-2 underline lg:no-underline">
                     <ArrowSlideAnimation>About</ArrowSlideAnimation>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms-and-conditions" className="inline-block py-2 underline">
+                  <Link
+                    href="/terms-and-conditions"
+                    className="inline-block py-2 underline lg:no-underline"
+                  >
                     <ArrowSlideAnimation>Terms and Conditions</ArrowSlideAnimation>
                   </Link>
                 </li>
               </ul>
             </li>
             <li>
+              <div className="mb-5 hidden border-b border-b-white text-xs leading-10 lg:block">
+                The Primer
+              </div>
               <ul className="flex flex-col gap-y-2.5">
                 <li>
                   <Link
                     href="/natural-capital-in-daily-life"
-                    className="inline-block py-2 underline"
+                    className="inline-block py-2 underline lg:no-underline"
                   >
                     <ArrowSlideAnimation>Natural Capital in Daily Life</ArrowSlideAnimation>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/key-concepts" className="inline-block py-2 underline">
+                  <Link
+                    href="/key-concepts"
+                    className="inline-block py-2 underline lg:no-underline"
+                  >
                     <ArrowSlideAnimation>Key Concepts</ArrowSlideAnimation>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/industry-use-cases" className="inline-block py-2 underline">
+                  <Link
+                    href="/industry-use-cases"
+                    className="inline-block py-2 underline lg:no-underline"
+                  >
                     <ArrowSlideAnimation>Industry Use Cases</ArrowSlideAnimation>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/climate-and-biodiversity" className="inline-block py-2 underline">
+                  <Link
+                    href="/climate-and-biodiversity"
+                    className="inline-block py-2 underline lg:no-underline"
+                  >
                     <ArrowSlideAnimation>Climate & Biodiversity</ArrowSlideAnimation>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/resources" className="inline-block py-2 underline">
+                  <Link href="/resources" className="inline-block py-2 underline lg:no-underline">
                     <ArrowSlideAnimation>Resources</ArrowSlideAnimation>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/references" className="inline-block py-2 underline">
+                  <Link href="/references" className="inline-block py-2 underline lg:no-underline">
                     <ArrowSlideAnimation>References</ArrowSlideAnimation>
                   </Link>
                 </li>
@@ -99,7 +114,9 @@ const Footer: FC = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex flex-col gap-y-3 border-t border-t-white/20 py-10 lg:col-span-2 lg:flex-row lg:gap-x-10">
+      </footer>
+      <div className="border-t border-t-white/20 py-10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-y-3 px-6 lg:col-span-2 lg:flex-row lg:gap-x-10 lg:px-20">
           <p className="text-white/50">© Natural Capital Primer, 2024</p>
           <p className="text-white/50">
             Designed and developed by{" "}
@@ -111,7 +128,7 @@ const Footer: FC = () => {
             </Link>
           </p>
         </div>
-      </footer>
+      </div>
     </div>
   );
 };

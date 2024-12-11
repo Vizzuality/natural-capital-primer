@@ -138,7 +138,7 @@ const IndustryUseCasesPage: FC = () => {
         </div>
       </div>
 
-      <main className="mx-auto max-w-7xl px-6 pt-10 lg:px-20 lg:pt-16">
+      <main className="mx-auto max-w-7xl px-6 pb-10 pt-10 lg:px-20 lg:pt-16">
         <div className="mt-6 flex flex-col gap-y-6 pb-6 lg:pb-11">
           <Tabs value={tab} onValueChange={handleTabChange} className="relative">
             <Accordion
