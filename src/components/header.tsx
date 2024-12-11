@@ -4,9 +4,17 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Logo from "@/svgs/logo.svg";
 import Menu from "@/icons/menu.svg";
-import Close from "@/icons/close.svg";
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { FC, MouseEvent, useCallback, useRef, useState } from "react";
+import {
+  FC,
+  Fragment,
+  MouseEvent,
+  PropsWithChildren,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import HoverRepeatAnimation from "./animations/hover-repeat";
 import { usePathname } from "next/navigation";
@@ -18,6 +26,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import ChevronBold from "@/icons/chevron-bold.svg";
+import Close from "@/svgs/close.svg";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -27,6 +36,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import useMediaQuery from "@/hooks/use-media-query";
 
 const DIALOG_ANIMATION_DURATION = 0.3;
 const HEADER_ANIMATION_DURATION = 0.3;
@@ -54,6 +64,54 @@ const Header: FC = () => {
 
     previousScrollYRef.current = value;
   });
+
+  const isDesktopXl = useMediaQuery("(min-width: 1280px)", false);
+
+  const MobileOnlyAccordion = useMemo(() => {
+    if (isDesktopXl) {
+      const Comp = ({ children }: PropsWithChildren) => <Fragment>{children}</Fragment>;
+      return Comp;
+    }
+
+    return Accordion;
+  }, [isDesktopXl]);
+
+  const MobileOnlyAccordionItem = useMemo(() => {
+    if (isDesktopXl) {
+      const Comp = ({ children }: PropsWithChildren) => <Fragment>{children}</Fragment>;
+      return Comp;
+    }
+
+    return AccordionItem;
+  }, [isDesktopXl]);
+
+  const MobileOnlyAccordionTrigger = useMemo(() => {
+    if (isDesktopXl) {
+      const Comp = ({
+        children,
+        className,
+        href,
+      }: PropsWithChildren<{ className: string; href: string }>) => (
+        <div className={className}>
+          <Link href={href} className="w-full">
+            <HoverRepeatAnimation>{children}</HoverRepeatAnimation>
+          </Link>
+        </div>
+      );
+      return Comp;
+    }
+
+    return AccordionTrigger;
+  }, [isDesktopXl]);
+
+  const MobileOnlyAccordionContent = useMemo(() => {
+    if (isDesktopXl) {
+      const Comp = ({ children }: PropsWithChildren) => <Fragment>{children}</Fragment>;
+      return Comp;
+    }
+
+    return AccordionContent;
+  }, [isDesktopXl]);
 
   const onClickSubSection = useCallback(
     (e: MouseEvent<HTMLAnchorElement>) => {
@@ -104,7 +162,7 @@ const Header: FC = () => {
             <span className="sr-only">Natural Capital Primer</span>
           </Link>
         </Button>
-        <div className="flex h-full items-end items-center gap-8">
+        <div className="flex h-full items-center gap-8">
           <NavigationMenu delayDuration={0} className="hidden xl:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -200,211 +258,247 @@ const Header: FC = () => {
             </DialogTrigger>
             <AnimatePresence initial={false}>
               {open && (
-                <DialogContent
-                  forceMount
-                  asChild
-                  variant="sheet"
-                  scheme="blue"
-                  className="flex flex-col"
-                >
+                <DialogContent forceMount asChild variant="fullscreen" className="flex flex-col">
                   <motion.div
-                    initial={{ x: "100%", y: "-50%" }}
-                    animate={{ x: "0%", y: "-50%" }}
-                    exit={{ x: "100%", y: "-50%" }}
+                    initial={{ x: "0%", y: "-100%" }}
+                    animate={{ x: "0%", y: "0%" }}
+                    exit={{ x: "0%", y: "-100%" }}
                     transition={{ duration: DIALOG_ANIMATION_DURATION }}
                   >
-                    <div className="flex items-center justify-end">
-                      <DialogTitle className="sr-only">Main navigation</DialogTitle>
+                    <div className="mx-auto flex w-full max-w-7xl flex-col-reverse items-stretch justify-end gap-10 px-6 py-4 lg:px-20">
+                      <DialogTitle className="sr-only text-4.5xl xl:not-sr-only">
+                        The Natural Capital Primer Contents
+                      </DialogTitle>
                       <DialogClose asChild>
                         <Button
                           type="button"
                           variant="white"
-                          size="auto"
-                          className="h-11 w-11 ring-offset-blue-500 xl:w-auto xl:p-2.5 xl:pr-4"
+                          size="sm"
+                          className="ml-auto pl-2.5 pr-[18px]"
                         >
-                          <Menu
+                          <Close
                             aria-hidden="true"
-                            className="mr-2.5 hidden h-5 w-5 rounded-full border border-black/20 xl:block"
+                            className="mr-2.5 h-5 w-5 rounded-full border border-black bg-black text-white"
                           />
-                          <Close aria-hidden="true" className="h-4 w-4 xl:hidden" />
-                          <span className="sr-only xl:not-sr-only">
+                          <span className="text-base">
                             <HoverRepeatAnimation>Close</HoverRepeatAnimation>
                           </span>
                         </Button>
                       </DialogClose>
                     </div>
-                    <ul className="flex flex-col items-stretch justify-center gap-y-6 lg:text-2xl">
-                      <li>
-                        <Link href="/">
-                          <HoverRepeatAnimation>Home</HoverRepeatAnimation>
-                        </Link>
+                    <ul className="mx-auto flex w-full max-w-7xl flex-col justify-between gap-x-20 gap-y-10 p-6 text-2xl lg:px-20 xl:flex-row xl:text-[24px]">
+                      <li className="xl:w-[calc((100%_-_2_*_theme(spacing.20))_/_3)]">
+                        <ul className="flex flex-col gap-y-10 xl:mt-10">
+                          <li className="border-t border-t-black pt-4">
+                            <Link href="/">
+                              <HoverRepeatAnimation>Home</HoverRepeatAnimation>
+                            </Link>
+                          </li>
+                          <li className="border-t border-t-black pt-4">
+                            <Link href="/about">
+                              <HoverRepeatAnimation>About</HoverRepeatAnimation>
+                            </Link>
+                          </li>
+                        </ul>
                       </li>
-                      <li>
-                        <Link href="/about">
-                          <HoverRepeatAnimation>About</HoverRepeatAnimation>
-                        </Link>
-                      </li>
-                      <li>
-                        <Accordion type="single" collapsible>
-                          <ul className="flex flex-col gap-y-6 border-t-2 border-t-blue-800 pb-6 pt-5 xl:gap-y-10">
-                            <li className="text-base font-bold">The Primer</li>
-                            <li className="xl:-mt-4">
-                              <Link href="/natural-capital-in-daily-life">
-                                <HoverRepeatAnimation>
-                                  Natural Capital in Daily Life
-                                </HoverRepeatAnimation>
-                              </Link>
+                      <li className="flex-grow">
+                        <MobileOnlyAccordion type="single" collapsible>
+                          <ul className="flex flex-col gap-y-4">
+                            <li className="border-t border-t-black pt-4 xl:border-b xl:border-t-0 xl:border-b-black xl:pb-4 xl:pt-0 xl:text-base">
+                              The Primer
                             </li>
-                            <li>
-                              <AccordionItem value="key-concepts">
-                                <AccordionTrigger
-                                  variant="naked"
-                                  className="flex w-full items-center justify-between"
-                                >
-                                  Key Concepts <ChevronBold className="h-6 w-6" />
-                                </AccordionTrigger>
-                                <AccordionContent variant="naked">
-                                  <ul className="flex flex-col gap-2 pt-7 text-base font-normal">
+                            <li className="pl-14 xl:pl-0">
+                              <ul className="flex flex-col gap-x-20 gap-y-6 xl:flex-row xl:justify-between xl:gap-y-10">
+                                <li className="pr-6 text-[24px] xl:hidden">
+                                  <Link href="/natural-capital-in-daily-life">
+                                    <HoverRepeatAnimation>
+                                      Natural Capital in Daily Life
+                                    </HoverRepeatAnimation>
+                                  </Link>
+                                </li>
+                                <li className="flex-1 text-[24px]">
+                                  <ul className="flex flex-col gap-y-6 xl:gap-y-10">
                                     <li>
-                                      <Link href="/key-concepts">
-                                        <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
-                                      </Link>
+                                      <MobileOnlyAccordionItem value="key-concepts">
+                                        <MobileOnlyAccordionTrigger
+                                          variant="naked"
+                                          className="flex w-full items-center justify-between"
+                                          href="/key-concepts"
+                                        >
+                                          Key Concepts <ChevronBold className="h-6 w-6 xl:hidden" />
+                                        </MobileOnlyAccordionTrigger>
+                                        <MobileOnlyAccordionContent variant="naked">
+                                          <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
+                                            <li className="xl:hidden">
+                                              <Link href="/key-concepts">
+                                                <HoverRepeatAnimation>
+                                                  Introduction
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                            <li>
+                                              <Link
+                                                href="/key-concepts#assets"
+                                                onClick={onClickSubSection}
+                                              >
+                                                <HoverRepeatAnimation>
+                                                  Natural Capital Assets
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                            <li>
+                                              <Link
+                                                href="/key-concepts#flows-of-services"
+                                                onClick={onClickSubSection}
+                                              >
+                                                <HoverRepeatAnimation>
+                                                  Flows of Services
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                            <li>
+                                              <Link
+                                                href="/key-concepts#dependencies-and-impacts"
+                                                onClick={onClickSubSection}
+                                              >
+                                                <HoverRepeatAnimation>
+                                                  Dependencies and Impacts
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                          </ul>
+                                        </MobileOnlyAccordionContent>
+                                      </MobileOnlyAccordionItem>
                                     </li>
-                                    <li>
-                                      <Link href="/key-concepts#assets" onClick={onClickSubSection}>
+                                    <li className="xl:border-t xl:border-t-black xl:pt-4">
+                                      <MobileOnlyAccordionItem value="industry-use-cases">
+                                        <MobileOnlyAccordionTrigger
+                                          variant="naked"
+                                          className="flex w-full items-center justify-between"
+                                          href="/industry-use-cases"
+                                        >
+                                          Industry Use Cases{" "}
+                                          <ChevronBold className="h-6 w-6 xl:hidden" />
+                                        </MobileOnlyAccordionTrigger>
+                                        <MobileOnlyAccordionContent variant="naked">
+                                          <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
+                                            <li className="xl:hidden">
+                                              <Link href="/industry-use-cases">
+                                                <HoverRepeatAnimation>
+                                                  Introduction
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                            <li>
+                                              <Link
+                                                href="/industry-use-cases#manufacturing"
+                                                onClick={onClickSubSection}
+                                              >
+                                                <HoverRepeatAnimation>
+                                                  Manufacturing
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                            <li>
+                                              <Link
+                                                href="/industry-use-cases#tourism"
+                                                onClick={onClickSubSection}
+                                              >
+                                                <HoverRepeatAnimation>Tourism</HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                            <li>
+                                              <Link
+                                                href="/industry-use-cases#retail"
+                                                onClick={onClickSubSection}
+                                              >
+                                                <HoverRepeatAnimation>Retail</HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                            <li>
+                                              <Link
+                                                href="/industry-use-cases#food-systems"
+                                                onClick={onClickSubSection}
+                                              >
+                                                <HoverRepeatAnimation>
+                                                  Food Systems
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                          </ul>
+                                        </MobileOnlyAccordionContent>
+                                      </MobileOnlyAccordionItem>
+                                    </li>
+                                    <li className="xl:border-t xl:border-t-black xl:pt-4">
+                                      <MobileOnlyAccordionItem value="climate-and-biodiversity">
+                                        <MobileOnlyAccordionTrigger
+                                          variant="naked"
+                                          className="flex w-full items-center justify-between"
+                                          href="/climate-and-biodiversity"
+                                        >
+                                          Climate & Biodiversity{" "}
+                                          <ChevronBold className="h-6 w-6 xl:hidden" />
+                                        </MobileOnlyAccordionTrigger>
+                                        <MobileOnlyAccordionContent variant="naked">
+                                          <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
+                                            <li className="xl:hidden">
+                                              <Link href="/climate-and-biodiversity">
+                                                <HoverRepeatAnimation>
+                                                  Introduction
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                            <li>
+                                              <Link
+                                                href="/climate-and-biodiversity#climate"
+                                                onClick={onClickSubSection}
+                                              >
+                                                <HoverRepeatAnimation>
+                                                  Natural Capital & Climate Change
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                            <li>
+                                              <Link
+                                                href="/climate-and-biodiversity#biodiversity"
+                                                onClick={onClickSubSection}
+                                              >
+                                                <HoverRepeatAnimation>
+                                                  Natural Capital & Biodiversity
+                                                </HoverRepeatAnimation>
+                                              </Link>
+                                            </li>
+                                          </ul>
+                                        </MobileOnlyAccordionContent>
+                                      </MobileOnlyAccordionItem>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li className="flex-1 text-[24px]">
+                                  <ul className="flex flex-col gap-y-6 xl:gap-y-10">
+                                    <li className="hidden xl:block xl:pb-[7px]">
+                                      <Link href="/natural-capital-in-daily-life">
                                         <HoverRepeatAnimation>
-                                          <span className="sr-only">Chapter</span>
-                                          <span className="not-sr-only">Ch</span> 1 - Natural
-                                          Capital Assets
+                                          Natural Capital in Daily Life
                                         </HoverRepeatAnimation>
                                       </Link>
                                     </li>
-                                    <li>
-                                      <Link
-                                        href="/key-concepts#flows-of-services"
-                                        onClick={onClickSubSection}
-                                      >
-                                        <HoverRepeatAnimation>
-                                          <span className="sr-only">Chapter</span>
-                                          <span className="not-sr-only">Ch</span> 2 - Flows of
-                                          Services
-                                        </HoverRepeatAnimation>
+                                    <li className="xl:border-t xl:border-t-black xl:pt-4">
+                                      <Link href="/resources">
+                                        <HoverRepeatAnimation>Resources</HoverRepeatAnimation>
                                       </Link>
                                     </li>
-                                    <li>
-                                      <Link
-                                        href="/key-concepts#dependencies-and-impacts"
-                                        onClick={onClickSubSection}
-                                      >
-                                        <HoverRepeatAnimation>
-                                          <span className="sr-only">Chapter</span>
-                                          <span className="not-sr-only">Ch</span> 3 - Dependencies
-                                          and Impacts
-                                        </HoverRepeatAnimation>
+                                    <li className="xl:border-t xl:border-t-black xl:pt-4">
+                                      <Link href="/references">
+                                        <HoverRepeatAnimation>References</HoverRepeatAnimation>
                                       </Link>
                                     </li>
                                   </ul>
-                                </AccordionContent>
-                              </AccordionItem>
-                            </li>
-                            <li>
-                              <AccordionItem value="industry-use-cases">
-                                <AccordionTrigger
-                                  variant="naked"
-                                  className="flex w-full items-center justify-between"
-                                >
-                                  Industry Use Cases <ChevronBold className="h-6 w-6" />
-                                </AccordionTrigger>
-                                <AccordionContent variant="naked">
-                                  <ul className="flex flex-col gap-2 pt-7 text-base font-normal">
-                                    <li>
-                                      <Link href="/industry-use-cases">
-                                        <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link
-                                        href="/industry-use-cases#manufacturing"
-                                        onClick={onClickSubSection}
-                                      >
-                                        <HoverRepeatAnimation>Manufacturing</HoverRepeatAnimation>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link
-                                        href="/industry-use-cases#tourism"
-                                        onClick={onClickSubSection}
-                                      >
-                                        <HoverRepeatAnimation>Tourism</HoverRepeatAnimation>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link
-                                        href="/industry-use-cases#retail"
-                                        onClick={onClickSubSection}
-                                      >
-                                        <HoverRepeatAnimation>Retail</HoverRepeatAnimation>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link
-                                        href="/industry-use-cases#food-systems"
-                                        onClick={onClickSubSection}
-                                      >
-                                        <HoverRepeatAnimation>Food Systems</HoverRepeatAnimation>
-                                      </Link>
-                                    </li>
-                                  </ul>
-                                </AccordionContent>
-                              </AccordionItem>
-                            </li>
-                            <li>
-                              <AccordionItem value="climate-and-biodiversity">
-                                <AccordionTrigger
-                                  variant="naked"
-                                  className="flex w-full items-center justify-between"
-                                >
-                                  Climate & Biodiversity <ChevronBold className="h-6 w-6" />
-                                </AccordionTrigger>
-                                <AccordionContent variant="naked">
-                                  <ul className="flex flex-col gap-2 pt-7 text-base font-normal">
-                                    <li>
-                                      <Link href="/climate-and-biodiversity">
-                                        <HoverRepeatAnimation>Go to page</HoverRepeatAnimation>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link
-                                        href="/climate-and-biodiversity#climate"
-                                        onClick={onClickSubSection}
-                                      >
-                                        <HoverRepeatAnimation>Climate</HoverRepeatAnimation>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link
-                                        href="/climate-and-biodiversity#biodiversity"
-                                        onClick={onClickSubSection}
-                                      >
-                                        <HoverRepeatAnimation>Biodiversity</HoverRepeatAnimation>
-                                      </Link>
-                                    </li>
-                                  </ul>
-                                </AccordionContent>
-                              </AccordionItem>
-                            </li>
-                            <li>
-                              <Link href="/resources">
-                                <HoverRepeatAnimation>Resources</HoverRepeatAnimation>
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="/references">
-                                <HoverRepeatAnimation>References</HoverRepeatAnimation>
-                              </Link>
+                                </li>
+                              </ul>
                             </li>
                           </ul>
-                        </Accordion>
+                        </MobileOnlyAccordion>
                       </li>
                     </ul>
                   </motion.div>

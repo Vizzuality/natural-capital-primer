@@ -36,26 +36,21 @@ const DialogOverlay = React.forwardRef<
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-const dialogContentVariants = cva(
-  "fixed z-50 grid w-full translate-x-[-50%] translate-y-[-50%] overflow-y-scroll",
-  {
-    variants: {
-      variant: {
-        default: "max-w-5xl left-[50%] top-[50%]",
-        sheet:
-          "right-0 top-[50%] w-full sm:w-[calc(400px_+_2_*_theme(spacing.6))] lg:w-[calc(400px_+_2_*_theme(spacing.20))] xl:w-[calc((100vw_-_theme(maxWidth.7xl))_/_2_+_400px_+_2_*_theme(spacing.20))] h-full p-6 lg:px-20 xl:pr-[calc(theme(spacing.20)_+_(100vw_-_theme(maxWidth.7xl))_/_2)]",
-      },
-      scheme: {
-        default: "bg-white",
-        blue: "bg-blue-500",
-      },
+const dialogContentVariants = cva("fixed z-50 grid w-full  overflow-y-scroll", {
+  variants: {
+    variant: {
+      default: "max-w-5xl translate-x-[-50%] translate-y-[-50%] left-[50%] top-[50%]",
+      fullscreen: "top-0 right-0 h-full w-full",
     },
-    defaultVariants: {
-      variant: "default",
-      scheme: "default",
+    scheme: {
+      default: "bg-white",
     },
   },
-);
+  defaultVariants: {
+    variant: "default",
+    scheme: "default",
+  },
+});
 
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
