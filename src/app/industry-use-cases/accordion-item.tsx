@@ -79,7 +79,7 @@ const AccordionItemComp = forwardRef(
         }}
       >
         <motion.div
-          className="z-30 flex scroll-mt-[53px] flex-col gap-y-11 bg-white py-4 lg:sticky lg:top-[53px] lg:flex-row lg:items-center lg:justify-between lg:gap-x-11 lg:py-8"
+          className="z-30 flex scroll-mt-[53px] flex-col gap-y-11 bg-white py-4 lg:sticky lg:top-[53px] lg:flex-row lg:items-center lg:justify-between lg:gap-x-11 lg:py-7"
           variants={ACCORDION_VARIANTS}
           animate={mainHeaderVisible ? "visible" : "hidden"}
           transition={{
