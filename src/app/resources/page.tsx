@@ -5,7 +5,7 @@ import Link from "next/link";
 import Manual from "@/icons/manual.svg";
 import ArrowExternal from "@/icons/arrow-external.svg";
 import Footer from "@/components/footer";
-import StickyNav from "@/components/sticky-nav";
+import SecondaryNavigation from "@/components/secondary-navigation";
 import { useInView } from "framer-motion";
 import { useMemo, useRef } from "react";
 
@@ -155,14 +155,16 @@ export default function ResourcesPage() {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
   ];
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const categoryInViews = [
+    useInView(categoryRefs[0], { margin: "0px 0px 0% 0px" }),
     // Using 80% instead of 90% (like the other pages) due to the gap between the categories
-    useInView(categoryRefs[0], { margin: "0px 0px -80% 0px" }),
     useInView(categoryRefs[1], { margin: "0px 0px -80% 0px" }),
     useInView(categoryRefs[2], { margin: "0px 0px -80% 0px" }),
+    useInView(categoryRefs[3], { margin: "0px 0px -80% 0px" }),
   ];
 
   const activecategory = useMemo(() => {
@@ -177,14 +179,21 @@ export default function ResourcesPage() {
 
   return (
     <>
-      <Header logo="color" />
-      <StickyNav
+      <Header />
+      <SecondaryNavigation
         title="Resources on Natural Capital"
-        items={RESOURCES_BY_CATEGORY.map(({ id, category }) => ({ key: id, value: category }))}
+        items={[
+          { key: "introduction", value: "Introduction" },
+          ...RESOURCES_BY_CATEGORY.map(({ id, category }) => ({ key: id, value: category })),
+        ]}
         activeItem={activecategory}
         variant="condensed"
       />
-      <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 xl:mt-40">
+      <div
+        ref={categoryRefs[0]}
+        id="introduction"
+        className="mx-auto flex max-w-7xl scroll-mt-[105px] flex-col gap-y-6 p-6 pt-10 pt-16 lg:gap-y-10 lg:px-20 lg:pt-14 xl:pt-52"
+      >
         <h1 className="text-4.2xl font-medium lg:text-5xl">Resources on Natural Capital</h1>
         <p className="max-w-[827px] text-lg lg:text-xl">
           A selection of resources beyond the Natural Capital Primer to further your understanding
@@ -196,8 +205,8 @@ export default function ResourcesPage() {
           <div
             key={category}
             id={id}
-            ref={categoryRefs[index]}
-            className="flex scroll-mt-[46px] flex-col gap-y-6 lg:gap-y-10"
+            ref={categoryRefs[index + 1]}
+            className="flex scroll-mt-[105px] flex-col gap-y-6 lg:gap-y-10"
           >
             <h2 className="text-2xl lg:text-4xl">{category}</h2>
             <ol className="grid gap-6 lg:grid-cols-2 lg:gap-10">

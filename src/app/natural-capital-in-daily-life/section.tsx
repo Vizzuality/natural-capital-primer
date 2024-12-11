@@ -77,7 +77,7 @@ const Section = (
   };
 
   return (
-    <section id={id} className="relative mb-10" ref={ref}>
+    <section id={id} className="relative mb-10 scroll-mt-[53px]" ref={ref}>
       <div className={cn("relative", BACKGROUND_BY_COLOR[color])}>
         <BackgroundVideo src={videoURL} soundOn={soundOn} sectionInView={inView} />
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-10 lg:px-20 lg:pb-16 lg:pt-36">

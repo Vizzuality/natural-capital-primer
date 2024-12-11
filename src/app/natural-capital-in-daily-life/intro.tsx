@@ -1,4 +1,3 @@
-import Header from "@/components/header";
 import DayInLifeMarquee from "@/components/day-in-life-cta/marquee";
 import { FC } from "react";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
@@ -6,9 +5,7 @@ import ArrowSlide from "@/icons/arrow-slide.svg";
 
 const Intro: FC = () => (
   <div className="flex min-h-min w-full flex-col justify-between gap-y-10 bg-black pb-16 lg:h-screen">
-    <div className="relative z-10">
-      <Header menuVariant="white" logo="white-color" />
-    </div>
+    <div className="relative z-10"></div>
     <div className="relative flex w-full items-center justify-center lg:h-[30vh] lg:px-20">
       <DayInLifeMarquee />
     </div>

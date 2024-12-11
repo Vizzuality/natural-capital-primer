@@ -103,6 +103,7 @@ export default function Home() {
 
   return (
     <>
+      <Header />
       <div className="bg-[length:auto_50%] bg-no-repeat pb-10 md:bg-[url(/assets/404-background.png)] md:bg-[length:auto_70%] md:bg-[right_bottom_0px] lg:bg-[length:auto_35vw] lg:pb-20 xl:bg-[length:auto_80%] xl:bg-right-bottom">
         <div className="absolute left-1/2 w-full max-w-7xl -translate-x-1/2">
           <motion.div
@@ -131,9 +132,6 @@ export default function Home() {
           >
             <Shape2 className="max-w-[250px] md:max-w-[350px] lg:max-w-full" />
           </motion.div>
-        </div>
-        <div className="relative z-10">
-          <Header logo="white" />
         </div>
         <main className="relative z-10 mx-auto flex max-w-7xl flex-col items-start justify-between gap-y-10 p-6 pb-0 lg:gap-y-14 lg:px-20 lg:pt-36">
           <div className="flex max-w-[540px] flex-col items-start gap-y-6 lg:max-w-[1030px] lg:gap-y-10">
@@ -224,7 +222,7 @@ export default function Home() {
           ref={videoSectionRef}
           className="relative -mt-10 h-[327px] w-full translate-y-[117px] bg-black sm:mx-6 lg:mx-20 lg:h-[550px] lg:translate-y-[145px] xl:left-[calc((100vw_-_1280px)_/_2_+_80px)] xl:mx-0 xl:w-[calc(100vw_-_((100vw_-_1280px)_/_2)_-_80px)]"
         >
-          <div className="bg-pure-black/40 relative z-10 flex h-full w-full flex-col items-center justify-center gap-y-12 px-6">
+          <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-y-12 bg-pure-black/40 px-6">
             <h2 className="max-w-[600px] text-center text-4xl text-white xl:text-4.5xl">
               Learn more about the Key Concepts of Natural Capital.
             </h2>

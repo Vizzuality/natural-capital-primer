@@ -5,15 +5,21 @@ import Outro from "./outro";
 import Intro from "./intro";
 import { SECTIONS } from "./data";
 import Section from "./section";
-import StickyNav from "@/components/sticky-nav";
+import SecondaryNavigation from "@/components/secondary-navigation";
 import { useInView } from "framer-motion";
 import React from "react";
+import Header from "@/components/header";
 
 export default function ADayInTheLife() {
   const [soundOn, setSoundOn] = useState(false);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const navItems = [
+    {
+      key: "introduction",
+      value: "Introduction",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
     {
       key: "mobile-phone",
       value: "Mobile Phone",
@@ -53,16 +59,21 @@ export default function ADayInTheLife() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const inViews = [
-    useInView(navItems[0].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[0].ref, { margin: "0px 0px 0% 0px" }),
     useInView(navItems[1].ref, { margin: "0px 0px -90% 0px" }),
     useInView(navItems[2].ref, { margin: "0px 0px -90% 0px" }),
     useInView(navItems[3].ref, { margin: "0px 0px -90% 0px" }),
     useInView(navItems[4].ref, { margin: "0px 0px -90% 0px" }),
     useInView(navItems[5].ref, { margin: "0px 0px -90% 0px" }),
     useInView(navItems[6].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[7].ref, { margin: "0px 0px -90% 0px" }),
   ];
 
   const activeSection = useMemo(() => {
+    if (inViews[7]) {
+      return navItems[7].ref.current?.id ?? null;
+    }
+
     if (inViews[6]) {
       return navItems[6].ref.current?.id ?? null;
     }
@@ -139,21 +150,24 @@ export default function ADayInTheLife() {
 
   return (
     <>
-      <Intro />
-      <StickyNav
+      <Header />
+      <SecondaryNavigation
         title="Natural Capital in Daily Life"
         items={navItems}
         activeItem={activeSection}
         variant="condensed"
       />
+      <div ref={navItems[0].ref} id={navItems[0].key} className="scroll-mt-[105px]">
+        <Intro />
+      </div>
       <div className="mb-10 lg:mb-14">
         {SECTIONS.map((section, index) => (
           <Section
             key={index}
-            id={navItems[index].key}
-            ref={navItems[index].ref}
+            id={navItems[index + 1].key}
+            ref={navItems[index + 1].ref}
             data={section}
-            inView={navItems[index].key === activeVideoSection}
+            inView={navItems[index + 1].key === activeVideoSection}
             soundOn={soundOn}
             setSoundOn={setSoundOn}
           />

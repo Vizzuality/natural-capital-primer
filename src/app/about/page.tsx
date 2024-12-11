@@ -41,6 +41,7 @@ export default function About() {
 
   return (
     <>
+      <Header />
       <div className="relative bg-black">
         {BACKGROUNDS.map((background, index) => (
           <MotionImage
@@ -55,9 +56,8 @@ export default function About() {
             transition={{ duration: 1 }}
           />
         ))}
-        <div className="relative z-10">
-          <Header logo="white" />
-          <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 text-white lg:mt-14 lg:gap-y-10 lg:px-20 lg:pb-16 xl:mt-40">
+        <div className="relative z-10 pt-10 lg:pt-14 xl:pt-40">
+          <div className="relative mx-auto flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 text-white lg:gap-y-10 lg:px-20 lg:pb-16">
             <h1 className="text-4.2xl font-medium lg:text-5xl">About the Natural Capital Primer</h1>
             <div className="flex max-w-[827px] flex-col gap-y-4">
               <p className="max-w-[827px] text-lg lg:text-xl">

@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC, useMemo, useRef } from "react";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
-import StickyNav from "@/components/sticky-nav";
+import SecondaryNavigation from "@/components/secondary-navigation";
 import { useInView } from "framer-motion";
 import Parallax from "@/components/animations/parallax";
 import RevealLines from "@/components/animations/reveal-lines";
@@ -17,9 +17,11 @@ import BackgroundVideo from "@/components/bg-video";
 import Reference from "@/components/reference";
 
 const ClimateAndBiodiversityPage: FC = () => {
+  const chapter0Ref = useRef<HTMLDivElement>(null);
   const chapter1Ref = useRef<HTMLDivElement>(null);
   const chapter2Ref = useRef<HTMLDivElement>(null);
 
+  const chapter0InView = useInView(chapter0Ref, { margin: "0px 0px 0% 0px" });
   const chapter1InView = useInView(chapter1Ref, { margin: "0px 0px -90% 0px" });
   const chapter2InView = useInView(chapter2Ref, { margin: "0px 0px -90% 0px" });
 
@@ -38,21 +40,30 @@ const ClimateAndBiodiversityPage: FC = () => {
       return chapter1Ref.current?.id ?? null;
     }
 
+    if (chapter0InView) {
+      return chapter0Ref.current?.id ?? null;
+    }
+
     return null;
-  }, [chapter1InView, chapter2InView]);
+  }, [chapter0InView, chapter1InView, chapter2InView]);
 
   return (
     <>
-      <Header logo="color" />
-      <StickyNav
+      <Header />
+      <SecondaryNavigation
         title="Natural Capital, Climate & Biodiversity"
         items={[
+          { key: "introduction", value: "Introduction" },
           { key: "climate", value: "Natural Capital & Climate Change" },
           { key: "biodiversity", value: "Natural Capital & Biodiversity" },
         ]}
         activeItem={activeChapter}
       />
-      <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 lg:pb-16 xl:mt-40">
+      <div
+        ref={chapter0Ref}
+        id="introduction"
+        className="relative mx-auto flex max-w-7xl scroll-mt-[105px] flex-col gap-y-6 p-6 pb-12 pt-16 lg:gap-y-10 lg:px-20 lg:pb-16 lg:pt-14 xl:pt-52"
+      >
         <h1 className="text-4.2xl font-medium lg:text-5xl">
           Natural Capital,
           <br /> Climate & Biodiversity
@@ -79,7 +90,7 @@ const ClimateAndBiodiversityPage: FC = () => {
         </div>
       </div>
 
-      <div ref={chapter1Ref} id="climate" className="scroll-mt-[46px]">
+      <div ref={chapter1Ref} id="climate" className="scroll-mt-[53px]">
         <div className="bg-turquoise">
           <div className="mx-auto flex max-w-7xl flex-col px-6 lg:px-20">
             <div className="flex flex-col items-center gap-y-4 pt-10 lg:pt-16">
@@ -255,7 +266,7 @@ const ClimateAndBiodiversityPage: FC = () => {
         </div>
       </div>
 
-      <div ref={chapter2Ref} id="biodiversity" className="scroll-mt-[46px]">
+      <div ref={chapter2Ref} id="biodiversity" className="scroll-mt-[53px]">
         <div className="bg-pink">
           <div className="mx-auto flex max-w-7xl flex-col px-6 lg:px-20">
             <div className="flex flex-col items-center gap-y-4 pt-10 lg:pt-16">

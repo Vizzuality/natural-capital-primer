@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { FC } from "react";
@@ -12,11 +12,75 @@ import ArrowSlide from "@/icons/arrow-slide.svg";
 import { Tabs } from "@/components/ui/tabs";
 import AccordionItem from "./accordion-item";
 import { useParams } from "next/navigation";
+import { useInView } from "framer-motion";
+import SecondaryNavigation from "@/components/secondary-navigation";
 
 const IndustryUseCasesPage: FC = () => {
   const params = useParams();
   const [activeItem, setActiveItem] = useState<string>("");
   const [tab, setTab] = useState<IndustryUseCasesTab>("ecosystem");
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const navItems = [
+    {
+      key: "introduction",
+      value: "Introduction",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
+    {
+      key: "manufacturing",
+      value: "Manufacturing",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
+    {
+      key: "tourism",
+      value: "Tourism",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
+    {
+      key: "retail",
+      value: "Retail",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
+    {
+      key: "food-systems",
+      value: "Food Systems",
+      ref: useRef<HTMLDivElement | null>(null),
+    },
+  ];
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const inViews = [
+    useInView(navItems[0].ref, { margin: "0px 0px 0% 0px" }),
+    useInView(navItems[1].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[2].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[3].ref, { margin: "0px 0px -90% 0px" }),
+    useInView(navItems[4].ref, { margin: "0px 0px -90% 0px" }),
+  ];
+
+  const activeSection = useMemo(() => {
+    if (inViews[4]) {
+      return navItems[4].ref.current?.id ?? null;
+    }
+
+    if (inViews[3]) {
+      return navItems[3].ref.current?.id ?? null;
+    }
+
+    if (inViews[2]) {
+      return navItems[2].ref.current?.id ?? null;
+    }
+
+    if (inViews[1]) {
+      return navItems[1].ref.current?.id ?? null;
+    }
+
+    if (inViews[0]) {
+      return navItems[0].ref.current?.id ?? null;
+    }
+
+    return null;
+  }, [inViews, navItems]);
 
   const handleTabChange = useCallback((value: string) => {
     setTab(value as IndustryUseCasesTab);
@@ -43,9 +107,14 @@ const IndustryUseCasesPage: FC = () => {
 
   return (
     <>
-      <div className="bg-black bg-[url(/assets/industry-use-cases-background.png)] bg-cover bg-center bg-no-repeat">
-        <Header logo="white" />
-        <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 text-white lg:mt-14 lg:gap-y-10 lg:px-20 lg:pb-16 xl:mt-40">
+      <Header />
+      <SecondaryNavigation title="Industry Use Cases" items={navItems} activeItem={activeSection} />
+      <div
+        ref={navItems[0].ref}
+        id={navItems[0].key}
+        className="scroll-mt-[105px] bg-black bg-[url(/assets/industry-use-cases-background.png)] bg-cover bg-center bg-no-repeat pt-10 lg:pt-14 xl:pt-52"
+      >
+        <div className="relative mx-auto flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 text-white lg:gap-y-10 lg:px-20 lg:pb-16">
           <h1 className="text-4.2xl font-medium lg:text-5xl">Industry Use Cases</h1>
           <div className="flex max-w-[827px] flex-col gap-y-4">
             <p className="max-w-[827px] text-lg lg:text-xl">
@@ -79,9 +148,11 @@ const IndustryUseCasesPage: FC = () => {
               className="flex flex-col"
               collapsible
             >
-              {ACCORDION_ITEMS.map((accordionItem: IndustryUseCasesAccordionItem) => (
+              {ACCORDION_ITEMS.map((accordionItem: IndustryUseCasesAccordionItem, index) => (
                 <AccordionItem
                   key={accordionItem.id}
+                  ref={navItems[index + 1].ref}
+                  id={navItems[index + 1].key}
                   active={activeItem === accordionItem.id}
                   tab={tab}
                   data={accordionItem}

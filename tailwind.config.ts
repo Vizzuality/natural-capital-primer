@@ -88,7 +88,7 @@ const config = {
     },
     fontSize: {
       xs: ["12px", "20px"],
-      // sm: ['14px', '20px'],
+      sm: ["14px", "20px"],
       base: ["16px", "24px"],
       lg: ["18px", "24px"],
       xl: ["24px", "36px"],
