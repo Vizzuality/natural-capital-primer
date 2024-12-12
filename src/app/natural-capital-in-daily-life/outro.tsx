@@ -26,27 +26,22 @@ const Outro = () => (
       </p>
       <div className="flex flex-col items-center gap-5">
         <p className="text-center">
-          Dive deeper into the Natural Capital Primer to understand key concepts:
+          Dive deeper into the Natural Capital Primer to understand key concepts and applicability:
         </p>
-        <div className="flex w-full flex-col gap-2 lg:flex-row">
+        <div className="flex w-full flex-col gap-2 lg:flex-row lg:justify-center">
           <Button asChild variant="outline-white" size="md">
-            <Link href="/key-concepts#assets">
-              <HoverRepeatAnimation>Natural Capital Assets</HoverRepeatAnimation>
-            </Link>
-          </Button>
-          <Button asChild variant="outline-white" size="md">
-            <Link href="/key-concepts#flows-of-services">
-              <HoverRepeatAnimation>Flows of Services</HoverRepeatAnimation>
-            </Link>
-          </Button>
-          <Button asChild variant="outline-white" size="md">
-            <Link href="/key-concepts#dependencies-and-impacts">
-              <HoverRepeatAnimation>Dependencies and Impacts</HoverRepeatAnimation>
+            <Link href="/key-concepts">
+              <HoverRepeatAnimation>Key Concepts</HoverRepeatAnimation>
             </Link>
           </Button>
           <Button asChild variant="outline-white" size="md">
             <Link href="/industry-use-cases">
               <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
+            </Link>
+          </Button>
+          <Button asChild variant="outline-white" size="md">
+            <Link href="/climate-and-biodiversity">
+              <HoverRepeatAnimation>Climate & Biodiversity</HoverRepeatAnimation>
             </Link>
           </Button>
         </div>
