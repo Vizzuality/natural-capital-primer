@@ -166,13 +166,41 @@ const Header: FC = () => {
           <NavigationMenu delayDuration={0} className="hidden xl:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink
+                <NavigationMenuTrigger
                   active={pathname.startsWith("/natural-capital-in-daily-life")}
-                  className={navigationMenuTriggerStyle()}
-                  asChild
                 >
-                  <Link href="/natural-capital-in-daily-life">Natural Capital in Daily Life</Link>
-                </NavigationMenuLink>
+                  Natural Capital in Daily Life
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="flex flex-col gap-3">
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <Link href="/natural-capital-in-daily-life">Introduction</Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <Link href="/natural-capital-in-daily-life#mobile-phone">Mobile Phone</Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <Link href="/natural-capital-in-daily-life#shower">Shower</Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <Link href="/natural-capital-in-daily-life#clothes">Clothes</Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <Link href="/natural-capital-in-daily-life#kettle-and-coffee">
+                      Kettle & Coffee
+                    </Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <Link href="/natural-capital-in-daily-life#bread-and-butter">
+                      Bread & Butter
+                    </Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <Link href="/natural-capital-in-daily-life#train">Train</Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <Link href="/natural-capital-in-daily-life#laptop">Laptop</Link>
+                  </NavigationMenuLink>
+                </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger active={pathname.startsWith("/key-concepts")}>

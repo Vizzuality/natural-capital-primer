@@ -73,7 +73,11 @@ const NavigationMenuLink = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Link>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link>
 >(({ className, ...props }, ref) => (
-  <NavigationMenuPrimitive.Link className={cn("block", className)} ref={ref} {...props} />
+  <NavigationMenuPrimitive.Link
+    className={cn("block transition-colors hover:text-grey-300", className)}
+    ref={ref}
+    {...props}
+  />
 ));
 NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName;
 

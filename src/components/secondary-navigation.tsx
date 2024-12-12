@@ -67,7 +67,7 @@ const SecondaryNavigation: FC<StickyNavProp> = ({ title, items, activeItem, vari
       <div className="mx-auto flex h-[52px] max-w-7xl items-stretch justify-between gap-x-5 px-20">
         <div className="flex flex-grow items-stretch text-xl">
           <AnimatePresence>
-            {!!activeItem && activeItem !== items[0].key && (
+            {!visible && (
               <MotionButton
                 type="button"
                 variant="transparent"
@@ -88,10 +88,13 @@ const SecondaryNavigation: FC<StickyNavProp> = ({ title, items, activeItem, vari
             <li key={key}>
               <Link
                 href={`#${key}`}
-                className={cn("flex h-full items-center border-b-2 text-sm transition-colors", {
-                  "border-b-black": key === activeItem,
-                  "border-b-transparent": key !== activeItem,
-                })}
+                className={cn(
+                  "flex h-full items-center border-b-2 text-sm transition-colors hover:text-grey-300",
+                  {
+                    "border-b-black": key === activeItem,
+                    "border-b-transparent": key !== activeItem,
+                  },
+                )}
               >
                 {value}
               </Link>
