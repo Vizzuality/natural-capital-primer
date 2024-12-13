@@ -507,7 +507,12 @@ const ClimateAndBiodiversityPage: FC = () => {
           <p className="max-w-[860px] text-2xl lg:text-4xl">
             Learn more about dependencies and impacts in the Industry Use Cases chapter.
           </p>
-          <Button variant="default" size="lg" asChild>
+          <Button
+            variant="default"
+            size="lg"
+            className="hover:bg-black focus-visible:ring-offset-orange-500"
+            asChild
+          >
             <Link href="/industry-use-cases">
               <HoverRepeatAnimation>Industry Use Cases</HoverRepeatAnimation>
             </Link>
