@@ -2,7 +2,7 @@
 FROM node:20.14.0-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+RUN corepack enable && npm install -g corepack@latest # See: https://github.com/pnpm/pnpm/issues/9029#issuecomment-2631400936
 WORKDIR /app
 
 # Stage 2: Install dependencies
