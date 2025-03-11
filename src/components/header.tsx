@@ -49,6 +49,9 @@ const HEADER_VARIANTS = {
 const Header: FC = () => {
   const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
+  // The following state is only used by the desktop navigation (outside of the modal). The value is modified depending
+  // on how the user interacts with the menu items (mouse, touch, etc.).
+  const [displayIntroductionSubSections, setDisplayIntroductionSubSections] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -113,6 +116,40 @@ const Header: FC = () => {
     return AccordionContent;
   }, [isDesktopXl]);
 
+  // The client requested that if the user clicks on the trigger, then we should navigate to the page
+  const onClickMenuTrigger = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      const pointerType = "pointerType" in e.nativeEvent ? e.nativeEvent.pointerType : "";
+
+      switch (pointerType) {
+        // If the user clicked the menu by clicking with a mouse, we navigate to the page
+        case "mouse":
+          e.preventDefault();
+          const href = (e.target as HTMLButtonElement).dataset["href"];
+          if (href !== undefined) {
+            router.push(href);
+          }
+          return;
+
+        // If the user opens the menu by touching the screen, by keyboard navigation or any other input, then we do not
+        // navigate to the page because there is no way to tell if the user wanted to do this or access a sub-section.
+        // In this case, we also display the “Introduction” sub-section items so that the user can access the main page
+        // rather than a specific part of it.
+        case "touch":
+        case "pen":
+        case "":
+          setDisplayIntroductionSubSections(true);
+          return;
+      }
+    },
+    [router, setDisplayIntroductionSubSections],
+  );
+
+  // This callback is necessary to hide the “Introduction” sub-sections when the user uses a mouse
+  const onMouseEnterMenuTrigger = useCallback(() => {
+    setDisplayIntroductionSubSections(false);
+  }, [setDisplayIntroductionSubSections]);
+
   const onClickSubSection = useCallback(
     (e: MouseEvent<HTMLAnchorElement>) => {
       const { href } = e.currentTarget as HTMLAnchorElement;
@@ -166,50 +203,29 @@ const Header: FC = () => {
           <NavigationMenu delayDuration={0} className="hidden xl:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
                   active={pathname.startsWith("/natural-capital-in-daily-life")}
+                  asChild
                 >
-                  Natural Capital in Daily Life
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="flex flex-col gap-3">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/natural-capital-in-daily-life">Introduction</Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/natural-capital-in-daily-life#mobile-phone">Mobile Phone</Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/natural-capital-in-daily-life#shower">Shower</Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/natural-capital-in-daily-life#clothes">Clothes</Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/natural-capital-in-daily-life#kettle-and-coffee">
-                      Kettle & Coffee
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/natural-capital-in-daily-life#bread-and-butter">
-                      Bread & Butter
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/natural-capital-in-daily-life#train">Train</Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/natural-capital-in-daily-life#laptop">Laptop</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuContent>
+                  <Link href="/natural-capital-in-daily-life">Natural Capital in Daily Life</Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger active={pathname.startsWith("/key-concepts")}>
+                <NavigationMenuTrigger
+                  active={pathname.startsWith("/key-concepts")}
+                  data-href="/key-concepts"
+                  onClick={onClickMenuTrigger}
+                  onMouseEnter={onMouseEnterMenuTrigger}
+                >
                   Key Concepts
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="flex flex-col gap-3">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/key-concepts">Introduction</Link>
-                  </NavigationMenuLink>
+                  {displayIntroductionSubSections && (
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                      <Link href="/key-concepts">Introduction</Link>
+                    </NavigationMenuLink>
+                  )}
                   <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
                     <Link href="/key-concepts#assets">Natural Capital Assets</Link>
                   </NavigationMenuLink>
@@ -224,13 +240,20 @@ const Header: FC = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger active={pathname.startsWith("/industry-use-cases")}>
+                <NavigationMenuTrigger
+                  active={pathname.startsWith("/industry-use-cases")}
+                  data-href="/industry-use-cases"
+                  onClick={onClickMenuTrigger}
+                  onMouseEnter={onMouseEnterMenuTrigger}
+                >
                   Industry Use Cases
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="flex flex-col gap-3">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/industry-use-cases">Introduction</Link>
-                  </NavigationMenuLink>
+                  {displayIntroductionSubSections && (
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                      <Link href="/industry-use-cases">Introduction</Link>
+                    </NavigationMenuLink>
+                  )}
                   <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
                     <Link href="/industry-use-cases#manufacturing">Manufacturing</Link>
                   </NavigationMenuLink>
@@ -246,13 +269,20 @@ const Header: FC = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger active={pathname.startsWith("/climate-and-biodiversity")}>
+                <NavigationMenuTrigger
+                  active={pathname.startsWith("/climate-and-biodiversity")}
+                  data-href="/climate-and-biodiversity"
+                  onClick={onClickMenuTrigger}
+                  onMouseEnter={onMouseEnterMenuTrigger}
+                >
                   Climate & Biodiversity
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="flex flex-col gap-3">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/climate-and-biodiversity">Introduction</Link>
-                  </NavigationMenuLink>
+                  {displayIntroductionSubSections && (
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                      <Link href="/climate-and-biodiversity">Introduction</Link>
+                    </NavigationMenuLink>
+                  )}
                   <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
                     <Link href="/climate-and-biodiversity#climate">
                       Natural Capital & Climate Change
@@ -350,7 +380,7 @@ const Header: FC = () => {
                                       <MobileOnlyAccordionItem value="key-concepts">
                                         <MobileOnlyAccordionTrigger
                                           variant="naked"
-                                          className="flex w-full items-center justify-between"
+                                          className="flex w-full items-center justify-between text-left"
                                           href="/key-concepts"
                                         >
                                           Key Concepts <ChevronBold className="h-6 w-6 xl:hidden" />
@@ -402,7 +432,7 @@ const Header: FC = () => {
                                       <MobileOnlyAccordionItem value="industry-use-cases">
                                         <MobileOnlyAccordionTrigger
                                           variant="naked"
-                                          className="flex w-full items-center justify-between"
+                                          className="flex w-full items-center justify-between text-left"
                                           href="/industry-use-cases"
                                         >
                                           Industry Use Cases{" "}
@@ -461,7 +491,7 @@ const Header: FC = () => {
                                       <MobileOnlyAccordionItem value="climate-and-biodiversity">
                                         <MobileOnlyAccordionTrigger
                                           variant="naked"
-                                          className="flex w-full items-center justify-between"
+                                          className="flex w-full items-center justify-between text-left"
                                           href="/climate-and-biodiversity"
                                         >
                                           Climate & Biodiversity{" "}
