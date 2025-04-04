@@ -45,7 +45,7 @@ const DayInLifeCTA: FC = () => {
           transition={{ duration: 1 }}
         />
       ))}
-      <div className="bg-pure-black/40 relative z-10 py-20 lg:py-[140px]">
+      <div className="relative z-10 bg-pure-black/40 py-20 lg:py-[140px]">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-6 lg:px-20">
           <div className="flex flex-col items-center gap-6">
             <div className="flex flex-col items-center gap-6 text-white lg:max-w-[830px]">
