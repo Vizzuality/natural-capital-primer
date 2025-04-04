@@ -45,7 +45,7 @@ const Footer: FC = () => {
             </p>
           </div>
         </div>
-        <nav className="py-10 lg:py-20" aria-label="Global">
+        <nav className="pb-10 pt-5 lg:py-20" aria-label="Global">
           <ul className="grid grid-cols-2 gap-x-6">
             <li className="lg:pt-[60px]">
               <ul className="flex flex-col gap-y-2.5">
@@ -116,10 +116,40 @@ const Footer: FC = () => {
                     <ArrowSlideAnimation>References</ArrowSlideAnimation>
                   </Link>
                 </li>
+                <li className="mt-11 hidden lg:block">
+                  General enquiries:
+                  <br />
+                  <Link href="mailto:foundation@macdoch.com" className="inline-block underline">
+                    <ArrowSlideAnimation>foundation@macdoch.com</ArrowSlideAnimation>
+                  </Link>
+                </li>
+                <li className="mt-2.5 hidden lg:block">
+                  Media enquiries:
+                  <br />
+                  <Link href="mailto:imogen@macdoch.com" className="inline-block underline">
+                    <ArrowSlideAnimation>imogen@macdoch.com</ArrowSlideAnimation>
+                  </Link>
+                </li>
               </ul>
             </li>
           </ul>
         </nav>
+        <div className="flex flex-col gap-5 border-t border-t-white/20 pb-10 pt-5 lg:hidden">
+          <p>
+            General enquiries:
+            <br />
+            <Link href="mailto:foundation@macdoch.com" className="inline-block underline">
+              <ArrowSlideAnimation>foundation@macdoch.com</ArrowSlideAnimation>
+            </Link>
+          </p>
+          <p>
+            Media enquiries:
+            <br />
+            <Link href="mailto:imogen@macdoch.com" className="inline-block underline">
+              <ArrowSlideAnimation>imogen@macdoch.com</ArrowSlideAnimation>
+            </Link>
+          </p>
+        </div>
       </footer>
       <div className="border-t border-t-white/20 py-10">
         <div className="mx-auto flex max-w-7xl flex-col gap-y-3 px-6 lg:col-span-2 lg:flex-row lg:gap-x-10 lg:px-20">
