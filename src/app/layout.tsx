@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Providers } from "@/components/providers";
 import Analytics from "@/components/analytics";
 import PrivacyBanner from "@/components/privacy-banner";
+import { env } from "@/env.mjs";
 
 const circular = localFont({
   src: [
@@ -27,6 +28,7 @@ const circular = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`https://${env.NEXT_PUBLIC_DOMAIN}`),
   title: {
     template: "%s | Natural Capital Primer",
     default: "Natural Capital Primer",

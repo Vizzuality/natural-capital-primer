@@ -2,17 +2,10 @@
 
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
-import { Metadata } from "next";
 import Link from "next/link";
 import Shape1 from "@/svgs/404-shape-1.svg";
 import Shape2 from "@/svgs/404-shape-2.svg";
 import { motion } from "framer-motion";
-
-export const metadata: Metadata = {
-  title: "Page not found",
-  description:
-    "A science-based resource that explains the concept of natural capital and how business and society depend on it.",
-};
 
 export default function NotFoundPage() {
   return (
