@@ -12,7 +12,6 @@ import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import { useRef } from "react";
 import Pebble from "@/components/home/pebble";
 import DayInLifeCTA from "@/components/day-in-life-cta";
-import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
 import Reference from "@/components/reference";
 import BackgroundVideo from "@/components/bg-video";
 
@@ -104,7 +103,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="bg-[length:auto_50%] bg-no-repeat pb-10 md:bg-[url(/assets/404-background.png)] md:bg-[length:auto_70%] md:bg-[right_bottom_0px] lg:bg-[length:auto_35vw] lg:pb-20 xl:bg-[length:auto_80%] xl:bg-right-bottom">
+      <div>
         <div className="absolute left-1/2 w-full max-w-7xl -translate-x-1/2">
           <motion.div
             initial={{ translateX: 0, translateY: 0 }}
@@ -134,7 +133,7 @@ export default function Home() {
           </motion.div>
         </div>
         <main className="relative z-10 mx-auto flex max-w-7xl flex-col items-start justify-between gap-y-10 p-6 pb-0 lg:gap-y-14 lg:px-20 lg:pt-36">
-          <div className="flex max-w-[540px] flex-col items-start gap-y-6 lg:max-w-[1030px] lg:gap-y-10">
+          <div className="flex max-w-[540px] flex-col items-center gap-y-6 text-center lg:max-w-[1030px] lg:gap-y-10">
             <h1 className="text-[52px] font-medium leading-none lg:text-6xl">
               Welcome to the Natural Capital Primer
             </h1>
@@ -144,34 +143,17 @@ export default function Home() {
               natural capital.
             </p>
           </div>
-          <div className="flex flex-col gap-y-5">
-            <div className="flex items-end gap-x-10">
-              <Link href="https://www.latrobe.edu.au/" rel="noopener noreferrer" target="_blank">
-                <LaTrobeUniversity
-                  className="relative mb-1 h-auto w-[111px] lg:w-[135px]"
-                  aria-label="La Trobe University"
-                />
-              </Link>
-              <Link href="https://macdochfoundation.org/" rel="noopener noreferrer" target="_blank">
-                <Image
-                  src="/assets/macdoch-foundation.png"
-                  alt="Macdoch Foundation"
-                  width={116}
-                  height={51}
-                  className="h-auto w-[98px] lg:w-[116px]"
-                />
-              </Link>
-            </div>
-            <p className="max-w-[540px] text-xs text-black/50 lg:max-w-[730px]">
-              In creating this resource on natural capital, we recognise the Indigenous peoples and
-              local communities whose wisdom and that of their ancestors, has stewarded nature for
-              millennia. We acknowledge their continuing connection to land, sea, culture and
-              community, and pay our respects to Elders past, present and future.
-            </p>
+          <div className="relative aspect-video w-full bg-black pt-11 lg:pt-[74px]">
+            <iframe
+              src="https://player.vimeo.com/video/1017082481?title=0&amp;byline=0&amp;chapters=0&amp;transcript=0&amp;vimeo_logo=0&amp;dnt=1&amp;app_id=122963"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              title="Introducing the Natural Capital Primer (Subtitled)"
+              className="absolute left-0 top-0 h-full w-full border-none"
+            ></iframe>
           </div>
         </main>
       </div>
-      <div className="bg-green-500 pt-10 lg:pt-24">
+      <div className="-mt-[calc(9_/_16_*_(100%_-_2_*_theme(spacing[6]))_/_2)] bg-green-500 pt-[calc(theme(spacing[10])_+_9_/_16_*_(100%_-_2_*_theme(spacing[6]))_/_2)] lg:-mt-[calc(9_/_16_*_(100%_-_2_*_theme(spacing[20]))_/_2)] lg:pt-[calc(theme(spacing[24])_+_9_/_16_*_(100%_-_2_*_theme(spacing[20]))_/_2)] xl:-mt-[calc(9_/_16_*_(theme(screens[xl])_-_2_*_theme(spacing[20]))_/_2)] xl:pt-[calc(theme(spacing[24])_+_9_/_16_*_(theme(screens[xl])_-_2_*_theme(spacing[20]))_/_2)]">
         <main className="mx-auto flex max-w-7xl flex-col justify-start gap-y-6 px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-x-10 lg:px-20">
           <h2 className="flex-shrink-0 text-lg lg:sticky lg:top-6 lg:w-[254px] lg:text-xl">
             What is natural capital?

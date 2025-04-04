@@ -13,7 +13,7 @@ const Footer: FC = () => {
     <div className="bg-black text-white">
       <footer className="mx-auto grid max-w-7xl grid-cols-1 px-6 lg:grid-cols-2 lg:px-20">
         <div className="border-b border-b-white/20 py-10 lg:border-b-0 lg:py-20">
-          <div className="flex max-w-[420px] flex-col gap-y-10">
+          <div className="flex max-w-[420px] flex-col gap-y-6 lg:gap-y-10">
             <Logo />
             <p>
               The Natural Capital Primer is a collaborative project of the Macdoch Foundation, La
@@ -37,6 +37,12 @@ const Footer: FC = () => {
                 />
               </Link>
             </div>
+            <p className="text-xs text-white/70 lg:pt-2.5">
+              In creating this resource on natural capital, we recognise the Indigenous peoples and
+              local communities whose wisdom and that of their ancestors, has stewarded nature for
+              millennia. We acknowledge their continuing connection to land, sea, culture and
+              community, and pay our respects to Elders past, present and future.
+            </p>
           </div>
         </div>
         <nav className="py-10 lg:py-20" aria-label="Global">
