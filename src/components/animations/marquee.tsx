@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { EasingDefinition, motion } from "framer-motion";
+import { EasingDefinition, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 const ANIMATION_EASE: EasingDefinition = "linear";

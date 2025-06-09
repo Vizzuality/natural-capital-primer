@@ -4,7 +4,7 @@ import QuizButton from "./quiz-button";
 import { Button } from "@/components/ui/button";
 import Arrow from "@/icons/arrow.svg";
 import ArrowRestart from "@/icons/arrow-restart.svg";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import ResultAnimation from "./result-animation";
 import { sendAnalyticsEvent } from "@/lib/utils";
 

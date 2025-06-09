@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, MotionValue, useTransform } from "framer-motion";
+import { motion, MotionValue, useTransform } from "motion/react";
 import desktopData from "@/data/home-pebbles-animations-desktop.json";
 import mobileData from "@/data/home-pebbles-animations-mobile.json";
 import useMediaQuery from "@/hooks/use-media-query";

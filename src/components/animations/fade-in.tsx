@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import { useRef, FC } from "react";
 
 const FadeIn: FC<{ children: React.ReactNode }> = ({ children }) => {

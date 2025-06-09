@@ -1,5 +1,14 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useRef, FC, Children, cloneElement, isValidElement, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  useRef,
+  FC,
+  Children,
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useState,
+  ReactElement,
+} from "react";
 import { useSplitText } from "./use-split-text";
 import { cn } from "@/lib/utils";
 
@@ -25,7 +34,9 @@ const RevealLines: FC<RevealLinesProps> = ({
 
   const childrenRef = useRef<HTMLDivElement[]>([]);
 
-  const childElements = Children.toArray(children).filter(isReactElement);
+  const childElements = Children.toArray(children).filter(isReactElement) as ReactElement<{
+    className: string;
+  }>[];
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -40,6 +51,7 @@ const RevealLines: FC<RevealLinesProps> = ({
   }, []);
 
   const { lines, lineHeight } = useSplitText(
+    /* @ts-expect-error: children props is unknown */
     childElements[0].props.children as string,
     childrenRef,
     windowWidth,
@@ -91,7 +103,8 @@ const RevealLines: FC<RevealLinesProps> = ({
           {/* Div created just to get the refs to calculate the children lines and lineHeight */}
           <div className="invisible h-0" aria-hidden="true">
             {childElements.map((child, index) =>
-              cloneElement(child as React.ReactElement, {
+              cloneElement(child, {
+                /* @ts-expect-error: ref is not a valid prop */
                 ref: (ref: HTMLDivElement) => (childrenRef.current[index] = ref),
               }),
             )}

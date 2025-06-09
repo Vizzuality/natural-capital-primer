@@ -15,12 +15,17 @@ export const addPropsToLink = (element: ReactNode, props: object): ReactNode => 
   if (React.isValidElement(element)) {
     if (element.type === Link) {
       return React.cloneElement(element, {
-        ...element.props,
+        ...(element.props || {}),
         ...props,
       });
-    } else if (element.props.children) {
+    } else if (
+      element.props &&
+      typeof element.props === "object" &&
+      "children" in element.props &&
+      element.props?.children
+    ) {
       const newChildren = React.Children.map(element.props.children, (child) =>
-        addPropsToLink(child, props),
+        addPropsToLink(child as ReactNode, props),
       );
       return React.cloneElement(element, {}, newChildren);
     }

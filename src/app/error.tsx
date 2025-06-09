@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Shape1 from "@/svgs/500-shape-1.svg";
 import Shape2 from "@/svgs/500-shape-2.svg";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export const metadata: Metadata = {
   title: "Something went wrong",

@@ -5,7 +5,7 @@ import Header from "@/components/header";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
 import ArrowSlide from "@/icons/arrow-slide.svg";
 import Vizzuality from "@/svgs/vizzuality.svg";
@@ -28,8 +28,8 @@ const MotionImage = motion.create(Image);
 export default function About() {
   const [currentFrame, setCurrentFrame] = useState(0);
 
-  const videoSectionRef = useRef<HTMLDivElement | null>(null);
-  const videoSectionInView = useInView(videoSectionRef);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
+  const videoSectionInView = useInView(videoSectionRef as React.RefObject<Element>);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

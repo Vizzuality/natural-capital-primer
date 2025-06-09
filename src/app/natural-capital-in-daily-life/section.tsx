@@ -1,5 +1,5 @@
 import { ForwardedRef, forwardRef } from "react";
-import { useTransform, useScroll } from "framer-motion";
+import { useTransform, useScroll } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { GLOSSARY_TERMS } from "./data";
 import { SectionType } from "./data";
@@ -10,7 +10,7 @@ import AudioIconOn from "@/svgs/audio-icon-on.svg";
 import AudioIconOff from "@/svgs/audio-icon-off.svg";
 import BackgroundVideo from "@/components/bg-video";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import useMediaQuery from "@/hooks/use-media-query";
 
 export interface SectionProps {

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ForwardedRef, forwardRef } from "react";
 import Check from "@/svgs/check.svg";
 import Close from "@/svgs/close.svg";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 
 export interface QuizButtonProps {
   children: React.ReactNode;

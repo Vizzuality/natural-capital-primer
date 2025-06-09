@@ -1,6 +1,6 @@
 import { IndustryUseCasesAccordionItem, IndustryUseCasesTab } from "./types";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import ChevronBold from "@/icons/chevron-bold.svg";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useCallback, useEffect, forwardRef, useRef, useState } from "react";

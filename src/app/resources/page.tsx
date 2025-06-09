@@ -6,7 +6,7 @@ import Manual from "@/icons/manual.svg";
 import ArrowExternal from "@/icons/arrow-external.svg";
 import Footer from "@/components/footer";
 import SecondaryNavigation from "@/components/secondary-navigation";
-import { useInView } from "framer-motion";
+import { useInView } from "motion/react";
 import { useMemo, useRef } from "react";
 
 const RESOURCES_BY_CATEGORY = [

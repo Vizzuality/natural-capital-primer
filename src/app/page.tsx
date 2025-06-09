@@ -2,7 +2,7 @@
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "motion/react";
 import Shape1 from "@/svgs/404-shape-1.svg";
 import Shape2 from "@/svgs/home-shape-2.svg";
 import Image from "next/image";

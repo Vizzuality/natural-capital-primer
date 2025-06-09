@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { useRef, useState } from "react";
-import { useScroll } from "framer-motion";
+import { useScroll } from "motion/react";
 import { FC, cloneElement, isValidElement } from "react";
 import useMediaQuery from "@/hooks/use-media-query";
 
@@ -9,7 +9,7 @@ type ParallaxProps = {
   className?: string;
   src?: string;
   heightClasses: string;
-  children?: React.ReactNode & { className?: string; style?: { [key: string]: string } };
+  children?: React.ReactElement<{ className?: string; style?: { [key: string]: string } }> | null;
   containerHeightPercentage?: number;
   containerHeightPercentageMobile?: number;
 };

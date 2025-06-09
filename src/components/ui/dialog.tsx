@@ -4,7 +4,7 @@ import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const Dialog = DialogPrimitive.Root;
 

@@ -6,7 +6,7 @@ import Intro from "./intro";
 import { SECTIONS } from "./data";
 import Section from "./section";
 import SecondaryNavigation from "@/components/secondary-navigation";
-import { useInView } from "framer-motion";
+import { useInView } from "motion/react";
 import React from "react";
 import Header from "@/components/header";
 
