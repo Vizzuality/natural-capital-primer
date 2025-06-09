@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/tooltip";
 import { useState } from "react";
 import { AnimatePresence } from "motion/react";
-import { REFERENCES } from "@/app/(app)/references/data";
+import { REFERENCES } from "@/app/(frontend)/references/data";
 import { addPropsToLink, cn } from "@/lib/utils";
 
 export interface ReferenceProps {
