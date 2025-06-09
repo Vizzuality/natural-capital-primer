@@ -135,20 +135,20 @@ const Footer: FC = () => {
           </ul>
         </nav>
         <div className="flex flex-col gap-5 border-t border-t-white/20 pb-10 pt-5 lg:hidden">
-          <p>
+          <div>
             General enquiries:
             <br />
             <Link href="mailto:foundation@macdoch.com" className="inline-block underline">
               <ArrowSlideAnimation>foundation@macdoch.com</ArrowSlideAnimation>
             </Link>
-          </p>
-          <p>
+          </div>
+          <div>
             Media enquiries:
             <br />
             <Link href="mailto:imogen@macdoch.com" className="inline-block underline">
               <ArrowSlideAnimation>imogen@macdoch.com</ArrowSlideAnimation>
             </Link>
-          </p>
+          </div>
         </div>
       </footer>
       <div className="border-t border-t-white/20 py-10">
