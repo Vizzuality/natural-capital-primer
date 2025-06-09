@@ -26,7 +26,6 @@
     "csv-parser": "^3.0.0",
     "d3-selection": "3.0.0",
     "d3-shape": "3.2.0",
-    "motion/react": "^11.2.12",
     "jotai": "^2.10.0",
     "lucide-react": "^0.396.0",
     "motion": "^12.16.0",
