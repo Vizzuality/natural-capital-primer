@@ -1,4 +1,4 @@
-import { useEffect, useState, MutableRefObject } from "react";
+import { useEffect, useState, RefObject } from "react";
 import ReactDOMServer from "react-dom/server";
 
 const extractWord = (content: string | React.ReactNode) => {
@@ -22,7 +22,7 @@ const extractWord = (content: string | React.ReactNode) => {
 
 export const useSplitText = (
   text: string | React.ReactNode,
-  containerRefs: MutableRefObject<HTMLDivElement[]>,
+  containerRefs: RefObject<HTMLDivElement[]>,
   windowWidth: number,
 ) => {
   const [lines, setLines] = useState<(string | React.ReactNode)[][]>([]);

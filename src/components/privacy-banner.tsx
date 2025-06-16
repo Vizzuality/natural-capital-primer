@@ -3,7 +3,7 @@
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useAtom } from "jotai";
 import { analyticsConsentAtom } from "@/lib/store";
 import { env } from "@/env.mjs";

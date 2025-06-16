@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Correct from "@/svgs/correct.svg";
 import Wrong from "@/svgs/wrong.svg";
 import { cn } from "@/lib/utils";

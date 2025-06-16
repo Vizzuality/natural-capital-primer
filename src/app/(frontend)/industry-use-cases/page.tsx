@@ -12,7 +12,7 @@ import ArrowSlide from "@/icons/arrow-slide.svg";
 import { Tabs } from "@/components/ui/tabs";
 import AccordionItem from "./accordion-item";
 import { useParams } from "next/navigation";
-import { useInView } from "framer-motion";
+import { useInView } from "motion/react";
 import SecondaryNavigation from "@/components/secondary-navigation";
 
 const IndustryUseCasesPage: FC = () => {

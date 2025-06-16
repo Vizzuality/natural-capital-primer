@@ -10,7 +10,7 @@ import Link from "next/link";
 import { FC, useMemo, useRef } from "react";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
 import SecondaryNavigation from "@/components/secondary-navigation";
-import { useInView } from "framer-motion";
+import { useInView } from "motion/react";
 import Parallax from "@/components/animations/parallax";
 import RevealLines from "@/components/animations/reveal-lines";
 import BackgroundVideo from "@/components/bg-video";

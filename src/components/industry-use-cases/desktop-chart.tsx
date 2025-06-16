@@ -1,4 +1,4 @@
-import { Group, Node, nodes } from "@/app/industry-use-cases/chart-data";
+import { Group, Node, nodes } from "@/app/(frontend)/industry-use-cases/chart-data";
 import { cn } from "@/lib/utils";
 import { linkHorizontal } from "d3-shape";
 import { FC, useCallback, useMemo, useState } from "react";

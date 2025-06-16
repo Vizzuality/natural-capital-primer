@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const IMAGES = [
   "/assets/natural-capital-in-daily-life-illustration-22.png",

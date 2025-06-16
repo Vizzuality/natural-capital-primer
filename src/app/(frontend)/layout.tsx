@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import { Providers } from "@/components/providers";
@@ -10,17 +10,17 @@ import { env } from "@/env.mjs";
 const circular = localFont({
   src: [
     {
-      path: "../fonts/CircularStd-Book.woff2",
+      path: "../../fonts/CircularStd-Book.woff2",
       weight: "450",
       style: "normal",
     },
     {
-      path: "../fonts/CircularStd-Medium.woff2",
+      path: "../../fonts/CircularStd-Medium.woff2",
       weight: "500 600",
       style: "normal",
     },
     {
-      path: "../fonts/CircularStd-Bold.woff2",
+      path: "../../fonts/CircularStd-Bold.woff2",
       weight: "700",
       style: "normal",
     },

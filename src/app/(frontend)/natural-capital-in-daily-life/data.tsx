@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 export const GLOSSARY_TERMS: {
   [key: string]: { title: string; description: string };
 } = {

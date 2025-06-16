@@ -13,7 +13,7 @@ import type { QuizProps } from "@/components/quiz";
 import NaturalCapitalChart from "./natural-capital-chart";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
 import SecondaryNavigation from "@/components/secondary-navigation";
-import { useInView } from "framer-motion";
+import { useInView } from "motion/react";
 import Reference from "@/components/reference";
 import BackgroundVideo from "@/components/bg-video";
 import RevealLines from "@/components/animations/reveal-lines";

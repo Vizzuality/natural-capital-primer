@@ -3,7 +3,7 @@
 import Info from "@/svgs/info.svg";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);

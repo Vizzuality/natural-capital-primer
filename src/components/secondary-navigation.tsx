@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FC, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cva, VariantProps } from "class-variance-authority";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 
 const navVariants = cva("flex justify-end", {
   variants: {

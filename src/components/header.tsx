@@ -15,7 +15,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import HoverRepeatAnimation from "./animations/hover-repeat";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
