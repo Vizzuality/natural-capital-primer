@@ -1,9 +1,10 @@
+import path from "path";
+import { fileURLToPath } from "url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { s3Storage } from "@payloadcms/storage-s3";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import path from "path";
+import { resendAdapter } from "@payloadcms/email-resend";
 import { buildConfig } from "payload";
-import { fileURLToPath } from "url";
 import sharp from "sharp";
 
 import { Users } from "./collections/Users";
@@ -31,6 +32,11 @@ export default buildConfig({
     },
   }),
   sharp,
+  email: resendAdapter({
+    defaultFromAddress: process.env.EMAIL_DEFAULT_FROM_ADRESS || "",
+    defaultFromName: "Natural Capital Primer",
+    apiKey: process.env.EMAIL_RESEND_API_KEY || "",
+  }),
   plugins: [
     // https://github.com/payloadcms/payload/tree/main/packages/storage-s3
     s3Storage({
