@@ -7,8 +7,9 @@ import { resendAdapter } from "@payloadcms/email-resend";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
-import { Users } from "./collections/Users";
-import { Media } from "./collections/Media";
+import { Users } from "./cms/collections/Users";
+import { Media } from "./cms/collections/Media";
+import { CaseStudies } from "./cms/collections/CaseStudies";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -20,7 +21,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, CaseStudies],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

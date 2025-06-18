@@ -19,8 +19,8 @@ importers:
         specifier: ^3.41.0
         version: 3.41.0(@types/react@19.1.6)(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))(react@19.1.0)
       '@payloadcms/email-resend':
-        specifier: ^3.42.0
-        version: 3.42.0(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))
+        specifier: ^3.41.0
+        version: 3.41.0(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))
       '@payloadcms/next':
         specifier: ^3.41.0
         version: 3.41.0(@types/react@19.1.6)(graphql@16.11.0)(monaco-editor@0.52.2)(next@15.3.3(@babel/core@7.27.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.77.4))(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
@@ -31,6 +31,9 @@ importers:
         specifier: ^3.41.0
         version: 3.41.0(@faceless-ui/modal@3.0.0-beta.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@faceless-ui/scroll-info@2.0.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@payloadcms/next@3.41.0(@types/react@19.1.6)(graphql@16.11.0)(monaco-editor@0.52.2)(next@15.3.3(@babel/core@7.27.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.77.4))(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3))(@types/react@19.1.6)(monaco-editor@0.52.2)(next@15.3.3(@babel/core@7.27.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.77.4))(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)(yjs@13.6.27)
       '@payloadcms/storage-s3':
+        specifier: ^3.41.0
+        version: 3.41.0(@types/react@19.1.6)(monaco-editor@0.52.2)(next@15.3.3(@babel/core@7.27.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.77.4))(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+      '@payloadcms/ui':
         specifier: ^3.41.0
         version: 3.41.0(@types/react@19.1.6)(monaco-editor@0.52.2)(next@15.3.3(@babel/core@7.27.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.77.4))(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       '@radix-ui/react-accordion':
@@ -48,6 +51,9 @@ importers:
       '@radix-ui/react-popover':
         specifier: ^1.1.1
         version: 1.1.14(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@radix-ui/react-radio-group':
+        specifier: ^1.3.7
+        version: 1.3.7(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.2.3(@types/react@19.1.6)(react@19.1.0)
@@ -105,6 +111,9 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
+      slugify:
+        specifier: ^1.6.6
+        version: 1.6.6
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.6.0
@@ -1910,11 +1919,11 @@ packages:
     peerDependencies:
       payload: 3.41.0
 
-  '@payloadcms/email-resend@3.42.0':
-    resolution: {integrity: sha512-8U7DFfLKBZdd//kmq5Osq28KqXdOUU9ZPRkU84jwHVzNREuTIfVAGp9x0haZ90szk/mHjCVOgnCZecYDVF8KPA==}
+  '@payloadcms/email-resend@3.41.0':
+    resolution: {integrity: sha512-Q/Z7UnsQyX8Hd63ZmoDxSQzfb64AbVyg/VDJjE2lXwCzNz+a7C0RBnDo9L8u2C3bp7k7kMcIAXK/wQqQxFcLXw==}
     engines: {node: ^18.20.2 || >=20.9.0}
     peerDependencies:
-      payload: 3.42.0
+      payload: 3.41.0
 
   '@payloadcms/graphql@3.41.0':
     resolution: {integrity: sha512-O67hhmR7NsRTWtkHun5Y28dVnwecWdAXJV45ZNLp2GJZKNXqN1Odv/fZJ2DdPEay/+qibX2EADIc6caZg/eVUw==}
@@ -2186,6 +2195,19 @@ packages:
 
   '@radix-ui/react-primitive@2.1.3':
     resolution: {integrity: sha512-m9gTwRkhy2lvCPe6QJp4d3G1TYEUHn/FzJUtq9MjH46an1wJU+GdoGC5VLof8RX8Ft/DlpshApkhswDLZzHIcQ==}
+    peerDependencies:
+      '@types/react': 19.1.6
+      '@types/react-dom': 19.1.6
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@radix-ui/react-radio-group@1.3.7':
+    resolution: {integrity: sha512-9w5XhD0KPOrm92OTTE0SysH3sYzHsSTHNvZgUBo/VZ80VdYyB5RneDbc0dKpURS24IxkoFRu/hI0i4XyfFwY6g==}
     peerDependencies:
       '@types/react': 19.1.6
       '@types/react-dom': 19.1.6
@@ -5236,6 +5258,10 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
 
+  slugify@1.6.6:
+    resolution: {integrity: sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==}
+    engines: {node: '>=8.0.0'}
+
   snake-case@3.0.4:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
 
@@ -7945,7 +7971,7 @@ snapshots:
       nodemailer: 6.9.16
       payload: 3.41.0(graphql@16.11.0)(typescript@5.8.3)
 
-  '@payloadcms/email-resend@3.42.0(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))':
+  '@payloadcms/email-resend@3.41.0(payload@3.41.0(graphql@16.11.0)(typescript@5.8.3))':
     dependencies:
       payload: 3.41.0(graphql@16.11.0)(typescript@5.8.3)
 
@@ -8340,6 +8366,24 @@ snapshots:
   '@radix-ui/react-primitive@2.1.3(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@radix-ui/react-slot': 1.2.3(@types/react@19.1.6)(react@19.1.0)
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+    optionalDependencies:
+      '@types/react': 19.1.6
+      '@types/react-dom': 19.1.6(@types/react@19.1.6)
+
+  '@radix-ui/react-radio-group@1.3.7(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      '@radix-ui/primitive': 1.1.2
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.1.6)(react@19.1.0)
+      '@radix-ui/react-context': 1.1.2(@types/react@19.1.6)(react@19.1.0)
+      '@radix-ui/react-direction': 1.1.1(@types/react@19.1.6)(react@19.1.0)
+      '@radix-ui/react-presence': 1.1.4(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@radix-ui/react-primitive': 2.1.3(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@radix-ui/react-roving-focus': 1.1.10(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@radix-ui/react-use-controllable-state': 1.2.2(@types/react@19.1.6)(react@19.1.0)
+      '@radix-ui/react-use-previous': 1.1.1(@types/react@19.1.6)(react@19.1.0)
+      '@radix-ui/react-use-size': 1.1.1(@types/react@19.1.6)(react@19.1.0)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
     optionalDependencies:
@@ -11824,6 +11868,8 @@ snapshots:
   sisteransi@1.0.5: {}
 
   slash@3.0.0: {}
+
+  slugify@1.6.6: {}
 
   snake-case@3.0.4:
     dependencies:
