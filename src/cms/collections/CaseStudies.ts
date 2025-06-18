@@ -7,6 +7,7 @@ import {
   ParagraphFeature,
   UploadFeature,
 } from "@payloadcms/richtext-lexical";
+
 import type { CollectionConfig } from "payload";
 import slugify from "slugify";
 import { SideBySideBlock } from "../blocks/side-by-side";
@@ -60,7 +61,6 @@ export const CaseStudies: CollectionConfig = {
       name: "color",
       type: "text",
       label: "Color",
-      required: true,
       admin: {
         components: {
           Field: "@/cms/fields/colors",
@@ -69,17 +69,23 @@ export const CaseStudies: CollectionConfig = {
     },
     {
       name: "content",
-      type: "richText",
-      editor: lexicalEditor({
-        features: () => [
-          ...commonRichTextFeatures,
-          UploadFeature(),
-          BlocksFeature({
-            blocks: [SideBySideBlock],
+      type: "array",
+      fields: [
+        {
+          name: "content",
+          type: "richText",
+          required: true,
+          editor: lexicalEditor({
+            features: () => [
+              ...commonRichTextFeatures,
+              UploadFeature(),
+              BlocksFeature({
+                blocks: [SideBySideBlock],
+              }),
+            ],
           }),
-        ],
-      }),
-
+        },
+      ],
       required: true,
     },
     {

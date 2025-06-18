@@ -160,22 +160,25 @@ export interface CaseStudy {
   title: string;
   introduction: string;
   image: number | Media;
-  color: string;
+  color?: string | null;
   content: {
-    root: {
-      type: string;
-      children: {
+    content: {
+      root: {
         type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
         version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
+      };
+      [k: string]: unknown;
     };
-    [k: string]: unknown;
-  };
+    id?: string | null;
+  }[];
   'key insides'?:
     | {
         inside: {
@@ -303,7 +306,12 @@ export interface CaseStudiesSelect<T extends boolean = true> {
   introduction?: T;
   image?: T;
   color?: T;
-  content?: T;
+  content?:
+    | T
+    | {
+        content?: T;
+        id?: T;
+      };
   'key insides'?:
     | T
     | {

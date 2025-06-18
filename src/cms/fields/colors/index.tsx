@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
-import type { TextFieldServerComponent } from "payload";
+import type { TextFieldClientComponent } from "payload";
+import { useField } from "@payloadcms/ui";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 
 const caseStudiesColors = [
@@ -13,16 +16,19 @@ const caseStudiesColors = [
   { label: "Pink", value: "#FD4BE1" },
 ];
 
-const CmsColorsField: TextFieldServerComponent = ({ field: { name, defaultValue } }) => {
+const CmsColorsField: TextFieldClientComponent = ({ field: { name }, path }) => {
+  const field = useField({ path });
+
   return (
     <div className="my-6">
       <label className="field-label">
         Color <span className="required">*</span>
       </label>
       <RadioGroup
-        defaultValue={defaultValue as string | undefined}
+        // defaultValue={defaultValue as string | undefined}
         className="flex h-[56px] w-full items-center justify-between gap-4"
         name={name}
+        onValueChange={(value) => field?.setValue(value)}
       >
         {caseStudiesColors.map((color) => (
           <RadioGroupItem

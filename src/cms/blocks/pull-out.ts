@@ -11,7 +11,7 @@ import {
 import { Block } from "payload";
 
 export const PullOutBlock: Block = {
-  slug: "pull-off",
+  slug: "pull-out",
   admin: {
     disableBlockName: true,
   },
@@ -19,7 +19,7 @@ export const PullOutBlock: Block = {
     {
       name: "title",
       type: "text",
-      label: "Pull Off Title",
+      label: "Pull Out Title",
       required: true,
     },
     {
