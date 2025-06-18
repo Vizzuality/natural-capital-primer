@@ -11,7 +11,7 @@ const sideBySideField: RichTextField = {
       ...commonRichTextFeatures,
       UploadFeature(),
       BlocksFeature({
-        inlineBlocks: [PullOutBlock],
+        blocks: [PullOutBlock],
       }),
     ],
   }),
