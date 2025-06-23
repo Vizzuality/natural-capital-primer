@@ -6,7 +6,6 @@ import Logo from "@/svgs/logo.svg";
 import Menu from "@/icons/menu.svg";
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
 import {
-  FC,
   Fragment,
   MouseEvent,
   PropsWithChildren,
@@ -37,6 +36,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import useMediaQuery from "@/hooks/use-media-query";
+import { AppSetting, CaseStudy } from "@/payload-types";
 
 const DIALOG_ANIMATION_DURATION = 0.3;
 const HEADER_ANIMATION_DURATION = 0.3;
@@ -46,7 +46,11 @@ const HEADER_VARIANTS = {
   hidden: { y: "-53px" },
 };
 
-const Header: FC = () => {
+type HeaderProps = {
+  caseStudies?: CaseStudy[];
+  appSettings?: AppSetting | null;
+};
+const Header = ({ caseStudies, appSettings }: HeaderProps) => {
   const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
   // The following state is only used by the desktop navigation (outside of the modal). The value is modified depending
@@ -179,6 +183,8 @@ const Header: FC = () => {
     [pathname, router],
   );
 
+  const isCaseStudiesActive = appSettings?.enableCaseStudies === "true";
+
   return (
     <motion.header
       className="sticky top-0 z-50 border-b border-b-black bg-white"
@@ -268,33 +274,55 @@ const Header: FC = () => {
                   </NavigationMenuLink>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  active={pathname.startsWith("/climate-and-biodiversity")}
-                  data-href="/climate-and-biodiversity"
-                  onClick={onClickMenuTrigger}
-                  onMouseEnter={onMouseEnterMenuTrigger}
-                >
-                  Climate & Biodiversity
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="flex flex-col gap-3">
-                  {displayIntroductionSubSections && (
+              {isCaseStudiesActive ? (
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    active={pathname.startsWith("/case-studies")}
+                    onMouseEnter={onMouseEnterMenuTrigger}
+                  >
+                    Case Studies
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="flex flex-col gap-3">
+                    {caseStudies?.map((caseStudy) => (
+                      <NavigationMenuLink
+                        key={caseStudy.id}
+                        className={navigationMenuTriggerStyle()}
+                        asChild
+                      >
+                        <Link href={`/case-studies/${caseStudy.id}`}>{caseStudy.title}</Link>
+                      </NavigationMenuLink>
+                    ))}
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ) : (
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    active={pathname.startsWith("/climate-and-biodiversity")}
+                    data-href="/climate-and-biodiversity"
+                    onClick={onClickMenuTrigger}
+                    onMouseEnter={onMouseEnterMenuTrigger}
+                  >
+                    Climate & Biodiversity
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="flex flex-col gap-3">
+                    {displayIntroductionSubSections && (
+                      <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                        <Link href="/climate-and-biodiversity">Introduction</Link>
+                      </NavigationMenuLink>
+                    )}
                     <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                      <Link href="/climate-and-biodiversity">Introduction</Link>
+                      <Link href="/climate-and-biodiversity#climate">
+                        Natural Capital & Climate Change
+                      </Link>
                     </NavigationMenuLink>
-                  )}
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/climate-and-biodiversity#climate">
-                      Natural Capital & Climate Change
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/climate-and-biodiversity#biodiversity">
-                      Natural Capital & Biodiversity
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                      <Link href="/climate-and-biodiversity#biodiversity">
+                        Natural Capital & Biodiversity
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              )}
             </NavigationMenuList>
           </NavigationMenu>
           <Dialog open={open} onOpenChange={setOpen}>
@@ -487,6 +515,33 @@ const Header: FC = () => {
                                         </MobileOnlyAccordionContent>
                                       </MobileOnlyAccordionItem>
                                     </li>
+                                    {isCaseStudiesActive && (
+                                      <li className="xl:border-t xl:border-t-black xl:pt-4">
+                                        <MobileOnlyAccordionItem value="case-studies">
+                                          <MobileOnlyAccordionTrigger
+                                            variant="naked"
+                                            className="pointer-events-none flex w-full items-center justify-between text-left"
+                                            href="/case-studies"
+                                          >
+                                            Case Studies
+                                            <ChevronBold className="h-6 w-6 xl:hidden" />
+                                          </MobileOnlyAccordionTrigger>
+                                          <MobileOnlyAccordionContent variant="naked">
+                                            <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
+                                              {caseStudies?.map((caseStudy) => (
+                                                <li key={caseStudy.id} className="xl:hidden">
+                                                  <Link href={`/case-studies/${caseStudy.id}`}>
+                                                    <HoverRepeatAnimation>
+                                                      {caseStudy.title}
+                                                    </HoverRepeatAnimation>
+                                                  </Link>
+                                                </li>
+                                              ))}
+                                            </ul>
+                                          </MobileOnlyAccordionContent>
+                                        </MobileOnlyAccordionItem>
+                                      </li>
+                                    )}
                                     <li className="xl:border-t xl:border-t-black xl:pt-4">
                                       <MobileOnlyAccordionItem value="climate-and-biodiversity">
                                         <MobileOnlyAccordionTrigger
@@ -494,7 +549,7 @@ const Header: FC = () => {
                                           className="flex w-full items-center justify-between text-left"
                                           href="/climate-and-biodiversity"
                                         >
-                                          Climate & Biodiversity{" "}
+                                          Climate & Biodiversity
                                           <ChevronBold className="h-6 w-6 xl:hidden" />
                                         </MobileOnlyAccordionTrigger>
                                         <MobileOnlyAccordionContent variant="naked">

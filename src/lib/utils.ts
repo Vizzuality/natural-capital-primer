@@ -6,6 +6,7 @@ import { twMerge } from "tailwind-merge";
 import { env } from "@/env.mjs";
 import { sendGAEvent, sendGTMEvent } from "@next/third-parties/google";
 import { analyticsConsentAtom, store } from "@/lib/store";
+import { Media } from "@/payload-types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -47,4 +48,15 @@ export const sendAnalyticsEvent = (eventName: string) => {
   } else {
     console.info(`Analytics event: "${eventName}". Google Tag Manager is not currently enabled.`);
   }
+};
+
+export const isMediaImage = (media: unknown): media is Media => {
+  return (
+    !!media &&
+    typeof media === "object" &&
+    "url" in media &&
+    typeof media.url === "string" &&
+    "alt" in media &&
+    typeof media.alt === "string"
+  );
 };

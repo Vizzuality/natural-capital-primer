@@ -86,8 +86,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'app-settings': AppSetting;
+  };
+  globalsSelect: {
+    'app-settings': AppSettingsSelect<false> | AppSettingsSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -158,7 +162,21 @@ export interface Media {
 export interface CaseStudy {
   id: string;
   title: string;
-  introduction: string;
+  introduction: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   image: number | Media;
   color?: string | null;
   content: {
@@ -179,23 +197,9 @@ export interface CaseStudy {
     };
     id?: string | null;
   }[];
-  'key insides'?:
+  key_insights?:
     | {
-        inside: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        };
+        insight: string;
         id?: string | null;
       }[]
     | null;
@@ -312,10 +316,10 @@ export interface CaseStudiesSelect<T extends boolean = true> {
         content?: T;
         id?: T;
       };
-  'key insides'?:
+  key_insights?:
     | T
     | {
-        inside?: T;
+        insight?: T;
         id?: T;
       };
   updatedAt?: T;
@@ -352,6 +356,26 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "app-settings".
+ */
+export interface AppSetting {
+  id: number;
+  enableCaseStudies: 'true' | 'false';
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "app-settings_select".
+ */
+export interface AppSettingsSelect<T extends boolean = true> {
+  enableCaseStudies?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

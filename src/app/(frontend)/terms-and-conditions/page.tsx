@@ -1,12 +1,11 @@
 import Footer from "@/components/footer";
-import Header from "@/components/header";
+
 import Link from "next/link";
 import { FC } from "react";
 
 const TermsAndConditionsPage: FC = () => {
   return (
     <>
-      <Header />
       <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pb-12 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 lg:pb-16 xl:mt-40">
         <h1 className="text-4.2xl font-medium lg:text-5xl">Terms & Conditions</h1>
         <div className="flex max-w-[827px] flex-col gap-y-4">

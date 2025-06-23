@@ -2,7 +2,7 @@
 
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import Footer from "@/components/footer";
-import Header from "@/components/header";
+
 import { Button } from "@/components/ui/button";
 import ArrowSlide from "@/icons/arrow-slide.svg";
 import Image from "next/image";
@@ -49,7 +49,6 @@ const ClimateAndBiodiversityPage: FC = () => {
 
   return (
     <>
-      <Header />
       <SecondaryNavigation
         title="Natural Capital, Climate & Biodiversity"
         items={[

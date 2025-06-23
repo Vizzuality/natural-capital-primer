@@ -1,7 +1,7 @@
 "use client";
 
 import Footer from "@/components/footer";
-import Header from "@/components/header";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -41,7 +41,6 @@ export default function About() {
 
   return (
     <>
-      <Header />
       <div className="relative bg-black">
         {BACKGROUNDS.map((background, index) => (
           <MotionImage

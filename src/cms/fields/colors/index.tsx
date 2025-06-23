@@ -18,6 +18,7 @@ const caseStudiesColors = [
 
 const CmsColorsField: TextFieldClientComponent = ({ field: { name }, path }) => {
   const field = useField({ path });
+  const defaultValue = typeof field.initialValue === "string" ? field.initialValue : undefined;
 
   return (
     <div className="my-6">
@@ -25,7 +26,7 @@ const CmsColorsField: TextFieldClientComponent = ({ field: { name }, path }) => 
         Color <span className="required">*</span>
       </label>
       <RadioGroup
-        // defaultValue={defaultValue as string | undefined}
+        defaultValue={defaultValue}
         className="flex h-[56px] w-full items-center justify-between gap-4"
         name={name}
         onValueChange={(value) => field?.setValue(value)}

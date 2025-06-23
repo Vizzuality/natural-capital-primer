@@ -1,13 +1,11 @@
 "use client";
 
-import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { REFERENCES } from "./data";
 
 export default function ReferencesPage() {
   return (
     <>
-      <Header />
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-y-6 p-6 pt-10 lg:mt-14 lg:gap-y-10 lg:px-20 xl:mt-40">
         <h1 className="text-4.2xl font-medium lg:text-5xl">Natural Capital Primer References</h1>
         <p className="max-w-[827px] text-lg lg:text-xl">

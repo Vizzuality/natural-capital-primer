@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Shape1 from "@/svgs/404-shape-1.svg";
@@ -10,7 +9,6 @@ import { motion } from "motion/react";
 export default function NotFoundPage() {
   return (
     <>
-      <Header />
       <div className="min-h-screen bg-[url(/assets/404-background.png)] bg-[length:auto_45%] bg-right-bottom bg-no-repeat xl:bg-[length:auto_70%]">
         <div className="absolute left-1/2 w-full max-w-7xl -translate-x-1/2">
           <motion.div

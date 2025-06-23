@@ -1,0 +1,50 @@
+@tailwind base;
+/* @tailwind components;
+@tailwind utilities; */
+
+@layer base {
+  h2 {
+    @apply text-2xl lg:text-4xl;
+  }
+  h3 {
+    @apply text-xl lg:text-2xl;
+  }
+  h4 {
+    @apply text-lg lg:text-xl;
+  }
+  h2, h3, h4 {
+    @apply mb-4 font-normal max-w-[860px];
+  }
+  p {
+    @apply max-w-[860px];
+  }
+  p:not(:last-child) {
+    @apply mb-2;
+  }
+  .pull-out:not(:first-child) {
+    @apply mt-8 sm:mt-16;
+  }
+  .pull-out:not(:last-child) {
+    @apply mb-8 sm:mb-16;
+  }
+}
+
+
+
+.payload-richtext ul {
+  list-style-type: disc !important;
+  list-style-position: inside;
+}
+
+.payload-richtext ol {
+  list-style-type: decimal !important;
+  list-style-position: inside;
+}
+
+.payload-richtext ul li::marker, .payload-richtext ol li::marker {
+  color: var(--case-study-color);
+}
+
+.payload-richtext ul:not(:last-child), .payload-richtext ol:not(:last-child) {
+  margin-bottom: 1rem;
+}

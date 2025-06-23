@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import Footer from "@/components/footer";
-import Header from "@/components/header";
+
 import { FC } from "react";
 import { Accordion } from "@/components/ui/accordion";
 import { ACCORDION_ITEMS } from "./data";
@@ -107,7 +107,6 @@ const IndustryUseCasesPage: FC = () => {
 
   return (
     <>
-      <Header />
       <SecondaryNavigation title="Industry Use Cases" items={navItems} activeItem={activeSection} />
       <div
         ref={navItems[0].ref}

@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "@/components/header";
 import Link from "next/link";
 import Manual from "@/icons/manual.svg";
 import ArrowExternal from "@/icons/arrow-external.svg";
@@ -179,7 +178,6 @@ export default function ResourcesPage() {
 
   return (
     <>
-      <Header />
       <SecondaryNavigation
         title="Resources on Natural Capital"
         items={[

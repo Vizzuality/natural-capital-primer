@@ -1,7 +1,7 @@
 "use client";
 
 import Footer from "@/components/footer";
-import Header from "@/components/header";
+
 import { motion, useInView, useScroll, useTransform } from "motion/react";
 import Shape1 from "@/svgs/404-shape-1.svg";
 import Shape2 from "@/svgs/home-shape-2.svg";
@@ -102,7 +102,6 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       <div>
         <div className="absolute left-1/2 w-full max-w-7xl -translate-x-1/2">
           <motion.div
