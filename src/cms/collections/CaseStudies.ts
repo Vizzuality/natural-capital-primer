@@ -12,7 +12,12 @@ export const CaseStudies: CollectionConfig = {
     useAsTitle: "title",
   },
   hooks: {
-    afterChange: [async () => revalidatePath("/", "layout")],
+    afterChange: [
+      async () => {
+        revalidatePath("/", "layout");
+        revalidatePath("/case-studies/[slug]/page", "page");
+      },
+    ],
   },
   fields: [
     {

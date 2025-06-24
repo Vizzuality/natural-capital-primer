@@ -8,7 +8,12 @@ const AppSettings: GlobalConfig = {
     read: () => true,
   },
   hooks: {
-    afterChange: [async () => revalidatePath("/", "layout")],
+    afterChange: [
+      async () => {
+        revalidatePath("/", "layout");
+        revalidatePath("/case-studies/[slug]/page", "page");
+      },
+    ],
   },
   fields: [
     {
