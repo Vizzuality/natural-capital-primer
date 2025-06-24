@@ -8,7 +8,7 @@ const AppSettings: GlobalConfig = {
     read: () => true,
   },
   hooks: {
-    afterChange: [() => revalidatePath("/globals/app-settings")],
+    afterChange: [async () => revalidatePath("/", "layout")],
   },
   fields: [
     {

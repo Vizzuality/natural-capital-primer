@@ -541,7 +541,10 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
                                             <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
                                               {caseStudies?.map((caseStudy) => (
                                                 <li key={caseStudy.id}>
-                                                  <Link href={`/case-studies/${caseStudy.id}`}>
+                                                  <Link
+                                                    onClick={() => setOpen(false)}
+                                                    href={`/case-studies/${caseStudy.id}`}
+                                                  >
                                                     <HoverRepeatAnimation>
                                                       {caseStudy.title}
                                                     </HoverRepeatAnimation>
