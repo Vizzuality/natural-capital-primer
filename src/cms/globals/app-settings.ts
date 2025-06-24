@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { GlobalConfig } from "payload";
 
 const AppSettings: GlobalConfig = {
@@ -5,6 +6,9 @@ const AppSettings: GlobalConfig = {
   label: "App Settings",
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [() => revalidatePath("/globals/app-settings")],
   },
   fields: [
     {

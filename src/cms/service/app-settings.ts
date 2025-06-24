@@ -1,8 +1,9 @@
 import { getPayload } from "payload";
 
 import config from "@payload-config";
+import { cache } from "react";
 
-export const getAppSettings = async () => {
+export const getAppSettings = cache(async () => {
   try {
     const payload = await getPayload({ config });
 
@@ -14,4 +15,4 @@ export const getAppSettings = async () => {
     console.error("Error fetching app settings:", error);
     return null;
   }
-};
+});

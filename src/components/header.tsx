@@ -98,13 +98,18 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
         children,
         className,
         href,
-      }: PropsWithChildren<{ className: string; href: string }>) => (
-        <div className={className}>
-          <Link href={href} className="w-full">
-            <HoverRepeatAnimation>{children}</HoverRepeatAnimation>
-          </Link>
-        </div>
-      );
+      }: PropsWithChildren<{ className: string; href?: string }>) => {
+        if (href) {
+          return (
+            <div className={className}>
+              <Link onClick={() => setOpen(false)} href={href} className="w-full">
+                <HoverRepeatAnimation>{children}</HoverRepeatAnimation>
+              </Link>
+            </div>
+          );
+        }
+        return <div className={className}>{children}</div>;
+      };
       return Comp;
     }
 
@@ -131,6 +136,7 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
           e.preventDefault();
           const href = (e.target as HTMLButtonElement).dataset["href"];
           if (href !== undefined) {
+            setOpen(false);
             router.push(href);
           }
           return;
@@ -171,7 +177,6 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
       // 4. Navigate to that section
       if (pathname === targetPathname) {
         e.preventDefault();
-        setOpen(false);
         setTimeout(
           () => {
             router.push(href);
@@ -179,6 +184,7 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
           DIALOG_ANIMATION_DURATION * 1000 + 50,
         );
       }
+      setOpen(false);
     },
     [pathname, router],
   );
@@ -376,12 +382,12 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
                       <li className="xl:w-[calc((100%_-_2_*_theme(spacing.20))_/_3)]">
                         <ul className="flex flex-col gap-y-10 xl:mt-10">
                           <li className="border-t border-t-black pt-4">
-                            <Link href="/">
+                            <Link onClick={() => setOpen(false)} href="/">
                               <HoverRepeatAnimation>Home</HoverRepeatAnimation>
                             </Link>
                           </li>
                           <li className="border-t border-t-black pt-4">
-                            <Link href="/about">
+                            <Link onClick={() => setOpen(false)} href="/about">
                               <HoverRepeatAnimation>About</HoverRepeatAnimation>
                             </Link>
                           </li>
@@ -396,7 +402,10 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
                             <li className="pl-14 xl:pl-0">
                               <ul className="flex flex-col gap-x-20 gap-y-6 xl:flex-row xl:justify-between xl:gap-y-10">
                                 <li className="pr-6 text-[24px] xl:hidden">
-                                  <Link href="/natural-capital-in-daily-life">
+                                  <Link
+                                    onClick={() => setOpen(false)}
+                                    href="/natural-capital-in-daily-life"
+                                  >
                                     <HoverRepeatAnimation>
                                       Natural Capital in Daily Life
                                     </HoverRepeatAnimation>
@@ -416,7 +425,10 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
                                         <MobileOnlyAccordionContent variant="naked">
                                           <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
                                             <li className="xl:hidden">
-                                              <Link href="/key-concepts">
+                                              <Link
+                                                onClick={() => setOpen(false)}
+                                                href="/key-concepts"
+                                              >
                                                 <HoverRepeatAnimation>
                                                   Introduction
                                                 </HoverRepeatAnimation>
@@ -520,8 +532,7 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
                                         <MobileOnlyAccordionItem value="case-studies">
                                           <MobileOnlyAccordionTrigger
                                             variant="naked"
-                                            className="pointer-events-none flex w-full items-center justify-between text-left"
-                                            href="/case-studies"
+                                            className="flex w-full items-center justify-between text-left"
                                           >
                                             Case Studies
                                             <ChevronBold className="h-6 w-6 xl:hidden" />
@@ -529,7 +540,7 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
                                           <MobileOnlyAccordionContent variant="naked">
                                             <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
                                               {caseStudies?.map((caseStudy) => (
-                                                <li key={caseStudy.id} className="xl:hidden">
+                                                <li key={caseStudy.id}>
                                                   <Link href={`/case-studies/${caseStudy.id}`}>
                                                     <HoverRepeatAnimation>
                                                       {caseStudy.title}
@@ -590,19 +601,22 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
                                 <li className="flex-1 text-[24px]">
                                   <ul className="flex flex-col gap-y-6 xl:gap-y-10">
                                     <li className="hidden xl:block xl:pb-[7px]">
-                                      <Link href="/natural-capital-in-daily-life">
+                                      <Link
+                                        onClick={() => setOpen(false)}
+                                        href="/natural-capital-in-daily-life"
+                                      >
                                         <HoverRepeatAnimation>
                                           Natural Capital in Daily Life
                                         </HoverRepeatAnimation>
                                       </Link>
                                     </li>
                                     <li className="xl:border-t xl:border-t-black xl:pt-4">
-                                      <Link href="/resources">
+                                      <Link onClick={() => setOpen(false)} href="/resources">
                                         <HoverRepeatAnimation>Resources</HoverRepeatAnimation>
                                       </Link>
                                     </li>
                                     <li className="xl:border-t xl:border-t-black xl:pt-4">
-                                      <Link href="/references">
+                                      <Link onClick={() => setOpen(false)} href="/references">
                                         <HoverRepeatAnimation>References</HoverRepeatAnimation>
                                       </Link>
                                     </li>

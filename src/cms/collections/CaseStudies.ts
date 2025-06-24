@@ -4,11 +4,15 @@ import type { CollectionConfig } from "payload";
 import slugify from "slugify";
 import { SideBySideBlock } from "../blocks/side-by-side";
 import { commonRichTextFeatures, commonTextRichTextFeatures } from "../fields/utils";
+import { revalidatePath } from "next/cache";
 
 export const CaseStudies: CollectionConfig = {
   slug: "case-studies",
   admin: {
     useAsTitle: "title",
+  },
+  hooks: {
+    afterChange: [() => revalidatePath("/case-studies")],
   },
   fields: [
     {

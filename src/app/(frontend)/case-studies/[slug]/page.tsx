@@ -13,6 +13,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getCaseStudies, getCaseStudy } from "@/cms/service/case-studies";
 import { extractTextFromCaseStudyIntroduction } from "./utils";
+import { getAppSettings } from "@/cms/service/app-settings";
 
 export async function generateStaticParams() {
   const caseStudies = await getCaseStudies();
@@ -45,7 +46,11 @@ const CaseStudiesPage = async ({ params }: { params: Promise<{ slug: string }> }
 
   const caseStudies = await getCaseStudies();
 
-  if (!caseStudy) {
+  const enableCaseStudies = await getAppSettings().then(
+    (settings) => settings?.enableCaseStudies === "true",
+  );
+
+  if (!caseStudy || !enableCaseStudies) {
     notFound();
   }
 
