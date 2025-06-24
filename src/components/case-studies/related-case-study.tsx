@@ -1,0 +1,52 @@
+import { isMediaImage } from "@/lib/utils";
+import { CaseStudy } from "@/payload-types";
+import Image from "next/image";
+import { RichText } from "../rich-text";
+import Link from "next/link";
+
+type RelatedCaseStudyProps = {
+  caseStudy: CaseStudy;
+};
+const RelatedCaseStudy = ({ caseStudy }: RelatedCaseStudyProps) => {
+  const image = isMediaImage(caseStudy?.image) ? caseStudy.image : null;
+  const introduction = {
+    ...caseStudy.introduction,
+    root: {
+      ...caseStudy.introduction.root,
+      children: [caseStudy.introduction.root.children?.[0]], // Limit to first paragraph
+    },
+  };
+
+  return (
+    <div className="space-y-9">
+      <div className="flex gap-8">
+        <div className="shrink-0">
+          <Image
+            src={image?.url || ""}
+            alt={image?.alt || "Case Study Image"}
+            width={108}
+            height={108}
+            priority
+            className="h-[108px] w-[108px] object-cover object-center"
+          />
+        </div>
+        <h3 className="border-t-[6px] border-t-[var(--case-study-color)] text-xl">
+          {caseStudy.title}
+        </h3>
+      </div>
+      <div className="text-base">
+        <RichText data={introduction} />
+      </div>
+      <div>
+        <Link
+          href={`/case-studies/${caseStudy.id}`}
+          className="text-base uppercase underline underline-offset-2"
+        >
+          See Case study
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default RelatedCaseStudy;

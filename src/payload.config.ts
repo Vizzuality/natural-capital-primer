@@ -10,6 +10,7 @@ import sharp from "sharp";
 import { Users } from "./cms/collections/Users";
 import { Media } from "./cms/collections/Media";
 import { CaseStudies } from "./cms/collections/CaseStudies";
+import AppSettings from "./cms/globals/app-settings";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -38,6 +39,7 @@ export default buildConfig({
     defaultFromName: "Natural Capital Primer",
     apiKey: process.env.EMAIL_RESEND_API_KEY || "",
   }),
+  globals: [AppSettings],
   plugins: [
     // https://github.com/payloadcms/payload/tree/main/packages/storage-s3
     s3Storage({

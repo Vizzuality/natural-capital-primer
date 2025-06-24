@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -47,9 +46,7 @@ export default function ErrorPage() {
           </motion.div>
         </div>
       </div>
-      <div className="relative z-10">
-        <Header />
-      </div>
+      <div className="relative z-10"></div>
       <main className="relative z-10 flex flex-col items-center justify-between p-24">
         <div className="flex flex-col items-center gap-y-6 xl:gap-y-4">
           <div className="text-5xl leading-none xl:text-[200px] xl:leading-[200px]">Whoops!</div>

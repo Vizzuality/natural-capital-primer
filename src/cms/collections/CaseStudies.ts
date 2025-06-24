@@ -1,22 +1,23 @@
-import {
-  BlocksFeature,
-  BoldFeature,
-  ItalicFeature,
-  lexicalEditor,
-  LinkFeature,
-  ParagraphFeature,
-  UploadFeature,
-} from "@payloadcms/richtext-lexical";
+import { BlocksFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
 
 import type { CollectionConfig } from "payload";
 import slugify from "slugify";
 import { SideBySideBlock } from "../blocks/side-by-side";
-import { commonRichTextFeatures } from "../fields/utils";
+import { commonRichTextFeatures, commonTextRichTextFeatures } from "../fields/utils";
+import { revalidatePath } from "next/cache";
 
 export const CaseStudies: CollectionConfig = {
   slug: "case-studies",
   admin: {
     useAsTitle: "title",
+  },
+  hooks: {
+    afterChange: [
+      async () => {
+        revalidatePath("/", "layout");
+        revalidatePath("/case-studies/[slug]/page", "page");
+      },
+    ],
   },
   fields: [
     {
@@ -48,7 +49,10 @@ export const CaseStudies: CollectionConfig = {
     },
     {
       name: "introduction",
-      type: "textarea",
+      type: "richText",
+      editor: lexicalEditor({
+        features: () => commonTextRichTextFeatures,
+      }),
       required: true,
     },
     {
@@ -78,7 +82,6 @@ export const CaseStudies: CollectionConfig = {
           editor: lexicalEditor({
             features: () => [
               ...commonRichTextFeatures,
-              UploadFeature(),
               BlocksFeature({
                 blocks: [SideBySideBlock],
               }),
@@ -89,16 +92,13 @@ export const CaseStudies: CollectionConfig = {
       required: true,
     },
     {
-      name: "key insides",
+      name: "key_insights",
       type: "array",
       fields: [
         {
-          name: "inside",
-          type: "richText",
+          name: "insight",
+          type: "text",
           required: true,
-          editor: lexicalEditor({
-            features: () => [BoldFeature(), LinkFeature(), ParagraphFeature(), ItalicFeature()],
-          }),
         },
       ],
     },

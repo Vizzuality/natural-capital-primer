@@ -6,7 +6,6 @@ import Logo from "@/svgs/logo.svg";
 import Menu from "@/icons/menu.svg";
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
 import {
-  FC,
   Fragment,
   MouseEvent,
   PropsWithChildren,
@@ -37,6 +36,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import useMediaQuery from "@/hooks/use-media-query";
+import { AppSetting, CaseStudy } from "@/payload-types";
 
 const DIALOG_ANIMATION_DURATION = 0.3;
 const HEADER_ANIMATION_DURATION = 0.3;
@@ -46,7 +46,11 @@ const HEADER_VARIANTS = {
   hidden: { y: "-53px" },
 };
 
-const Header: FC = () => {
+type HeaderProps = {
+  caseStudies?: CaseStudy[];
+  appSettings?: AppSetting | null;
+};
+const Header = ({ caseStudies, appSettings }: HeaderProps) => {
   const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
   // The following state is only used by the desktop navigation (outside of the modal). The value is modified depending
@@ -94,13 +98,18 @@ const Header: FC = () => {
         children,
         className,
         href,
-      }: PropsWithChildren<{ className: string; href: string }>) => (
-        <div className={className}>
-          <Link href={href} className="w-full">
-            <HoverRepeatAnimation>{children}</HoverRepeatAnimation>
-          </Link>
-        </div>
-      );
+      }: PropsWithChildren<{ className: string; href?: string }>) => {
+        if (href) {
+          return (
+            <div className={className}>
+              <Link onClick={() => setOpen(false)} href={href} className="w-full">
+                <HoverRepeatAnimation>{children}</HoverRepeatAnimation>
+              </Link>
+            </div>
+          );
+        }
+        return <div className={className}>{children}</div>;
+      };
       return Comp;
     }
 
@@ -127,6 +136,7 @@ const Header: FC = () => {
           e.preventDefault();
           const href = (e.target as HTMLButtonElement).dataset["href"];
           if (href !== undefined) {
+            setOpen(false);
             router.push(href);
           }
           return;
@@ -167,7 +177,6 @@ const Header: FC = () => {
       // 4. Navigate to that section
       if (pathname === targetPathname) {
         e.preventDefault();
-        setOpen(false);
         setTimeout(
           () => {
             router.push(href);
@@ -175,9 +184,12 @@ const Header: FC = () => {
           DIALOG_ANIMATION_DURATION * 1000 + 50,
         );
       }
+      setOpen(false);
     },
     [pathname, router],
   );
+
+  const isCaseStudiesActive = appSettings?.enableCaseStudies === "true";
 
   return (
     <motion.header
@@ -268,33 +280,55 @@ const Header: FC = () => {
                   </NavigationMenuLink>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  active={pathname.startsWith("/climate-and-biodiversity")}
-                  data-href="/climate-and-biodiversity"
-                  onClick={onClickMenuTrigger}
-                  onMouseEnter={onMouseEnterMenuTrigger}
-                >
-                  Climate & Biodiversity
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="flex flex-col gap-3">
-                  {displayIntroductionSubSections && (
+              {isCaseStudiesActive ? (
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    active={pathname.startsWith("/case-studies")}
+                    onMouseEnter={onMouseEnterMenuTrigger}
+                  >
+                    Case Studies
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="flex flex-col gap-3">
+                    {caseStudies?.map((caseStudy) => (
+                      <NavigationMenuLink
+                        key={caseStudy.id}
+                        className={navigationMenuTriggerStyle()}
+                        asChild
+                      >
+                        <Link href={`/case-studies/${caseStudy.id}`}>{caseStudy.title}</Link>
+                      </NavigationMenuLink>
+                    ))}
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ) : (
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    active={pathname.startsWith("/climate-and-biodiversity")}
+                    data-href="/climate-and-biodiversity"
+                    onClick={onClickMenuTrigger}
+                    onMouseEnter={onMouseEnterMenuTrigger}
+                  >
+                    Climate & Biodiversity
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="flex flex-col gap-3">
+                    {displayIntroductionSubSections && (
+                      <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                        <Link href="/climate-and-biodiversity">Introduction</Link>
+                      </NavigationMenuLink>
+                    )}
                     <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                      <Link href="/climate-and-biodiversity">Introduction</Link>
+                      <Link href="/climate-and-biodiversity#climate">
+                        Natural Capital & Climate Change
+                      </Link>
                     </NavigationMenuLink>
-                  )}
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/climate-and-biodiversity#climate">
-                      Natural Capital & Climate Change
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                    <Link href="/climate-and-biodiversity#biodiversity">
-                      Natural Capital & Biodiversity
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                      <Link href="/climate-and-biodiversity#biodiversity">
+                        Natural Capital & Biodiversity
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              )}
             </NavigationMenuList>
           </NavigationMenu>
           <Dialog open={open} onOpenChange={setOpen}>
@@ -348,12 +382,12 @@ const Header: FC = () => {
                       <li className="xl:w-[calc((100%_-_2_*_theme(spacing.20))_/_3)]">
                         <ul className="flex flex-col gap-y-10 xl:mt-10">
                           <li className="border-t border-t-black pt-4">
-                            <Link href="/">
+                            <Link onClick={() => setOpen(false)} href="/">
                               <HoverRepeatAnimation>Home</HoverRepeatAnimation>
                             </Link>
                           </li>
                           <li className="border-t border-t-black pt-4">
-                            <Link href="/about">
+                            <Link onClick={() => setOpen(false)} href="/about">
                               <HoverRepeatAnimation>About</HoverRepeatAnimation>
                             </Link>
                           </li>
@@ -368,7 +402,10 @@ const Header: FC = () => {
                             <li className="pl-14 xl:pl-0">
                               <ul className="flex flex-col gap-x-20 gap-y-6 xl:flex-row xl:justify-between xl:gap-y-10">
                                 <li className="pr-6 text-[24px] xl:hidden">
-                                  <Link href="/natural-capital-in-daily-life">
+                                  <Link
+                                    onClick={() => setOpen(false)}
+                                    href="/natural-capital-in-daily-life"
+                                  >
                                     <HoverRepeatAnimation>
                                       Natural Capital in Daily Life
                                     </HoverRepeatAnimation>
@@ -388,7 +425,10 @@ const Header: FC = () => {
                                         <MobileOnlyAccordionContent variant="naked">
                                           <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
                                             <li className="xl:hidden">
-                                              <Link href="/key-concepts">
+                                              <Link
+                                                onClick={() => setOpen(false)}
+                                                href="/key-concepts"
+                                              >
                                                 <HoverRepeatAnimation>
                                                   Introduction
                                                 </HoverRepeatAnimation>
@@ -487,6 +527,35 @@ const Header: FC = () => {
                                         </MobileOnlyAccordionContent>
                                       </MobileOnlyAccordionItem>
                                     </li>
+                                    {isCaseStudiesActive && (
+                                      <li className="xl:border-t xl:border-t-black xl:pt-4">
+                                        <MobileOnlyAccordionItem value="case-studies">
+                                          <MobileOnlyAccordionTrigger
+                                            variant="naked"
+                                            className="flex w-full items-center justify-between text-left"
+                                          >
+                                            Case Studies
+                                            <ChevronBold className="h-6 w-6 xl:hidden" />
+                                          </MobileOnlyAccordionTrigger>
+                                          <MobileOnlyAccordionContent variant="naked">
+                                            <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
+                                              {caseStudies?.map((caseStudy) => (
+                                                <li key={caseStudy.id}>
+                                                  <Link
+                                                    onClick={() => setOpen(false)}
+                                                    href={`/case-studies/${caseStudy.id}`}
+                                                  >
+                                                    <HoverRepeatAnimation>
+                                                      {caseStudy.title}
+                                                    </HoverRepeatAnimation>
+                                                  </Link>
+                                                </li>
+                                              ))}
+                                            </ul>
+                                          </MobileOnlyAccordionContent>
+                                        </MobileOnlyAccordionItem>
+                                      </li>
+                                    )}
                                     <li className="xl:border-t xl:border-t-black xl:pt-4">
                                       <MobileOnlyAccordionItem value="climate-and-biodiversity">
                                         <MobileOnlyAccordionTrigger
@@ -494,7 +563,7 @@ const Header: FC = () => {
                                           className="flex w-full items-center justify-between text-left"
                                           href="/climate-and-biodiversity"
                                         >
-                                          Climate & Biodiversity{" "}
+                                          Climate & Biodiversity
                                           <ChevronBold className="h-6 w-6 xl:hidden" />
                                         </MobileOnlyAccordionTrigger>
                                         <MobileOnlyAccordionContent variant="naked">
@@ -535,19 +604,22 @@ const Header: FC = () => {
                                 <li className="flex-1 text-[24px]">
                                   <ul className="flex flex-col gap-y-6 xl:gap-y-10">
                                     <li className="hidden xl:block xl:pb-[7px]">
-                                      <Link href="/natural-capital-in-daily-life">
+                                      <Link
+                                        onClick={() => setOpen(false)}
+                                        href="/natural-capital-in-daily-life"
+                                      >
                                         <HoverRepeatAnimation>
                                           Natural Capital in Daily Life
                                         </HoverRepeatAnimation>
                                       </Link>
                                     </li>
                                     <li className="xl:border-t xl:border-t-black xl:pt-4">
-                                      <Link href="/resources">
+                                      <Link onClick={() => setOpen(false)} href="/resources">
                                         <HoverRepeatAnimation>Resources</HoverRepeatAnimation>
                                       </Link>
                                     </li>
                                     <li className="xl:border-t xl:border-t-black xl:pt-4">
-                                      <Link href="/references">
+                                      <Link onClick={() => setOpen(false)} href="/references">
                                         <HoverRepeatAnimation>References</HoverRepeatAnimation>
                                       </Link>
                                     </li>

@@ -8,7 +8,6 @@ import Section from "./section";
 import SecondaryNavigation from "@/components/secondary-navigation";
 import { useInView } from "motion/react";
 import React from "react";
-import Header from "@/components/header";
 
 export default function ADayInTheLife() {
   const [soundOn, setSoundOn] = useState(false);
@@ -150,7 +149,6 @@ export default function ADayInTheLife() {
 
   return (
     <>
-      <Header />
       <SecondaryNavigation
         title="Natural Capital in Daily Life"
         items={navItems}

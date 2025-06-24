@@ -6,6 +6,9 @@ import { Providers } from "@/components/providers";
 import Analytics from "@/components/analytics";
 import PrivacyBanner from "@/components/privacy-banner";
 import { env } from "@/env.mjs";
+import Header from "@/components/header";
+import { getCaseStudies } from "@/cms/service/case-studies";
+import { getAppSettings } from "@/cms/service/app-settings";
 
 const circular = localFont({
   src: [
@@ -37,16 +40,19 @@ export const metadata: Metadata = {
     "A science-based resource that explains how our entire lives, businesses and economies depend on nature, and how we can understand the value of it using a concept called natural capital.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const caseStudies = await getCaseStudies();
+  const appSettings = await getAppSettings();
   return (
     <html lang="en" className={cn("overflow-x-clip scroll-smooth", circular.className)}>
       <body className="overflow-x-clip bg-white text-black">
         <Providers>
           <PrivacyBanner />
+          <Header appSettings={appSettings} caseStudies={caseStudies} />
           {children}
           <Analytics />
         </Providers>
