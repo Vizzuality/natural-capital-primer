@@ -25,7 +25,7 @@ export const SideBySideBlockConverter: JSXConverter<SerializedBlockNode> = ({ no
   const leftColumn = node.fields?.leftColumn;
   const rightColumn = node.fields?.rightColumn;
   return (
-    <div className="flex justify-between gap-8 sm:gap-[10vw]">
+    <div className="justify-between gap-8 sm:flex sm:gap-[10vw]">
       {leftColumn && (
         <div className="flex-1 space-y-4">
           <RichText data={leftColumn} />

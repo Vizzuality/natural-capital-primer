@@ -5,6 +5,7 @@ import slugify from "slugify";
 import { SideBySideBlock } from "../blocks/side-by-side";
 import { commonRichTextFeatures, commonTextRichTextFeatures } from "../fields/utils";
 import { revalidatePath } from "next/cache";
+import { PullOutBlock } from "../blocks/pull-out";
 
 export const CaseStudies: CollectionConfig = {
   slug: "case-studies",
@@ -83,7 +84,7 @@ export const CaseStudies: CollectionConfig = {
             features: () => [
               ...commonRichTextFeatures,
               BlocksFeature({
-                blocks: [SideBySideBlock],
+                blocks: [SideBySideBlock, PullOutBlock],
               }),
             ],
           }),

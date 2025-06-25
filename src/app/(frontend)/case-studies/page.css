@@ -24,7 +24,7 @@
   .pull-out:not(:first-child) {
     @apply mt-8 sm:mt-16;
   }
-  .pull-out:not(:last-child) {
+  .pull-out {
     @apply mb-8 sm:mb-16;
   }
 }
