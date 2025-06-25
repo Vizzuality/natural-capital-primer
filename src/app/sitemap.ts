@@ -1,8 +1,15 @@
+import { getCaseStudies } from "@/cms/service/case-studies";
 import { env } from "@/env.mjs";
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseURL = `https://${env.NEXT_PUBLIC_DOMAIN}`;
+
+  const caseStudies = await getCaseStudies();
+  const caseStudiesSitemap = caseStudies.map((caseStudy) => ({
+    url: `${baseURL}/case-studies/${caseStudy.id}`,
+    priority: 0.5,
+  }));
 
   return [
     {
@@ -57,6 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseURL}/industry-use-cases#food-systems`,
       priority: 0.5,
     },
+    ...caseStudiesSitemap,
     {
       url: `${baseURL}/climate-and-biodiversity`,
       priority: 1,
