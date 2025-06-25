@@ -18,23 +18,25 @@ const RelatedCaseStudy = ({ caseStudy }: RelatedCaseStudyProps) => {
   };
 
   return (
-    <div className="space-y-9">
-      <div className="flex gap-8">
-        <div className="shrink-0">
-          <Image
-            src={image?.url || ""}
-            alt={image?.alt || "Case Study Image"}
-            width={108}
-            height={108}
-            priority
-            className="h-[108px] w-[108px] object-cover object-center"
-          />
-        </div>
-        <h3 className="border-t-[6px] border-t-[var(--case-study-color)] text-xl">
-          {caseStudy.title}
-        </h3>
+    <div className="flex flex-col space-y-9">
+      <div>
+        <Link className="flex gap-8" href={`/case-studies/${caseStudy.id}`}>
+          <div className="shrink-0">
+            <Image
+              src={image?.url || ""}
+              alt={image?.alt || "Case Study Image"}
+              width={108}
+              height={108}
+              priority
+              className="h-[108px] w-[108px] object-cover object-center"
+            />
+          </div>
+          <h3 className="border-t-[6px] border-t-[var(--case-study-color)] text-xl">
+            {caseStudy.title}
+          </h3>
+        </Link>
       </div>
-      <div className="text-base">
+      <div className="flex-1 text-base">
         <RichText data={introduction} />
       </div>
       <div>
