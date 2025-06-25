@@ -21,6 +21,28 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    meta: {
+      title: "Natural Capital Primer",
+      titleSuffix: " | CMS",
+      icons: [
+        {
+          rel: "icon",
+          type: "image/png",
+          url: "@/app/favicon.png",
+        },
+        {
+          rel: "apple-icon",
+          type: "image/png",
+          url: "@/app/apple-icon.png",
+        },
+      ],
+    },
+    components: {
+      graphics: {
+        Icon: "@/cms/admin-components/icon",
+        Logo: "@/cms/admin-components/logo",
+      },
+    },
   },
   collections: [Users, Media, CaseStudies],
   editor: lexicalEditor(),
