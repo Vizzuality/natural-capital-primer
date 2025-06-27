@@ -1,7 +1,12 @@
 import { PropsWithChildren } from "react";
-import { Provider } from "jotai";
+import { Provider as JotaiProvider } from "jotai";
 import { store } from "@/lib/store";
+import QueryProvider from "@/app/(frontend)/query-provider";
 
 export const Providers = ({ children }: PropsWithChildren) => {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <QueryProvider>
+      <JotaiProvider store={store}>{children}</JotaiProvider>
+    </QueryProvider>
+  );
 };

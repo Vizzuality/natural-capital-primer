@@ -36,7 +36,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import useMediaQuery from "@/hooks/use-media-query";
-import { AppSetting, CaseStudy } from "@/payload-types";
+import useGetCaseStudies from "@/hooks/use-case-studies";
+import { env } from "@/env.mjs";
 
 const DIALOG_ANIMATION_DURATION = 0.3;
 const HEADER_ANIMATION_DURATION = 0.3;
@@ -46,13 +47,12 @@ const HEADER_VARIANTS = {
   hidden: { y: "-53px" },
 };
 
-type HeaderProps = {
-  caseStudies?: CaseStudy[];
-  appSettings?: AppSetting | null;
-};
-const Header = ({ caseStudies, appSettings }: HeaderProps) => {
+const Header = () => {
   const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
+
+  const { data: caseStudiesData } = useGetCaseStudies();
+  const isCaseStudiesActive = env.NEXT_PUBLIC_ENABLE_CASE_STUDIES === "true";
   // The following state is only used by the desktop navigation (outside of the modal). The value is modified depending
   // on how the user interacts with the menu items (mouse, touch, etc.).
   const [displayIntroductionSubSections, setDisplayIntroductionSubSections] = useState(false);
@@ -189,8 +189,6 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
     [pathname, router],
   );
 
-  const isCaseStudiesActive = appSettings?.enableCaseStudies === "true";
-
   return (
     <motion.header
       className="sticky top-0 z-50 border-b border-b-black bg-white"
@@ -289,7 +287,7 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
                     Case Studies
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="flex flex-col gap-3">
-                    {caseStudies?.map((caseStudy) => (
+                    {caseStudiesData?.docs?.map((caseStudy) => (
                       <NavigationMenuLink
                         key={caseStudy.id}
                         className={navigationMenuTriggerStyle()}
@@ -539,7 +537,7 @@ const Header = ({ caseStudies, appSettings }: HeaderProps) => {
                                           </MobileOnlyAccordionTrigger>
                                           <MobileOnlyAccordionContent variant="naked">
                                             <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
-                                              {caseStudies?.map((caseStudy) => (
+                                              {caseStudiesData?.docs?.map((caseStudy) => (
                                                 <li key={caseStudy.id}>
                                                   <Link
                                                     onClick={() => setOpen(false)}

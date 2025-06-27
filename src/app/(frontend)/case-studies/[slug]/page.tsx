@@ -13,15 +13,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getCaseStudies, getCaseStudy } from "@/cms/service/case-studies";
 import { extractTextFromCaseStudyIntroduction } from "./utils";
-import { getAppSettings } from "@/cms/service/app-settings";
-
-export async function generateStaticParams() {
-  const caseStudies = await getCaseStudies();
-
-  return caseStudies.map((cs) => ({
-    slug: cs.id,
-  }));
-}
+import { env } from "@/env.mjs";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -46,9 +38,7 @@ const CaseStudiesPage = async ({ params }: { params: Promise<{ slug: string }> }
 
   const caseStudies = await getCaseStudies();
 
-  const enableCaseStudies = await getAppSettings().then(
-    (settings) => settings?.enableCaseStudies === "true",
-  );
+  const enableCaseStudies = env.NEXT_PUBLIC_ENABLE_CASE_STUDIES === "true";
 
   if (!caseStudy || !enableCaseStudies) {
     notFound();

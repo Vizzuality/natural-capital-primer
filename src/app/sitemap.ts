@@ -1,12 +1,18 @@
-import { getCaseStudies } from "@/cms/service/case-studies";
+// import { getCaseStudies } from "@/cms/service/case-studies";
 import { env } from "@/env.mjs";
+import { getCaseStudies } from "@/hooks/use-case-studies";
 import type { MetadataRoute } from "next";
+
+// This variable makes sure the sitemap is not statically generated
+// This is especially important as when the app is build, there is no access to the CMS
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseURL = `https://${env.NEXT_PUBLIC_DOMAIN}`;
 
   const caseStudies = await getCaseStudies();
-  const caseStudiesSitemap = caseStudies.map((caseStudy) => ({
+
+  const caseStudiesSitemap = caseStudies?.docs?.map((caseStudy) => ({
     url: `${baseURL}/case-studies/${caseStudy.id}`,
     priority: 0.5,
   }));

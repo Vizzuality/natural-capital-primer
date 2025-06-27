@@ -33,6 +33,8 @@ export const env = createEnv({
     NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional(),
     // The Google Tag Manager tracking id
     NEXT_PUBLIC_GTM_TRACKING_ID: z.string().optional(),
+    // Enable case studies on the menu navigation and case studies pages
+    NEXT_PUBLIC_ENABLE_CASE_STUDIES: z.string().default("false"),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -52,5 +54,6 @@ export const env = createEnv({
     S3_REGION: process.env.S3_REGION,
     EMAIL_RESEND_API_KEY: process.env.EMAIL_RESEND_API_KEY,
     EMAIL_DEFAULT_FROM_ADRESS: process.env.EMAIL_DEFAULT_FROM_ADRESS,
+    NEXT_PUBLIC_ENABLE_CASE_STUDIES: process.env.NEXT_PUBLIC_ENABLE_CASE_STUDIES,
   },
 });
