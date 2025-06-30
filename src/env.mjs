@@ -14,6 +14,8 @@ export const env = createEnv({
     S3_REGION: z.string(), // The AWS region where the bucket is located.
     EMAIL_RESEND_API_KEY: z.string(), // The API key for the Resend email service.
     EMAIL_DEFAULT_FROM_ADRESS: z.string(), // The default email address used as the sender in outgoing emails.
+    DATABASE_URI: z.string(), // The URI for connecting to the database.
+    CA_CERTIFICATE: z.string(), // The CA certificate for secure database connections.
   },
   /*
    * Environment variables available on the client (and server).
@@ -54,6 +56,8 @@ export const env = createEnv({
     S3_REGION: process.env.S3_REGION,
     EMAIL_RESEND_API_KEY: process.env.EMAIL_RESEND_API_KEY,
     EMAIL_DEFAULT_FROM_ADRESS: process.env.EMAIL_DEFAULT_FROM_ADRESS,
+    DATABASE_URI: process.env.DATABASE_URI,
+    CA_CERTIFICATE: process.env.CA_CERTIFICATE,
     NEXT_PUBLIC_ENABLE_CASE_STUDIES: process.env.NEXT_PUBLIC_ENABLE_CASE_STUDIES,
   },
 });

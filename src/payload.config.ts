@@ -12,6 +12,8 @@ import { Media } from "./cms/collections/Media";
 import { CaseStudies } from "./cms/collections/CaseStudies";
 import AppSettings from "./cms/globals/app-settings";
 
+import { env } from "@/env.mjs";
+
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -52,7 +54,11 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || "",
+      connectionString: env.DATABASE_URI,
+      ssl: {
+        rejectUnauthorized: true,
+        ca: env.CA_CERTIFICATE,
+      },
     },
   }),
   sharp,
