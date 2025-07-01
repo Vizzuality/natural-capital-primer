@@ -15,7 +15,7 @@ export const env = createEnv({
     EMAIL_RESEND_API_KEY: z.string(), // The API key for the Resend email service.
     EMAIL_DEFAULT_FROM_ADRESS: z.string(), // The default email address used as the sender in outgoing emails.
     DATABASE_URI: z.string(), // The URI for connecting to the database.
-    CA_CERTIFICATE: z.string(), // The CA certificate for secure database connections.
+    CA_CERTIFICATE: z.string().optional(), // The CA certificate for secure database connections.
   },
   /*
    * Environment variables available on the client (and server).
