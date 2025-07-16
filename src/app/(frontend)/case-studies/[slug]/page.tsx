@@ -8,12 +8,12 @@ import ScrollDownToDiscover from "@/components/scroll-down-to-discover";
 import Footer from "@/components/footer";
 import LearnMoreButton from "@/components/case-studies/learn-more-button";
 
-import "../page.css"; // Import global styles
+import "../page.css";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getCaseStudies, getCaseStudy } from "@/cms/service/case-studies";
 import { extractTextFromCaseStudyIntroduction } from "./utils";
-import { env } from "@/env.mjs";
+import { getAppSettings } from "@/cms/service/app-settings";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,7 +22,6 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = (await params).slug;
 
-  // fetch post information
   const caseStudy = await getCaseStudy(slug);
   const description = extractTextFromCaseStudyIntroduction(caseStudy?.introduction);
 
@@ -38,7 +37,9 @@ const CaseStudiesPage = async ({ params }: { params: Promise<{ slug: string }> }
 
   const caseStudies = await getCaseStudies();
 
-  const enableCaseStudies = env.NEXT_PUBLIC_ENABLE_CASE_STUDIES === "true";
+  const enableCaseStudies = await getAppSettings().then(
+    (settings) => settings?.enableCaseStudies === "true",
+  );
 
   if (!caseStudy || !enableCaseStudies) {
     notFound();

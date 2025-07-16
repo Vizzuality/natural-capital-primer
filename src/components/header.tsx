@@ -37,7 +37,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import useMediaQuery from "@/hooks/use-media-query";
 import useGetCaseStudies from "@/hooks/use-case-studies";
-import { env } from "@/env.mjs";
+import { AppSetting } from "@/payload-types";
 
 const DIALOG_ANIMATION_DURATION = 0.3;
 const HEADER_ANIMATION_DURATION = 0.3;
@@ -47,12 +47,14 @@ const HEADER_VARIANTS = {
   hidden: { y: "-53px" },
 };
 
-const Header = () => {
+const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
   const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
 
-  const { data: caseStudiesData } = useGetCaseStudies();
-  const isCaseStudiesActive = env.NEXT_PUBLIC_ENABLE_CASE_STUDIES === "true";
+  const isCaseStudiesActive = appSettings?.enableCaseStudies === "true";
+  const { data: caseStudiesData } = useGetCaseStudies({
+    enabled: isCaseStudiesActive,
+  });
   // The following state is only used by the desktop navigation (outside of the modal). The value is modified depending
   // on how the user interacts with the menu items (mouse, touch, etc.).
   const [displayIntroductionSubSections, setDisplayIntroductionSubSections] = useState(false);
