@@ -7,6 +7,7 @@ import Analytics from "@/components/analytics";
 import PrivacyBanner from "@/components/privacy-banner";
 import { env } from "@/env.mjs";
 import Header from "@/components/header";
+import { getAppSettings } from "@/cms/service/app-settings";
 
 const circular = localFont({
   src: [
@@ -43,12 +44,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const appSettings = await getAppSettings();
+
   return (
     <html lang="en" className={cn("overflow-x-clip scroll-smooth", circular.className)}>
       <body className="overflow-x-clip bg-white text-black">
         <Providers>
           <PrivacyBanner />
-          <Header />
+          <Header appSettings={appSettings} />
           {children}
           <Analytics />
         </Providers>
