@@ -11,14 +11,6 @@ export interface ResultAnimationProps {
   color: "green" | "blue" | "orange";
 }
 
-const ANIMATE_PATH_PROPS = {
-  initial: { pathLength: 0 },
-  animate: { pathLength: 1 },
-  transition: {
-    duration: 1,
-    ease: "easeIn",
-  },
-};
 const STROKE_COLOR_CLASS: Record<ResultAnimationProps["color"], string> = {
   green: "stroke-green-500",
   orange: "stroke-orange-500",
@@ -73,7 +65,12 @@ const ResultAnimation = (
         ></motion.path>
         <motion.path
           className={cn("fill-none", strokeClass)}
-          {...ANIMATE_PATH_PROPS}
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{
+            duration: 1,
+            ease: "easeIn",
+          }}
           strokeWidth="3"
           d="M 0, 3 m 110, 0 a 110,110 0 1,1 0,220 a 110,110 0 1,1  1,-220"
         ></motion.path>
