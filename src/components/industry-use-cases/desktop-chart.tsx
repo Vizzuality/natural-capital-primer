@@ -1,7 +1,8 @@
-import { Group, Node, nodes } from "@/app/(frontend)/industry-use-cases/chart-data";
-import { cn } from "@/lib/utils";
 import { linkHorizontal } from "d3-shape";
 import { FC, useCallback, useMemo, useState } from "react";
+
+import { Group, Node, nodes } from "@/app/(frontend)/industry-use-cases/chart-data";
+import { cn } from "@/lib/utils";
 
 export interface DesktopChartProps {
   width: number;

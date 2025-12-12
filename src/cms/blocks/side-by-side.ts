@@ -1,6 +1,7 @@
-import { Block, RichTextField } from "payload";
-import { PullOutBlock } from "./pull-out";
 import { lexicalEditor, BlocksFeature, UploadFeature } from "@payloadcms/richtext-lexical";
+import { Block, RichTextField } from "payload";
+
+import { PullOutBlock } from "./pull-out";
 import { commonRichTextFeatures } from "../fields/utils";
 
 const sideBySideField: RichTextField = {

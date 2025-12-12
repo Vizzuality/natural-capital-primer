@@ -1,8 +1,10 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import { isMediaImage } from "@/lib/utils";
 import { CaseStudy } from "@/payload-types";
-import Image from "next/image";
+
 import { RichText } from "../rich-text";
-import Link from "next/link";
 
 type RelatedCaseStudyProps = {
   caseStudy: CaseStudy;

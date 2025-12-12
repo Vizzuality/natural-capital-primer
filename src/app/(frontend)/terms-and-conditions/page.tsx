@@ -1,7 +1,7 @@
-import Footer from "@/components/footer";
-
 import Link from "next/link";
 import { FC } from "react";
+
+import Footer from "@/components/footer";
 
 const TermsAndConditionsPage: FC = () => {
   return (

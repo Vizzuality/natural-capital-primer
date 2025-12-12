@@ -1,9 +1,11 @@
-import { FC } from "react";
 import Image from "next/image";
-import RevealLines from "@/components/animations/reveal-lines";
-import { IndustryUseCasesTabContent } from "./types";
-import { cn } from "@/lib/utils";
+import { FC } from "react";
+
 import Parallax from "@/components/animations/parallax";
+import RevealLines from "@/components/animations/reveal-lines";
+import { cn } from "@/lib/utils";
+
+import { IndustryUseCasesTabContent } from "./types";
 
 const ImpactsTab: FC<IndustryUseCasesTabContent["impacts"]> = ({ content1, image1, list }) => {
   return (

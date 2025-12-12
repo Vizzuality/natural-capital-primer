@@ -1,11 +1,12 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { FC, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { cva, VariantProps } from "class-variance-authority";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import Link from "next/link";
+import { FC, useRef, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const navVariants = cva("flex justify-end", {
   variants: {

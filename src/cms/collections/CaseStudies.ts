@@ -1,11 +1,12 @@
 import { BlocksFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
-
-import type { CollectionConfig } from "payload";
+import { revalidatePath } from "next/cache";
 import slugify from "slugify";
+
+import { PullOutBlock } from "../blocks/pull-out";
 import { SideBySideBlock } from "../blocks/side-by-side";
 import { commonRichTextFeatures, commonTextRichTextFeatures } from "../fields/utils";
-import { revalidatePath } from "next/cache";
-import { PullOutBlock } from "../blocks/pull-out";
+
+import type { CollectionConfig } from "payload";
 
 export const CaseStudies: CollectionConfig = {
   slug: "case-studies",

@@ -1,10 +1,11 @@
 "use client";
 
-import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 import { motion } from "motion/react";
+import * as React from "react";
+
+import { cn } from "@/lib/utils";
 
 const Dialog = DialogPrimitive.Root;
 

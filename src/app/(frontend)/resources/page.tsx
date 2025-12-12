@@ -1,12 +1,13 @@
 "use client";
 
+import { useInView } from "motion/react";
 import Link from "next/link";
-import Manual from "@/icons/manual.svg";
-import ArrowExternal from "@/icons/arrow-external.svg";
+import { useMemo, useRef } from "react";
+
 import Footer from "@/components/footer";
 import SecondaryNavigation from "@/components/secondary-navigation";
-import { useInView } from "motion/react";
-import { useMemo, useRef } from "react";
+import ArrowExternal from "@/icons/arrow-external.svg";
+import Manual from "@/icons/manual.svg";
 
 const RESOURCES_BY_CATEGORY = [
   {

@@ -1,12 +1,14 @@
 "use client";
-import { useState, useMemo, useCallback, useEffect } from "react";
-import QuizButton from "./quiz-button";
-import { Button } from "@/components/ui/button";
-import Arrow from "@/icons/arrow.svg";
-import ArrowRestart from "@/icons/arrow-restart.svg";
 import { AnimatePresence, motion } from "motion/react";
-import ResultAnimation from "./result-animation";
+import { useState, useMemo, useCallback, useEffect } from "react";
+
+import { Button } from "@/components/ui/button";
+import ArrowRestart from "@/icons/arrow-restart.svg";
+import Arrow from "@/icons/arrow.svg";
 import { sendAnalyticsEvent } from "@/lib/utils";
+
+import QuizButton from "./quiz-button";
+import ResultAnimation from "./result-animation";
 
 const MotionButton = motion.create(Button);
 const MotionResultAnimation = motion.create(ResultAnimation);

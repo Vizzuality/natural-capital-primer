@@ -1,19 +1,20 @@
+import { Metadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
-import { RichText } from "@/components/rich-text";
+import { getAppSettings } from "@/cms/service/app-settings";
+import { getCaseStudies, getCaseStudy } from "@/cms/service/case-studies";
 import CaseStudiesKeyInsights from "@/components/case-studies/key-insights";
-import { isMediaImage } from "@/lib/utils";
-import RelatedCaseStudy from "@/components/case-studies/related-case-study";
-import ScrollDownToDiscover from "@/components/scroll-down-to-discover";
-import Footer from "@/components/footer";
 import LearnMoreButton from "@/components/case-studies/learn-more-button";
+import RelatedCaseStudy from "@/components/case-studies/related-case-study";
+import Footer from "@/components/footer";
+import { RichText } from "@/components/rich-text";
+import ScrollDownToDiscover from "@/components/scroll-down-to-discover";
+import { isMediaImage } from "@/lib/utils";
+
+import { extractTextFromCaseStudyIntroduction } from "./utils";
 
 import "../page.css";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import { getCaseStudies, getCaseStudy } from "@/cms/service/case-studies";
-import { extractTextFromCaseStudyIntroduction } from "./utils";
-import { getAppSettings } from "@/cms/service/app-settings";
 
 type Props = {
   params: Promise<{ slug: string }>;

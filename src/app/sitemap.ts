@@ -1,6 +1,7 @@
 // import { getCaseStudies } from "@/cms/service/case-studies";
 import { env } from "@/env.mjs";
 import { getCaseStudies } from "@/hooks/use-case-studies";
+
 import type { MetadataRoute } from "next";
 
 // This variable makes sure the sitemap is not statically generated

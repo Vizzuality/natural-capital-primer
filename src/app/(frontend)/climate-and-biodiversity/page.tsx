@@ -1,20 +1,20 @@
 "use client";
 
-import HoverRepeatAnimation from "@/components/animations/hover-repeat";
-import Footer from "@/components/footer";
-
-import { Button } from "@/components/ui/button";
-import ArrowSlide from "@/icons/arrow-slide.svg";
+import { useInView } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useMemo, useRef } from "react";
+
+import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
-import SecondaryNavigation from "@/components/secondary-navigation";
-import { useInView } from "motion/react";
 import Parallax from "@/components/animations/parallax";
 import RevealLines from "@/components/animations/reveal-lines";
 import BackgroundVideo from "@/components/bg-video";
+import Footer from "@/components/footer";
 import Reference from "@/components/reference";
+import SecondaryNavigation from "@/components/secondary-navigation";
+import { Button } from "@/components/ui/button";
+import ArrowSlide from "@/icons/arrow-slide.svg";
 
 const ClimateAndBiodiversityPage: FC = () => {
   const chapter0Ref = useRef<HTMLDivElement>(null);
@@ -33,14 +33,17 @@ const ClimateAndBiodiversityPage: FC = () => {
 
   const activeChapter = useMemo(() => {
     if (chapter2InView) {
+      // eslint-disable-next-line react-hooks/refs
       return chapter2Ref.current?.id ?? null;
     }
 
     if (chapter1InView) {
+      // eslint-disable-next-line react-hooks/refs
       return chapter1Ref.current?.id ?? null;
     }
 
     if (chapter0InView) {
+      // eslint-disable-next-line react-hooks/refs
       return chapter0Ref.current?.id ?? null;
     }
 
@@ -56,7 +59,10 @@ const ClimateAndBiodiversityPage: FC = () => {
           { key: "climate", value: "Natural Capital & Climate Change" },
           { key: "biodiversity", value: "Natural Capital & Biodiversity" },
         ]}
-        activeItem={activeChapter}
+        activeItem={
+          //eslint-disable-next-line react-hooks/refs
+          activeChapter
+        }
       />
       <div
         ref={chapter0Ref}

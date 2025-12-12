@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "@/components/footer";
+
 import { REFERENCES } from "./data";
 
 export default function ReferencesPage() {

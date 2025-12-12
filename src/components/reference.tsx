@@ -1,3 +1,7 @@
+import { AnimatePresence } from "motion/react";
+import { useState } from "react";
+
+import { REFERENCES } from "@/app/(frontend)/references/data";
 import {
   Tooltip,
   TooltipArrow,
@@ -5,9 +9,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useState } from "react";
-import { AnimatePresence } from "motion/react";
-import { REFERENCES } from "@/app/(frontend)/references/data";
 import { addPropsToLink, cn } from "@/lib/utils";
 
 export interface ReferenceProps {

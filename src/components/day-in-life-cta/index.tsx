@@ -1,11 +1,12 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import HoverRepeatAnimation from "@/components/animations/hover-repeat";
-import Image from "next/image";
 import { motion } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
+import { FC, useEffect, useState } from "react";
+
+import HoverRepeatAnimation from "@/components/animations/hover-repeat";
+import { Button } from "@/components/ui/button";
 
 const IMAGES = [
   "/assets/natural-capital-in-daily-life-illustration-22.png",

@@ -1,7 +1,7 @@
 import { getPayload } from "payload";
+import { cache } from "react";
 
 import config from "@payload-config";
-import { cache } from "react";
 
 export const getAppSettings = cache(async () => {
   try {

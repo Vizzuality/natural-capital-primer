@@ -1,10 +1,9 @@
 "use client";
 
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import Logo from "@/svgs/logo.svg";
-import Menu from "@/icons/menu.svg";
-import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   Fragment,
   MouseEvent,
@@ -14,18 +13,14 @@ import {
   useRef,
   useState,
 } from "react";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import HoverRepeatAnimation from "./animations/hover-repeat";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import ChevronBold from "@/icons/chevron-bold.svg";
-import Close from "@/svgs/close.svg";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -35,9 +30,16 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import useMediaQuery from "@/hooks/use-media-query";
 import useGetCaseStudies from "@/hooks/use-case-studies";
+import useMediaQuery from "@/hooks/use-media-query";
+import ChevronBold from "@/icons/chevron-bold.svg";
+import Menu from "@/icons/menu.svg";
 import { AppSetting } from "@/payload-types";
+import Close from "@/svgs/close.svg";
+import Logo from "@/svgs/logo.svg";
+
+import HoverRepeatAnimation from "./animations/hover-repeat";
+import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
 
 const DIALOG_ANIMATION_DURATION = 0.3;
 const HEADER_ANIMATION_DURATION = 0.3;
@@ -394,6 +396,7 @@ const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
                         </ul>
                       </li>
                       <li className="flex-grow">
+                        {/* eslint-disable-next-line react-hooks/static-components */}
                         <MobileOnlyAccordion type="single" collapsible>
                           <ul className="flex flex-col gap-y-4">
                             <li className="border-t border-t-black pt-4 xl:border-b xl:border-t-0 xl:border-b-black xl:pb-4 xl:pt-0 xl:text-base">
@@ -414,7 +417,9 @@ const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
                                 <li className="flex-1 text-[24px]">
                                   <ul className="flex flex-col gap-y-6 xl:gap-y-10">
                                     <li>
+                                      {/* eslint-disable-next-line react-hooks/static-components */}
                                       <MobileOnlyAccordionItem value="key-concepts">
+                                        {/* eslint-disable-next-line react-hooks/static-components */}
                                         <MobileOnlyAccordionTrigger
                                           variant="naked"
                                           className="flex w-full items-center justify-between text-left"
@@ -422,6 +427,7 @@ const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
                                         >
                                           Key Concepts <ChevronBold className="h-6 w-6 xl:hidden" />
                                         </MobileOnlyAccordionTrigger>
+                                        {/* eslint-disable-next-line react-hooks/static-components */}
                                         <MobileOnlyAccordionContent variant="naked">
                                           <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
                                             <li className="xl:hidden">
@@ -469,7 +475,9 @@ const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
                                       </MobileOnlyAccordionItem>
                                     </li>
                                     <li className="xl:border-t xl:border-t-black xl:pt-4">
+                                      {/* eslint-disable-next-line react-hooks/static-components */}
                                       <MobileOnlyAccordionItem value="industry-use-cases">
+                                        {/* eslint-disable-next-line react-hooks/static-components */}
                                         <MobileOnlyAccordionTrigger
                                           variant="naked"
                                           className="flex w-full items-center justify-between text-left"
@@ -478,6 +486,7 @@ const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
                                           Industry Use Cases{" "}
                                           <ChevronBold className="h-6 w-6 xl:hidden" />
                                         </MobileOnlyAccordionTrigger>
+                                        {/* eslint-disable-next-line react-hooks/static-components */}
                                         <MobileOnlyAccordionContent variant="naked">
                                           <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
                                             <li className="xl:hidden">
@@ -529,7 +538,9 @@ const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
                                     </li>
                                     {isCaseStudiesActive && (
                                       <li className="xl:border-t xl:border-t-black xl:pt-4">
+                                        {/* eslint-disable-next-line react-hooks/static-components */}
                                         <MobileOnlyAccordionItem value="case-studies">
+                                          {/* eslint-disable-next-line react-hooks/static-components */}
                                           <MobileOnlyAccordionTrigger
                                             variant="naked"
                                             className="flex w-full items-center justify-between text-left"
@@ -537,6 +548,7 @@ const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
                                             Case Studies
                                             <ChevronBold className="h-6 w-6 xl:hidden" />
                                           </MobileOnlyAccordionTrigger>
+                                          {/* eslint-disable-next-line react-hooks/static-components */}
                                           <MobileOnlyAccordionContent variant="naked">
                                             <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
                                               {caseStudiesData?.docs?.map((caseStudy) => (
@@ -557,7 +569,9 @@ const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
                                       </li>
                                     )}
                                     <li className="xl:border-t xl:border-t-black xl:pt-4">
+                                      {/* eslint-disable-next-line react-hooks/static-components */}
                                       <MobileOnlyAccordionItem value="climate-and-biodiversity">
+                                        {/* eslint-disable-next-line react-hooks/static-components */}
                                         <MobileOnlyAccordionTrigger
                                           variant="naked"
                                           className="flex w-full items-center justify-between text-left"
@@ -566,6 +580,7 @@ const Header = ({ appSettings }: { appSettings?: AppSetting | null }) => {
                                           Climate & Biodiversity
                                           <ChevronBold className="h-6 w-6 xl:hidden" />
                                         </MobileOnlyAccordionTrigger>
+                                        {/* eslint-disable-next-line react-hooks/static-components */}
                                         <MobileOnlyAccordionContent variant="naked">
                                           <ul className="flex flex-col gap-2 pt-3 text-base font-normal">
                                             <li className="xl:hidden">

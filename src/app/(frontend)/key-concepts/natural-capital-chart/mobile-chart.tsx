@@ -1,7 +1,11 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { linkVertical } from "d3-shape";
+import Image from "next/image";
 import { FC, useMemo, useState } from "react";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import {
   SourceGroup,
   SourceNode,
@@ -12,8 +16,6 @@ import {
   targetSubGroups,
   relationships,
 } from "./data";
-import Image from "next/image";
-import { linkVertical } from "d3-shape";
 
 export interface MobileChartProps {
   width: number;

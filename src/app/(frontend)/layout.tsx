@@ -1,13 +1,15 @@
+import localFont from "next/font/local";
+
+import { getAppSettings } from "@/cms/service/app-settings";
+import Analytics from "@/components/analytics";
+import Header from "@/components/header";
+import PrivacyBanner from "@/components/privacy-banner";
+import { Providers } from "@/components/providers";
+import { env } from "@/env.mjs";
+import { cn } from "@/lib/utils";
+
 import type { Metadata } from "next";
 import "../globals.css";
-import localFont from "next/font/local";
-import { cn } from "@/lib/utils";
-import { Providers } from "@/components/providers";
-import Analytics from "@/components/analytics";
-import PrivacyBanner from "@/components/privacy-banner";
-import { env } from "@/env.mjs";
-import Header from "@/components/header";
-import { getAppSettings } from "@/cms/service/app-settings";
 
 const circular = localFont({
   src: [

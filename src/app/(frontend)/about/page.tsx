@@ -1,19 +1,19 @@
 "use client";
 
-import Footer from "@/components/footer";
-
-import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
-import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
-import ArrowSlide from "@/icons/arrow-slide.svg";
-import Vizzuality from "@/svgs/vizzuality.svg";
-import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
-import BackgroundVideo from "@/components/bg-video";
-import RevealLines from "@/components/animations/reveal-lines";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
+import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
+import RevealLines from "@/components/animations/reveal-lines";
+import BackgroundVideo from "@/components/bg-video";
+import Footer from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import ArrowSlide from "@/icons/arrow-slide.svg";
+import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
+import Vizzuality from "@/svgs/vizzuality.svg";
 
 const BACKGROUNDS = [
   "/assets/about-background.png",

@@ -1,7 +1,8 @@
-import { PropsWithChildren } from "react";
 import { Provider as JotaiProvider } from "jotai";
-import { store } from "@/lib/store";
+import { PropsWithChildren } from "react";
+
 import QueryProvider from "@/app/(frontend)/query-provider";
+import { store } from "@/lib/store";
 
 export const Providers = ({ children }: PropsWithChildren) => {
   return (

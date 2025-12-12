@@ -1,10 +1,11 @@
 "use client";
 
 import { motion, MotionValue, useTransform } from "motion/react";
+import { FC, useCallback } from "react";
+
 import desktopData from "@/data/home-pebbles-animations-desktop.json";
 import mobileData from "@/data/home-pebbles-animations-mobile.json";
 import useMediaQuery from "@/hooks/use-media-query";
-import { FC, useCallback } from "react";
 
 export interface PebbleProps {
   /** Index of the pebble */

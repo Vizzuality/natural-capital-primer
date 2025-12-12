@@ -1,10 +1,11 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { motion } from "motion/react";
 import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import Shape1 from "@/svgs/404-shape-1.svg";
 import Shape2 from "@/svgs/404-shape-2.svg";
-import { motion } from "motion/react";
 
 export default function NotFoundPage() {
   return (

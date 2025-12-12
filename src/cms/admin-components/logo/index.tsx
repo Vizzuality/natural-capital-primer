@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import icon from "@/app/icon2.png";
 
 const AdminLogoComponent = () => {

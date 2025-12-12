@@ -2,9 +2,10 @@
 
 import { useRef } from "react";
 
-import { useInitLinks, useHovered, GREY } from "./chart-hooks";
 import InfoTooltip from "@/components/info-tooltip";
 import { cn } from "@/lib/utils";
+
+import { useInitLinks, useHovered, GREY } from "./chart-hooks";
 
 export interface DesktopChartProps {
   width: number;
@@ -13,7 +14,9 @@ export interface DesktopChartProps {
 const DesktopChart = ({ width }: DesktopChartProps) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
+  // eslint-disable-next-line react-hooks/refs
   useInitLinks(svgRef.current);
+  // eslint-disable-next-line react-hooks/refs
   const [hovered, setHovered] = useHovered(svgRef.current);
 
   return (

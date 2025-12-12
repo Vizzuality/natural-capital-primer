@@ -76,6 +76,7 @@ export const useSplitText = (
 
     // Clean up the test span
     ref.removeChild(testSpan);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLines(tempLines);
   }, [text, containerRefs, windowWidth]);
 

@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
-import type { TextFieldClientComponent } from "payload";
 import { useField } from "@payloadcms/ui";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
+import React from "react";
+
+import type { TextFieldClientComponent } from "payload";
 
 const caseStudiesColors = [
   { label: "Orange Bright", value: "#FF5C21" },

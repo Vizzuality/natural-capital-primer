@@ -1,22 +1,24 @@
 "use client";
 
-import HoverRepeatAnimation from "@/components/animations/hover-repeat";
-import Footer from "@/components/footer";
+import { useInView } from "motion/react";
+import Link from "next/link";
+import { FC, useMemo, useRef } from "react";
 
+import HoverRepeatAnimation from "@/components/animations/hover-repeat";
+import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
+import RevealLines from "@/components/animations/reveal-lines";
+import BackgroundVideo from "@/components/bg-video";
+import Footer from "@/components/footer";
+import Quiz from "@/components/quiz";
+import Reference from "@/components/reference";
+import SecondaryNavigation from "@/components/secondary-navigation";
 import { Button } from "@/components/ui/button";
 import ArrowSlide from "@/icons/arrow-slide.svg";
 import ThinArrow from "@/icons/thin-arrow.svg";
-import Link from "next/link";
-import { FC, useMemo, useRef } from "react";
-import Quiz from "@/components/quiz";
-import type { QuizProps } from "@/components/quiz";
+
 import NaturalCapitalChart from "./natural-capital-chart";
-import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
-import SecondaryNavigation from "@/components/secondary-navigation";
-import { useInView } from "motion/react";
-import Reference from "@/components/reference";
-import BackgroundVideo from "@/components/bg-video";
-import RevealLines from "@/components/animations/reveal-lines";
+
+import type { QuizProps } from "@/components/quiz";
 
 const QUIZ_DATA: QuizProps[] = [
   {
@@ -108,18 +110,22 @@ const KeyConceptsPage: FC = () => {
 
   const activeChapter = useMemo(() => {
     if (chapter3InView) {
+      // eslint-disable-next-line react-hooks/refs
       return chapter3Ref.current?.id ?? null;
     }
 
     if (chapter2InView) {
+      // eslint-disable-next-line react-hooks/refs
       return chapter2Ref.current?.id ?? null;
     }
 
     if (chapter1InView) {
+      // eslint-disable-next-line react-hooks/refs
       return chapter1Ref.current?.id ?? null;
     }
 
     if (chapter0InView) {
+      // eslint-disable-next-line react-hooks/refs
       return chapter0Ref.current?.id ?? null;
     }
 
@@ -136,7 +142,10 @@ const KeyConceptsPage: FC = () => {
           { key: "flows-of-services", value: "Flows of Services" },
           { key: "dependencies-and-impacts", value: "Dependencies and Impacts" },
         ]}
-        activeItem={activeChapter}
+        activeItem={
+          // eslint-disable-next-line react-hooks/refs
+          activeChapter
+        }
       />
       <div
         ref={chapter0Ref}

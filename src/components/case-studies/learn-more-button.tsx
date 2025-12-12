@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
+
 import HoverRepeatAnimation from "../animations/hover-repeat";
 
 const LearnMoreButton = () => {

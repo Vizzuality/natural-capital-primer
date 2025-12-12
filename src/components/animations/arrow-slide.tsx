@@ -1,5 +1,6 @@
-import { PropsWithChildren } from "react";
 import { EasingDefinition, Variants, motion } from "motion/react";
+import { PropsWithChildren } from "react";
+
 import Arrow from "@/icons/arrow.svg";
 
 const ANIMATION_EASE: EasingDefinition = "linear";

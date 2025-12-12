@@ -1,10 +1,11 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
 import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import Parallax from "@/components/animations/parallax";
+import { Button } from "@/components/ui/button";
 
 const Outro = () => (
   <div className="relative bg-black">

@@ -1,4 +1,3 @@
-import { JSXConverter, JSXConverters } from "@payloadcms/richtext-lexical/react";
 import {
   SerializedTextNode,
   SerializedBlockNode,
@@ -6,9 +5,12 @@ import {
   DefaultNodeTypes,
   SerializedParagraphNode,
 } from "@payloadcms/richtext-lexical";
-import { RichText } from ".";
+import { JSXConverter, JSXConverters } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
+
 import { Media } from "@/payload-types";
+
+import { RichText } from ".";
 
 export const HighlightConverter: JSXConverters<SerializedTextNode> = {
   text: (data) => {
@@ -98,7 +100,6 @@ export const TextConverter =
 
 export const ParagraphConverter =
   (defaultConverters: JSXConverters<DefaultNodeTypes>): JSXConverter<SerializedParagraphNode> =>
-  // eslint-disable-next-line react/display-name
   (data) => {
     if (!data.node.children?.length) return null;
     return typeof defaultConverters?.paragraph === "function" && defaultConverters.paragraph(data);

@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
+import { ForwardedRef, forwardRef, useMemo } from "react";
+
+import { cn } from "@/lib/utils";
 import Correct from "@/svgs/correct.svg";
 import Wrong from "@/svgs/wrong.svg";
-import { cn } from "@/lib/utils";
-import { ForwardedRef, forwardRef, useMemo } from "react";
 
 export interface ResultAnimationProps {
   correctAnswers: number;

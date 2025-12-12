@@ -1,6 +1,7 @@
-import DayInLifeMarquee from "@/components/day-in-life-cta/marquee";
 import { FC } from "react";
+
 import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
+import DayInLifeMarquee from "@/components/day-in-life-cta/marquee";
 import ArrowSlide from "@/icons/arrow-slide.svg";
 
 const Intro: FC = () => (

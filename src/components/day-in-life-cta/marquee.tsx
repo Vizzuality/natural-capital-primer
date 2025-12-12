@@ -1,8 +1,9 @@
 "use client";
 
 import { FC } from "react";
-import ImageCarousel from "@/components/image-carousel";
+
 import MarqueeAnimation from "@/components/animations/marquee";
+import ImageCarousel from "@/components/image-carousel";
 
 const DayInLifeMarquee: FC = () => {
   const heightClass = "h-[251px] lg:h-[386px]";

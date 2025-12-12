@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+
 import InfoTooltip from "@/components/info-tooltip";
+
 import DesktopChart from "./desktop-chart";
 import MobileChart from "./mobile-chart";
 

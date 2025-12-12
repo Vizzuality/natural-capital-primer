@@ -1,17 +1,18 @@
-import { ForwardedRef, forwardRef } from "react";
 import { useTransform, useScroll } from "motion/react";
+import { motion } from "motion/react";
+import Image from "next/image";
+import { ForwardedRef, forwardRef } from "react";
+
+import BackgroundVideo from "@/components/bg-video";
 import { Button } from "@/components/ui/button";
+import useMediaQuery from "@/hooks/use-media-query";
+import { cn } from "@/lib/utils";
+import AudioIconOff from "@/svgs/audio-icon-off.svg";
+import AudioIconOn from "@/svgs/audio-icon-on.svg";
+import CaretDown from "@/svgs/caret-down.svg";
+
 import { GLOSSARY_TERMS } from "./data";
 import { SectionType } from "./data";
-import Image from "next/image";
-import CaretDown from "@/svgs/caret-down.svg";
-import { cn } from "@/lib/utils";
-import AudioIconOn from "@/svgs/audio-icon-on.svg";
-import AudioIconOff from "@/svgs/audio-icon-off.svg";
-import BackgroundVideo from "@/components/bg-video";
-
-import { motion } from "motion/react";
-import useMediaQuery from "@/hooks/use-media-query";
 
 export interface SectionProps {
   id: string;

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
 import { select, selectAll } from "d3-selection";
-import { relationships } from "./data";
 import { linkVertical, DefaultLinkObject } from "d3-shape";
+import { useEffect, useState } from "react";
+
+import { relationships } from "./data";
 
 type Node = SVGGraphicsElement;
 type NodePosition = {

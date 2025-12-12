@@ -1,13 +1,15 @@
-import { IndustryUseCasesAccordionItem, IndustryUseCasesTab } from "./types";
-import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import ChevronBold from "@/icons/chevron-bold.svg";
-import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useCallback, useEffect, forwardRef, useRef, useState } from "react";
+
+import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useMediaQuery from "@/hooks/use-media-query";
-import EcosystemTab from "./tab-ecosystem";
+import ChevronBold from "@/icons/chevron-bold.svg";
+
 import DependenciesTab from "./tab-dependencies";
+import EcosystemTab from "./tab-ecosystem";
 import ImpactsTab from "./tab-impacts";
+import { IndustryUseCasesAccordionItem, IndustryUseCasesTab } from "./types";
 
 const ACCORDION_ANIMATION_DURATION = 0.3;
 const ACCORDION_EASING_FUNCTION = "easeOut";

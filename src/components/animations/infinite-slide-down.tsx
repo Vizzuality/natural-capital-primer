@@ -1,5 +1,5 @@
-import { PropsWithChildren, useEffect } from "react";
 import { EasingDefinition, Variants, motion, useAnimationControls } from "motion/react";
+import { PropsWithChildren, useEffect } from "react";
 
 const ANIMATION_EASE: EasingDefinition = "linear";
 const ANIMATION_DURATION = 1;

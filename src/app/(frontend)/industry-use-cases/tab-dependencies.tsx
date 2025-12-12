@@ -1,7 +1,9 @@
-import { FC, useEffect, useRef, useState } from "react";
-import useMediaQuery from "@/hooks/use-media-query";
-import DesktopChart from "@/components/industry-use-cases/desktop-chart";
 import Image from "next/image";
+import { FC, useEffect, useRef, useState } from "react";
+
+import DesktopChart from "@/components/industry-use-cases/desktop-chart";
+import useMediaQuery from "@/hooks/use-media-query";
+
 import { IndustryUseCasesTabContent } from "./types";
 
 const DependenciesTab: FC<IndustryUseCasesTabContent["dependencies"] & { open: boolean }> = ({

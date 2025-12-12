@@ -1,9 +1,11 @@
-import { FC } from "react";
 import Image from "next/image";
-import InfoTooltip from "@/components/info-tooltip";
-import { IndustryUseCasesTabContent } from "./types";
-import RevealLines from "@/components/animations/reveal-lines";
+import { FC } from "react";
+
 import Parallax from "@/components/animations/parallax";
+import RevealLines from "@/components/animations/reveal-lines";
+import InfoTooltip from "@/components/info-tooltip";
+
+import { IndustryUseCasesTabContent } from "./types";
 
 const EcosystemTab: FC<IndustryUseCasesTabContent["ecosystem"]> = ({
   content1,

@@ -1,10 +1,11 @@
+import { sendGAEvent, sendGTMEvent } from "@next/third-parties/google";
 import { type ClassValue, clsx } from "clsx";
 import Link from "next/link";
 import React from "react";
 import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
+
 import { env } from "@/env.mjs";
-import { sendGAEvent, sendGTMEvent } from "@next/third-parties/google";
 import { analyticsConsentAtom, store } from "@/lib/store";
 import { Media } from "@/payload-types";
 

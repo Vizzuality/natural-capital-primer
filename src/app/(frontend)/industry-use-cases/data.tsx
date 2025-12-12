@@ -1,6 +1,8 @@
-import type { IndustryUseCasesAccordionItem, IndustryUseCasesTabContent } from "./types";
-import { manufacturingLinks, tourismLinks, foodLinks, retailLinks } from "./chart-data";
 import Reference from "@/components/reference";
+
+import { manufacturingLinks, tourismLinks, foodLinks, retailLinks } from "./chart-data";
+
+import type { IndustryUseCasesAccordionItem, IndustryUseCasesTabContent } from "./types";
 
 const ACCORDION_ITEMS_CONTENT: Record<string, IndustryUseCasesTabContent> = {
   constructions: {

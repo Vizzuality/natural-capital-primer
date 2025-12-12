@@ -9,8 +9,10 @@ import {
   useState,
   ReactElement,
 } from "react";
-import { useSplitText } from "./use-split-text";
+
 import { cn } from "@/lib/utils";
+
+import { useSplitText } from "./use-split-text";
 
 interface RevealLinesProps {
   children: React.ReactNode;
@@ -102,6 +104,7 @@ const RevealLines: FC<RevealLinesProps> = ({
         >
           {/* Div created just to get the refs to calculate the children lines and lineHeight */}
           <div className="invisible h-0" aria-hidden="true">
+            {/* eslint-disable-next-line react-hooks/refs */}
             {childElements.map((child, index) =>
               cloneElement(child, {
                 /* @ts-expect-error: ref is not a valid prop */

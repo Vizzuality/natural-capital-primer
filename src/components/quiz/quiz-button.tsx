@@ -1,9 +1,10 @@
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { AnimatePresence, motion } from "motion/react";
 import { ForwardedRef, forwardRef } from "react";
+
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import Check from "@/svgs/check.svg";
 import Close from "@/svgs/close.svg";
-import { AnimatePresence, motion } from "motion/react";
 
 export interface QuizButtonProps {
   children: React.ReactNode;

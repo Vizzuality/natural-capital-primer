@@ -1,11 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { motion } from "motion/react";
 import { Metadata } from "next";
 import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import Shape1 from "@/svgs/500-shape-1.svg";
 import Shape2 from "@/svgs/500-shape-2.svg";
-import { motion } from "motion/react";
 
 export const metadata: Metadata = {
   title: "Something went wrong",

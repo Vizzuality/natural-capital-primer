@@ -1,10 +1,11 @@
 "use client";
 
-import Info from "@/svgs/info.svg";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { useState } from "react";
 import { AnimatePresence } from "motion/react";
+import { useState } from "react";
+
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import Info from "@/svgs/info.svg";
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 

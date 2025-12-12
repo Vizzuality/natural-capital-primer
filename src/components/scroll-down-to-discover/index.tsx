@@ -1,8 +1,9 @@
 "use client";
 
 import ArrowSlide from "@/icons/arrow-slide.svg";
-import InfiniteSlideDownAnimation from "../animations/infinite-slide-down";
 import { cn } from "@/lib/utils";
+
+import InfiniteSlideDownAnimation from "../animations/infinite-slide-down";
 
 type ScrollDownToDiscoverProps = {
   className?: string;

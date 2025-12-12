@@ -5,8 +5,6 @@ import {
 } from "@payloadcms/richtext-lexical/react";
 import { HTMLAttributes } from "react";
 
-import type { DefaultNodeTypes } from "@payloadcms/richtext-lexical";
-
 import {
   ParagraphConverter,
   PullOutBlockConverter,
@@ -14,6 +12,8 @@ import {
   TextConverter,
   UploadConverter,
 } from "./converters";
+
+import type { DefaultNodeTypes } from "@payloadcms/richtext-lexical";
 
 type RichTextProps = {
   data: SerializedEditorState;

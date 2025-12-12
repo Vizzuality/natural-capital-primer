@@ -1,19 +1,19 @@
 "use client";
 
-import Footer from "@/components/footer";
-
 import { motion, useInView, useScroll, useTransform } from "motion/react";
-import Shape1 from "@/svgs/404-shape-1.svg";
-import Shape2 from "@/svgs/home-shape-2.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import { useRef } from "react";
-import Pebble from "@/components/home/pebble";
-import DayInLifeCTA from "@/components/day-in-life-cta";
-import Reference from "@/components/reference";
+
+import HoverRepeatAnimation from "@/components/animations/hover-repeat";
 import BackgroundVideo from "@/components/bg-video";
+import DayInLifeCTA from "@/components/day-in-life-cta";
+import Footer from "@/components/footer";
+import Pebble from "@/components/home/pebble";
+import Reference from "@/components/reference";
+import { Button } from "@/components/ui/button";
+import Shape1 from "@/svgs/404-shape-1.svg";
+import Shape2 from "@/svgs/home-shape-2.svg";
 
 export default function Home() {
   const videoSectionRef = useRef<HTMLDivElement | null>(null);

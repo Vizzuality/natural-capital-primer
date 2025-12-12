@@ -1,18 +1,19 @@
 import path from "path";
 import { fileURLToPath } from "url";
+
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import { s3Storage } from "@payloadcms/storage-s3";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { resendAdapter } from "@payloadcms/email-resend";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
-import { Users } from "./cms/collections/Users";
-import { Media } from "./cms/collections/Media";
-import { CaseStudies } from "./cms/collections/CaseStudies";
-import AppSettings from "./cms/globals/app-settings";
-
 import { env } from "@/env.mjs";
+
+import { CaseStudies } from "./cms/collections/CaseStudies";
+import { Media } from "./cms/collections/Media";
+import { Users } from "./cms/collections/Users";
+import AppSettings from "./cms/globals/app-settings";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);

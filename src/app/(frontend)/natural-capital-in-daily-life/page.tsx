@@ -1,13 +1,15 @@
 "use client";
-import { useMemo, useRef, useState } from "react";
-import Footer from "@/components/footer";
-import Outro from "./outro";
-import Intro from "./intro";
-import { SECTIONS } from "./data";
-import Section from "./section";
-import SecondaryNavigation from "@/components/secondary-navigation";
 import { useInView } from "motion/react";
+import { useMemo, useRef, useState } from "react";
 import React from "react";
+
+import Footer from "@/components/footer";
+import SecondaryNavigation from "@/components/secondary-navigation";
+
+import { SECTIONS } from "./data";
+import Intro from "./intro";
+import Outro from "./outro";
+import Section from "./section";
 
 export default function ADayInTheLife() {
   const [soundOn, setSoundOn] = useState(false);

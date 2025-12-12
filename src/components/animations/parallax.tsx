@@ -1,9 +1,10 @@
 "use client";
-import { cn } from "@/lib/utils";
-import { useRef, useState } from "react";
 import { useScroll } from "motion/react";
+import { useRef, useState } from "react";
 import { FC, cloneElement, isValidElement } from "react";
+
 import useMediaQuery from "@/hooks/use-media-query";
+import { cn } from "@/lib/utils";
 
 type ParallaxProps = {
   className?: string;
@@ -30,6 +31,7 @@ const Parallax: FC<ParallaxProps> = ({
     offset: ["start end", "end start"],
   });
 
+  // eslint-disable-next-line react-hooks/refs
   scrollYProgress.on("change", (v) => {
     if (ref.current) {
       setOffsetY(v * -150);

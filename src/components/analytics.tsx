@@ -1,9 +1,10 @@
 "use client";
 
-import { useAtomValue } from "jotai";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import { analyticsConsentAtom } from "@/lib/store";
+import { useAtomValue } from "jotai";
+
 import { env } from "@/env.mjs";
+import { analyticsConsentAtom } from "@/lib/store";
 
 const Analytics = () => {
   const analyticsConsent = useAtomValue(analyticsConsentAtom);

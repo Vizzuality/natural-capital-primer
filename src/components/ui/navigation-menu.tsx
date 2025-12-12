@@ -1,8 +1,8 @@
-import * as React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
-import ChevronBold from "@/icons/chevron-bold.svg";
+import * as React from "react";
 
+import ChevronBold from "@/icons/chevron-bold.svg";
 import { cn } from "@/lib/utils";
 
 const NavigationMenu = React.forwardRef<

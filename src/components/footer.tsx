@@ -1,12 +1,14 @@
 "use client";
 
-import { FC } from "react";
-import Logo from "@/svgs/logo-white.svg";
 import Image from "next/image";
 import Link from "next/link";
-import ArrowSlideAnimation from "./animations/arrow-slide";
+import { FC } from "react";
+
 import LaTrobeUniversity from "@/svgs/la-trobe-university.svg";
+import Logo from "@/svgs/logo-white.svg";
 import Vizzuality from "@/svgs/vizzuality.svg";
+
+import ArrowSlideAnimation from "./animations/arrow-slide";
 
 const Footer: FC = () => {
   return (

@@ -1,19 +1,20 @@
 "use client";
 
+import { useInView } from "motion/react";
+import { useParams } from "next/navigation";
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
-import Footer from "@/components/footer";
-
 import { FC } from "react";
+
+import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
+import Footer from "@/components/footer";
+import SecondaryNavigation from "@/components/secondary-navigation";
 import { Accordion } from "@/components/ui/accordion";
+import { Tabs } from "@/components/ui/tabs";
+import ArrowSlide from "@/icons/arrow-slide.svg";
+
+import AccordionItem from "./accordion-item";
 import { ACCORDION_ITEMS } from "./data";
 import { IndustryUseCasesAccordionItem, IndustryUseCasesTab } from "./types";
-import InfiniteSlideDownAnimation from "@/components/animations/infinite-slide-down";
-import ArrowSlide from "@/icons/arrow-slide.svg";
-import { Tabs } from "@/components/ui/tabs";
-import AccordionItem from "./accordion-item";
-import { useParams } from "next/navigation";
-import { useInView } from "motion/react";
-import SecondaryNavigation from "@/components/secondary-navigation";
 
 const IndustryUseCasesPage: FC = () => {
   const params = useParams();

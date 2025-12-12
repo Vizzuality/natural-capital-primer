@@ -1,12 +1,14 @@
 "use client";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import Link from "next/link";
-import { Button } from "./ui/button";
-import { AnimatePresence, motion } from "motion/react";
 import { useAtom } from "jotai";
-import { analyticsConsentAtom } from "@/lib/store";
+import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { env } from "@/env.mjs";
+import { analyticsConsentAtom } from "@/lib/store";
+
+import { Button } from "./ui/button";
 
 const MotionAlert = motion.create(Alert);
 
